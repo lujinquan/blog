@@ -1,0 +1,4 @@
+---------------------------------------------------------------
+[ 2019-01-09T15:46:45+08:00 ] 127.0.0.1 GET web.blog.com/index.php/index/Singlepage/index
+[运行时间：0.119140s] [吞吐率：8.39req/s] [内存消耗：3,079.69kb] [文件加载：100]
+[ error ] [0]语法解析错误: syntax error, unexpected '" alt="' (T_CONSTANT_ENCAPSED_STRING), expecting ',' or ';'[D:\phpStudy\WWW\blog\runtime\temp\4a9d01e681457ecb2ac1abfddff8dfdc.php:135]
