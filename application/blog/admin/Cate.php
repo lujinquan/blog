@@ -1,7 +1,7 @@
 <?php
+
 namespace app\blog\admin;
 use app\system\admin\Admin;
-
 use app\blog\model\Cate as CateModel;
 
 class Cate extends Admin
@@ -30,9 +30,7 @@ class Cate extends Admin
 
     public function index()
     {
-    	//halt(1);
     	if ($this->request->isAjax()) {
-    		//halt(1);
             $page = input('param.page/d', 1);
             $limit = input('param.limit/d', 10);
            

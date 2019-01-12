@@ -22,6 +22,13 @@ class Article extends Model
      * @author Lucas <598936602@qq.com>
      * @return bool
      */
+    
+    // public function article_cate()
+    // {
+    //     //关联模型house，pack模型的外键b_id，house模型的主键b_id
+    //     return $this->belongsTo('article_cate', 'cate_id', 'cate_id')->bind('area,address,is_cert');
+    // }
+
     public function storage($data = [])
     {
         if (empty($data)) {
