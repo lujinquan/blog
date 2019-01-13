@@ -1,9 +1,9 @@
 <?php
 
 namespace app\index\home;
-use app\common\controller\Common;
+use app\index\home\Base;
 
-class Gallery extends Common
+class Gallery extends Base
 {
     public function index()
     {

@@ -1,62 +1,101 @@
-<form class="layui-form" action="">
+<form class="layui-form" action="{:url()}" method="post">
 
   <div class="layui-form-item">
-	<div class="layui-inline">
-	    <label class="layui-form-label">栏目名称</label>
-	    <div class="layui-input-inline">
-	      <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="" class="layui-input">
-	    </div>
-    </div>
-	<div class="layui-inline">
+    <div class="layui-inline">
       <label class="layui-form-label">所属栏目</label>
       <div class="layui-input-inline">
-        <select name="quiz">
-          <option value="">请选择问题</option>
-          <optgroup label="城市记忆">
-            <option value="你工作的第一个城市">你工作的第一个城市</option>
+        <select name="p_id">
+          <option value=""></option>
+          <optgroup label="博客">
+            <option value="6">生活随想</option>
+            <option value="7">PHP语言</option>
+            <option value="8">Linux系统</option>
+            <option value="9">Mysql语言</option>
+            <option value="10">前端语言</option>
+            <option value="11">Python语言</option>
+            <option value="12">PHP框架</option>
           </optgroup>
-          <optgroup label="学生时代">
-            <option value="你的工号">你的工号</option>
-            <option value="你最喜欢的老师">你最喜欢的老师</option>
+          <optgroup label="书屋">
+            <option value="13">理财类</option>
+            <option value="14">生活类</option>
+            <option value="15">技能类</option>
+            <option value="16">新闻类</option>
           </optgroup>
         </select>
       </div>
-      <div class="layui-form-mid layui-word-aux">请正确填写url</div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>必填</div>
     </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">栏目名称</label>
+      <div class="layui-input-inline">
+        <input type="text" name="cate_name" autocomplete="off" placeholder="" class="layui-input">
+      </div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>必填，推荐5~10个字符</div>
+    </div>
+    
+  </div>
+  
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">栏目链接</label>
+      <div class="layui-input-inline">
+        <input type="text" name="link" autocomplete="off" class="layui-input">
+      </div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>必填，例如：/index</div>
+    </div>
+    
+  </div>
+
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">关键词</label>
+      <div class="layui-input-inline">
+        <input type="text" name="keywords" autocomplete="off" class="layui-input">
+      </div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>必填</div>
+    </div>
+    
+  </div>
+
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">排序号</label>
+      <div class="layui-input-inline">
+        <input type="number" name="sort_order" autocomplete="off" class="layui-input">
+      </div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>必填</div>
+    </div>
+    
   </div>
 
   <div class="layui-form-item">
     <label class="layui-form-label">是否显示</label>
-    <div class="layui-input-block">
-      <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
+    <div class="layui-input-inline">
+      <input type="checkbox" checked value="1" name="is_show" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
     </div>
-  </div>
-  
-  
-  <div class="layui-form-item">
-    <div class="layui-inline">
-      <label class="layui-form-label">栏目url</label>
-      <div class="layui-input-inline">
-        <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
-      </div>
-    </div>
+    <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>必填</div>
   </div>
 
   <div class="layui-form-item layui-form-text">
     <label class="layui-form-label">描述</label>
     <div class="layui-input-inline">
-      <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+      <textarea placeholder="" name="cate_desc" class="layui-textarea"></textarea>
     </div>
+    <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>必填</div>
   </div>
-  
+
   <!--<div class="layui-form-item layui-form-text">
     <label class="layui-form-label">编辑器</label>
     <div class="layui-input-block">
       <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>
     </div>
   </div>-->
+  {:token()}
   <div class="layui-form-item">
     <div class="layui-input-block">
+      <!-- <button type="submit" class="layui-btn layui-btn-normal" lay-submit="" lay-filter="formSubmit">提交</button> -->
       <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
       <button type="reset" class="layui-btn layui-btn-primary">重置</button>
     </div>

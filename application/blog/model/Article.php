@@ -16,6 +16,11 @@ class Article extends Model
     // 自动写入时间戳
     protected $autoWriteTimestamp = true;
 
+    protected $type = [
+        'ctime' => 'timestamp:Y-m-d H:i:s',
+        'push_time' => 'timestamp:Y-m-d H:i:s',
+    ];
+
     /**
      * 入库
      * @param array $data 入库数据
@@ -23,11 +28,10 @@ class Article extends Model
      * @return bool
      */
     
-    // public function article_cate()
-    // {
-    //     //关联模型house，pack模型的外键b_id，house模型的主键b_id
-    //     return $this->belongsTo('article_cate', 'cate_id', 'cate_id')->bind('area,address,is_cert');
-    // }
+    public function cate()
+    {
+        return $this->belongsTo('cate', 'cate_id', 'cate_id')->bind('cate_name');
+    }
 
     public function storage($data = [])
     {

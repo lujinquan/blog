@@ -16,6 +16,10 @@ class Cate extends Model
     // 自动写入时间戳
     protected $autoWriteTimestamp = true;
 
+    protected $type = [
+        'ctime' => 'timestamp:Y-m-d H:i:s',
+    ];
+
     /**
      * 入库
      * @param array $data 入库数据

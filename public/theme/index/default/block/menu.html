@@ -14,11 +14,15 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-left">
-						<li><a href="/" class="active">首页</a></li>
+					
+					{volist name="topMenus" id="vo"}
+					<li><a href="{$vo['link']}" {if condition="(strstr($vo['link'],$thisMenu))"}class="active"{/if}>{$vo['cate_name']}</a></li>
+					{/volist}
+						<!-- <li><a href="/" class="active">首页</a></li>
 						<li><a href="/index/Tour/index">旅行</a></li>
 						<li><a href="/index/Gallery/index">书屋</a></li>
 						<li><a href="/index/Blog/index">博客</a></li>
-						<li><a href="/index/Contact/index">关于我</a></li>
+						<li><a href="/index/Contact/index">关于我</a></li> -->
 					</ul>
 					<div class="social-icons">
 						<ul>

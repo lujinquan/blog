@@ -21,6 +21,13 @@
 </div>
 {include file="system@block/layui" /}
 <table id="dataTable" lay-filter='dataTable'></table>
+<script type="text/html" title="状态模板" id="statusTpl">
+    <input type="checkbox" name="is_show" value="{{ d.is_show }}" lay-skin="switch" lay-filter="switchStatus" lay-text="开启|禁用" {{ d.is_show == 1 ? 'checked' : '' }} {{ d.system == 1 ? 'disabled' : '' }} data-href="{:url('show')}?table=admin_config&id={{ d.cate_id }}">
+</script>
+
+<script type="text/html" title="排序模板" id="sortTpl">
+    <input type="text" class="layui-input j-ajax-input input-sort" onkeyup="value=value.replace(/[^\d]/g,'')" value="{{ d.sort_order }}" data-value="{{ d.cate_id }}" data-href="{:url('sort')}?table=admin_config&id={{ d.id }}">
+</script>
 <script type="text/html" title="操作按钮模板" id="buttonTpl">
     <a href="{:url('cate')}?cate_id={{ d.cate_id }}" class="layui-btn layui-btn-xs layui-btn-normal">详情</a>
     <button data-href="{:url('del')}?cate_id={{ d.cate_id }}" class="layui-btn layui-btn-xs layui-btn-danger delete">删除</button>
@@ -37,23 +44,13 @@
                 none : '暂无相关数据'
             }
             ,cols: [[ //表头
-                {field: 'sort_order', width: 100, sort: true,title: '排序'}
+                {field: 'sort_order', width: 90, sort: true, title: '排序', templet: '#sortTpl'}
                 ,{field: 'cate_name', width: 160, title: '栏目名称'}
-                ,{field: 'cate_url', width: 300, title: '栏目路径'}
+                ,{field: 'link', width: 180, title: '栏目路径'}
                 ,{field: 'cate_desc', width: 200, title: '描述'}
-                ,{field: 'is_show', width: 80,title: '状态' ,templet: function(d) {
-                    switch(parseInt(d.is_show)){
-                        case 1:
-                          return '可用';
-                          break;
-                        case 2:
-                          return '禁用';
-                          break;
-                        default:
-                          return '';
-                    }  
-                }}
-                ,{title: '操作', width: 180, templet: '#buttonTpl',fixed:'right'}
+                ,{field: 'is_show', title: '状态', width: 100, templet: '#statusTpl'}
+                ,{field: 'ctime', width: 160, title: '创建日期'}
+                ,{title: '操作', width: 140, templet: '#buttonTpl',fixed:'right'}
             ]]
             ,done:function(res,curr,count){
                

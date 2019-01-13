@@ -37,7 +37,7 @@ class Cate extends Admin
             $where = [
             	'status' => 1,
             ];
-            $fields = 'cate_id,sort_order,cate_name,cate_url,cate_desc,is_show';
+            $fields = 'cate_id,sort_order,cate_name,link,cate_desc,is_show,ctime,cate_name';
             $data['data'] = CateModel::field($fields)->where($where)->page($page)->order('sort_order asc')->limit($limit)->select();
             $data['count'] = CateModel::where($where)->count('cate_id');
             $data['code'] = 0;
@@ -50,6 +50,18 @@ class Cate extends Admin
 
     public function add()
     {
+        if ($this->request->isPost()) {
+            $data = $this->request->post();
+            // 验证
+            $result = $this->validate($data, 'Cate.sceneAdd');
+            if($result !== true) {
+                return $this->error($result);
+            }
+            if (!CateModel::create($data)) {
+                return $this->error('添加失败');
+            }
+            return $this->success('添加成功','cate/index');
+        }
         return $this->fetch('form');
     }
 

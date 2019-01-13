@@ -4,7 +4,7 @@
 
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
+    RewriteRule ^(.*)$ index.php?/$1 [QSA,PT,L]
 
     # 禁止直接访问模板文件
     RewriteCond %{QUERY_STRING} ^(.*)$

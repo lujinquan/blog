@@ -1,0 +1,141 @@
+<form class="layui-form" action="" method="">
+
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">所属栏目</label>
+      <div class="layui-input-inline">
+        <input type="text" value="{$data_info['cate_name']}" readonly class="layui-input">
+      </div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">文章标题</label>
+      <div class="layui-input-inline">
+        <input type="text" value="{$data_info['article_title']}" readonly class="layui-input">
+      </div>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">文章作者</label>
+      <div class="layui-input-inline">
+        <input type="text" value="{$data_info['author']}" readonly class="layui-input">
+      </div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">浏览次数</label>
+      <div class="layui-input-inline">
+        <input type="text" value="{$data_info['click']}" readonly class="layui-input">
+      </div>
+    </div>
+  </div>
+  
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">文章链接</label>
+      <div class="layui-input-inline">
+        <input type="text" value="{$data_info['link']}" readonly class="layui-input">
+      </div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">关键词</label>
+      <div class="layui-input-inline">
+        <input type="text" value="{$data_info['keywords']}" readonly class="layui-input">
+      </div>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    
+    
+  </div>
+
+
+  <div class="layui-form-item">
+  	<div class="layui-inline">
+    	<label class="layui-form-label">文章内容</label>
+    	<div class="layui-input-inline">
+      	<textarea class="layui-textarea" readonly name="content1" id="LAY_demo_editor">{:htmlspecialchars_decode($data_info['article_content'])}</textarea>
+    	</div>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">排序号</label>
+      <div class="layui-input-inline">
+        <input type="number" readonly value="{$data_info['sort_order']}" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-inline">
+     <label class="layui-form-label">是否显示</label>
+     <div class="layui-input-inline">
+       <input type="checkbox" checked value="{$data_info['is_show']}" readonly name="is_show" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
+     </div>
+   </div>
+  </div>
+
+
+<div class="layui-item">
+	  <label class="layui-form-label">附件</label>
+	  <blockquote class="layui-elem-quote layui-quote-nm">
+	    <div class="layui-upload-list" id="upload_list_two">
+		    <div class="upload_img_box">
+		        <img src="/upload/demo/t1.jpg" class="layui-upload-img" />
+		        <img src="/upload/demo/t3.jpg" class="layui-upload-img" />
+		    </div>
+	    </div>
+	 </blockquote>
+</div>
+  
+
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">描述</label>
+    <div class="layui-input-inline">
+      <textarea readonly class="layui-textarea">{$data_info['article_desc']}</textarea>
+    </div>
+  </div>
+
+</form>
+{include file="system@block/layui" /}
+	<link rel="stylesheet" href="/kindeditor/themes/default/default.css" />
+	<link rel="stylesheet" href="/kindeditor/plugins/code/prettify.css" />
+	<script charset="utf-8" src="/kindeditor/kindeditor-all.js"></script>
+	<script charset="utf-8" src="/kindeditor/lang/zh-CN.js"></script>
+	<script charset="utf-8" src="/kindeditor/plugins/code/prettify.js"></script>
+<script>
+  // //多图片上传
+  // upload.render({
+  //   elem: '#test2'
+  //   ,url: '/upload/'
+  //   ,multiple: true
+  //   ,before: function(obj){
+  //     //预读本地文件示例，不支持ie8
+  //     obj.preview(function(index, file, result){
+  //       $('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+  //     });
+  //   }
+  //   ,done: function(res){
+  //     //上传完毕
+  //   }
+  // });
+		KindEditor.ready(function(K) {
+			var editor1 = K.create('textarea[name="content1"]', {
+				cssPath : '/kindeditor/plugins/code/prettify.css',
+				uploadJson : '/kindeditor/php/upload_json.php',
+				fileManagerJson : '/kindeditor/php/file_manager_json.php',
+				allowFileManager : true,
+				afterCreate : function() {
+					var self = this;
+					K.ctrl(document, 13, function() {
+						self.sync();
+						K('form[name=example]')[0].submit();
+					});
+					K.ctrl(self.edit.doc, 13, function() {
+						self.sync();
+						K('form[name=example]')[0].submit();
+					});
+				}
+			});
+			prettyPrint();
+		});
+	</script>

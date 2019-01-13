@@ -1,9 +1,9 @@
 <?php
 
 namespace app\index\home;
-use app\common\controller\Common;
+use app\index\home\Base;
 
-class Index extends Common
+class Index extends Base
 {
     public function index()
     {
