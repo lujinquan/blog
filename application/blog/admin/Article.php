@@ -2,6 +2,7 @@
 
 namespace app\blog\admin;
 use app\system\admin\Admin;
+use app\blog\model\Cate as CateModel;
 use app\blog\model\Article as ArticleModel;
 
 class Article extends Admin
@@ -26,6 +27,7 @@ class Article extends Admin
 
     public function add()
     {
+
         if ($this->request->isPost()) {
             $data = $this->request->post();
             //halt($data);
@@ -40,7 +42,12 @@ class Article extends Admin
             }
             return $this->success('添加成功','article/index');
         }
-        //halt(1);
+        $cateWhere = [
+            'is_show' => 1,
+            'status' => 1
+        ];
+        $cates = CateModel::where($cateWhere)->field('cate_id,cate_name,p_id,level')->select();
+        $this->assign('cates',$cates);
         return $this->fetch('form');
     }
 
@@ -61,10 +68,16 @@ class Article extends Admin
             }
             return $this->success('添加成功','article/index');
         }
-        if(!$articleID){
+        if(!$id){
             return $this->error('参数错误');
         }
         $row = ArticleModel::get($id);
+        $cateWhere = [
+            'is_show' => 1,
+            'status' => 1
+        ];
+        $cates = CateModel::where($cateWhere)->field('cate_id,cate_name,p_id,level')->select();
+        $this->assign('cates',$cates);
         $this->assign('data_info',$row);
         return $this->fetch();
     }
@@ -80,6 +93,7 @@ class Article extends Admin
     public function del()
     {
         $id = input('article_id');
+        //halt($id);
         $update = [
             'dtime' => request()->time(),
             'status' => 0

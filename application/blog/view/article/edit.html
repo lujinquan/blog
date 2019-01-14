@@ -1,1 +1,205 @@
-edit.html
+<form class="layui-form" action="{:url()}" method="post">
+
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">所属栏目</label>
+      <div class="layui-input-inline" style="width:260px;">
+        <select name="cate_id">
+          <option value=""></option>
+          {volist name="cates" id="vo"}
+          {if condition="$vo['level'] == 1"}
+          <optgroup label="{$vo['cate_name']}">
+            {volist name="cates" id="vvo"}
+            {if condition="$vvo['p_id'] == $vo['cate_id']"}
+            <option value="{$vvo['cate_id']}" {if condition="$vvo['cate_id'] == $data_info['cate_id']"}selected{/if}>{$vvo['cate_name']}</option>
+            {/if}
+            {/volist}
+          </optgroup>
+          {/if}
+          {/volist}
+        </select>
+      </div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i></div>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-block">
+      <label class="layui-form-label">文章标题</label>
+      <div class="layui-input-inline" style="width:500px;">
+        <input type="text" name="article_title" value="{$data_info['article_title']}" autocomplete="off" placeholder="" class="layui-input">
+      </div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>&nbsp;&nbsp;推荐5~10个字符</div>
+    </div>
+    
+  </div>
+ <div class="layui-form-item">
+    <label class="layui-form-label">封面图</label>
+    <div class="layui-inline">
+      <button type="button" class="layui-btn" id="test1">上传</button>
+      <div class="layui-upload-list">
+        <img class="layui-upload-img" src="{$data_info['thumb']}" id="demo1">
+        <p id="demoText"></p>
+        <input type="hidden" name="thumb" value="" id="thumb"/>
+      </div>
+    </div>
+</div>
+<div class="layui-form-item">
+    <label class="layui-form-label">是否显示</label>
+    <div class="layui-input-inline" style="width:260px">
+      <input type="checkbox" checked value="{$data_info['is_show']} name="is_show" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">文章类型</label>
+      <div class="layui-input-inline" style="width:260px">
+        <input type="radio" name="article_type" lay-filter="articleType" value="1" title="原创" {if condition="$data_info['article_type'] == 1"}checked="checked"{/if}>
+        <input type="radio" name="article_type" lay-filter="articleType" value="2" title="转载" {if condition="$data_info['article_type'] == 2"}checked="checked"{/if}>
+      </div>
+      <div class="layui-form-mid layui-word-aux">&nbsp;</div>
+    </div>
+    <div class="layui-inline layui-hide" id="linkDiv">
+      <label class="layui-form-label">链接地址</label>
+      <div class="layui-input-inline"  style="width:260px">
+        <input type="text" name="link" value="{$data_info['link']}" autocomplete="off" class="layui-input">
+      </div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i></div>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">关键词</label>
+      <div class="layui-input-inline" style="width:260px">
+        <input type="text" name="keywords" value="{$data_info['keywords']}" autocomplete="off" class="layui-input">
+      </div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i></div>
+      <!-- <div class="layui-btn">一个标准的按钮</div> -->
+    </div>
+    
+  </div>
+
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">排序号</label>
+      <div class="layui-input-inline" style="width:260px">
+        <input type="number" name="sort_order" value="{$data_info['sort_order']}" autocomplete="off" class="layui-input">
+      </div>
+      <div class="layui-form-mid layui-word-aux">&nbsp;</div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">文章作者</label>
+      <div class="layui-input-inline" style="width:260px">
+        <input type="text" name="author" value="{$data_info['author']}" class="layui-input" />
+      </div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i></div>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">文章内容</label>
+      <div class="layui-input-inline">
+        <textarea class="layui-textarea" readonly name="article_content" id="LAY_demo_editor">{:htmlspecialchars_decode($data_info['article_content'])}</textarea>
+      </div>
+    </div>
+  </div>
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">描述</label>
+    <div class="layui-input-inline">
+      <textarea placeholder="" name="article_desc" class="layui-textarea" style="resize:none;width:700px;height:200px" >{$data_info['article_desc']}</textarea>
+    </div>
+  </div>
+  {:token()}
+  <div class="layui-form-item">
+    <label class="layui-form-label"></label>
+    <div class="layui-input-inline">
+      <button type="submit" class="layui-btn layui-btn-normal" lay-submit="" lay-filter="formSubmit">提交</button>
+      <!-- <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button> -->
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+{include file="system@block/layui" /}
+  <link rel="stylesheet" href="/kindeditor/themes/default/default.css" />
+  <link rel="stylesheet" href="/kindeditor/plugins/code/prettify.css" />
+  <script charset="utf-8" src="/kindeditor/kindeditor-all.js"></script>
+  <script charset="utf-8" src="/kindeditor/lang/zh-CN.js"></script>
+  <script charset="utf-8" src="/kindeditor/plugins/code/prettify.js"></script>
+<script>
+
+
+layui.use('form',function(){
+  var $ = layui.jquery;
+  var form = layui.form;
+  form.on('radio(articleType)', function(data){
+    //console.log(data.elem); //得到radio原始DOM对象
+    //console.log(data.value); //被点击的radio的value值
+    if(data.value == 2){
+      $('#linkDiv').removeClass('layui-hide');
+    }else{
+       $("#linkDiv").addClass("layui-hide");
+    }
+  });  
+});
+
+layui.use('upload', function(){
+  var $ = layui.jquery
+  ,upload = layui.upload;
+  
+  //普通图片上传
+  var uploadInst = upload.render({
+    elem: '#test1'
+    ,url: '{:url("system/annex/upload?thumb=no&water=no")}'
+    ,before: function(obj){
+      //预读本地文件示例，不支持ie8
+      obj.preview(function(index, file, result){
+        
+        $('#demo1').attr({'src':result,'width':'260px', 'height':'260px'}); //图片链接（base64）
+      });
+    }
+    ,done: function(res){
+      console.log(res);
+      //如果上传失败
+      if(res.code == 1){
+        $('#thumb').val(res.data.file);
+        return layer.msg('上传成功');
+      }else{
+        return layer.msg('上传失败');
+      }
+      //上传成功
+    }
+    ,error: function(){
+      //演示失败状态，并实现重传
+      var demoText = $('#demoText');
+      demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+      demoText.find('.demo-reload').on('click', function(){
+        uploadInst.upload();
+      });
+    }
+  });
+});
+KindEditor.ready(function(K) {
+  var editor1 = K.create('textarea[name="article_content"]', {
+    cssPath : '/kindeditor/plugins/code/prettify.css',
+    uploadJson : '/kindeditor/php/upload_json.php',
+    fileManagerJson : '/kindeditor/php/file_manager_json.php',
+    allowFileManager : true,
+    afterCreate : function() {
+      var self = this;
+      K.ctrl(document, 13, function() {
+        self.sync();
+        K('form[name=example]')[0].submit();
+      });
+      K.ctrl(self.edit.doc, 13, function() {
+        self.sync();
+        K('form[name=example]')[0].submit();
+      });
+    },
+    afterBlur: function () { 
+      this.sync(); 
+    }
+  });
+  prettyPrint();
+});
+</script>

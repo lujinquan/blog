@@ -6,21 +6,23 @@
       <div class="layui-input-inline" style="width:260px;">
         <select name="cate_id">
           <option value=""></option>
-          <optgroup label="博客">
-            <option value="6">生活随想</option>
-            <option value="7">PHP语言</option>
-            <option value="8">Linux系统</option>
-            <option value="9">Mysql语言</option>
-            <option value="10">前端语言</option>
-            <option value="11">Python语言</option>
-            <option value="12">PHP框架</option>
+          {volist name="cates" id="vo"}
+          {if condition="$vo['level'] == 1"}
+          <optgroup label="{$vo['cate_name']}">
+            {volist name="cates" id="vvo"}
+            {if condition="$vvo['p_id'] == $vo['cate_id']"}
+            <option value="{$vvo['cate_id']}">{$vvo['cate_name']}</option>
+            {/if}
+            {/volist}
           </optgroup>
-          <optgroup label="书屋">
+          {/if}
+          {/volist}
+          <!-- <optgroup label="书屋">
             <option value="13">理财类</option>
             <option value="14">生活类</option>
             <option value="15">技能类</option>
             <option value="16">新闻类</option>
-          </optgroup>
+          </optgroup> -->
         </select>
       </div>
       <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i></div>
@@ -68,7 +70,7 @@
       <div class="layui-input-inline"  style="width:260px">
         <input type="text" name="link" autocomplete="off" class="layui-input">
       </div>
-      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>&nbsp;&nbsp;例如：/index</div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i></div>
     </div>
   </div>
   <div class="layui-form-item">
@@ -104,7 +106,7 @@
     <div class="layui-inline">
       <label class="layui-form-label">文章内容</label>
       <div class="layui-input-inline">
-        <textarea class="layui-textarea" readonly name="article_content" id="LAY_demo_editor"></textarea>
+        <textarea class="layui-textarea" name="article_content" id="LAY_demo_editor"></textarea>
       </div>
     </div>
   </div>
@@ -116,9 +118,10 @@
   </div>
   {:token()}
   <div class="layui-form-item">
-    <div class="layui-input-block">
-      <!-- <button type="submit" class="layui-btn layui-btn-normal" lay-submit="" lay-filter="formSubmit">提交</button> -->
-      <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+  <label class="layui-form-label"></label>
+    <div class="layui-input-inline">
+      <button type="submit" class="layui-btn layui-btn-normal" lay-submit="" lay-filter="formSubmit">提交</button>
+      <!-- <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button> -->
       <button type="reset" class="layui-btn layui-btn-primary">重置</button>
     </div>
   </div>
@@ -190,6 +193,7 @@ KindEditor.ready(function(K) {
     allowFileManager : true,
     afterCreate : function() {
       var self = this;
+
       K.ctrl(document, 13, function() {
         self.sync();
         K('form[name=example]')[0].submit();
@@ -198,6 +202,10 @@ KindEditor.ready(function(K) {
         self.sync();
         K('form[name=example]')[0].submit();
       });
+    },
+    // 失去焦点的时候，同步到表单中，这样如果异步提交，就可以将内容提交上去，否则提交上去的内容就会是空的
+    afterBlur: function () { 
+      this.sync(); 
     }
   });
   prettyPrint();

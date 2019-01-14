@@ -17,7 +17,7 @@ use think\Validate;
  * 栏目验证器
  * @package app\system\validate
  */
-class Cate extends Validate
+class Article extends Validate
 {
     //定义验证规则
     protected $rule = [
