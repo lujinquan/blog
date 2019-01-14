@@ -50,6 +50,7 @@ class Blog extends Base
     		return $this->error('文章不存在','blog/index');
     	}
     	$row = ArticleModel::get($articleID);
+        $this->assign('cateID',$row['cate_id']);
     	$this->assign('data_info',$row);
     	return $this->fetch();
     }

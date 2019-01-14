@@ -11,6 +11,7 @@
 			</div>
 			<div class="col-md-8 single-page-left">
 				<div class="single-page-info">
+				<h5>{$data_info['article_title']}</h5>
 				{:htmlspecialchars_decode($data_info['article_content'])}
 					<!-- <img src="__HOME_IMG__/img22.jpg?v={:config('hisiphp.version')}" alt=""/>
 					<h5>憧憬一段任性的旅行，最好在青春飞扬的时节，最好有个遥远美丽的目的地，最好能伴阳光前行，最好，有你。</h5>
@@ -19,11 +20,11 @@
 					<p>一个人的旅行，反而会更贴近自己的内心，真正的停下来，享受自我的体验时刻，也许浮光掠影，走马观花之外，这才是深入体验，探索自我的最佳时间，纵然走过那么多城市，对于未知的风景，还是好奇。继续期待我的下一个旅行，拿起背包，感受不同地域不一样的节奏与表象。</p>  -->
 					<div class="comment-icons">
 						<ul>
-							<li><span></span><a href="#">一个背包，一张车票，一台单反</a></li>
-							<li><span class="clndr"></span>2018年07月18日</li>
-							<li><span class="admin"></span> <a href="#">Lucas</a></li>
-							<li><span class="cmnts"></span> <a href="#">5条评论</a></li>
-							<li><a href="#" class="like">15</a></li>
+							<li><span></span><a href="#">{$data_info['keywords']}</a></li>
+							<li><span class="clndr"></span>{$data_info['ctime']}</li>
+							<li><span class="admin"></span> <a href="#">{$data_info['author']}</a></li>
+							<li><span class="cmnts"></span> <a href="#">{$data_info['com']}条评论</a></li>
+							<li><a href="#" class="like">{$data_info['love']}</a></li>
 						</ul>
 					</div>
 				</div>	

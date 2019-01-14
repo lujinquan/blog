@@ -10,7 +10,7 @@
 		<div class="col-md-8 blog-left" >
 		{volist name="initArticles" id="vo"}
 			<div class="blog-info">
-				<h4><a href="/singlepage">{$vo['cate_name']}</a></h4>
+				<h4><a href="{:url('detail')}?article_id={$vo['article_id']}">{$vo['cate_name']}</a></h4>
 				<p>上传自 &nbsp;<a href="#">{$vo['author']}</a> &nbsp;&nbsp;{$vo['ctime']} &nbsp;&nbsp; <a href="#">浏览 ({$vo['click']})</a></p>
 				<div class="blog-info-text">
 					<div class="blog-img">

@@ -30,10 +30,10 @@ class Article extends Admin
             $data = $this->request->post();
             //halt($data);
             // 验证
-            // $result = $this->validate($data, 'Article.sceneAdd');
-            // if($result !== true) {
-            //     return $this->error($result);
-            // }
+            $result = $this->validate($data, 'Article.sceneAdd');
+            if($result !== true) {
+                return $this->error($result);
+            }
             $mod = new ArticleModel();
             if (!$mod->allowField(true)->create($data)) {
                 return $this->error('添加失败');
@@ -46,6 +46,26 @@ class Article extends Admin
 
     public function edit()
     {
+        $id = input('get.article_id');
+        if ($this->request->isPost()) {
+            $data = $this->request->post();
+            //halt($data);
+            // 验证
+            $result = $this->validate($data, 'Article.sceneAdd');
+            if($result !== true) {
+                return $this->error($result);
+            }
+            $mod = new ArticleModel();
+            if (!$mod->allowField(true)->create($data)) {
+                return $this->error('添加失败');
+            }
+            return $this->success('添加成功','article/index');
+        }
+        if(!$articleID){
+            return $this->error('参数错误');
+        }
+        $row = ArticleModel::get($id);
+        $this->assign('data_info',$row);
         return $this->fetch();
     }
 
@@ -53,13 +73,21 @@ class Article extends Admin
     {
         $id = input('article_id');
         $row = ArticleModel::with('cate')->where('article_id',$id)->find();
-        //halt(htmlspecialchars($row['article_content']));
         $this->assign('data_info',$row);
         return $this->fetch();
     }
 
     public function del()
     {
-        return $this->fetch();
+        $id = input('article_id');
+        $update = [
+            'dtime' => request()->time(),
+            'status' => 0
+        ];
+        $res = ArticleModel::where('article_id',$id)->update($update);
+        if($res){
+            return $this->success('删除成功','article/index');
+        }
+        return $this->error('删除失败');
     }
 }

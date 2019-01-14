@@ -29,6 +29,7 @@
     <input type="text" class="layui-input j-ajax-input input-sort" onkeyup="value=value.replace(/[^\d]/g,'')" value="{{ d.sort_order }}" data-value="{{ d.cate_id }}" data-href="{:url('sort')}?table=admin_config&id={{ d.id }}">
 </script>
 <script type="text/html" title="操作按钮模板" id="buttonTpl">
+	<a href="{:url('edit')}?article_id={{ d.article_id }}" class="layui-btn layui-btn-xs layui-btn-primary">编辑</a>
     <a href="{:url('detail')}?article_id={{ d.article_id }}" class="layui-btn layui-btn-xs layui-btn-normal">详情</a>
     <button data-href="{:url('del')}?article_id={{ d.article_id }}" class="layui-btn layui-btn-xs layui-btn-danger delete">删除</button>
 </script>
@@ -45,8 +46,8 @@
             }
             ,cols: [[ //表头
                 {field: 'sort_order', width: 70, title: '排序', templet: '#sortTpl'}
-                ,{field: 'article_title', width: 200, title: '标题'}
-                ,{field: 'cate_name', width: 120, title: '所属栏目'}
+                ,{field: 'article_title', width: 360, title: '标题'}
+                ,{field: 'cate_name', width: 110, title: '所属栏目'}
                 ,{field: 'is_show', title: '状态', width: 100, templet: '#statusTpl'}
                 ,{field: 'ctime', width: 160, title: '创建日期'}
                 ,{title: '操作', width: 180, templet: '#buttonTpl',fixed:'right'}

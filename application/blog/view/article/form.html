@@ -3,7 +3,7 @@
   <div class="layui-form-item">
     <div class="layui-inline">
       <label class="layui-form-label">所属栏目</label>
-      <div class="layui-input-inline">
+      <div class="layui-input-inline" style="width:260px;">
         <select name="cate_id">
           <option value=""></option>
           <optgroup label="博客">
@@ -23,50 +23,62 @@
           </optgroup>
         </select>
       </div>
-      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>必填</div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i></div>
     </div>
   </div>
   <div class="layui-form-item">
-    <div class="layui-inline">
+    <div class="layui-block">
       <label class="layui-form-label">文章标题</label>
-      <div class="layui-input-inline">
+      <div class="layui-input-inline" style="width:500px;">
         <input type="text" name="article_title" autocomplete="off" placeholder="" class="layui-input">
       </div>
-      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>必填，推荐5~10个字符</div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>&nbsp;&nbsp;推荐5~10个字符</div>
     </div>
     
   </div>
- 
-<div class="layui-upload">
-  <div class="layui-inline">
-    <label class="layui-form-label">文章缩略图</label>
-    <button type="button" class="layui-btn" id="test1">上传</button>
-    <div class="layui-upload-list">
-      <img class="layui-upload-img" id="demo1">
-      <p id="demoText"></p>
-      <input type="hidden" name="thumb" value="" id="thumb"/>
-    </div>
-  </div>
-</div>
-  
-  <div class="layui-form-item">
+ <div class="layui-form-item">
+    <label class="layui-form-label">封面图</label>
     <div class="layui-inline">
-      <label class="layui-form-label">文章链接</label>
-      <div class="layui-input-inline">
-        <input type="text" name="link" autocomplete="off" class="layui-input">
+      <button type="button" class="layui-btn" id="test1">上传</button>
+      <div class="layui-upload-list">
+        <img class="layui-upload-img" id="demo1">
+        <p id="demoText"></p>
+        <input type="hidden" name="thumb" value="" id="thumb"/>
       </div>
-      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>必填，例如：/index</div>
     </div>
-    
+</div>
+<div class="layui-form-item">
+    <label class="layui-form-label">是否显示</label>
+    <div class="layui-input-inline" style="width:260px">
+      <input type="checkbox" checked value="1" name="is_show" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
+    </div>
   </div>
 
   <div class="layui-form-item">
     <div class="layui-inline">
+      <label class="layui-form-label">文章类型</label>
+      <div class="layui-input-inline" style="width:260px">
+        <input type="radio" name="article_type" lay-filter="articleType" value="1" title="原创" checked="checked">
+        <input type="radio" name="article_type" lay-filter="articleType" value="2" title="转载">
+      </div>
+      <div class="layui-form-mid layui-word-aux">&nbsp;</div>
+    </div>
+    <div class="layui-inline layui-hide" id="linkDiv">
+      <label class="layui-form-label">链接地址</label>
+      <div class="layui-input-inline"  style="width:260px">
+        <input type="text" name="link" autocomplete="off" class="layui-input">
+      </div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>&nbsp;&nbsp;例如：/index</div>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-inline">
       <label class="layui-form-label">关键词</label>
-      <div class="layui-input-inline">
+      <div class="layui-input-inline" style="width:260px">
         <input type="text" name="keywords" autocomplete="off" class="layui-input">
       </div>
-      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>必填</div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i></div>
+      <!-- <div class="layui-btn">一个标准的按钮</div> -->
     </div>
     
   </div>
@@ -74,19 +86,17 @@
   <div class="layui-form-item">
     <div class="layui-inline">
       <label class="layui-form-label">排序号</label>
-      <div class="layui-input-inline">
+      <div class="layui-input-inline" style="width:260px">
         <input type="number" name="sort_order" autocomplete="off" class="layui-input">
       </div>
-      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>必填</div>
+      <div class="layui-form-mid layui-word-aux">&nbsp;</div>
     </div>
-    
-  </div>
-  <div class="layui-form-item">
     <div class="layui-inline">
       <label class="layui-form-label">文章作者</label>
-      <div class="layui-input-inline">
+      <div class="layui-input-inline" style="width:260px">
         <input type="text" name="author" class="layui-input" />
       </div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i></div>
     </div>
   </div>
 
@@ -98,38 +108,12 @@
       </div>
     </div>
   </div>
-<!--   <div class="layui-form-item">
-    <div class="layui-inline" style="width:400px">
-        <label class="layui-form-label">发布日期</label>
-        <div class="layui-input-inline w200">
-            <input type="text" name="push_time" id="pushTime" value=""  class="layui-input" >
-        </div>
-        <div class="layui-form-mid layui-word-aux"><font color="red">*</font>必填</div>
-    </div>
-  </div>
- -->
-  <div class="layui-form-item">
-    <label class="layui-form-label">是否显示</label>
-    <div class="layui-input-inline">
-      <input type="checkbox" checked value="1" name="is_show" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
-    </div>
-    <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>必填</div>
-  </div>
-
   <div class="layui-form-item layui-form-text">
     <label class="layui-form-label">描述</label>
     <div class="layui-input-inline">
-      <textarea placeholder="" name="article_desc" class="layui-textarea"></textarea>
+      <textarea placeholder="" name="article_desc" class="layui-textarea" style="resize:none;width:700px;height:200px" ></textarea>
     </div>
-    <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>必填</div>
   </div>
-
-  <!--<div class="layui-form-item layui-form-text">
-    <label class="layui-form-label">编辑器</label>
-    <div class="layui-input-block">
-      <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>
-    </div>
-  </div>-->
   {:token()}
   <div class="layui-form-item">
     <div class="layui-input-block">
@@ -140,21 +124,28 @@
   </div>
 </form>
 {include file="system@block/layui" /}
-<link rel="stylesheet" href="/kindeditor/themes/default/default.css" />
+  <link rel="stylesheet" href="/kindeditor/themes/default/default.css" />
   <link rel="stylesheet" href="/kindeditor/plugins/code/prettify.css" />
   <script charset="utf-8" src="/kindeditor/kindeditor-all.js"></script>
   <script charset="utf-8" src="/kindeditor/lang/zh-CN.js"></script>
   <script charset="utf-8" src="/kindeditor/plugins/code/prettify.js"></script>
 <script>
-// layui.use('laydate', function(){
-//     var laydate = layui.laydate;
-//     //年选择器
-//     laydate.render({
-//         elem: '#pushTime'
-//         ,type: 'date'
-//     });
 
-// });
+
+layui.use('form',function(){
+  var $ = layui.jquery;
+  var form = layui.form;
+  form.on('radio(articleType)', function(data){
+    //console.log(data.elem); //得到radio原始DOM对象
+    //console.log(data.value); //被点击的radio的value值
+    if(data.value == 2){
+      $('#linkDiv').removeClass('layui-hide');
+    }else{
+       $("#linkDiv").addClass("layui-hide");
+    }
+  });  
+});
+
 layui.use('upload', function(){
   var $ = layui.jquery
   ,upload = layui.upload;
@@ -167,7 +158,7 @@ layui.use('upload', function(){
       //预读本地文件示例，不支持ie8
       obj.preview(function(index, file, result){
         
-        $('#demo1').attr({'src':result,'width':'200px', 'height':'200px'}); //图片链接（base64）
+        $('#demo1').attr({'src':result,'width':'260px', 'height':'260px'}); //图片链接（base64）
       });
     }
     ,done: function(res){
