@@ -6,18 +6,20 @@
 			</div>
 			<div class="col-md-4 posts">
 				<h3>热门文章</h3>
+				{volist name="hotArticles" id="vo" key="k"}
 				<div class="media">
 					<div class="media-left">
-						<a href="/singlepage">
-						  <img class="media-object thumbnail" src="__HOME_IMG__/img11.jpg?v={:config('hisiphp.version')}" alt="">
+						<a href="{:url('blog/detail')}?article_id={$vo['article_id']}">
+						  <img class="media-object thumbnail" src="{$vo['thumb']}" style="width:70px;height:55px" alt="">
 						</a>
 				    </div>
 					<div class="media-body">
-						<h4 class="media-heading"><a href="/singlepage">TOP 1</a></h4>
-						<h5>2018年07月17日</h5>
+						<h4 class="media-heading"><a href="{:url('blog/detail')}?article_id={$vo['article_id']}">TOP {$k} {$vo['article_title']}</a></h4>
+						<h5>{$vo['ctime']}</h5>
 					</div>
 				</div>
-				<div class="media">
+				{/volist}
+				<!-- <div class="media">
 					<div class="media-left">
 						<a href="/singlepage">
 						  <img class="media-object thumbnail" src="__HOME_IMG__/img10.jpg?v={:config('hisiphp.version')}" alt="">
@@ -38,7 +40,7 @@
 						<h4 class="media-heading"><a href="/singlepage">TOP 3</a></h4>
 						<h5>2018年07月17日</h5>
 					</div>
-				</div>
+				</div> -->
 			</div>
 			<div class="col-md-4 address">
 				<h3>联系地址</h3>
@@ -54,7 +56,7 @@
 	</div>
 	<div class="copy-right">
 		<div class="container">
-			<p>Copyright &copy; 2015.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+			<p>Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://www.lucasgalina.com">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
 		</div>
 	</div>
 

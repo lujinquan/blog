@@ -4,12 +4,12 @@ namespace app\blog\model;
 use think\Model;
 use think\Loader;
 
-class Article extends Model
+class Comment extends Model
 {
 	    // 设置模型名称
-    protected $name = 'article';
+    protected $name = 'comment';
     // 设置主键
-    protected $pk = 'article_id';
+    protected $pk = 'com_id';
     // 定义时间戳字段名
     protected $createTime = 'ctime';
     protected $updateTime = 'mtime';
@@ -27,14 +27,9 @@ class Article extends Model
      * @return bool
      */
     
-    public function cate()
+    public function article()
     {
-        return $this->belongsTo('cate', 'cate_id', 'cate_id')->bind('cate_name');
-    }
-
-    public function comment()
-    {
-        return $this->hasMany('comment')->field('com_content,com_id,uid,ctime');
+        return $this->belongsTo('article', 'article_id', 'article_id')->bind('article_title,thumb');
     }
 
     public function storage($data = [])

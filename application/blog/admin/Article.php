@@ -15,7 +15,7 @@ class Article extends Admin
             $where = [
                 'status' => 1,
             ];
-            $fields = 'article_id,article_title,cate_id,author,link,sort_order,is_show,ctime';
+            $fields = 'article_id,article_title,cate_id,author,link,sort_order,is_show,ctime,com,love,click';
             $data['data'] = ArticleModel::with('cate')->field($fields)->where($where)->page($page)->order('ctime desc')->limit($limit)->select();
             $data['count'] = ArticleModel::where($where)->count('cate_id');
             $data['code'] = 0;

@@ -23,32 +23,34 @@
 							<li><span></span><a href="#">{$data_info['keywords']}</a></li>
 							<li><span class="clndr"></span>{$data_info['ctime']}</li>
 							<li><span class="admin"></span> <a href="#">{$data_info['author']}</a></li>
-							<li><span class="cmnts"></span> <a href="#">{$data_info['com']}条评论</a></li>
-							<li><a href="#" class="like">{$data_info['love']}</a></li>
+							<li><span class="cmnts"></span> <a href="">{$data_info['com']}条评论</a></li>
+							<li><a href="{:url('blog/love')}?article_id={$data_info['article_id']}" class="like">{$data_info['love']}</a></li>
 						</ul>
 					</div>
 				</div>	
 				<div class="admin-text">
-					<h5>Lucas编写</h5>
+					<h5>{$data_info['author']}编写</h5>
 					<div class="admin-text-left">
 						<a href="#"><img src="__HOME_IMG__/icon1.png?v={:config('hisiphp.version')}" alt=""/></a>
 					</div>
 					<div class="admin-text-right">
 						<p>我在时间的轨迹上徘徊，踏上每一列经过的车。沿途的风景在渐渐远去，我举着那快叫思念的车牌，等待着最后一站——故乡。</p>
-						<span>上传自:<a href="#"> &nbsp; Admin </a></span>
+						<span>上传自:<a href="#"> &nbsp; {$data_info['author']} </a></span>
 					</div>
 					<div class="clearfix"> </div>
 				</div>
 				<!--related-posts-->
 				<div class="row related-posts">
 					<h4>相关推荐</h4>
+					{volist name="tuiArticles" id="vo"}
 					<div class="col-xs-6 col-md-3 related-grids">
 						<a href="singlepage.html" class="thumbnail">
-							<img src="__HOME_IMG__/img1.jpg?v={:config('hisiphp.version')}" alt=""/>
+							<img src="{$vo['thumb']}" style="width:157px;height:106px" alt=""/>
 						</a>
-						<h5><a href="singlepage.html">浮生若梦</a></h5>
-					</div>	
-					<div class="col-xs-6 col-md-3 related-grids">
+						<h5><a href="{:url('blog/detail')}?article_id={$vo['article_id']}">{$vo['article_title']}</a></h5>
+					</div>
+					{/volist}
+					<!-- <div class="col-xs-6 col-md-3 related-grids">
 						<a href="singlepage.html" class="thumbnail">
 							<img src="__HOME_IMG__/img2.jpg?v={:config('hisiphp.version')}" alt=""/>
 						</a>
@@ -59,18 +61,18 @@
 							<img src="__HOME_IMG__/img3.jpg?v={:config('hisiphp.version')}" alt=""/>
 						</a>
 						<h5><a href="singlepage.html">浮生若梦</a></h5>
-					</div>
-					<div class="col-xs-6 col-md-3 related-grids">
+					</div> -->
+					<!-- <div class="col-xs-6 col-md-3 related-grids">
 						<a href="singlepage.html" class="thumbnail">
 							<img src="__HOME_IMG__/img4.jpg?v={:config('hisiphp.version')}" alt=""/>
 						</a>
 						<h5><a href="singlepage.html">浮生若梦</a></h5>
-					</div>					
+					</div>	 -->				
 				</div>
 				<!--//related-posts-->
 				<div class="response">
 					<h4>回复</h4>
-					<div class="media response-info">
+					<!-- <div class="media response-info">
 						<div class="media-left response-text-left">
 							<a href="#">
 								<img class="media-object" src="__HOME_IMG__/icon1.png?v={:config('hisiphp.version')}" alt=""/>
@@ -101,23 +103,25 @@
 							</div>
 						</div>
 						<div class="clearfix"> </div>
-					</div>
+					</div> -->
+					{volist name="comments" id='vo'}
 					<div class="media response-info">
 						<div class="media-left response-text-left">
 							<a href="#">
 								<img class="media-object" src="__HOME_IMG__/icon1.png?v={:config('hisiphp.version')}" alt=""/>
 							</a>
-							<h5><a href="#">Lucas</a></h5>
+							<h5><a href="#">{$vo['uid']}</a></h5>
 						</div>
 						<div class="media-body response-text-right">
-							<p>带上心灵去旅行，以平和的心态看待一切，文、画、音，看似耳目所为，其实是内心世界的感受。可以以心感悟，以此沉淀，足矣；耳听佳音，目极美好，已是福音；携一勺花之语，摘一曲花之歌，让心释然，已是欣慰。</p>
+							<p>{$vo['com_content']}</p>
 							<ul>
-								<li>2018年7月18日</li>
-								<li><a href="singlepage.html">回复</a></li>
+								<li>{$vo['ctime']}</li>
+								<li><a href="">回复</a></li>
 							</ul>		
 						</div>
 						<div class="clearfix"> </div>
 					</div>
+					{/volist}
 				</div>	
 				<div class="coment-form">
 					<h4>留言</h4>
