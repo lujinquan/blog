@@ -26,7 +26,7 @@
 </script>
 
 <script type="text/html" title="排序模板" id="sortTpl">
-    <input type="text" class="layui-input j-ajax-input input-sort" onkeyup="value=value.replace(/[^\d]/g,'')" value="{{ d.sort_order }}" data-value="{{ d.cate_id }}" data-href="{:url('sort')}?table=admin_config&id={{ d.id }}">
+    <input type="text" class="layui-input j-ajax-input input-sort" onkeyup="value=value.replace(/[^\d]/g,'')" value="{{ d.sort_order }}" data-value="{{ d.article_id }}" data-href="{:url('sort_order')}?article_id={{ d.article_id }}">
 </script>
 <script type="text/html" title="操作按钮模板" id="buttonTpl">
 	<a href="{:url('edit')}?article_id={{ d.article_id }}" class="layui-btn layui-btn-xs layui-btn-primary">编辑</a>

@@ -104,4 +104,15 @@ class Article extends Admin
         }
         return $this->error('删除失败');
     }
+
+    public function sort_order()
+    {
+        $id = input('article_id');
+        $sort = input('val');
+        $res = ArticleModel::where('article_id',$id)->setField('sort_order',$sort);
+        if($res){
+            return $this->success('排序成功');
+        }
+        return $this->error('排序失败');
+    }
 }
