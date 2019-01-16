@@ -75,7 +75,7 @@ class Blog extends Base
         // 获取推荐的文章
         $tuiWhere = [
             'cate_id' => $row['cate_id'],
-            'attr_type' => 1,
+            'is_stick' => 1,
             'is_show' => 1,
             'status' => 1,
             'article_id' => ['neq',$id]

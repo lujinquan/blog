@@ -3,7 +3,7 @@
   <div class="layui-form-item">
     <div class="layui-inline">
       <label class="layui-form-label">所属栏目</label>
-      <div class="layui-input-inline" style="width:260px;">
+      <div class="layui-input-inline" style="width:270px;">
         <select name="cate_id">
           <option value=""></option>
           {volist name="cates" id="vo"}
@@ -21,47 +21,59 @@
       </div>
       <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i></div>
     </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">短标题</label>
+      <div class="layui-input-inline"  style="width:270px">
+        <input type="text" name="article_title" value="{$data_info['article_title']}" autocomplete="off" class="layui-input">
+      </div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>&nbsp;&nbsp;推荐5~10个字符</div>
+    </div>
   </div>
   <div class="layui-form-item">
     <div class="layui-block">
       <label class="layui-form-label">文章标题</label>
-      <div class="layui-input-inline" style="width:500px;">
-        <input type="text" name="article_title" value="{$data_info['article_title']}" autocomplete="off" placeholder="" class="layui-input">
+      <div class="layui-input-inline" style="width:700px;">
+        <input type="text" name="article_long_title" value="{$data_info['article_title']}" autocomplete="off" placeholder="" class="layui-input">
       </div>
       <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>&nbsp;&nbsp;推荐5~10个字符</div>
     </div>
-    
   </div>
  <div class="layui-form-item">
     <label class="layui-form-label">封面图</label>
     <div class="layui-inline">
       <button type="button" class="layui-btn" id="test1">上传</button>
       <div class="layui-upload-list">
-        <img class="layui-upload-img" src="{$data_info['thumb']}" id="demo1">
+        <img class="layui-upload-img" src="{$data_info['thumb']}" style="width:270px;height:270px" id="demo1">
         <p id="demoText"></p>
-        <input type="hidden" name="thumb" value="" id="thumb"/>
+        <input type="hidden" name="thumb" value="{$data_info['thumb']}" id="thumb"/>
       </div>
     </div>
 </div>
 <div class="layui-form-item">
     <label class="layui-form-label">是否显示</label>
-    <div class="layui-input-inline" style="width:260px">
-      <input type="checkbox" checked value="{$data_info['is_show']} name="is_show" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
+    <div class="layui-input-inline" style="width:270px">
+      <input type="checkbox" {if condition="$data_info['is_show'] == 1"} checked {/if} value="1" name="is_show" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">是否推荐</label>
+    <div class="layui-input-inline" style="width:270px">
+      <input type="checkbox" {if condition="$data_info['is_show'] == 1"} checked {/if} value="1" name="is_stick" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
     </div>
   </div>
 
   <div class="layui-form-item">
     <div class="layui-inline">
       <label class="layui-form-label">文章类型</label>
-      <div class="layui-input-inline" style="width:260px">
+      <div class="layui-input-inline" style="width:270px">
         <input type="radio" name="article_type" lay-filter="articleType" value="1" title="原创" {if condition="$data_info['article_type'] == 1"}checked="checked"{/if}>
         <input type="radio" name="article_type" lay-filter="articleType" value="0" title="转载" {if condition="$data_info['article_type'] == 0"}checked="checked"{/if}>
       </div>
       <div class="layui-form-mid layui-word-aux">&nbsp;</div>
     </div>
-    <div class="layui-inline layui-hide" id="linkDiv">
+    <div class="layui-inline {if condition="$data_info['article_type'] == 1"} layui-hide {/if}" id="linkDiv">
       <label class="layui-form-label">链接地址</label>
-      <div class="layui-input-inline"  style="width:260px">
+      <div class="layui-input-inline"  style="width:270px">
         <input type="text" name="link" value="{$data_info['link']}" autocomplete="off" class="layui-input">
       </div>
       <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i></div>
@@ -70,7 +82,7 @@
   <div class="layui-form-item">
     <div class="layui-inline">
       <label class="layui-form-label">关键词</label>
-      <div class="layui-input-inline" style="width:260px">
+      <div class="layui-input-inline" style="width:270px">
         <input type="text" name="keywords" value="{$data_info['keywords']}" autocomplete="off" class="layui-input">
       </div>
       <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i></div>
@@ -82,14 +94,14 @@
   <div class="layui-form-item">
     <div class="layui-inline">
       <label class="layui-form-label">排序号</label>
-      <div class="layui-input-inline" style="width:260px">
+      <div class="layui-input-inline" style="width:270px">
         <input type="number" name="sort_order" value="{$data_info['sort_order']}" autocomplete="off" class="layui-input">
       </div>
       <div class="layui-form-mid layui-word-aux">&nbsp;</div>
     </div>
     <div class="layui-inline">
       <label class="layui-form-label">文章作者</label>
-      <div class="layui-input-inline" style="width:260px">
+      <div class="layui-input-inline" style="width:270px">
         <input type="text" name="author" value="{$data_info['author']}" class="layui-input" />
       </div>
       <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i></div>
@@ -107,16 +119,17 @@
   <div class="layui-form-item layui-form-text">
     <label class="layui-form-label">描述</label>
     <div class="layui-input-inline">
-      <textarea placeholder="" name="article_desc" class="layui-textarea" style="resize:none;width:700px;height:200px" >{$data_info['article_desc']}</textarea>
+      <textarea placeholder="" name="article_desc" class="layui-textarea" style="resize:none;width:700px;height:100px" >{$data_info['article_desc']}</textarea>
     </div>
   </div>
   {:token()}
+  <input type="hidden" name="article_id" value="{$data_info['article_id']}">
   <div class="layui-form-item">
     <label class="layui-form-label"></label>
-    <div class="layui-input-inline">
+    <div class="layui-input-inline" style="width:270px">
       <button type="submit" class="layui-btn layui-btn-normal" lay-submit="" lay-filter="formSubmit">提交</button>
       <!-- <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button> -->
-      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+      <a href="{:url('index')}" class="layui-btn layui-btn-warning ml10"><i class="aicon ai-fanhui"></i>返回</a>
     </div>
   </div>
 </form>
@@ -134,8 +147,8 @@ layui.use('form',function(){
   var form = layui.form;
   form.on('radio(articleType)', function(data){
     //console.log(data.elem); //得到radio原始DOM对象
-    //console.log(data.value); //被点击的radio的value值
-    if(data.value == 2){
+    console.log(data.value); //被点击的radio的value值
+    if(data.value == 0){
       $('#linkDiv').removeClass('layui-hide');
     }else{
        $("#linkDiv").addClass("layui-hide");

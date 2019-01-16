@@ -58,15 +58,15 @@ class Article extends Admin
             $data = $this->request->post();
             //halt($data);
             // 验证
-            $result = $this->validate($data, 'Article.sceneAdd');
-            if($result !== true) {
-                return $this->error($result);
-            }
+            // $result = $this->validate($data, 'Article.sceneAdd');
+            // if($result !== true) {
+            //     return $this->error($result);
+            // }
             $mod = new ArticleModel();
-            if (!$mod->allowField(true)->create($data)) {
-                return $this->error('添加失败');
+            if (!$mod->allowField(true)->save($data,['article_id'=>$data['article_id']])) {
+                return $this->error('修改失败');
             }
-            return $this->success('添加成功','article/index');
+            return $this->success('修改成功');
         }
         if(!$id){
             return $this->error('参数错误');
@@ -114,5 +114,16 @@ class Article extends Admin
             return $this->success('排序成功');
         }
         return $this->error('排序失败');
+    }
+
+    public function show()
+    {
+        $id = input('article_id');
+        $show = input('val');
+        $res = ArticleModel::where('article_id',$id)->setField('is_show',$show);
+        if($res){
+            return $this->success('设置成功');
+        }
+        return $this->error('设置失败');
     }
 }

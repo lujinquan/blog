@@ -22,7 +22,7 @@
 {include file="system@block/layui" /}
 <table id="dataTable" lay-filter='dataTable'></table>
 <script type="text/html" title="状态模板" id="statusTpl">
-    <input type="checkbox" name="is_show" value="{{ d.is_show }}" lay-skin="switch" lay-filter="switchStatus" lay-text="开启|禁用" {{ d.is_show == 1 ? 'checked' : '' }} {{ d.system == 1 ? 'disabled' : '' }} data-href="{:url('show')}?table=admin_config&id={{ d.cate_id }}">
+    <input type="checkbox" name="is_show" value="{{ d.is_show }}" lay-skin="switch" lay-filter="switchStatus" lay-text="开启|禁用" {{ d.is_show == 1 ? 'checked' : '' }} {{ d.system == 1 ? 'disabled' : '' }} data-href="{:url('show')}?article_id={{ d.article_id }}">
 </script>
 
 <script type="text/html" title="排序模板" id="sortTpl">

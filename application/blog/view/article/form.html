@@ -17,12 +17,6 @@
           </optgroup>
           {/if}
           {/volist}
-          <!-- <optgroup label="书屋">
-            <option value="13">理财类</option>
-            <option value="14">生活类</option>
-            <option value="15">技能类</option>
-            <option value="16">新闻类</option>
-          </optgroup> -->
         </select>
       </div>
       <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i></div>
@@ -65,7 +59,7 @@
   <div class="layui-form-item">
     <label class="layui-form-label">是否推荐</label>
     <div class="layui-input-inline" style="width:270px">
-      <input type="checkbox" value="0" name="attr_type" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
+      <input type="checkbox" value="1" name="is_stick" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
     </div>
   </div>
    <!-- <div class="layui-form-item">
@@ -138,13 +132,13 @@
   <div class="layui-form-item layui-form-text">
     <label class="layui-form-label">描述</label>
     <div class="layui-input-inline">
-      <textarea placeholder="" name="article_desc" class="layui-textarea" style="resize:none;width:700px;height:200px" ></textarea>
+      <textarea placeholder="" name="article_desc" class="layui-textarea" style="resize:none;width:700px;height:100px" ></textarea>
     </div>
   </div>
   {:token()}
   <div class="layui-form-item">
   <label class="layui-form-label"></label>
-    <div class="layui-input-inline" style="width:260px">
+    <div class="layui-input-inline" style="width:270px">
       <button type="submit" class="layui-btn layui-btn-normal" lay-submit="" lay-filter="formSubmit">提交</button>
       <!-- <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button> -->
       <button type="reset" class="layui-btn layui-btn-primary">重置</button>
@@ -166,7 +160,7 @@ layui.use('form',function(){
   form.on('radio(articleType)', function(data){
     //console.log(data.elem); //得到radio原始DOM对象
     //console.log(data.value); //被点击的radio的value值
-    if(data.value == 2){
+    if(data.value == 0){
       $('#linkDiv').removeClass('layui-hide');
     }else{
        $("#linkDiv").addClass("layui-hide");
