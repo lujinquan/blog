@@ -8,7 +8,7 @@
 				</div>
 			</div>	
 			<div class="recent-posts">
-				<h4>最新帖子</h4>
+				<h4>最新文章</h4>
 				{volist name="newArticles" id="vo"}
 				<div class="recent-posts-info">
 					<div class="posts-left sngl-img">
@@ -42,12 +42,11 @@
 				{volist name="newComments" id="vo"}
 				<div class="comments-info">
 					<div class="cmnt-icon-left">
-
-						<a href="{:url('blog/detail')}?article_id={$vo['article_id']}"><img src="{$vo['uid_photo']}" style="width:64px;height:64px" alt=""/></a>
+						<a href="{:url('blog/detail')}?article_id={$vo['article_id']}"><img src="{$vo['avatar']}" style="width:64px;height:64px" alt=""/></a>
 					</div>
 					<div class="cmnt-icon-right">
 						<p>{$vo['article_title']}</p>
-						<p><a href="/singlepage">{$vo['uid']}</a></p>
+						<p><a href="#">{$vo['nick']}</a></p>
 					</div>
 					<div class="clearfix"> </div>
 					<p class="cmmnt">{$vo['com_content']}</p>

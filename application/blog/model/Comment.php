@@ -32,60 +32,9 @@ class Comment extends Model
         return $this->belongsTo('article', 'article_id', 'article_id')->bind('article_title,thumb');
     }
 
-    public function storage($data = [])
+    public function member()
     {
-        if (empty($data)) {
-            $data = request()->post();
-        }
-
-        // 验证
-        $valid = Loader::validate('bh/Corate');
-        
-
-        if (isset($data['id']) && !empty($data['id'])) {
-
-            if ($valid->scene('edit')->check($data) !== true) 
-            {
-                $this->error = $valid->getError();
-                return false;
-            }
-            $res = $this->update($data);
-            $row = self::get($data['id']);
-            if ($res) {
-                $his = [
-                    'b_id' => $row['b_id'],
-                    'bt_id' => BhouseModel::where('b_id', $row['b_id'])->value('bt_id'),
-                    'histype' => 9, // 
-                    'cuid' => ADMIN_ID,
-                    'description' => '——',
-                ];
-                (new BhousehisModel)->storage($his);
-            }
-
-        } else {
-
-            if ($valid->scene('add')->check($data) !== true) 
-            {
-                $this->error = $valid->getError();
-                return false;
-            }
-            $res = $this->create($data);
-            if ($res) {
-                $his = [
-                    'b_id' => $res['b_id'],
-                    'bt_id' => BhouseModel::where('b_id', $res['b_id'])->value('bt_id'),
-                    'histype' => 8, // 
-                    'cuid' => ADMIN_ID,
-                    'description' => '装修范围：' . $res['content'],
-                ];
-                (new BhousehisModel)->storage($his);
-            }
-        }
-        if (!$res) {
-            $this->error = '保存失败';
-            return false;
-        }
-
-        return $res;
+        return $this->belongsTo('member', 'member_id', 'member_id')->bind('nick,avatar');
     }
+
 }

@@ -27,7 +27,6 @@ class Article extends Admin
 
     public function add()
     {
-
         if ($this->request->isPost()) {
             $data = $this->request->post();
             //halt($data);

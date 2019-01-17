@@ -1,7 +1,7 @@
 <div class="page-toolbar">
     <div class="page-filter">
         <div class="layui-input-inline layui-col-md2">
-            <a href="{:url('add')}" class="layui-btn layui-btn-normal layui-icon layui-icon-edit">&nbsp;新增文章</a>
+            <a href="{:url('add')}" class="layui-btn layui-btn-normal layui-icon layui-icon-edit">&nbsp;新增会员</a>
         </div>
         <form class="layui-form layui-form-pane" action="{url('index')}"  method="get" id="hisi-table-search">
             <div class="layui-input-inline layui-col-md2">
@@ -22,37 +22,33 @@
 {include file="system@block/layui" /}
 <table id="dataTable" lay-filter='dataTable'></table>
 <script type="text/html" title="状态模板" id="statusTpl">
-    <input type="checkbox" name="is_show" value="{{ d.is_show }}" lay-skin="switch" lay-filter="switchStatus" lay-text="开启|禁用" {{ d.is_show == 1 ? 'checked' : '' }} {{ d.system == 1 ? 'disabled' : '' }} data-href="{:url('show')}?article_id={{ d.article_id }}">
+    <input type="checkbox" name="is_show" value="{{ d.is_show }}" lay-skin="switch" lay-filter="switchStatus" lay-text="开启|禁用" {{ d.is_show == 1 ? 'checked' : '' }} {{ d.system == 1 ? 'disabled' : '' }} data-href="{:url('show')}?member_id={{ d.member_id }}">
 </script>
 
-<script type="text/html" title="排序模板" id="sortTpl">
-    <input type="text" class="layui-input j-ajax-input input-sort" onkeyup="value=value.replace(/[^\d]/g,'')" value="{{ d.sort_order }}" data-value="{{ d.article_id }}" data-href="{:url('sort_order')}?article_id={{ d.article_id }}">
-</script>
 <script type="text/html" title="操作按钮模板" id="buttonTpl">
-	<a href="{:url('edit')}?article_id={{ d.article_id }}" class="layui-btn layui-btn-xs layui-btn-primary">编辑</a>
-    <a href="{:url('detail')}?article_id={{ d.article_id }}" class="layui-btn layui-btn-xs layui-btn-normal">详情</a>
-    <button data-href="{:url('del')}?article_id={{ d.article_id }}" class="layui-btn layui-btn-xs layui-btn-danger j-tr-del">删除</button>
+	<a href="{:url('edit')}?member_id={{ d.member_id }}" class="layui-btn layui-btn-xs layui-btn-primary">编辑</a>
+    <a href="{:url('detail')}?member_id={{ d.member_id }}" class="layui-btn layui-btn-xs layui-btn-normal">详情</a>
+    <button data-href="{:url('del')}?member_id={{ d.member_id }}" class="layui-btn layui-btn-xs layui-btn-danger j-tr-del">删除</button>
 </script>
 <script type="text/javascript">
     layui.use(['table'], function() {
         var table = layui.table;
         table.render({
             elem: '#dataTable'
-            ,url: '{:url("blog/Article/index")}' //数据接口
+            ,url: '{:url("blog/Member/index")}' //数据接口
             ,page: true //开启分页
             ,limit: 10
             ,text: {
                 none : '暂无相关数据'
             }
             ,cols: [[ //表头
-                {field: 'sort_order', width: 70, title: '排序', templet: '#sortTpl'}
-                ,{field: 'article_title', width: 180, title: '标题'}
-                ,{field: 'cate_name', width: 110, title: '所属栏目'}
+                {type:'checkbox'}
+                ,{field: 'nick', width: 120, title: '昵称'}
+                ,{field: 'email', width: 180, title: '邮箱'}
+                ,{field: 'last_login_time', width: 160, title: '最近登录时间'}
                 ,{field: 'is_show', title: '状态', width: 100, templet: '#statusTpl'}
-                ,{field: 'click', width: 110, title: '浏览量'}
-                ,{field: 'love', width: 110, title: '点赞量'}
-                ,{field: 'com', width: 110, title: '评论量'}
-                ,{field: 'ctime', width: 160, title: '创建日期'}
+                ,{field: 'login_count', width: 100, title: '登录次数'}
+                ,{field: 'ctime', width: 160, title: '注册日期'}
                 ,{title: '操作', width: 180, templet: '#buttonTpl',fixed:'right'}
             ]]
             ,done:function(res,curr,count){

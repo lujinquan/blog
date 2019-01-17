@@ -1,0 +1,122 @@
+<form class="layui-form" action="{:url()}" method="post">
+
+  <div class="layui-form-item">
+    <div class="layui-block">
+      <label class="layui-form-label">用户名</label>
+      <div class="layui-input-inline">
+        <input type="text" name="username" autocomplete="off" placeholder="" class="layui-input">
+      </div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>&nbsp;&nbsp;</div>
+    </div>
+    </div>
+    <div class="layui-form-item">
+    <div class="layui-block">
+      <label class="layui-form-label">昵称</label>
+      <div class="layui-input-inline">
+        <input type="text" name="nick" autocomplete="off" placeholder="" class="layui-input">
+      </div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>&nbsp;&nbsp;</div>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-block">
+      <label class="layui-form-label">登录密码</label>
+      <div class="layui-input-inline">
+        <input type="password" name="password" autocomplete="off" placeholder="" class="layui-input">
+      </div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>&nbsp;&nbsp;</div>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-block">
+      <label class="layui-form-label">确认密码</label>
+      <div class="layui-input-inline">
+        <input type="password" name="password_confirm" autocomplete="off" placeholder="" class="layui-input">
+      </div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>&nbsp;&nbsp;</div>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-block">
+      <label class="layui-form-label">联系邮箱</label>
+      <div class="layui-input-inline">
+        <input type="text" name="email" autocomplete="off" placeholder="" class="layui-input">
+      </div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>&nbsp;&nbsp;</div>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-block">
+      <label class="layui-form-label">联系手机</label>
+      <div class="layui-input-inline">
+        <input type="text" name="mobile" autocomplete="off" placeholder="" class="layui-input">
+      </div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>&nbsp;&nbsp;</div>
+    </div>
+  </div>
+
+ <div class="layui-form-item">
+    <label class="layui-form-label">头像</label>
+    <div class="layui-inline">
+      <button type="button" class="layui-btn" id="test1">上传</button>
+      <div class="layui-upload-list">
+        <img class="layui-upload-img" id="demo1">
+        <p id="demoText"></p>
+        <input type="hidden" name="avatar" value="" id="thumb"/>
+      </div>
+    </div>
+</div>
+
+  
+  {:token()}
+  <div class="layui-form-item">
+  <label class="layui-form-label"></label>
+    <div class="layui-input-inline" style="width:270px">
+      <button type="submit" class="layui-btn layui-btn-normal" lay-submit="" lay-filter="formSubmit">提交</button>
+      <!-- <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button> -->
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+{include file="system@block/layui" /}
+
+<script>
+
+
+layui.use('upload', function(){
+  var $ = layui.jquery
+  ,upload = layui.upload;
+  
+  //普通图片上传
+  var uploadInst = upload.render({
+    elem: '#test1'
+    ,url: '{:url("system/annex/upload?thumb=no&water=no")}'
+    ,before: function(obj){
+      //预读本地文件示例，不支持ie8
+      obj.preview(function(index, file, result){
+        
+        $('#demo1').attr({'src':result,'width':'260px', 'height':'260px'}); //图片链接（base64）
+      });
+    }
+    ,done: function(res){
+      console.log(res);
+      //如果上传失败
+      if(res.code == 1){
+        $('#thumb').val(res.data.file);
+        return layer.msg('上传成功');
+      }else{
+        return layer.msg('上传失败');
+      }
+      //上传成功
+    }
+    ,error: function(){
+      //演示失败状态，并实现重传
+      var demoText = $('#demoText');
+      demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+      demoText.find('.demo-reload').on('click', function(){
+        uploadInst.upload();
+      });
+    }
+  });
+});
+</script>

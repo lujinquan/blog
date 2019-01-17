@@ -32,7 +32,7 @@ class Blog extends Base
             'is_show' => 1,
             'status' => 1,
         ];
-        $newComments = CommentModel::with('article')->where($newWhere)->field('com_id,article_id,com_content,uid,uid_photo,ctime')->order('ctime desc')->limit(4)->select();
+        $newComments = CommentModel::with('article,member')->where($newWhere)->field('com_id,article_id,member_id,com_content,uid,uid_photo,ctime')->order('ctime desc')->limit(4)->select();
 //halt($newComments);
         $this->assign('newArticles',$newArticles);
         $this->assign('newComments',$newComments);
@@ -71,7 +71,8 @@ class Blog extends Base
         // 获取当前文章详情
         $row = ArticleModel::find($id);
         // 获取当前文章的评论
-        $comments = $row->comment()->where(['is_show'=>1,'status'=>1])->order('ctime desc')->limit(4)->select();
+        $comments = $row->comment()->with('member')->where(['is_show'=>1,'status'=>1])->order('ctime desc')->limit(4)->select();
+        //halt($comments);
         // 获取推荐的文章
         $tuiWhere = [
             'cate_id' => $row['cate_id'],
