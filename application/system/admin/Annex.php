@@ -63,4 +63,13 @@ class Annex extends Admin
     {
         return json(AnnexModel::protect());
     }
+
+    /**
+     * 删除文件
+     * @return json
+     */
+    public function handle($url)
+    {
+        return json(AnnexModel::handle($url));
+    }
 }

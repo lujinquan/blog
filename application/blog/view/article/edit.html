@@ -43,10 +43,14 @@
     <div class="layui-inline">
       <button type="button" class="layui-btn" id="test1">上传</button>
       <div class="layui-upload-list">
-        <img class="layui-upload-img" src="{$data_info['thumb']}" style="width:270px;height:270px" id="demo1">
+        <img class="layui-upload-img" src="{$data_info['thumb']}" id="demo1">
+        <div class="divX" id="img_zindex_div_1">
+          <img src="__STATIC__/image/del.png" alt="暂无" width="32" height="32" id="showImg" class="j-ajax">
+        </div>
         <p id="demoText"></p>
         <input type="hidden" name="thumb" value="{$data_info['thumb']}" id="thumb"/>
       </div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>&nbsp;&nbsp;推荐图片尺寸：800 * 200（sublime中代码高度为11行左右）</div>
     </div>
 </div>
 <div class="layui-form-item">
@@ -142,6 +146,18 @@
 <script>
 
 
+
+layui.use('jquery',function(){
+  var $ = layui.jquery;
+  window.onload=function(){ 
+    var top = $('#demo1').position().top;
+    if(top > 0){
+      $('#img_zindex_div_1').css({position: "absolute", right : 0, top: top, display: "block", });
+      $('#showImg').attr('data-href','{:url("system/annex/handle")}?url=' + '{$data_info['thumb']}');
+    }
+  } 
+});
+
 layui.use('form',function(){
   var $ = layui.jquery;
   var form = layui.form;
@@ -168,7 +184,18 @@ layui.use('upload', function(){
       //预读本地文件示例，不支持ie8
       obj.preview(function(index, file, result){
         
-        $('#demo1').attr({'src':result,'width':'260px', 'height':'260px'}); //图片链接（base64）
+        //$('#demo1').attr({'src':result,'width':'260px', 'height':'260px'}); //图片链接（base64）
+        $('#demo1').attr({'src':result}); //图片链接（base64）
+//console.log(result);
+        //var objUrl = getObjectURL(ths.files[0]);
+        //var right = $('#demo1').position().right;
+        //var left = $('#demo1').position().left;
+        console.log($('#demo1').position());
+        // var top = $('#demo1').position().top;
+        //$('#img_zindex_div_1').css({position: "absolute", right : 0, top: top, display: "block", });
+        //$('#showImg').attr('data-href','{:url("system/annex/upload?url=")}' + result);
+        // $('#demo1').attr("src", result);
+
       });
     }
     ,done: function(res){
@@ -176,6 +203,7 @@ layui.use('upload', function(){
       //如果上传失败
       if(res.code == 1){
         $('#thumb').val(res.data.file);
+        $('#showImg').attr('data-href','{:url("system/annex/handle")}?url=' + res.data.file);
         return layer.msg('上传成功');
       }else{
         return layer.msg('上传失败');

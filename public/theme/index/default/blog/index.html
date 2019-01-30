@@ -8,15 +8,16 @@
 			<li>博客</li>
 		</ol>
 		<div class="col-md-8 blog-left" >
-		{volist name="initArticles" id="vo"}
+			{volist name="initArticles" id="vo"}
+			<!-- <div class="blog-info" style="border:1px solid red;padding:5px"> -->
 			<div class="blog-info">
-				<h4><a href="{:url('detail')}?article_id={$vo['article_id']}">{$vo['cate_name']}</a></h4>
+				<h4><a href="{:url('detail')}?article_id={$vo['article_id']}">{$vo['article_title']}</a></h4>
 				<p>上传自 &nbsp;<a href="#">{$vo['author']}</a> &nbsp;&nbsp;{$vo['ctime']} &nbsp;&nbsp; <a href="#">浏览 ({$vo['click']})</a></p>
 				<div class="blog-info-text">
 					<div class="blog-img">
-						<a href="{:url('detail')}?article_id={$vo['article_id']}"> <img src="{$vo['thumb']}?v={:config('hisiphp.version')}" style="width:400px;height:300px" class="img-responsive zoom-img" alt=""/></a>
+						<a href="{:url('detail')}?article_id={$vo['article_id']}"> <img src="{$vo['thumb']}?v={:config('hisiphp.version')}" class="img-responsive zoom-img" alt=""/></a>
 					</div>
-					<h5><a href="{:url('detail')}?article_id={$vo['article_id']}">{$vo['article_title']}</a></h5>
+					<h5><a href="{:url('detail')}?article_id={$vo['article_id']}">{$vo['article_long_title']}</a></h5>
 					<p class="snglp">{$vo['article_desc']}</p>
 					<a href="{:url('detail')}?article_id={$vo['article_id']}" class="btn btn-primary hvr-rectangle-in">Read More</a>
 				</div>	

@@ -276,4 +276,12 @@ class SystemAnnex extends Model
         }
         return $arr;
     }
+
+    public static function handle ($url = '')
+    {
+        //halt($_SERVER['DOCUMENT_ROOT'].$url);
+        @unlink($_SERVER['DOCUMENT_ROOT'].$url);
+        //FileModel::where('file',$url)->delete();
+        return self::result('删除成功', 'input', 1);
+    }
 }
