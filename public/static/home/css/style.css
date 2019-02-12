@@ -89,11 +89,11 @@ button.btn.btn-default {
   border: 1px solid #5E5E5E;
 }
 .banner{
-	background: url(../image/banner.jpg) no-repeat 0px 0px;
-	background-size: cover;
+	/*background: url(../image/banner.jpg) no-repeat 0px 0px;*/
+	/*background-size: cover;
 	min-height:700px;
 	position:relative;
-}
+*/}
 .banner-title {
   position: absolute;
   bottom: 0%;
@@ -343,7 +343,7 @@ ul.social-slide li i.mac{
 .banner-bottom h3 {
   font-size: 1.6em;
   font-weight: 500;
-  font-style: italic;
+  /*font-style: italic;*/
   color: #645d5d;
   margin-bottom: 0.5em;
   font-family: 'Playfair Display', serif;
@@ -475,7 +475,7 @@ a.thumbnail:hover {
 .features h3 {
   font-size: 1.6em;
   font-weight: 500;
-  font-style: italic;
+ /*font-style: italic;*/
   color: #645d5d;
   margin-bottom: 1em;
   font-family: 'Playfair Display', serif;
@@ -503,7 +503,7 @@ span.glyphicon.glyphicon-triangle-right {
 }
 .media-body h5 {
   font-size: 1em;
-  font-style: italic;
+  /*font-style: italic;*/
   color: #313030;
 }
 .footer {
@@ -513,7 +513,7 @@ span.glyphicon.glyphicon-triangle-right {
 .footer h3 {
   font-size: 1.6em;
   font-weight: 500;
-  font-style: italic;
+  /*font-style: italic;*/
   color: #645d5d;
   margin-bottom: 0.8em;
   font-family: 'Playfair Display', serif;
@@ -795,7 +795,7 @@ ul.pagination li a {
   text-align: center;
   color: #5F9EA0;
   font-family: 'Playfair Display', serif;
-  font-style: italic;
+ /* font-style: italic;*/
   border-bottom: 1px solid rgb(242, 114, 66);
   width: 19%;
 }

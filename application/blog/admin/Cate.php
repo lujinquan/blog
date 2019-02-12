@@ -1,6 +1,8 @@
 <?php
 
 namespace app\blog\admin;
+
+use think\Db;
 use app\system\admin\Admin;
 use app\blog\model\Cate as CateModel;
 
@@ -50,6 +52,13 @@ class Cate extends Admin
 
     public function add()
     {
+        $where = [
+            ['status' , 'eq',1],
+            ['is_show' ,'eq', 1],
+            ['level','lt',3],
+        ];
+        $cates = CateModel::where($where)->field('cate_id,cate_name,p_id,level')->select();
+        //halt(CateModel::getLastSql());
         if ($this->request->isPost()) {
             $data = $this->request->post();
             // 验证
@@ -62,6 +71,8 @@ class Cate extends Admin
             }
             return $this->success('添加成功','cate/index');
         }
+        //halt($cates);
+        $this->assign('cates', $cates);
         return $this->fetch('form');
     }
 

@@ -8,41 +8,24 @@
 				<li>旅行</li>
 			</ol>
 			<div class="tesimonial"><h3>旅行</h3></div>
-			<div class="row tour-info">			
+			<div class="row tour-info">
+			{volist name='toursArr' id='vo'}			
 				<div class="col-sm-6 col-md-4 tour-grids">
 					<div class="thumbnail">
 						<a href="/singlepage" title="">
-							<img src="__HOME_IMG__/img23.jpg?v={:config('hisiphp.version')}" class="img-responsive zoom-img " alt="">
+							<img src="{$vo['thumb']}?v={:config('hisiphp.version')}" class="img-responsive zoom-img " alt="">
 						</a>
 						<div class="caption tour-caption">
-							<h3><a href="/singlepage">旅行的意义</a></h3>
-							<p>每次旅行，旅行之乐，千年一瞬，一眼万年。</p>				
+							<h3><a href="/singlepage">{$vo['article_title']}</a></h3>
+							<p>{$vo['article_long_title']}</p>				
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-6 col-md-4 tour-grids">
-					<div class="thumbnail">
-						<a href="/singlepage" title="">
-							<img src="__HOME_IMG__/img24.jpg?v={:config('hisiphp.version')}" class="img-responsive zoom-img " alt="">				
-						</a>
-						<div class="caption tour-caption">
-							<h3><a href="/singlepage">旅行的意义</a></h3>
-							<p>旅行要学会随遇而安，淡然一点，走走停停。</p>				
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 tour-grids">
-					<div class="thumbnail">
-						<a href="/singlepage" title="">
-							<img src="__HOME_IMG__/img25.jpg?v={:config('hisiphp.version')}" class="img-responsive zoom-img" alt="">				
-						</a>
-						<div class="caption tour-caption">
-							<h3><a href="/singlepage">旅行的意义</a></h3>
-							<p>梦想不曾老去，他一直在那，与你的呼吸同在。</p>				
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 tour-grids">
+			{/volist}
+				
+				
+		
+				<!-- <div class="col-sm-6 col-md-4 tour-grids">
 					<div class="thumbnail">
 						<a href="/singlepage" title="">
 							<img src="__HOME_IMG__/img26.jpg?v={:config('hisiphp.version')}" class="img-responsive zoom-img" alt="">							
@@ -107,7 +90,7 @@
 							<p>生活是一场漫长的旅行，不要浪费时间去等待那些不愿与你携手同行的人。</p>	
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<div class="clearfix"> </div>
 			</div>
 		</div>

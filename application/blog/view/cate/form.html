@@ -6,24 +6,28 @@
       <div class="layui-input-inline">
         <select name="p_id">
           <option value=""></option>
-          <optgroup label="博客">
-            <option value="6">生活随想</option>
-            <option value="7">PHP语言</option>
-            <option value="8">Linux系统</option>
-            <option value="9">Mysql语言</option>
-            <option value="10">前端语言</option>
-            <option value="11">Python语言</option>
-            <option value="12">PHP框架</option>
-          </optgroup>
-          <optgroup label="书屋">
+          <option value="0">顶级栏目</option>
+          {volist name="cates" id="vo"}
+          {if condition="$vo['level'] == 1"}
+
+          <option value="{$vo['cate_id']}">┠&nbsp;&nbsp;{$vo['cate_name']}</option>
+          {volist name="cates" id="vo1"}
+          {if condition="$vo1['p_id'] == $vo['cate_id']"}
+          <option value="{$vo1['cate_id']}" disabled>&nbsp;&nbsp;┠&nbsp;&nbsp;&nbsp;{$vo1['cate_name']}</option>
+          {/if}
+          {/volist}
+            
+          {/if}
+          {/volist}
+          <!-- <optgroup label="书屋">
             <option value="13">理财类</option>
             <option value="14">生活类</option>
             <option value="15">技能类</option>
             <option value="16">新闻类</option>
-          </optgroup>
+          </optgroup> -->
         </select>
       </div>
-      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>必填</div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>必填，目前只能添加一级或二级栏目</div>
     </div>
   </div>
   <div class="layui-form-item">
@@ -43,7 +47,7 @@
       <div class="layui-input-inline">
         <input type="text" name="link" autocomplete="off" class="layui-input">
       </div>
-      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>必填，例如：/index</div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>必填，例如：/index/Blog/index?cate_id=</div>
     </div>
     
   </div>
@@ -86,17 +90,11 @@
     <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>必填</div>
   </div>
 
-  <!--<div class="layui-form-item layui-form-text">
-    <label class="layui-form-label">编辑器</label>
-    <div class="layui-input-block">
-      <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>
-    </div>
-  </div>-->
   {:token()}
   <div class="layui-form-item">
-    <div class="layui-input-block">
-      <!-- <button type="submit" class="layui-btn layui-btn-normal" lay-submit="" lay-filter="formSubmit">提交</button> -->
-      <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+  <label class="layui-form-label"></label>
+    <div class="layui-input-inline" style="width:270px">
+      <button type="submit" class="layui-btn layui-btn-normal" lay-submit="" lay-filter="formSubmit">提交</button>
       <button type="reset" class="layui-btn layui-btn-primary">重置</button>
     </div>
   </div>

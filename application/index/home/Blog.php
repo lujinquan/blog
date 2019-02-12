@@ -75,14 +75,14 @@ class Blog extends Base
         //halt($comments);
         // 获取推荐的文章
         $tuiWhere = [
-            'cate_id' => $row['cate_id'],
-            'is_stick' => 1,
-            'is_show' => 1,
-            'status' => 1,
-            'article_id' => ['neq',$id]
+            ['cate_id' ,'eq' , $row['cate_id']],
+            ['is_stick', 'eq', 1],
+            ['is_show' ,'eq', 1],
+            ['status' ,'eq', 1],
+            ['article_id' ,'neq',$id]
         ];
         $tuiArticles = ArticleModel::where($tuiWhere)->field('thumb,article_id,article_title')->order('click desc')->limit(4)->select();
-        
+        //halt(ArticleModel::getLastSql());
         
         //halt($tuiArticles);
         $this->assign('cateID',$row['cate_id']);
