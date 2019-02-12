@@ -1,0 +1,47 @@
+{extend name="block/layout" /}
+{block name="content"}
+	<!--//header-->
+	<div class="single-page">
+		<div class="container">
+			<div class="work-title sngl-title">
+				<ol class="breadcrumb">
+					<li><a href="index.html">首页</a></li>
+					<li class="active">xx</li>
+				</ol>
+			</div>
+			<div class="col-md-8 single-page-left">
+				<div class="single-page-info">
+				<h5>{$data_info['article_title']}</h5>
+				{:htmlspecialchars_decode($data_info['article_content'])}
+					<div class="comment-icons">
+						<ul>
+							<li><span></span><a href="#">{$data_info['keywords']}</a></li>
+							<li><span class="clndr"></span>{$data_info['ctime']}</li>
+							<li><span class="admin"></span> <a href="#">{$data_info['author']}</a></li>
+							<li><span class="cmnts"></span> <a href="">{$data_info['com']}条评论</a></li>
+							<li><a href="{:url('blog/love')}?article_id={$data_info['article_id']}" class="like">{$data_info['love']}</a></li>
+						</ul>
+					</div>
+				</div>	
+				<div class="admin-text">
+					<h5>{$data_info['author']}编写</h5>
+					<div class="admin-text-left">
+						<a href="#"><img src="__HOME_IMG__/icon1.png?v={:config('hisiphp.version')}" alt=""/></a>
+					</div>
+					<div class="admin-text-right">
+						<p>我在时间的轨迹上徘徊，踏上每一列经过的车。沿途的风景在渐渐远去，我举着那快叫思念的车牌，等待着最后一站——故乡。</p>
+						<span>上传自:<a href="#"> &nbsp; {$data_info['author']} </a></span>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<!--related-posts-->
+				
+				<!--//related-posts-->
+			
+					
+			</div>	
+			
+			<div class="clearfix"> </div>
+		</div>	
+	</div>
+{/block}

@@ -81,43 +81,19 @@
 	<!-- 这是第二种,结束 -->
 	<div class="banner-bottom">
 		<div class="container">
+			{volist name="imgs" id="vo"}
 			<div class="row">
+				{volist name="vo" id="vo1"}
 				<div class="col-md-4 bb-grids">
-					<a href="/index.php/index/Singlepage/index" class="thumbnail">
-					  <img src="__HOME_IMG__/img1.jpg?v={:config('hisiphp.version')}" alt="">
+					<a href="{:url('album')}?article_id={$vo1['article_id']}" class="thumbnail">
+					  <img src="{$vo1['thumb']}?v={:config('hisiphp.version')}" alt="">
 					</a>
 				</div>
-				<div class="col-md-4 bb-grids">
-					<a href="/singlepage" class="thumbnail">
-					  <img src="__HOME_IMG__/img2.jpg?v={:config('hisiphp.version')}" alt="">
-					</a>
-				</div>
-				<div class="col-md-4 bb-grids">
-					<a href="/singlepage" class="thumbnail">
-					  <img src="__HOME_IMG__/img3.jpg?v={:config('hisiphp.version')}" alt="">
-					</a>
-				</div>
+				{/volist}
 				<div class="clearfix"> </div>
 			</div>
-			<div class="row">
-				<div class="col-md-4 bb-grids">
-					<a href="/singlepage" class="thumbnail">
-					  <img src="__HOME_IMG__/img4.jpg?v={:config('hisiphp.version')}" alt="">
-					</a>
-				</div>
-				<div class="col-md-4 bb-grids">
-					<a href="/singlepage" class="thumbnail">
-					  <img src="__HOME_IMG__/img5.jpg?v={:config('hisiphp.version')}" alt="">
-					</a>
-				</div>
-				<div class="col-md-4 bb-grids">
-					<a href="/singlepage" class="thumbnail">
-					  <img src="__HOME_IMG__/img6.jpg?v={:config('hisiphp.version')}" alt="">
-					</a>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>	
+			{/volist}
+		</div>
 	</div>	
 	<div class="banner-bottom">
 		<div class="container">
@@ -127,41 +103,21 @@
 	</div>	
 	<div class="features">
 		<div class="container">
-			<h3>巴金  《海上日出 》</h3>
+			<h3><font color="red">推荐书</font> »</h3>
 			<div class="row">
+				{volist name="imgsTui" id="vo"}
 				<div class="col-sm-6 col-md-4 featur-grids">
 					<div class="thumbnail feature-thmbnl">
-						<h4>峻青《秋色赋》</h4>
-						<img src="__HOME_IMG__/img7.jpg?v={:config('hisiphp.version')}" alt="">
+						<h4>{$vo['author']}《{$vo['article_title']}》</h4>
+						<img src="{$vo['thumb']}?v={:config('hisiphp.version')}" alt="">
 						<div class="caption">
-							<h5><a href="singlepage.html">好一派迷人的秋色啊!<a></h5>
-							<p>其色惨淡，烟霏云敛……其意萧条，山川寂寥”的凄凉景色，更看不到那种“渥然丹者为槁木，黟然黑者为星星”的悲秋情绪</p>
-							<a href="singlepage.html" class="btn btn-primary hvr-rectangle-in">更多……</a>
+							<h5><a href="{:url('album')}?article_id={$vo1['article_id']}">{$vo['article_title']}<a></h5>
+							<p>{$vo['article_long_title']}</p>
+							<a href="{:url('book')}?article_id={$vo1['article_id']}" class="btn btn-primary hvr-rectangle-in">更多……</a>
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-6 col-md-4 featur-grids">
-					<div class="thumbnail feature-thmbnl">
-						<h4>峻青《秋色赋》</h4>
-						<img src="__HOME_IMG__/img8.jpg?v={:config('hisiphp.version')}" alt="">
-						<div class="caption">
-							<h5><a href="singlepage.html">好一派迷人的秋色啊!<a></h5>
-							<p>其色惨淡，烟霏云敛……其意萧条，山川寂寥”的凄凉景色，更看不到那种“渥然丹者为槁木，黟然黑者为星星”的悲秋情绪</p>
-							<a href="singlepage.html" class="btn btn-primary hvr-rectangle-in">更多……</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 featur-grids">
-					<div class="thumbnail feature-thmbnl">
-						<h4>峻青《秋色赋》</h4>
-						<img src="__HOME_IMG__/img9.jpg?v={:config('hisiphp.version')}" alt="">
-						<div class="caption">
-							<h5><a href="singlepage.html">好一派迷人的秋色啊!<a></h5>
-							<p>其色惨淡，烟霏云敛……其意萧条，山川寂寥”的凄凉景色，更看不到那种“渥然丹者为槁木，黟然黑者为星星”的悲秋情绪</p>
-							<a href="singlepage.html" class="btn btn-primary hvr-rectangle-in">更多……</a>
-						</div>
-					</div>
-				</div>
+				{/volist}
 				<div class="clearfix"> </div>
 			</div>
 		</div>
