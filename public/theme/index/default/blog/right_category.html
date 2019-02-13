@@ -46,11 +46,13 @@
 					</div>
 					<div class="cmnt-icon-right">
 						<p>{$vo['article_title']}</p>
-						<p><a href="#">{$vo['nick']}</a></p>
+						<p>游客：<a href="#">{$vo['nick']}</a></p>
+						<p>评论：{$vo['com_content']}</p>
 					</div>
 					<div class="clearfix"> </div>
-					<p class="cmmnt">{$vo['com_content']}</p>
+					<!-- <p class="cmmnt">{$vo['com_content']}</p> -->
 				</div>
+				<div style="margin-bottom:30px;"> </div>
 				{/volist}
 				<!-- <div class="comments-info cmnts-mddl">
 					<div class="cmnt-icon-left">
