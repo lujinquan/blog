@@ -12,7 +12,7 @@
 				{volist name="newArticles" id="vo"}
 				<div class="recent-posts-info">
 					<div class="posts-left sngl-img">
-						<a href="{:url('blog/detail')}?article_id={$vo['article_id']}"> <img src="{$vo['thumb']}" style="width:150px;height:175px" class="img-responsive zoom-img" alt=""/> </a>
+						<a href="{:url('blog/detail')}?article_id={$vo['article_id']}"> <img src="{$vo['thumb']}" style="width:150px;height:150px" class="img-responsive zoom-img" alt=""/> </a>
 					</div>
 					<div class="posts-right">
 						<lable>{$vo['ctime']}</lable>
@@ -45,9 +45,9 @@
 						<a href="{:url('blog/detail')}?article_id={$vo['article_id']}"><img src="{$vo['avatar']}" style="width:64px;height:64px" alt=""/></a>
 					</div>
 					<div class="cmnt-icon-right">
-						<p>{$vo['article_title']}</p>
+						<p>标题：{$vo['article_title']}</p>
 						<p>游客：<a href="#">{$vo['nick']}</a></p>
-						<p>评论：{$vo['com_content']}</p>
+						<p>评论：{if condition="mb_strlen($vo['com_content']) > 13"}{:mb_substr($vo['com_content'],0,13)}...{else /}{$vo['com_content']}{/if}</p>
 					</div>
 					<div class="clearfix"> </div>
 					<!-- <p class="cmmnt">{$vo['com_content']}</p> -->

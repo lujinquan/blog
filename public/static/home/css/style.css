@@ -639,7 +639,7 @@ ol.breadcrumb li a {
   width: 100%;
 }
 .blog-info-text p {
-  margin: 0 0 1.5em;
+  margin: 1em 0 1em;
   font-size: 14px;
   color: #747474;
   line-height: 1.5em;
@@ -715,7 +715,7 @@ a.list-group-item:hover {
 .posts-right h5{
   font-size: 19px;
   font-weight: 600;
-  margin: .5em 0;
+  margin: .1em 0 .8em 0;
 }
 .posts-right h5 a {
   color: #5E5E5E;
@@ -2450,4 +2450,11 @@ ol.breadcrumb li a {
   font-size: 13px;
   width: 28%;
 }
+
+.line-limit-length {
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+
 }
