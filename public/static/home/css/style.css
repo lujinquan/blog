@@ -101,10 +101,11 @@ button.btn.btn-default {
   width: 100%;
   margin: 0 auto;
   background-color: rgba(95, 158, 160, 0.86);
-  padding: 2em 0px;
+  padding: 1.3em 0px;
 }
 .banner-title h5 {
   font-size: 2em;
+  line-height:1.3;
   color: #fff;
   text-align: center;
   font-family: 'Playfair Display', serif;
@@ -1426,6 +1427,7 @@ a.navbar-brand img {
 }
 .banner-title h5 {
   font-size: 1.9em;
+  line-height:1.3;
 }
 .features {
   padding: 2.5em 0;
@@ -1527,6 +1529,7 @@ a.btn.btn-primary.hvr-rectangle-in {
 }
 .banner-title h5 {
   font-size: 1.7em;
+  line-height:1.3;
 }
 ul.nav.navbar-nav li a {
   font-size: 15px;
@@ -1772,6 +1775,7 @@ button.navbar-toggle , button.navbar-toggle:hover{
 }
 .banner-title h5 {
   font-size: 1.5em;
+  line-height:1.3;
 }
 .banner-title h1 {
   font-size: 1.7em;
@@ -1981,6 +1985,7 @@ form.navbar-form.navbar-right {
 }
 .banner-title h5 {
   font-size: 1.3em;
+  line-height:1.3;
 }
 .banner-title h1 {
   font-size: 1.5em;
@@ -2229,6 +2234,7 @@ form.navbar-form.navbar-right {
 }
 .banner-title h5 {
   font-size: 1.1em;
+  line-height:1.3;
 }
 .caption.tour-caption h3 {
   font-size: 1em;
@@ -2285,6 +2291,7 @@ a.navbar-brand {
 }
 .banner-title h5 {
   font-size: 1em;
+  line-height:1.3;
 }
 .banner-title h1 {
   font-size: 1.1em;

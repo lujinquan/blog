@@ -9,10 +9,10 @@
 			</ol>
 			<div class="tesimonial"><h3>旅行</h3></div>
 			<div class="row tour-info">
-			{volist name='toursArr' id='vo'}			
+				{volist name='toursArr' id='vo'}			
 				<div class="col-sm-6 col-md-4 tour-grids">
 					<div class="thumbnail">
-						<a href="/singlepage" title="">
+						<a href="{:url('detail')}?article_id={$vo['article_id']}" title="">
 							<img src="{$vo['thumb']}?v={:config('hisiphp.version')}" class="img-responsive zoom-img " alt="">
 						</a>
 						<div class="caption tour-caption">
@@ -21,76 +21,7 @@
 						</div>
 					</div>
 				</div>
-			{/volist}
-				
-				
-		
-				<!-- <div class="col-sm-6 col-md-4 tour-grids">
-					<div class="thumbnail">
-						<a href="/singlepage" title="">
-							<img src="__HOME_IMG__/img26.jpg?v={:config('hisiphp.version')}" class="img-responsive zoom-img" alt="">							
-						</a>
-						<div class="caption tour-caption">
-							<h3><a href="/singlepage">旅行的意义</a></h3>
-							<p>与其说散就散的友情，倒不如来一场说走就走的旅行。</p>				
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 tour-grids">
-					<div class="thumbnail">
-						<a href="/singlepage" title="">
-							<img src="__HOME_IMG__/img27.jpg?v={:config('hisiphp.version')}" class="img-responsive zoom-img" alt="">						
-						</a>
-						<div class="caption tour-caption">
-							<h3><a href="/singlepage">旅行的意义</a></h3>
-							<p>旅游仅仅是用双脚与眼晴，而旅行还要带上灵魂和梦想。</p>				
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 tour-grids">
-					<div class="thumbnail">
-						<a href="/singlepage" title="">
-							<img src="__HOME_IMG__/img28.jpg?v={:config('hisiphp.version')}" class="img-responsive zoom-img" alt="">
-						</a>
-						<div class="caption tour-caption">
-							<h3><a href="/singlepage">旅行的意义</a></h3>
-							<p>一颗说走就走的心，一个会拍照的情侣，一段甜蜜的旅程。</p>				
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 tour-grids">
-					<div class="thumbnail">
-						<a href="/singlepage" title="">
-							<img src="__HOME_IMG__/img29.jpg?v={:config('hisiphp.version')}" class="img-responsive zoom-img" alt="">
-						</a>
-						<div class="caption tour-caption">
-							<h3><a href="#">旅行的意义</a></h3>
-							<p>旅行是一种病，当你把身边的人都传染了，而你自己根本不想从中跑出来。</p>				
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 tour-grids">
-					<div class="thumbnail">
-						<a href="/singlepage" title="">
-							<img src="__HOME_IMG__/img30.jpg?v={:config('hisiphp.version')}" class="img-responsive zoom-img" alt="">
-						</a>
-						<div class="caption tour-caption">
-							<h3><a href="/singlepage">旅行的意义</a></h3>
-							<p>旅行的意义不在其他，而在自己身体和心灵，必须有一个在旅行的路上。</p>				
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-4 tour-grids">
-					<div class="thumbnail">
-						<a href="/singlepage" title="">
-							<img src="__HOME_IMG__/img31.jpg?v={:config('hisiphp.version')}" class="img-responsive zoom-img" alt="">
-						</a>
-						<div class="caption tour-caption">
-							<h3><a href="/singlepage">旅行的意义</a></h3>
-							<p>生活是一场漫长的旅行，不要浪费时间去等待那些不愿与你携手同行的人。</p>	
-						</div>
-					</div>
-				</div> -->
+				{/volist}
 				<div class="clearfix"> </div>
 			</div>
 		</div>
