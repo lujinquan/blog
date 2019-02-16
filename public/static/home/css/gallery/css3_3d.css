@@ -65,7 +65,7 @@ Rotate every third li with :nth-child(3n) (right hand column in this demo) to th
 	box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.35);
 }
 #grid .details h3 { margin-bottom: 0px; letter-spacing: -1px; }
-#grid .details a.more { position: absolute; right: 10px; top: 4px; font-size: 12px; padding: 6px 10px; background-color: rgba(0, 0, 0, 0.03);
+#grid .details a.more { position: absolute; right: 10px; top: 2px; font-size: 12px; padding: 6px 10px; background-color: rgba(0, 0, 0, 0.03);
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 15px;
@@ -75,7 +75,7 @@ Rotate every third li with :nth-child(3n) (right hand column in this demo) to th
 	-webkit-transition: all 0.15s ease-in;
 }
 
-#grid .details a.more:hover { background-color: #0090e2; color: #fff; }
+#grid .details a.more:hover { background-color: #5F9EA0; color: #fff; }
 
 
 #information { z-index: 20; }
