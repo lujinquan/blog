@@ -65,11 +65,14 @@
 	var marker = new BMap.Marker(point);  // 创建标注
 	map.addOverlay(marker);              // 将标注添加到地图中
 	map.centerAndZoom(point, 15);
-
-	map.enableScrollWheelZoom(true); //开启手势缩放
+	map.addControl(new BMap.OverviewMapControl({isOpen:true,size:{width:5,height:3}})); //添加缩略地图控件
+	map.addControl(new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT})); // 左上角，添加比例尺
+	map.addControl(new BMap.NavigationControl()); //左上角，添加默认缩放平移控件
+	//map.enableScrollWheelZoom(true); //开启手势缩放
+	
 	var opts = {
-	  width : 200,     // 信息窗口宽度
-	  height: 50,     // 信息窗口高度
+	  width : 260,     // 信息窗口宽度
+	  height: 20,     // 信息窗口高度
 	  title : "沙湖明珠六栋" , // 信息窗口标题
 	  enableMessage:true,//设置允许信息窗发送短息
 	  message:"亲耐滴，晚上一起吃个饭吧？戳下面的链接看下地址喔~"

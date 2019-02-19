@@ -13,49 +13,18 @@
         <div class="tesimonial"><h3>书屋</h3></div>
         <div class="gallry-info">
             <ul id="grid" class="group">
-                <li>
+            {volist name="galleryArticles" id="vo"}
+                {volist name="vo" key="k" id="voo"}
+                <li {if condition="$k == 3"} class="end"{/if}>
                     <div class="details">
-                    	<h3 class="two">Lanterns</h3>
-                        <a class="more" href="#info1">view details</a> 
+                    	<h3>{$voo['article_title']}</h3>
+                        <a class="more" href="{:url('detail')}?article_id={$voo['article_id']}">Read More……</a> 
                     </div>
-                   <a class="more" href="#info1"><img src="__HOME_IMG__/gallery/lanterns.jpg" /></a>
+                   <a class="more" href="{:url('detail')}?article_id={$voo['article_id']}"><img src="{$voo['thumb']}" /></a>
                 </li>
-                <li>
-                    <div class="details">
-    	                <h3>Tree</h3>
-                        <a class="more" href="#info2">view details</a>
-        			</div>
-                    <a href="#info2"><img src="__HOME_IMG__/gallery/tree.jpg" /></a>
-                </li>
-                <li class="end">
-                    <div class="details">
-    	                <h3>Cable Car</h3>
-                        <a class="more" href="#info3">view details</a>
-        			</div>
-                    <a href="#info3"><img src="__HOME_IMG__/gallery/cablecar.jpg" /></a>
-                </li>
-                <li>
-                    <div class="details">
-    	                <h3>London Eye</h3>
-                        <a class="more" href="#info4">view details</a>
-        			</div>
-                    <a href="#info4"><img src="__HOME_IMG__/gallery/londoneye.jpg" /></a>
-                </li>
-                <li>
-                    <div class="details">
-    	                <h3>Golden Statue</h3>
-                        <a class="more" href="#info5">view details</a>
-        			</div>
-                    <a href="#info5"><img src="__HOME_IMG__/gallery/statue.jpg" /></a>
-                </li>
-                <li class="end">
-                     <div class="details">
-    	                <h3>Under the Bridge</h3>
-                        <a class="more" href="#info6">view details</a>
-        			</div>
-                    <a href="#info6"><img src="__HOME_IMG__/gallery/bridge.jpg" /></a>
-                </li>
-                <li>
+                {/volist}
+            {/volist}
+                <!-- <li>
                      <div class="details">
     	                <h3>Pregnant Maiden</h3>
                         <a class="more" href="#info7">view details</a>
@@ -75,7 +44,7 @@
                         <a class="more" href="#info9">view details</a>
         			</div>
                     <a href="#info9"><img src="__HOME_IMG__/gallery/statue2.jpg" /></a>
-                </li>
+                </li> -->
             </ul>
         </div>
         <div style="text-align:center;clear:both"></div>

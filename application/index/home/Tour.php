@@ -21,7 +21,7 @@ class Tour extends Base
         return $this->fetch();
     }
 
-        public function detail()
+    public function detail()
     {
         $id = input('get.article_id');
         // 浏览量 +1
