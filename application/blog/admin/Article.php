@@ -12,9 +12,34 @@ class Article extends Admin
         if ($this->request->isAjax()) {
             $page = input('param.page/d', 1);
             $limit = input('param.limit/d', 10);
+            $keywords = input('param.keywords');
+            $cateid = input('param.cate_id');
+            // $cateWhere = [
+            //     ['status','eq',1],
+            //     ['is_show','eq',1],
+            //     ['cate_id','eq',$cateid]
+            // ];
+            if($cateid === 0){
+                $cateArr = CateModel::where('level','eq',3)->column('cate_id');
+            }else{
+                $find = CateModel::where('cate_id','eq',$cateid)->find();
+                if($find['level'] == 1){
+                    $cateArr = CateModel::where('p_id','eq',$cateid)->column('cate_id');
+                }else{
+                    $cateArr = [$cateid];
+                }
+            }
+            
+            //halt(CateModel::getLastChilds([0]));
             $where = [
-                'status' => 1,
+                ['status','eq',1],
             ];
+            if($keywords){
+                $where[] = ['keywords','like','%'.$keywords.'%'];
+            }
+            if($cateid){
+                $where[] = ['cate_id','in',$cateArr];
+            }
             $fields = 'article_id,article_title,cate_id,author,link,sort_order,is_show,ctime,com,love,click';
             $data['data'] = ArticleModel::with('cate')->field($fields)->where($where)->page($page)->order('ctime desc')->limit($limit)->select();
             $data['count'] = ArticleModel::where($where)->count('cate_id');
@@ -22,6 +47,13 @@ class Article extends Admin
             $data['msg'] = '';
             return json($data);
         }
+        $catWhere = [
+            ['status' , 'eq',1],
+            ['is_show' ,'eq', 1],
+            ['level','lt',3],
+        ];
+        $cates = CateModel::where($catWhere)->field('cate_id,cate_name,p_id,level')->select();
+        $this->assign('cates', $cates);
         return $this->fetch();
     }
 

@@ -57,25 +57,25 @@ ul.nav.navbar-nav li a:hover ,ul.nav.navbar-nav li a.active{
   margin-right: 5px;
 }
 .social-icons a{
-	background:url(../image/iconsprite.png)no-repeat 0px 0px;
+	background:url(../image/weixin.png)no-repeat 0px 0px;
 	display:block;
-	width:24px;
-	height:24px
+	width:35px;
+	height:30px
 }
-.social-icons a.fb{
-	background:url(../image/iconsprite.png)no-repeat 0px -32px;
+.social-icons a.weibo{
+	background:url(../image/weibo.png)no-repeat 0px 0px;
 }
-.social-icons a.gg{
-	background:url(../image/iconsprite.png)no-repeat 0px -62px;
+.social-icons a.qq{
+	background:url(../image/qq.png)no-repeat 0px 0px;
 }
 .social-icons a:hover {
-  background: url(../image/iconsprite.png)no-repeat -32px 0px;
+  background: url(../image/weixin_hover.png)no-repeat 0px 0px;
 }
-.social-icons a.fb:hover {
-  background: url(../image/iconsprite.png)no-repeat -32px -32px;
+.social-icons a.weibo:hover {
+  background: url(../image/weibo_hover.png)no-repeat 0px 0px;
 }
-.social-icons a.gg:hover {
-  background: url(../image/iconsprite.png)no-repeat -32px -62px;
+.social-icons a.qq:hover {
+  background: url(../image/qq_hover.png)no-repeat 0px 0px;
 }
 .header {
      margin: 1.5em 0;

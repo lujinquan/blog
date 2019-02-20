@@ -20,6 +20,11 @@ class Cate extends Model
         'ctime' => 'timestamp:Y-m-d H:i:s',
     ];
 
+    protected $commonWhere = [
+        ['status','eq',1],
+        ['is_show','eq',1]
+    ];
+
     /**
      * 入库
      * @param array $data 入库数据
@@ -81,5 +86,32 @@ class Cate extends Model
         }
 
         return $res;
+    }
+
+    /**
+     * 获取最底下的子集节点
+     * @param  [type] $cate_id [description]
+     * @return [type]          [description]
+     */
+    public static function getLastChilds($cate_id,$result=[])
+    {
+        $where = [
+            ['status','eq',1],
+            ['is_show','eq',1],
+            ['p_id','in',$cate_id]
+        ];
+        //$result = [];
+        $cateids = self::where($where)->column('cate_id');
+        if($cateids){
+            $result = $cateids;
+            //dump($result);
+            self::getLastChilds($cateids,$result);
+        }else{
+            dump($result);
+            //
+        }
+        
+        return $result;
+  
     }
 }

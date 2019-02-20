@@ -11,3 +11,21 @@
 
 // 为方便系统升级，二次开发中用到的公共函数请写在此文件，禁止修改common.php文件
 // ===== 系统升级时此文件永远不会被覆盖 =====
+// 应用公共文件
+function tree($data,$pid=0,$level=0){
+    //定义一个静态数组型变量
+    static $tree = array();
+    //遍历 $data
+    foreach($data as $row){
+        //获取pid=$pid的元素
+        if($row['pid'] == $pid){
+            $row['level'] = $level;
+            //存储当前数据
+            $tree[]=$row;
+            //实现递归操作
+            tree($data,$row['id'],$level+1);
+        }
+    }
+    //返回遍历好的数据
+    return $tree;
+}

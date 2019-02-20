@@ -5,9 +5,31 @@
         </div>
         <form class="layui-form layui-form-pane" action="{url('index')}"  method="get" id="hisi-table-search">
             <div class="layui-input-inline layui-col-md2">
+                <select name="cate_id">
+                  <option value="">请选择栏目</option>
+                  <option value="0">顶级</option>
+                  {volist name="cates" id="vo"}
+                  {if condition="$vo['level'] == 1"}
+                  <option value="{$vo['cate_id']}">&nbsp;&nbsp;{$vo['cate_name']}</option>
+                  {volist name="cates" id="vo1"}
+                  {if condition="$vo1['p_id'] == $vo['cate_id']"}
+                  <option value="{$vo1['cate_id']}" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$vo1['cate_name']}</option>
+                  {/if}
+                  {/volist}
+                    
+                  {/if}
+                  {/volist}
+                  <!-- <optgroup label="书屋">
+                    <option value="13">理财类</option>
+                    <option value="14">生活类</option>
+                    <option value="15">技能类</option>
+                    <option value="16">新闻类</option>
+                  </optgroup> -->
+                </select>
+            </div>
+            <div class="layui-input-inline layui-col-md2" style="margin-left:20px;">
                 <input type="text" name="keywords" placeholder="搜索" class="layui-input">
             </div>
-            
             <div class="layui-input-inline layui-col-md3" style="margin-left:20px;">
                 
                 <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">
