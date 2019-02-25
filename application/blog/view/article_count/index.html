@@ -3,35 +3,25 @@
 <table id="dataTable" lay-filter='dataTable'></table>
 <div class="layui-row">
   <div class="layui-col-md6">
-    <div id="myChart1" class="grid-demo grid-demo-bg1" v="{$articles}" style="width: 1000px;height:400px;"></div>
+    <div id="myChart1" class="grid" v="{$articles}"></div>
   </div>
   <div class="layui-col-md6">
-    <!-- <div id="myChart2" class="grid-demo" style="width: 600px;height:400px;"></div> -->
+    <div id="myChart2" class="grid"></div>
   </div>
 </div>
-<script type="text/javascript">
-    // 一、柱状图：基于准备好的dom，初始化echarts实例
-    var myChart1 = echarts.init(document.getElementById('myChart1'));
-
-//     // 二、饼状图：基于准备好的dom，初始化echarts实例
-//     var myChart2 = echarts.init(document.getElementById('myChart2'));
-//     myChart2.setOption({
-//     series : [
-//         {
-//             name: '访问来源',
-//             type: 'pie',
-//             radius: '55%',
-//             data:[
-//                 {value:235, name:'视频广告'},
-//                 {value:274, name:'联盟广告'},
-//                 {value:310, name:'邮件营销'},
-//                 {value:335, name:'直接访问'},
-//                 {value:400, name:'搜索引擎'}
-//             ]
-//         }
-//     ]
-// })
-</script>
+<div class="layui-row">
+  <div class="layui-col-md6">
+    <div id="myChart3" class="grid"></div>
+  </div>
+  <div class="layui-col-md6">
+    <div id="myChart4" class="grid"></div>
+  </div>
+</div>
+<style>
+    .grid {
+        width: 600px;height:400px;border:0px solid red;background-color:#F5F5F5;
+    }
+</style>
 <script type="text/javascript">
     layui.use(['jquery'], function() {
         var $ = layui.jquery;
@@ -43,67 +33,132 @@
         for ( var i = 0; i <articlesArr.length; i++){
             xAxisArr[i] = articlesArr[i].cate_name;
             yAxisArr[i] = articlesArr[i].article_ids;
-            //console.log(xAxisArr);
         }
-        //var $ = layui.jquery;
-        //$.post('index').done(function (data) {
-  //console.log(JSON.parse(jsonstr));
-    myChart1.setOption({
-        title: {
-            text: '文章发布量',
-            subtext: '数据仅供参考'
-        },
-        tooltip: {
-            trigger: 'axis',
-            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-            }
-        },
-        legend: {
-            data:['数量']
-        },
-        xAxis: { //设置x轴的相关参数
-            
-            data: xAxisArr,
-            
-            nameTextStyle: { //设置坐标轴名称的文字样式
-                fontStyle: 'normal',
-                color: '#333',
-            },
-            
-            type: 'category', // value数值轴，category类目轴，log对数轴
-            name: '栏目',
-            show: true,  //设置是否显示x坐标轴
-            nameLocation: 'end', //坐标轴名称的文字,所处位置
-            nameGap: 30,  //坐标轴名称的文字距x轴线的距离
-            min: '1', //设置坐标轴刻度最小值
-            max: 'dataMax',
-            axisLine: { //设置轴线箭头
-                show: true,
-                symbol: ['none', 'arrow'], //设置轴线箭头如何显示，
-                symbolSize: [5,8], //设置轴线箭头大小
-                symbolOffset: [0,8], //设置轴线箭头距离轴的偏移
-                lineStyle: {
-                    width: 1, //设置轴线的宽度
-                    color: '#333', //设置轴线的颜色
 
+
+        // 柱状图
+        var myChart1 = echarts.init(document.getElementById('myChart1'));
+        myChart1.setOption({
+            title: {
+                text: '文章量指数',
+                //subtext: '数据仅供参考',
+                //padding: [5,10],
+                right: 40,
+                top: 2,
+                //bottom: 20,
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                    type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
+            legend: {
+                data:['数量']
+            },
+            xAxis: { //设置x轴的相关参数
+                
+                data: xAxisArr,
+                
+                nameTextStyle: { //设置坐标轴名称的文字样式
+                    fontStyle: 'normal',
+                    color: '#333',
+                },
+                
+                type: 'category', // value数值轴，category类目轴，log对数轴
+                name: '栏目',
+                show: true,  //设置是否显示x坐标轴
+                nameLocation: 'end', //坐标轴名称的文字,所处位置
+                nameGap: 20,  //坐标轴名称的文字距x轴线的距离
+                min: '1', //设置坐标轴刻度最小值
+                max: 'dataMax',
+                axisLine: { //设置轴线箭头
+                    show: true,
+                    symbol: ['none', 'arrow'], //设置轴线箭头如何显示，
+                    symbolSize: [5,8], //设置轴线箭头大小
+                    symbolOffset: [0,8], //设置轴线箭头距离轴的偏移
+                    lineStyle: {
+                        width: 1, //设置轴线的宽度
+                        color: '#333', //设置轴线的颜色
+
+                    },
+                },
+                axisTick: { //坐标轴刻度相关设置
+                    show: true,
+                    interval: 'auto', //设置坐标轴强制显示所有标签【默认auto，间隔显示】
+                    inside: true, //设置刻度是否朝内，默认朝外
+                    length: 3, //设置刻度的长度
                 },
             },
-            axisTick: { //坐标轴刻度相关设置
-                show: true,
-                interval: 'auto', //设置坐标轴强制显示所有标签【默认auto，间隔显示】
-                inside: true, //设置刻度是否朝内，默认朝外
-                length: 3, //设置刻度的长度
+            yAxis: {
+                name: '文章',
+                show: true,  //设置是否显示x坐标轴
+                nameLocation: 'end', //坐标轴名称的文字,所处位置
+                
             },
-        },
-        yAxis: {},
-        series: [{
-            name: '文章数',
-            type: 'bar', // bar:柱状图
-            data: yAxisArr
-        }]
-    });
-//});
+            series: [{
+                name: '文章数',
+                type: 'bar', // bar:柱状图
+                data: yAxisArr
+            }]
+        });
+
+        // 二、饼状图
+        var myChart2 = echarts.init(document.getElementById('myChart2'));
+        var dataChart2 = new Array();
+        for ( var i = 0; i <articlesArr.length; i++){
+            var obj = new Object();
+            obj.value = articlesArr[i].article_ids;
+            obj.name = articlesArr[i].cate_name;
+            dataChart2[i] = obj;
+        }
+        //console.log(dataChart2);
+        myChart2.setOption({
+            title: {
+                text: '文章分布指数',
+                //subtext: '数据仅供参考',
+                //padding: [5,10],
+                right: 40,
+                top: 2,
+                //bottom: 20,
+            },
+            series : [
+                {
+                    name: '文章来源',
+                    type: 'pie',
+                    radius: '65%',
+                    data: dataChart2
+                }
+            ]
+        })
+
+
+        //三、折线图
+        // 二、饼状图
+        var myChart3 = echarts.init(document.getElementById('myChart3'));
+        var dataChart3 = new Array();
+        // for ( var i = 0; i <articlesArr.length; i++){
+        //     var obj = new Object();
+        //     obj.value = articlesArr[i].article_ids;
+        //     obj.name = articlesArr[i].cate_name;
+        //     dataChart2[i] = obj;
+        // }
+        console.log(dataChart3);
+        myChart3.setOption({
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                data: [820, 932, 901, 934, 1290, 1330, 1320],
+                type: 'line',
+                areaStyle: {}
+            }]
+        })
     });
 
 </script>
