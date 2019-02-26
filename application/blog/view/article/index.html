@@ -60,6 +60,8 @@
         var table = layui.table;
         table.render({
             elem: '#dataTable'
+            ,height: 480
+            //,height: 'full-20' //浏览器最大高度
             ,url: '{:url("blog/Article/index")}' //数据接口
             ,page: true //开启分页
             ,limit: 10
