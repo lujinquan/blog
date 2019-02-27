@@ -14,11 +14,7 @@ class Article extends Admin
             $limit = input('param.limit/d', 10);
             $keywords = input('param.keywords');
             $cateid = input('param.cate_id');
-            // $cateWhere = [
-            //     ['status','eq',1],
-            //     ['is_show','eq',1],
-            //     ['cate_id','eq',$cateid]
-            // ];
+
             if($cateid === 0){
                 $cateArr = CateModel::where('level','eq',3)->column('cate_id');
             }else{
@@ -29,8 +25,7 @@ class Article extends Admin
                     $cateArr = [$cateid];
                 }
             }
-            
-            //halt(CateModel::getLastChilds([0]));
+
             $where = [
                 ['status','eq',1],
             ];

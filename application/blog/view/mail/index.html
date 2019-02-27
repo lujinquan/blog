@@ -1,0 +1,55 @@
+<div class="page-toolbar">
+    <div class="page-filter">
+        <div class="layui-input-inline layui-col-md2">
+            <a href="{:url('add')}" class="layui-btn layui-btn-normal layui-icon layui-icon-edit">&nbsp;新增邮件</a>
+        </div>
+        <form class="layui-form layui-form-pane" action="{url('index')}"  method="get" id="hisi-table-search">
+            <div class="layui-input-inline layui-col-md2">
+                <input type="text" name="keywords" placeholder="搜索" class="layui-input">
+            </div>
+            
+            <div class="layui-input-inline layui-col-md3" style="margin-left:20px;">
+                
+                <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">
+                    <i class="layui-icon">&#xe615;</i>
+                    搜索
+                </button>
+                <button type="reset" class="layui-btn">重置</button>
+            </div>
+        </form>
+    </div>
+</div>
+{include file="system@block/layui" /}
+<table id="dataTable" lay-filter='dataTable'></table>
+
+<script type="text/html" title="操作按钮模板" id="buttonTpl">
+    <a href="{:url('cate')}?cate_id={{ d.id }}" class="layui-btn layui-btn-xs layui-btn-normal">详情</a>
+    <button data-href="{:url('del')}?cate_id={{ d.id }}" class="layui-btn layui-btn-xs layui-btn-danger delete">删除</button>
+</script>
+<script type="text/javascript">
+    layui.use(['table'], function() {
+        var table = layui.table;
+        table.render({
+            elem: '#dataTable'
+            ,height: 480
+            ,url: '{:url("blog/Mail/index")}' //数据接口
+            ,page: true //开启分页
+            ,limit: 10
+            ,text: {
+                none : '暂无相关数据'
+            }
+            ,cols: [[ //表头
+                {field: 'title', width: 160, title: '邮件标题'}
+                ,{field: 'send_mail', width: 180, title: '发件邮箱'}
+                ,{field: 'remark', width: 200, title: '备注'}
+                ,{field: 'accept_mail', width: 200, title: '收件邮箱'}
+                ,{field: 'ctime', width: 160, title: '创建日期'}
+                ,{title: '操作', width: 140, templet: '#buttonTpl',fixed:'right'}
+            ]]
+            ,done:function(res,curr,count){
+               
+            }
+        })
+    });
+
+</script>

@@ -1,0 +1,165 @@
+<form class="layui-form" action="{:url()}" method="post">
+
+  <div class="layui-form-item">
+    <div class="layui-block">
+      <label class="layui-form-label">邮件标题</label>
+      <div class="layui-input-inline" style="width:700px;">
+        <input type="text" name="title" autocomplete="off" placeholder="" value="测试一下" class="layui-input">
+      </div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>&nbsp;&nbsp;推荐25~30个字符</div>
+    </div>
+    </div>
+    <div class="layui-form-item">
+    <div class="layui-block">
+      <label class="layui-form-label">发件邮箱</label>
+      <div class="layui-input-inline" style="width:700px;">
+        <input type="text" name="send_mail" autocomplete="off" placeholder="" value="18674012767@163.com" class="layui-input">
+      </div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>&nbsp;&nbsp;正确格式：xxxx@xxx.com</div>
+    </div>
+    </div>
+    <div class="layui-form-item">
+    <div class="layui-block">
+      <label class="layui-form-label">收件邮箱</label>
+      <div class="layui-input-inline" style="width:700px;">
+        <input type="text" name="accept_mail" autocomplete="off" placeholder="" value="598936602@qq.com" class="layui-input">
+      </div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>&nbsp;&nbsp;正确格式：xxxx@xxx.com</div>
+    </div>
+    
+  </div>
+ <!-- <div class="layui-form-item">
+    <label class="layui-form-label">附件</label>
+    <div class="layui-inline">
+      <button type="button" class="layui-btn" id="test1">上传</button>
+      <div class="layui-upload-list">
+        <img class="layui-upload-img" id="demo1">
+        <p id="demoText"></p>
+        <input type="hidden" name="thumb" value="" id="thumb"/>
+      </div>
+    </div>
+</div> -->
+
+
+   <!-- <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">复选框</label>
+      <div class="layui-input-inline" style="width:560px">
+        <input type="checkbox" name="attr_type[]" value="0" lay-skin="primary" title="正常" checked="">
+        <input type="checkbox" name="attr_type[]" value="1" lay-skin="primary" title="推荐">
+        <input type="checkbox" name="attr_type[]" value="2" title="火热">
+        <input type="checkbox" name="attr_type[]" value="3" title="滚动">
+        <input type="checkbox" name="attr_type[]" value="4" title="轮播">
+      </div>
+    </div>
+  </div> -->
+
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">邮件内容</label>
+      <div class="layui-input-inline">
+        <textarea class="layui-textarea" name="content" id="LAY_demo_editor"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">备注</label>
+    <div class="layui-input-inline">
+      <textarea placeholder="" name="remark" class="layui-textarea" style="resize:none;width:700px;height:100px" ></textarea>
+    </div>
+  </div>
+  {:token()}
+  <div class="layui-form-item">
+  <label class="layui-form-label"></label>
+    <div class="layui-input-inline" style="width:270px">
+      <button type="submit" class="layui-btn layui-btn-normal" lay-submit="" lay-filter="formSubmit">提交</button>
+      <!-- <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button> -->
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+{include file="system@block/layui" /}
+  <link rel="stylesheet" href="/kindeditor/themes/default/default.css" />
+  <link rel="stylesheet" href="/kindeditor/plugins/code/prettify.css" />
+  <script charset="utf-8" src="/kindeditor/kindeditor-all.js"></script>
+  <script charset="utf-8" src="/kindeditor/lang/zh-CN.js"></script>
+  <script charset="utf-8" src="/kindeditor/plugins/code/prettify.js"></script>
+<script>
+
+
+layui.use('form',function(){
+  var $ = layui.jquery;
+  var form = layui.form;
+  form.on('radio(articleType)', function(data){
+    //console.log(data.elem); //得到radio原始DOM对象
+    //console.log(data.value); //被点击的radio的value值
+    if(data.value == 0){
+      $('#linkDiv').removeClass('layui-hide');
+    }else{
+       $("#linkDiv").addClass("layui-hide");
+    }
+  });  
+});
+
+layui.use('upload', function(){
+  var $ = layui.jquery
+  ,upload = layui.upload;
+  
+  //普通图片上传
+  var uploadInst = upload.render({
+    elem: '#test1'
+    ,url: '{:url("system/annex/upload?thumb=no&water=no")}'
+    ,before: function(obj){
+      //预读本地文件示例，不支持ie8
+      obj.preview(function(index, file, result){
+        
+        $('#demo1').attr({'src':result,'width':'260px', 'height':'260px'}); //图片链接（base64）
+      });
+    }
+    ,done: function(res){
+      console.log(res);
+      //如果上传失败
+      if(res.code == 1){
+        $('#thumb').val(res.data.file);
+        return layer.msg('上传成功');
+      }else{
+        return layer.msg('上传失败');
+      }
+      //上传成功
+    }
+    ,error: function(){
+      //演示失败状态，并实现重传
+      var demoText = $('#demoText');
+      demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+      demoText.find('.demo-reload').on('click', function(){
+        uploadInst.upload();
+      });
+    }
+  });
+});
+KindEditor.ready(function(K) {
+  var editor1 = K.create('textarea[name="content"]', {
+    cssPath : '/kindeditor/plugins/code/prettify.css',
+    uploadJson : '/kindeditor/php/upload_json.php',
+    fileManagerJson : '/kindeditor/php/file_manager_json.php',
+    allowFileManager : true,
+    afterCreate : function() {
+      var self = this;
+
+      K.ctrl(document, 13, function() {
+        self.sync();
+        K('form[name=example]')[0].submit();
+      });
+      K.ctrl(self.edit.doc, 13, function() {
+        self.sync();
+        K('form[name=example]')[0].submit();
+      });
+    },
+    // 失去焦点的时候，同步到表单中，这样如果异步提交，就可以将内容提交上去，否则提交上去的内容就会是空的
+    afterBlur: function () { 
+      this.sync(); 
+    }
+  });
+  prettyPrint();
+});
+</script>
