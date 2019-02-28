@@ -29,7 +29,7 @@ class Mail extends Model
         $mail = new PHPMailer();
         //告诉PHPMailer使用SMTP
         // 是否启用smtp的debug进行调试 开发环境建议开启 生产环境注释掉即可 默认关闭debug调试模式
-        $mail->SMTPDebug = 1;
+        $mail->SMTPDebug = 0;
         // 使用smtp鉴权方式发送邮件
         $mail->isSMTP();
         // smtp需要鉴权 这个必须是true
@@ -38,12 +38,12 @@ class Mail extends Model
         $mail->Host = 'smtp.163.com';
         // 设置使用ssl加密方式登录鉴权
         $mail->SMTPSecure = 'ssl';
-        // 设置ssl连接smtp服务器的远程服务器端口号465/994
+        // 163邮箱的ssl连接smtp服务器的远程服务器端口号465/994
         $mail->Port = 994;
         // 设置发送的邮件的编码
         $mail->CharSet = 'UTF-8';
         // 设置发件人昵称 显示在收件人邮件的发件人邮箱地址前的发件人姓名
-        $mail->FromName = '发件人昵称';
+        $mail->FromName = $mailInfo['send_name'];
         // smtp登录的账号 QQ邮箱即可
         $mail->Username = $mailInfo['send_mail'];  //'18674012767@163.com'
         // smtp登录的密码 使用生成的授权码
@@ -60,12 +60,18 @@ class Mail extends Model
         $mail->Subject = $mailInfo['title'];
         // 添加邮件正文
         $mail->Body = $mailInfo['content'];
+        // 设置邮件抄送人，可以只写地址，上述的设置也可以只写地址
+        //$mail->addCC("aaaa@inspur.com");
+        // 设置秘密抄送人
+        //$mail->addBCC("bbbb@163.com");
         // 为该邮件添加附件
         //$mail->addAttachment('./demo.jpg');
         // 发送邮件 返回状态
         if(!$mail->send()){// 发送邮件
+        //if(false){// 发送邮件
             return $mail->ErrorInfo;
         }else{
+            $this->create($mailInfo);
             return true;
         }
 

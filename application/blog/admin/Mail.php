@@ -34,15 +34,35 @@ class Mail extends Admin
             //halt($data);
             $info = (new MailModel())->sendMail($data);
             if($info === true){
-                $res['code'] = 0;
-                $res['msg'] = '发送成功';
+                return $this->success('发送成功','mail/index');
             }else{
-                $res['code'] = 1;
-                $res['msg'] = $info;
+                return $this->error($info);
             }
             return json($res);
         }
     	
     	return $this->fetch('form');
+    }
+
+    public function detail()
+    {
+        $id = input('id');
+        $row = MailModel::get($id);
+        $this->assign('data_info',$row);
+        return $this->fetch();
+    }
+
+    public function del()
+    {
+        $id = input('id');
+        $update = [
+            'dtime' => request()->time(),
+            'status' => 0
+        ];
+        $res = MailModel::where('id',$id)->update($update);
+        if($res){
+            return $this->success('删除成功','mail/index');
+        }
+        return $this->error('删除失败');
     }
 }

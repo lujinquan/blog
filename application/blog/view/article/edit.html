@@ -90,9 +90,7 @@
         <input type="text" name="keywords" value="{$data_info['keywords']}" autocomplete="off" class="layui-input">
       </div>
       <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i></div>
-      <!-- <div class="layui-btn">一个标准的按钮</div> -->
     </div>
-    
   </div>
 
   <div class="layui-form-item">
@@ -117,6 +115,14 @@
       <label class="layui-form-label">文章内容</label>
       <div class="layui-input-inline">
         <textarea class="layui-textarea" readonly name="article_content" id="LAY_demo_editor">{:htmlspecialchars_decode($data_info['article_content'])}</textarea>
+      </div>
+    </div>
+  </div>
+    <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label"></label>
+      <div class="layui-form-mid layui-word-aux" style="width:700px">
+        推荐：1、标题使用加黑字体。&nbsp;2、正文字体颜色选择#64451D、每行缩进。&nbsp;3、整篇文章使用3倍行距。
       </div>
     </div>
   </div>

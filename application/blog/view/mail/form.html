@@ -20,6 +20,15 @@
     </div>
     <div class="layui-form-item">
     <div class="layui-block">
+      <label class="layui-form-label">发件人昵称</label>
+      <div class="layui-input-inline" style="width:700px;">
+        <input type="text" name="send_name" autocomplete="off" placeholder="" value="Lucas" class="layui-input">
+      </div>
+      <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i>&nbsp;&nbsp;32个字符以内</div>
+    </div>
+    </div>
+    <div class="layui-form-item">
+    <div class="layui-block">
       <label class="layui-form-label">收件邮箱</label>
       <div class="layui-input-inline" style="width:700px;">
         <input type="text" name="accept_mail" autocomplete="off" placeholder="" value="598936602@qq.com" class="layui-input">
@@ -72,7 +81,7 @@
   <div class="layui-form-item">
   <label class="layui-form-label"></label>
     <div class="layui-input-inline" style="width:270px">
-      <button type="submit" class="layui-btn layui-btn-normal" lay-submit="" lay-filter="formSubmit">提交</button>
+      <button type="submit" class="layui-btn layui-btn-normal" lay-submit="" lay-filter="formSubmit">确认发送</button>
       <!-- <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button> -->
       <button type="reset" class="layui-btn layui-btn-primary">重置</button>
     </div>

@@ -1,0 +1,80 @@
+	<div class="layui-form-item">
+		<div class="layui-block">
+			<label class="layui-form-label">邮件标题</label>
+			<div class="layui-input-inline" style="width:700px;">
+				<input type="text" name="title" autocomplete="off" disabled placeholder="" value="{$data_info['title']}" class="layui-input">
+			</div>
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<div class="layui-block">
+			<label class="layui-form-label">发件邮箱</label>
+			<div class="layui-input-inline" style="width:700px;">
+				<input type="text" name="send_mail" autocomplete="off" disabled placeholder="" value="{$data_info['send_mail']}" class="layui-input">
+			</div>
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<div class="layui-block">
+			<label class="layui-form-label">发件人昵称</label>
+			<div class="layui-input-inline" style="width:700px;">
+				<input type="text" name="send_name" autocomplete="off" disabled placeholder="" value="{$data_info['send_name']}" class="layui-input">
+			</div>
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<div class="layui-block">
+			<label class="layui-form-label">收件邮箱</label>
+			<div class="layui-input-inline" style="width:700px;">
+				<input type="text" name="accept_mail" autocomplete="off" disabled placeholder="" value="{$data_info['accept_mail']}" class="layui-input">
+			</div>
+		</div> 
+	</div>
+	<div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label">邮件内容</label>
+			<div class="layui-input-inline">
+				<textarea class="layui-textarea" name="content" disabled id="LAY_demo_editor">{:htmlspecialchars_decode($data_info['content'])}</textarea>
+			</div>
+		</div>
+	</div>
+	<div class="layui-form-item layui-form-text">
+		<label class="layui-form-label">备注</label>
+		<div class="layui-input-inline">
+			<textarea placeholder="" name="remark" disabled class="layui-textarea" style="resize:none;width:700px;height:100px" >{$data_info['remark']}</textarea>
+		</div>
+	</div>
+
+	{include file="system@block/layui" /}
+	<link rel="stylesheet" href="/kindeditor/themes/default/default.css" />
+	<link rel="stylesheet" href="/kindeditor/plugins/code/prettify.css" />
+	<script charset="utf-8" src="/kindeditor/kindeditor-all.js"></script>
+	<script charset="utf-8" src="/kindeditor/lang/zh-CN.js"></script>
+	<script charset="utf-8" src="/kindeditor/plugins/code/prettify.js"></script>
+	<script>
+		KindEditor.ready(function(K) {
+			var editor1 = K.create('textarea[name="content"]', {
+				cssPath : '/kindeditor/plugins/code/prettify.css',
+				uploadJson : '/kindeditor/php/upload_json.php',
+				fileManagerJson : '/kindeditor/php/file_manager_json.php',
+				allowFileManager : true,
+				afterCreate : function() {
+					var self = this;
+
+					K.ctrl(document, 13, function() {
+						self.sync();
+						K('form[name=example]')[0].submit();
+					});
+					K.ctrl(self.edit.doc, 13, function() {
+						self.sync();
+						K('form[name=example]')[0].submit();
+					});
+				},
+			    // 失去焦点的时候，同步到表单中，这样如果异步提交，就可以将内容提交上去，否则提交上去的内容就会是空的
+			    afterBlur: function () { 
+			    	this.sync(); 
+			    }
+			});
+			prettyPrint();
+		});
+	</script>

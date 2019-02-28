@@ -39,7 +39,7 @@
     </div>
     
   </div>
- <div class="layui-form-item">
+  <div class="layui-form-item">
     <label class="layui-form-label">封面图</label>
     <div class="layui-inline">
       <button type="button" class="layui-btn" id="test1">上传</button>
@@ -49,7 +49,7 @@
         <input type="hidden" name="thumb" value="" id="thumb"/>
       </div>
     </div>
-</div>
+  </div>
   <div class="layui-form-item">
     <label class="layui-form-label">是否显示</label>
     <div class="layui-input-inline" style="width:270px">
@@ -129,6 +129,14 @@
       </div>
     </div>
   </div>
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label"></label>
+      <div class="layui-form-mid layui-word-aux" style="width:700px">
+        推荐：1、标题使用加黑字体。&nbsp;2、正文字体颜色选择#64451D、每行缩进。&nbsp;3、整篇文章使用3倍行距。
+      </div>
+    </div>
+  </div>
   <div class="layui-form-item layui-form-text">
     <label class="layui-form-label">描述</label>
     <div class="layui-input-inline">
@@ -137,7 +145,7 @@
   </div>
   {:token()}
   <div class="layui-form-item">
-  <label class="layui-form-label"></label>
+    <label class="layui-form-label"></label>
     <div class="layui-input-inline" style="width:270px">
       <button type="submit" class="layui-btn layui-btn-normal" lay-submit="" lay-filter="formSubmit">提交</button>
       <!-- <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button> -->
@@ -146,70 +154,74 @@
   </div>
 </form>
 {include file="system@block/layui" /}
-  <link rel="stylesheet" href="/kindeditor/themes/default/default.css" />
-  <link rel="stylesheet" href="/kindeditor/plugins/code/prettify.css" />
-  <script charset="utf-8" src="/kindeditor/kindeditor-all.js"></script>
-  <script charset="utf-8" src="/kindeditor/lang/zh-CN.js"></script>
-  <script charset="utf-8" src="/kindeditor/plugins/code/prettify.js"></script>
+<link rel="stylesheet" href="/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="/kindeditor/plugins/code/prettify.css" />
+<script charset="utf-8" src="/kindeditor/kindeditor-all.js"></script>
+<script charset="utf-8" src="/kindeditor/lang/zh-CN.js"></script>
+<script charset="utf-8" src="/kindeditor/plugins/code/prettify.js"></script>
 <script>
 
 
-layui.use('form',function(){
-  var $ = layui.jquery;
-  var form = layui.form;
-  form.on('radio(articleType)', function(data){
-    //console.log(data.elem); //得到radio原始DOM对象
-    //console.log(data.value); //被点击的radio的value值
-    if(data.value == 0){
-      $('#linkDiv').removeClass('layui-hide');
-    }else{
-       $("#linkDiv").addClass("layui-hide");
-    }
-  });  
-});
-
-layui.use('upload', function(){
-  var $ = layui.jquery
-  ,upload = layui.upload;
-  
-  //普通图片上传
-  var uploadInst = upload.render({
-    elem: '#test1'
-    ,url: '{:url("system/annex/upload?thumb=no&water=no")}'
-    ,before: function(obj){
-      //预读本地文件示例，不支持ie8
-      obj.preview(function(index, file, result){
-        
-        $('#demo1').attr({'src':result,'width':'260px', 'height':'260px'}); //图片链接（base64）
-      });
-    }
-    ,done: function(res){
-      console.log(res);
-      //如果上传失败
-      if(res.code == 1){
-        $('#thumb').val(res.data.file);
-        return layer.msg('上传成功');
-      }else{
-        return layer.msg('上传失败');
-      }
-      //上传成功
-    }
-    ,error: function(){
-      //演示失败状态，并实现重传
-      var demoText = $('#demoText');
-      demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
-      demoText.find('.demo-reload').on('click', function(){
-        uploadInst.upload();
-      });
-    }
+  layui.use('form',function(){
+    var $ = layui.jquery;
+    var form = layui.form;
+    form.on('radio(articleType)', function(data){
+        //console.log(data.elem); //得到radio原始DOM对象
+        //console.log(data.value); //被点击的radio的value值
+        if(data.value == 0){
+          $('#linkDiv').removeClass('layui-hide');
+        }else{
+         $("#linkDiv").addClass("layui-hide");
+       }
+     });  
   });
-});
-KindEditor.ready(function(K) {
-  var editor1 = K.create('textarea[name="article_content"]', {
-    cssPath : '/kindeditor/plugins/code/prettify.css',
-    uploadJson : '/kindeditor/php/upload_json.php',
-    fileManagerJson : '/kindeditor/php/file_manager_json.php',
-    allowFileManager : true,
+
+  layui.use('upload', function(){
+    var $ = layui.jquery
+    ,upload = layui.upload;
+
+    //普通图片上传
+    var uploadInst = upload.render({
+      elem: '#test1'
+      ,url: '{:url("system/annex/upload?thumb=no&water=no")}'
+      ,before: function(obj){
+        //预读本地文件示例，不支持ie8
+        obj.preview(function(index, file, result){
+
+          $('#demo1').attr({'src':result,'width':'260px', 'height':'260px'}); //图片链接（base64）
+        });
+      }
+      ,done: function(res){
+        console.log(res);
+        //如果上传失败
+        if(res.code == 1){
+          $('#thumb').val(res.data.file);
+          return layer.msg('上传成功');
+        }else{
+          return layer.msg('上传失败');
+        }
+        //上传成功
+      }
+      ,error: function(){
+        //演示失败状态，并实现重传
+        var demoText = $('#demoText');
+        demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+        demoText.find('.demo-reload').on('click', function(){
+          uploadInst.upload();
+        });
+      }
+    });
+  });
+  KindEditor.ready(function(K) {
+    var editor1 = K.create('textarea[name="article_content"]', {
+      cssPath : '/kindeditor/plugins/code/prettify.css',
+      uploadJson : '/kindeditor/php/upload_json.php',
+      fileManagerJson : '/kindeditor/php/file_manager_json.php',
+      allowFileManager : true,
+      allowImageUpload : true,
+    // items : [ //只选择需要的条目，
+    //   'image'
+    // ],
     afterCreate : function() {
       var self = this;
 
@@ -227,6 +239,6 @@ KindEditor.ready(function(K) {
       this.sync(); 
     }
   });
-  prettyPrint();
-});
+    prettyPrint();
+  });
 </script>
