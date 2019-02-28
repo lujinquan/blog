@@ -183,7 +183,7 @@
     //普通图片上传
     var uploadInst = upload.render({
       elem: '#test1'
-      ,url: '{:url("system/annex/upload?thumb=no&water=no")}'
+      ,url: '{:url("system/annex/upload?from=input&group=article&thumb=no&water=no&input=file&nick_name=文章封面图")}'
       ,before: function(obj){
         //预读本地文件示例，不支持ie8
         obj.preview(function(index, file, result){

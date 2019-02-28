@@ -1,0 +1,108 @@
+<div class="page-toolbar">
+	<div class="page-filter">
+		<div class="layui-input-inline layui-col-md2">
+			<a href="{:url('add')}" class="layui-btn layui-btn-normal layui-icon layui-icon-edit">&nbsp;新增附件</a>
+		</div>
+		<form class="layui-form layui-form-pane" action="{url('index')}"  method="get" id="hisi-table-search">
+			<div class="layui-input-inline layui-col-md2">
+				<input type="text" name="keywords" placeholder="搜索" class="layui-input">
+			</div>
+
+			<div class="layui-input-inline layui-col-md3" style="margin-left:20px;">
+
+				<button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">
+					<i class="layui-icon">&#xe615;</i>
+					搜索
+				</button>
+				<button type="reset" class="layui-btn">重置</button>
+			</div>
+		</form>
+	</div>
+</div>
+{include file="system@block/layui" /}
+<table id="dataTable" lay-filter='dataTable'></table>
+
+<script type="text/html" title="操作按钮模板" id="buttonTpl">
+	<a href="{:url('detail')}?id={{ d.id }}" class="layui-btn layui-btn-xs layui-btn-normal">详情</a>
+	<button data-href="{:url('del')}?id={{ d.id }}" class="layui-btn layui-btn-xs layui-btn-danger j-tr-del">删除</button>
+</script>
+<script type="text/javascript">
+	layui.use(['table'], function() {
+		var table = layui.table;
+		table.render({
+			elem: '#dataTable'
+			,height: 480
+            ,url: '{:url("blog/Files/index")}' //数据接口
+            ,page: true //开启分页
+            ,limit: 10
+            ,text: {
+            	none : '暂无相关数据'
+            }
+            ,cols: [[ //表头
+            {field: 'title', width: 160, title: '附件标题'}
+            ,{field: 'hash', width: 360, title: '哈希'}
+            ,{field: 'file', width: 80, title: '缩略图', event: 'bigImg',templet: function(d){
+            	return '<img style="width:40px;height:30px" src="' + d.file + '"/>';
+            }}
+            ,{field: 'type', width: 120, title: '类型'}
+            ,{field: 'size', width: 120, title: '文件大小',templet: function(d){
+            	var size = parseInt(d.size);
+            	if(size < 1024){
+            		return size + 'kb'; 
+            	}else{
+            		return size/1024 + 'M';
+            	}
+            }}
+            ,{field: 'ctime', width: 160, title: '上传日期'}
+            ,{title: '操作', width: 140, templet: '#buttonTpl',fixed:'right'}
+            ]]
+            ,done:function(res,curr,count){
+
+            }
+        }),
+        table.on('tool(dataTable)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+		 var data = obj.data; //获得当前行数据
+		 //console.log(data); 
+		 // var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+		 // var tr = obj.tr; //获得当前行 tr 的DOM对象
+		 layer.open({
+		 	type: 1
+		 	,title: '原图'
+		 	,time: 2000 //2000毫秒后关闭
+		 	,fix: false
+		 	,area: ['400px', '300px']
+	        ,offset: 'rb' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+	        ,id: 'layerDemo'+'auto' //防止重复弹出
+	        ,content: '<div style="padding: 10px 10px;"><img src="'+ data.file +'"/></div>'
+	        //,btn: '关闭全部'
+	        //,btnAlign: 'c' //按钮居中
+	        ,shade: 0 //不显示遮罩
+	        ,shadeClose: false
+	        // ,yes: function(){
+	        // 	layer.closeAll();
+	        // }
+	        ,success: function(layero,index){
+                layero.css("position","absolute").append(layero);    //如果该父级原来没有设置相对定位，那么在追加该弹层之前需要设置
+            }
+	    });
+		  // if(layEvent === 'detail'){ //查看
+		  //   //do somehing
+		  // } else if(layEvent === 'del'){ //删除
+		  //   layer.confirm('真的删除行么', function(index){
+		  //     obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
+		  //     layer.close(index);
+		  //     //向服务端发送删除指令
+		  //   });
+		  // } else if(layEvent === 'edit'){ //编辑
+		  //   //do something
+
+		  //   //同步更新缓存对应的值
+		  //   obj.update({
+		  //     username: '123'
+		  //     ,title: 'xxx'
+		  //   });
+		  // }
+		});
+    });
+
+</script>

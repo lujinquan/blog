@@ -14,6 +14,7 @@ use app\common\model\SystemAnnexGroup as GroupModel;
 use think\Model;
 use think\Image;
 use think\File;
+use app\blog\model\Files as FilesModel;
 
 /**
  * 附件模型
@@ -39,7 +40,7 @@ class SystemAnnex extends Model
      * @author 橘子俊 <364666827@qq.com>
      * @return json
      */
-    public static function upload($from = 'input', $group = 'sys', $water = '', $thumb = '', $thumb_type = '', $input = 'file')
+    public static function upload($from = 'input', $group = 'sys', $water = '', $thumb = '', $thumb_type = '', $input = 'file', $nick_name = '文章')
     {
         switch ($from) {
             case 'kindeditor':
@@ -107,14 +108,18 @@ class SystemAnnex extends Model
         $file_size = round($upfile->getInfo('size')/1024, 2);
         $data = [
             'file'  => $_file_path.str_replace('\\', '/', $upfile->getSaveName()),
+            'title' => $nick_name,
             'hash'  => $upfile->hash(),
-            'data_id' => input('param.data_id', 0),
             'type'  => $type,
             'size'  => $file_size,
             'group' => $group,
             'ctime' => request()->time(),
         ];
-
+        //halt($data);
+        $frow = FilesModel::where('hash',$data['hash'])->find();
+        if(!$frow){
+            FilesModel::create($data);
+        }
         // 记录入库
         // self::create($data);
         // $group_info = GroupModel::where('name', $group)->find();
