@@ -111,6 +111,7 @@ class SystemAnnex extends Model
             'title' => $nick_name,
             'hash'  => $upfile->hash(),
             'type'  => $type,
+            'ext'   => $upfile->getExtension(),
             'size'  => $file_size,
             'group' => $group,
             'ctime' => request()->time(),
