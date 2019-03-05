@@ -26,7 +26,7 @@ class Article extends Validate
         'sort_order|排序号'   => 'require|number',
         'article_desc|文章描述'   => 'require',
         'keywords|关键词' => 'require',
-        '__token__'      => 'require|token',
+        //'__token__'      => 'require|token',
     ];
 
     //定义验证提示

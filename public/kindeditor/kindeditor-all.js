@@ -257,7 +257,7 @@ K.options = {
 	cssPath : '',
 	cssData : '',
 	minWidth : 700,
-	minHeight : 200,
+	minHeight : 300,
 	minChangeSize : 50,
 	zIndex : 811213,
 	items : [
