@@ -594,20 +594,22 @@ ol.breadcrumb li a {
 .blog-info {
   margin-top: 5em;
   margin-right: 5em;
+  /*background: #f3f3f3;*/
 }
 .blog h4 {
   font-size: 2em;
   font-weight: 600;
   /*font-style: italic;*/
   color: #4d4949;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
   font-family: 'Playfair Display', serif;
 }
 .blog h4 a{
 	color: #4d4949;
 }
-.blog  h4 a:hover {
+.blog h4 a:hover {
 	color:#5F9EA0;
+  background-color: #fff;
 	text-decoration:none;
 }
 .blog-left p {
@@ -1714,7 +1716,7 @@ a.thumbnail {
   padding-top: 2em;
 }
 .contact-form-left {
-  margin-bottom: 2em;
+  /*margin-bottom: 2em;*/
 }
 }
 @media(max-width:736px){
@@ -1958,7 +1960,7 @@ ul.pagination li a {
   padding-top: 1.5em;
 }
 .contact-form-left {
-  margin-bottom: 1.5em;
+  /*margin-bottom: 1.5em;*/
 }
 .contact input[type="text"] {
 	width: 33.2%;
@@ -2473,9 +2475,27 @@ text-overflow: ellipsis;
 white-space: nowrap;
 }
 
-.could-sign {
+/*.tpt-sidebar {
   margin: 0;
   padding: 0;
 }
+.tpt-f {
+  list-style: none;
+}
+.tpt-f li {
+  float: left;
+  line-height: 22px;
+  font-size: 14px;
+  height: 22px;
+  color: #fff;
+  border-radius: 50px;
+}
+
+.tpt-f-1 {
+  background: #43ac6a;
+}
+.tpt-f-2 {
+  background: #f3a557;
+}*/
 
 }

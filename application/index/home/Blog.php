@@ -1,7 +1,9 @@
 <?php
 
 namespace app\index\home;
+
 use app\index\home\Base;
+use app\blog\model\Tag as TagModel;
 use app\blog\model\Cate as CateModel;
 use app\blog\model\Article as ArticleModel;
 use app\blog\model\Comment as CommentModel;
@@ -33,8 +35,10 @@ class Blog extends Base
             'is_show' => 1,
             'status' => 1,
         ];
+        // 获取右侧云标签
         $newComments = CommentModel::with('article,member')->where($newComWhere)->field('com_id,article_id,member_id,com_content,uid,uid_photo,ctime')->order('ctime desc')->limit(4)->select();
-
+        $tags = TagModel::where('status',1)->field('tag_name,url')->limit(30)->select();
+        $this->assign('tags',$tags);
         $this->assign('newArticles',$newArticles);
         $this->assign('newComments',$newComments);
         $this->assign('rightCates',$rightCates);

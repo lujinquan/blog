@@ -1,11 +1,5 @@
 {extend name="block/layout" /}
 {block name="content"}
-
-<style type="text/css">
-	body, html {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
-	#allmap{width:100%;height:500px;}
-	p{margin-left:5px; font-size:14px;}
-</style>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=m1devgrfGaqjsLycBZCm8egKV4uqFq7h"></script>
 <div class="contact">
 <div class="container">
@@ -13,21 +7,17 @@
 		<li><a href="/index">首页</a></li>
 		<li>关于我</li>
 	</ol>
-	<!-- <div class="tesimonial"><h3>联系我……</h3></div> -->
 </div>
 <!-- <div class="space-4"></div> -->
 <div class="container">
-	<div class="col-xs-6 col-sm-3" style="margin-top:40px;" id="allmap">
-		
-	</div>
-	<!-- <h4>地图</h4> -->
-	<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14228.54849623564!2d-80.10342101116558!3d26.930867031043434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d93335441a6f7d%3A0xdc51486fff899a21!2sJupiter%2C+FL%2C+USA!5e0!3m2!1sen!2sin!4v1433741837407" frameborder="0" style="border:0"></iframe> -->
+	<div class="col-xs-6 col-sm-3" style="margin-top:40px;width:100%;height:500px;" id="allmap"></div>
 </div>
 <div class="container">
 	<div class="contact-form">
 		<div class="col-md-4 contact-form-left">
-			<h4>联系信息</h4>
-			<p>旅行的意义其实是教会我们做独立的自我，习惯一个人的生活，不依赖，有自己的主见，能够独立的面对生活中的磨难与困苦。</p>					
+			<h4>博主信息</h4>
+			<p></p>
+			<div style="padding:0px;margin:0px;"><img src="/upload/qrcode/9cf33a03e9bbb672134cfd17072b9405.png" /></div>			
 		</div>
 		<div class="col-md-8 contact-form-right">
 			<h4>联系表单</h4>
@@ -55,9 +45,7 @@
 			easingType: 'linear' 
 		};
 		*/
-		
 		$().UItoTop({ easingType: 'easeOutQuart' });
-		
 	});
 	// 百度地图API功能
 	var map = new BMap.Map("allmap");

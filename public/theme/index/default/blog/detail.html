@@ -13,11 +13,6 @@
 				<div class="single-page-info">
 				<h5>{$data_info['article_title']}</h5>
 				{:htmlspecialchars_decode($data_info['article_content'])}
-					<!-- <img src="__HOME_IMG__/img22.jpg?v={:config('hisiphp.version')}" alt=""/>
-					<h5>憧憬一段任性的旅行，最好在青春飞扬的时节，最好有个遥远美丽的目的地，最好能伴阳光前行，最好，有你。</h5>
-					<p>一个人的旅行，反而会更贴近自己的内心，真正的停下来，享受自我的体验时刻，也许浮光掠影，走马观花之外，这才是深入体验，探索自我的最佳时间，纵然走过那么多城市，对于未知的风景，还是好奇。继续期待我的下一个旅行，拿起背包，感受不同地域不一样的节奏与表象。</p>  
-					<h5>憧憬一段任性的旅行，最好在青春飞扬的时节，最好有个遥远美丽的目的地，最好能伴阳光前行，最好，有你。</h5>
-					<p>一个人的旅行，反而会更贴近自己的内心，真正的停下来，享受自我的体验时刻，也许浮光掠影，走马观花之外，这才是深入体验，探索自我的最佳时间，纵然走过那么多城市，对于未知的风景，还是好奇。继续期待我的下一个旅行，拿起背包，感受不同地域不一样的节奏与表象。</p>  -->
 					<div class="comment-icons">
 						<ul>
 							<li><span></span><a href="#">{$data_info['keywords']}</a></li>
@@ -49,61 +44,11 @@
 						</a>
 						<h5><a href="{:url('blog/detail')}?article_id={$vo['article_id']}">{$vo['article_title']}</a></h5>
 					</div>
-					{/volist}
-					<!-- <div class="col-xs-6 col-md-3 related-grids">
-						<a href="singlepage.html" class="thumbnail">
-							<img src="__HOME_IMG__/img2.jpg?v={:config('hisiphp.version')}" alt=""/>
-						</a>
-						<h5><a href="singlepage.html">浮生若梦</a></h5>
-					</div>
-					<div class="col-xs-6 col-md-3 related-grids">
-						<a href="singlepage.html" class="thumbnail">
-							<img src="__HOME_IMG__/img3.jpg?v={:config('hisiphp.version')}" alt=""/>
-						</a>
-						<h5><a href="singlepage.html">浮生若梦</a></h5>
-					</div> -->
-					<!-- <div class="col-xs-6 col-md-3 related-grids">
-						<a href="singlepage.html" class="thumbnail">
-							<img src="__HOME_IMG__/img4.jpg?v={:config('hisiphp.version')}" alt=""/>
-						</a>
-						<h5><a href="singlepage.html">浮生若梦</a></h5>
-					</div>	 -->				
+					{/volist}				
 				</div>
 				<!--//related-posts-->
 				<div class="response">
 					<h4>回复</h4>
-					<!-- <div class="media response-info">
-						<div class="media-left response-text-left">
-							<a href="#">
-								<img class="media-object" src="__HOME_IMG__/icon1.png?v={:config('hisiphp.version')}" alt=""/>
-							</a>
-							<h5><a href="#">Lucas</a></h5>
-						</div>
-						<div class="media-body response-text-right">
-							<p>人生就像一场旅行，不必在乎目的地，在乎的是沿途的风景以及看风景的心情，让心灵去旅行！</p>
-							<ul>
-								<li>MARCH 21, 2013</li>
-								<li><a href="singlepage.html">回复</a></li>
-							</ul>
-							<div class="media response-info">
-								<div class="media-left response-text-left">
-									<a href="#">
-										<img class="media-object" src="__HOME_IMG__/icon1.png?v={:config('hisiphp.version')}" alt=""/>
-									</a>
-									<h5><a href="#">Lucas</a></h5>
-								</div>
-								<div class="media-body response-text-right">
-									<p>我爱北国，万里江山一片纷呈；我思南国，旖旎委婉有江南流风。其实，南也罢，北也罢，只要是我华夏风景，花开花落，潮起潮伏，看花影，听潮生，人生，何处不是风景？平生唯求，旅行合一，做一个旅者，更做一个行者</p>
-									<ul>
-										<li>2018年7月18日</li>
-										<li><a href="singlepage.html">回复</a></li>
-									</ul>		
-								</div>
-								<div class="clearfix"> </div>
-							</div>
-						</div>
-						<div class="clearfix"> </div>
-					</div> -->
 					{volist name="comments" id='vo'}
 					<div class="media response-info">
 						<div class="media-left response-text-left">

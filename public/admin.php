@@ -17,6 +17,8 @@ header('Content-Type:text/html;charset=utf-8');
 // 定义应用目录
 define('APP_PATH', __DIR__ . '/application/');
 
+define('EXTEND_PATH', __DIR__ .'/../extend/');
+
 // 定义入口为admin
 define('ENTRANCE', 'admin');
 
