@@ -36,7 +36,7 @@ class Blog extends Base
             'status' => 1,
         ];
         // 获取右侧云标签
-        $newComments = CommentModel::with('article,member')->where($newComWhere)->field('com_id,article_id,member_id,com_content,uid,uid_photo,ctime')->order('ctime desc')->limit(4)->select();
+        $newComments = CommentModel::with('article,member')->where($newComWhere)->field('com_id,article_id,member_id,com_content,ctime')->order('ctime desc')->limit(4)->select();
         $tags = TagModel::where('status',1)->field('tag_name,url')->limit(30)->select();
         $this->assign('tags',$tags);
         $this->assign('newArticles',$newArticles);
@@ -100,12 +100,20 @@ class Blog extends Base
 
     public function com()
     {
-        $id = input('article_id');
-        $res = ArticleModel::where('article_id',$id)->setInc('com');
-        if($res){
-           return $this->success('评论成功','article/index'); 
+        if ($this->request->isPost()) {
+            $data = $this->request->post();
+            
+            if(!isset($data['member_id'])){
+                $data['member_id'] = 10000;
+            }
+            $mod = new CommentModel;
+            if (!$mod->allowField(true)->create($data)) {
+
+                return $this->error('评论失败');
+            }
+            ArticleModel::where('article_id',$data['article_id'])->setInc('com');
+            return $this->success('评论成功');
         }
-        return $this->error('评论失败');
     }
 
     public function love()

@@ -24,14 +24,53 @@
 						<li><a href="/index/Blog/index">博客</a></li>
 						<li><a href="/index/Contact/index">关于我</a></li> -->
 					</ul>
+					
 					<div class="social-icons">
 						<ul>
-							<li><a href="javascript:;"></a></li>
+							<li><a href="javascript:;" class="weixin"></a></li>
 							<li><a href="javascript:;" class="weibo"></a></li>
 							<li><a href="javascript:;" class="qq"></a></li>
 						</ul>	
 					</div>
+					<div class="login-out">
+						<ul>
+							<li><a href="javascript:;" id="login">登录</a></li>
+							<li><a href="javascript:;" id="register">注册</a></li>
+						</ul>
+					</div>
 					<div class="clearfix"> </div>
+
+					<!-- 简单遮罩层 -->
+					<!-- <div id="mask" class="mask"></div> 
+					<style type="text/css">     
+					    .mask {       
+					            position: absolute; top: 0px; filter: alpha(opacity=60); background-color: #808080;     
+					            z-index: 1002; left: 0px;     
+					            opacity:0.8; -moz-opacity:0.5;     
+					        }     
+					</style>  
+					<script>
+						//注册点击事件
+						$('#register').click(function(){
+							$("#mask").css("height",$(document).height());     
+					        $("#mask").css("width",$(document).width()); 
+					        $("#mask").html(""); 
+					        $("#mask").show();     
+						});
+					</script> -->
+					<!-- layer弹出层 -->
+					<script>
+						$('#register').click(function(){
+							var str = '<div>小米在此特别提醒用户认真阅读 、充分理解---本协议中各条款。您对本协议的接受即自愿接受全部条款的约束，请您务必审慎阅读、充分理解各条款内容，特别是免除或者限制责任的条款、法律适用和争议解决条款，尤此类条款将以加粗的形式提示您注意。如您同意本协议并完成全部注册程序，即表示您已充分阅读、理解并接受本协议的全部内容，并与小米达成一致，成为小米商城平台用户。阅读本协议的过程中，如果您不同意本协议或其中任何条款约定，您应立即停止注册程序</div><label style="color:"></h4>';
+							layer.open({
+							  	type: 1,
+							  	title:'协议声明',
+						        zIndex:19911117,
+						        area:['900px','600px'],
+						        content: str, //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+							});
+						});
+					</script>
 				</div>
 			</div>	
 		</nav>		
