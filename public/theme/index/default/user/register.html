@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Lucas账号-注册</title>
+	<script src="__HOME_JS__/jquery.min-2.2.1.js?v={:config('hisiphp.version')}"></script>
 	<style>
 		/* CSS Document */
 		html, body, div, span, object, iframe,h1, h2, 
@@ -24,6 +25,7 @@
 		body {
 			background-color:#f9f9f9;
 		    line-height:1;
+		    text-align:center
 		}
 		 
 		a{
@@ -70,6 +72,7 @@
 			font-weight:normal
 		}
 		.row-con {
+
 			/*width:10px;*/
 			/*padding-left:100px;*/
 			/*border:1px solid red;*/
@@ -89,47 +92,67 @@
 		}
 		.msg {
 			font-size: 14px;
-			margin-top: 80px;
+			margin-top: 40px;
     		font-family: arial,"Hiragino Sans GB", "Microsoft YaHei","微軟正黑體","儷黑 Pro", sans-serif;
 		}
 		.icon_select {
 			width:20px;
 			height:20px;
-			background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAk5JREFUOBGVlctrU1EQxn/3tqZVKxQRCirdWRRX4sKuK7j1GYoLN4JYULT6FwiuFSOiEf+A+iq6FwV3uhIXWqmugigVKT5iTUKa6zfn5CQ3MUnTgXPPa+Y7c+bMNzeihyRHGGWAcSJGnFpCkVUK0VN+dDOLOm0kx9lNhhmBTartFODWOuCyAD+rvaJCPprnQ7t9C2ACMdPMCuys2oRmCKxVpERNrcKi2l2Nb0WPNKpLQz3JCiLmHkOcYJhNQaFnX1YIysxzn9MCsmOcD94m5ryAjvUNZlZDim2GrLuVR/GAyVH2uGuawnrFbqMQubjL1qJkJ81occKN1/rEg5Bpi4jZ2iNKYpcagxxIXb475OgOuPIern6UpYCDmFvKCMOKXZ751Ajbvo8GWudbxuDyCxjbBd8+6QmqzX17WsNQzsbybHMjz4LK/izc/AVTF/zKyDaBPReYolJ4A7cPB81mb7kqAqT8bu6xIiJs2AjTOeWhPJ08Bdv3wpd3kDsEf7sSRf7V+EPCcgoOFp7B3Dm/lL0G4/tgaRGuH4Ti9xbVxsQwRM3YuOnoZAxIy8s78PCSVrTx86vApuD3UlqjOTZbT8mCY0pykhvKposK6v+SUWpWS62P0K61qoUVctEcsz4PS+KkcbOTVIq9wczG8zpvQwcYPWHBEb2kc9YrxmcViVB5vIcG8kDXLvNYTS71KeaAFQdVnGDRSBurFkmNM5R4K4X+y5ccCZXGQN2jBPTQu2IxLNBuBbbKa3mWd6EKRvW+I2DQafwCjE0mlrNr/AL+AbcOsj+c24+/AAAAAElFTkSuQmCC);
+			margin-right:10px;
 			display: inline-block;
 			vertical-align:middle;
+			background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAcxJREFUOBGdVb1qAkEQ9vYwiBcwXiyuiOGKEJLaIoHUh/U9RSxS5Ql8BIsUpsgLHAlCGhEby1xhnZ9CvBDQQs5IvEMQNPMdrviz/twt6O7OzPfN7O7MnBTbMiqVylEikThljB3CbDKZDEej0bdpmr+bYJJIUavVLjKZTCGZTF6nUqmTeDyuwm48HruDweDH9/23Xq9XzufzHyL8XFYsFplt2/etVuuTQFOKaLo6IIMONrC1LOtgTkALmW+gyOVyT5qm3em6rlFUMUlaPwBk0KXT6WNZlm/I4Vk2m31tNBpTzhXM8NbpdP5WI9q1b7fbHrBLZPV6/RJH2AXepAcW9w5Shj8Kv0BHPcc6ygAWjwgsQ2ooinJF6RGFK8AAi4wAF0OeITVED7CvB2DBEeQsgRSeZ/sSiOzAgQII7lBkEFUGQg8VEJWA48CB0mSoTZQTpQTXhZ6BBQe4AnCz2SyhnKIOYMEBsuAOXdd97Ha7X6FDmwGARbNYwqN8UEZho0S5Lpbe/JWr1WqJPD3Tb7jkacvGcRyfgnih+UFoho4Db2HaF1reItl6fyItmoWqqrebGqzneXa/3y8bhvG+SIa1kJAb8U8A7ZWZzNv1CfgHv1r3E9DWv4gAAAAASUVORK5CYII=);
+		}
+		.icon_select_now {
+			width:20px;
+			height:20px;
+			margin-right:10px;
+			display: inline-block;
+			vertical-align:middle;
+			background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAk5JREFUOBGVlctrU1EQxn/3tqZVKxQRCirdWRRX4sKuK7j1GYoLN4JYULT6FwiuFSOiEf+A+iq6FwV3uhIXWqmugigVKT5iTUKa6zfn5CQ3MUnTgXPPa+Y7c+bMNzeihyRHGGWAcSJGnFpCkVUK0VN+dDOLOm0kx9lNhhmBTartFODWOuCyAD+rvaJCPprnQ7t9C2ACMdPMCuys2oRmCKxVpERNrcKi2l2Nb0WPNKpLQz3JCiLmHkOcYJhNQaFnX1YIysxzn9MCsmOcD94m5ryAjvUNZlZDim2GrLuVR/GAyVH2uGuawnrFbqMQubjL1qJkJ81occKN1/rEg5Bpi4jZ2iNKYpcagxxIXb475OgOuPIern6UpYCDmFvKCMOKXZ751Ajbvo8GWudbxuDyCxjbBd8+6QmqzX17WsNQzsbybHMjz4LK/izc/AVTF/zKyDaBPReYolJ4A7cPB81mb7kqAqT8bu6xIiJs2AjTOeWhPJ08Bdv3wpd3kDsEf7sSRf7V+EPCcgoOFp7B3Dm/lL0G4/tgaRGuH4Ti9xbVxsQwRM3YuOnoZAxIy8s78PCSVrTx86vApuD3UlqjOTZbT8mCY0pykhvKposK6v+SUWpWS62P0K61qoUVctEcsz4PS+KkcbOTVIq9wczG8zpvQwcYPWHBEb2kc9YrxmcViVB5vIcG8kDXLvNYTS71KeaAFQdVnGDRSBurFkmNM5R4K4X+y5ccCZXGQN2jBPTQu2IxLNBuBbbKa3mWd6EKRvW+I2DQafwCjE0mlrNr/AL+AbcOsj+c24+/AAAAAElFTkSuQmCC);
 		}
 	</style>
 </head>
 
 <body>
-	<div style="width:50%;height:300px;background: #fff;min-height:500px;margin:50px auto;min-width:800px">
-		<h2 style="padding:50px;font-size:30px;text-align:center;">账号注册</h2>
-		<div style="text-align:center">
+	<div style="width:50%;height:300px;background: #fff;min-height:500px;margin:80px auto;min-width:800px">
+		<h2 style="padding:50px;font-size:30px;">账号注册</h2>
+		<div>
 		<form action="" method="post">
 			<div class="row-title">
-				<div class="row-con in-line">邮箱号：&nbsp;</div>
+				<div class="row-con in-line">邮箱号：&nbsp;&nbsp;</div>
 				<div class="lab in-line"><input class="inp" type="text" name="email" value=""></div>
 			</div>
 			<div class="row-title">
-				<div class="row-con in-line">昵&nbsp;&nbsp;&nbsp;称：</div>
+				<div class="row-con in-line">昵&nbsp;&nbsp;&nbsp;称：&nbsp;&nbsp;&nbsp;</div>
 				<div class="lab in-line"><input class="inp" type="text" name="email" value=""></div>
 			</div>
 			<div class="row-title">
-				<div class="row-con in-line">密&nbsp;&nbsp;&nbsp;码：</div>
-				<div class="lab in-line"><input class="inp" type="text" name="email" value=""></div>
+				<div class="row-con in-line">密&nbsp;&nbsp;&nbsp;码：&nbsp;&nbsp;&nbsp;</div>
+				<div class="lab in-line"><input class="inp" type="password" name="email" value=""></div>
 			</div>
 			<div class="row-title">
 				<div class="row-con in-line">确认密码：</div>
-				<div class="lab in-line"><input class="inp" type="text" name="email" value=""></div>
+				<div class="lab in-line"><input class="inp" type="password" name="email" value=""></div>
 			</div>
 			<div class="row-title row-con">
-				<input style="margin-top:50px;padding-left:100px;width:360px;line-height:30px;background: #ff6700;color: #fff;border:none;text-align:center" type="submit" value="提交">
-				<div class="msg"><i class="icon_select"></i>注册帐号即表示您同意并愿意遵守 用户协议和 隐私政策</div>
+				<input style="margin-top:30px;width:410px;line-height:34px;background: #ff6700;font-size:16px;color: #fff;border:none;text-align:center" type="submit" value="提交">
+				<div class="msg"><i class="icon_select_now" id="icon"><input type="hidden" id="is_agree" name="is_agree" value="1"></i>注册帐号即表示您同意并愿意遵守 用户协议和 隐私政策</div>
 			</div>
-			
 		</form>
 		</div>
 	</div>
+	<script type="text/javascript">
+	$('#icon').click(function(){
+		var _now = $('#icon').attr('class');
+		if(_now === 'icon_select_now'){
+			$('#icon').attr('class','icon_select');
+			$('#is_agree').val(0);
+		}else{
+			$('#icon').attr('class','icon_select_now');
+			$('#is_agree').val(1);
+		}
+	})
+	</script>
 </body>
 </html>

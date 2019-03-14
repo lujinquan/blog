@@ -6,7 +6,7 @@ use think\Loader;
 
 class Article extends Model
 {
-	    // 设置模型名称
+	// 设置模型名称
     protected $name = 'article';
     // 设置主键
     protected $pk = 'article_id';
