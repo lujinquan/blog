@@ -1975,7 +1975,7 @@ ul.pagination li a {
   padding-top: 1.5em;
 }
 .contact-form-left {
-  /*margin-bottom: 1.5em;*/
+
 }
 .contact input[type="text"] {
 	width: 33.2%;
@@ -2489,40 +2489,5 @@ overflow: hidden;
 text-overflow: ellipsis;
 white-space: nowrap;
 }
-
-  .tpt-sidebar {  
-    margin: 20px 10px 20px;
-    padding-top: 25px;
-  }
-  .tpt-f li a{
-    float: left;
-    line-height: 22px;
-    font-size: 14px;
-    height: 22px;
-    margin: 0 10px 10px 0;
-    padding: 0 8px;
-    color: #fff;
-    border-radius: 50px;
-  }
-  .tpt-f-1,.tpt-f-6,.tpt-f-11,.tpt-f-16,.tpt-f-21,.tpt-f-26 {
-    background: #43ac6a;
-  }
-  .tpt-f-2,.tpt-f-7,.tpt-f-12,.tpt-f-17,.tpt-f-22,.tpt-f-27 {
-    background: #f3a557;
-  }
-  .tpt-f-3,.tpt-f-8,.tpt-f-13,.tpt-f-18,.tpt-f-23,.tpt-f-28 {
-    background: #f25e45;
-  }
-  .tpt-f-4,.tpt-f-9,.tpt-f-14,.tpt-f-19,.tpt-f-24,.tpt-f-29 {
-    background: #34afd8;
-  }
-  .tpt-f-5,.tpt-f-10,.tpt-f-15,.tpt-f-20,.tpt-f-25,.tpt-f-30 {
-    background: #d834d3;
-  }
-  a.bck:hover {
-    text-decoration: none;
-    background: black;
-    outline: 0;
-  }
 
 }

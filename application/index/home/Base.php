@@ -32,7 +32,7 @@ class Base extends Common
             'status' => 1,
         ];
         $hotArticles = ArticleModel::where($hotWhere)->field('thumb,article_id,article_title,ctime')->order('click desc')->limit(3)->select();
-        //halt(strstr('/index/Tosur/index',$thisMenu));
+
         $this->assign('hotArticles',$hotArticles);
         $this->assign('thisMenu',$thisMenu);
         $this->assign('topMenus',$topMenus);

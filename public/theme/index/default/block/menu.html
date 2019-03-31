@@ -14,17 +14,10 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-left">
-					
 					{volist name="topMenus" id="vo"}
 					<li><a href="{$vo['link']}" {if condition="(strstr($vo['link'],$thisMenu))"}class="active"{/if}>{$vo['cate_name']}</a></li>
 					{/volist}
-						<!-- <li><a href="/" class="active">首页</a></li>
-						<li><a href="/index/Tour/index">旅行</a></li>
-						<li><a href="/index/Gallery/index">书屋</a></li>
-						<li><a href="/index/Blog/index">博客</a></li>
-						<li><a href="/index/Contact/index">关于我</a></li> -->
 					</ul>
-					
 					<div class="social-icons">
 						<ul>
 							<li><a href="javascript:;" class="weixin"></a></li>
@@ -34,30 +27,20 @@
 					</div>
 					<div class="login-out">
 						<ul>
-							<li><a href="{:url('user/login')}" id="login">登录</a></li>
-							<li><a href="javascript:;" id="register">注册</a></li>
+							{if condition="cookie('member_id')"}
+								<li>
+									<span style="color:#BBBBBB">当前账号：</span><font color="#5F9EA0">{:cookie('nick')}<a href="javascript:;" id="logout">&nbsp;&nbsp;[退出]</a></font>
+								</li>
+								<li>
+									<a href="{:url('user/info')}" target="_blank"><font color="#5F9EA0">>>个人中心</font></a>
+								</li>
+							{else/}
+								<li><a href="{:url('user/login')}" id="login">登录</a></li>
+								<li><a href="javascript:;" id="register">免费注册</a></li>
+							{/if}
 						</ul>
 					</div>
 					<div class="clearfix"> </div>
-
-					<!-- 简单遮罩层 -->
-					<!-- <div id="mask" class="mask"></div> 
-					<style type="text/css">     
-					    .mask {       
-					            position: absolute; top: 0px; filter: alpha(opacity=60); background-color: #808080;     
-					            z-index: 1002; left: 0px;     
-					            opacity:0.8; -moz-opacity:0.5;     
-					        }     
-					</style>  
-					<script>
-						//注册点击事件
-						$('#register').click(function(){
-							$("#mask").css("height",$(document).height());     
-					        $("#mask").css("width",$(document).width()); 
-					        $("#mask").html(""); 
-					        $("#mask").show();     
-						});
-					</script> -->
 					<!-- layer弹出层 -->
 					<script>
 						$('#register').click(function(){
@@ -84,7 +67,24 @@
 						        },
 
 							});
-						});
+						})
+						$('#logout').click(function(){
+							var _member_id = '{:cookie('member_id')}';
+							$.ajax({
+								type: 'post',
+							    url: '/index/user/logout',
+							    data: 'member_id='+_member_id,
+							    dataType: "json",
+							    success: function(res){
+							  	  	if(res.code != 0){
+							  	  		alert(res.msg);
+							  	  	}else{
+							  	  		location.href = '/';
+							  	  	}
+							    	
+							    }
+							});
+						})
 					</script>
 				</div>
 			</div>	

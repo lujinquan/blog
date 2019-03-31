@@ -35,11 +35,10 @@
 		    font-size:100%;
 		    vertical-align:baseline;
 		    background:transparent;
-		     
+		    text-decoration:none;
 		}
 		a:hover,a:focus{
 		    text-decoration:none;
-		    bblr:expression(this.onFocus=this.blur());/*IE*/
 		    outline-style:none;/*FF*/ 
 		    }
 		table {
@@ -81,45 +80,57 @@
 			display:inline;
 		}
 		.lab {
-			/*margin-left:20px;*/
+			width: 70%;
 		}
 		.inp {
-			width:300px;
-			line-height:30px;
+			
+			line-height:35px;
 			border:1px solid #e8e8e8;
 			cursor:pointer;
 			padding-left:10px
 		}
+		.len {
+			width:400px;
+		}
+		.sh {
+			width:300px;
+		}
+		/*.rh {
+			width:100px;
+		}*/
 		.msg {
 			font-size: 14px;
 			margin-top: 40px;
     		font-family: arial,"Hiragino Sans GB", "Microsoft YaHei","微軟正黑體","儷黑 Pro", sans-serif;
 		}
-		
-
-
-		.btn_sns_icontype {
-			background:url('web.blog.com/static/image/icons_type.png');
-			width: 18px;
-			height: 18px;
-			vertical-align: middle;
+		.oth_type_links {
+			width: 400px;
+			height: 40px;
+			/*border: 1px solid red;*/
+			padding: 3px auto;
 		}
 		.icon_type .btn_sns_icontype {
-			display: block;
+			/*display: block;*/
+			float: left;
 			margin: 4px auto 0;
+			background: url(/static/image/icons_type.png);
 		}
 		.icon_default_qq {
-			background-position: -19xp 0;
+			background-position: -19px 0;
+			background-color: #0288d1;
+			width: 25px;
 		}
 		.icon_default_weibo {
-			background-position: -38xp 0;
+			background-position: -38px 0;
+			background-color: #d32f2f;
+			width: 25px;
 		}
 		.icon_default_alipay {
-			background-position: -57xp 0;
+			background-position: -57px 0;
 			width: 25px;
 		}
 		.icon_default_weixin {
-			background-position: -83xp 0;
+			background-position: -83px 0;
 			width: 25px;
 		}
 		
@@ -127,24 +138,26 @@
 </head>
 
 <body>
-	<div style="width:50%;height:300px;background: #fff;min-height:500px;margin:80px auto;min-width:800px">
+	<div style="width:50%;height:550px;background: #fff;min-height:500px;margin:80px auto;min-width:800px">
 		<h2 style="padding:50px;font-size:30px;">账号登录</h2>
 		<div>
-		<form action="" method="post">
+		<form>
 			<div class="row-title">
-				
-				<div class="lab in-line"><input class="inp" type="text" name="email" placeholder="邮箱/手机号码" value=""></div>
+				<div class="in-line"><input class="inp len" id="email" type="text" name="email" placeholder="邮箱/手机号码" value=""></div>
 			</div>
 			<div class="row-title">
-				<div class="lab in-line"><input class="inp" type="password" name="password" placeholder="密码" value=""></div>
+				<div class="in-line"><input class="inp len" id="password" type="password" name="password" placeholder="密码" value=""></div>
+			</div>
+			<div class="row-title">
+				<div class="lab in-line"><input class="inp sh" id="captcha" type="text" name="captcha" placeholder="验证码" value=""></div><div class="in-line rh" style="border:1px solid red;margin:20px;"><img class="img_code" src='/captcha.html' onclick="this.src='/captcha.html?d='+Math.random();" /></div>
 			</div>
 			<div class="row-title row-con">
-				<input style="margin-top:30px;width:410px;line-height:34px;background: #ff6700;font-size:16px;color: #fff;border:none;text-align:center" type="submit" value="登录">
+				<input style="margin-top:30px;width:410px;line-height:34px;background: #ff6700;font-size:16px;color: #fff;border:none;text-align:center;cursor:pointer" type="button" id="ajsubmit" value="登录">
 				<div class="msg">手机短信登录/注册</div>
-				<div class="msg">立即注册|忘记密码？</div>
+				<div class="msg"><a href="{:url('user/register')}">立即注册</a>&nbsp;|&nbsp;<a href="javascript:;">忘记密码？</a></div>
 			</div>
 		</form>
-		<div>其他方式登录</div>
+		<div class="msg">其他方式登录</div>
 		<div id="sns-login-links" class="oth_type_links">
 			<a class="icon_type btn_qq sns-login-link" data-type="qq" href="/pass/sns/login/auth?appid=100284651&amp;&amp;callback=https%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttps%253A%252F%252Fwww.mi.com%252F%253Fclient_id%253D180100041086%26sign%3DMzU2MGI1MjBiZWJhOTQyYTdmZmRhZDViM2NkMTFiMWQwZDAyMjE4ZQ%2C%2C&amp;sid=mi_eshop" title="QQ登录" target="_blank"><i class="btn_sns_icontype icon_default_qq"></i></a>
 			<a class="icon_type btn_weibo sns-login-link" data-type="weibo" href="/pass/sns/login/auth?appid=2996826273&amp;&amp;callback=https%3A%2F%2Forder.mi.com%2Flogin%2Fcallback%3Ffollowup%3Dhttps%253A%252F%252Fwww.mi.com%252F%253Fclient_id%253D180100041086%26sign%3DMzU2MGI1MjBiZWJhOTQyYTdmZmRhZDViM2NkMTFiMWQwZDAyMjE4ZQ%2C%2C&amp;sid=mi_eshop" title="微博登录" target="_blank"><i class="btn_sns_icontype icon_default_weibo"></i></a>
@@ -153,6 +166,7 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+	// 同意协议说明
 	$('#icon').click(function(){
 		var _now = $('#icon').attr('class');
 		if(_now === 'icon_select_now'){
@@ -163,6 +177,25 @@
 			$('#is_agree').val(1);
 		}
 	})
+	// 会员登录
+	$('#ajsubmit').click(function(){
+		var _email = $('#email').val();
+		var _password = $('#password').val();
+		$.ajax({
+			type: 'post',
+		    url: '/index/user/login',
+		    data: 'email='+_email+'&password='+_password,
+		    dataType: "json",
+		    success: function(res){
+		  	  	if(res.code != 0){
+		  	  		alert(res.msg);
+		  	  	}else{
+		  	  		location.href = '/';
+		  	  	}
+		    	
+		    }
+		});
+	})	
 	</script>
 </body>
 </html>

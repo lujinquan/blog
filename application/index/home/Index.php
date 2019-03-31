@@ -9,7 +9,7 @@ use app\blog\model\Article as ArticleModel;
 class Index extends Base
 {
     public function index()
-    {
+    {//halt(cookie('member'));//cookie('avatar')
     	$banner = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>97])->field('article_id,thumb')->find();
     	$this->assign('banner',$banner);
 
