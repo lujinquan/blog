@@ -20,12 +20,14 @@ class User extends Base
             $validate = new Validate([
                 'email|邮箱' => 'require|email',
                 'password|密码' => 'require',
+                'captcha|验证码' => 'require|captcha',
             ]);
             if (!$validate->check($data)) {
                 $result['code'] = -1;
                 $result['msg'] = $validate->getError();
                 return json($result);
             }
+
             $member = MemberModel::where($map)->find();
             if (!$member) {
                 $result['code'] = -2;
@@ -81,13 +83,19 @@ class User extends Base
 			    'password|密码'   => 'require|length:32|confirm',
 			]);
             if (!$validate->check($data)) {
-			    return $this->error($validate->getError());
+                $result['code'] = -1;
+                $result['msg'] = $validate->getError();
+                return json($result);
 			}
             $mod = new MemberModel();
             if (!$mod->allowField(true)->create($data)) {
-                return $this->error('添加失败');
+                $result['code'] = -1;
+                $result['msg'] = '未知错误';
+                return json($result);
             }
-            return $this->success('添加成功');
+            $result['code'] = 0;
+            $result['msg'] = '注册成功';
+            return json($result);
         }
 		return $this->fetch();
 	}

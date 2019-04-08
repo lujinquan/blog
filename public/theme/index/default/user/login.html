@@ -3,6 +3,7 @@
 <head>
 	<title>Lucas账号-登录</title>
 	<script src="__HOME_JS__/jquery.min-2.2.1.js?v={:config('hisiphp.version')}"></script>
+	<script src="__STATIC__/js/layer/layer.js?v={:config('hisiphp.version')}"></script>
 	<style>
 		/* CSS Document */
 		html, body, div, span, object, iframe,h1, h2, 
@@ -16,7 +17,6 @@
 		    padding:0;
 		    border:0;
 		    outline:0;
-		    font-size:100%;
 		    background:transparent;
 		    outline-style:none;/*FF*/ 
 		}
@@ -29,7 +29,6 @@
 		    margin:0;
 		    padding:0;
 		    border:0;
-		    font-size:100%;
 		    background:transparent;
 		    text-decoration:none;
 		}
@@ -46,7 +45,7 @@
 			min-width:800px;
 		}
 		.title_big30 {
-			padding-top:50px;
+			padding-top:40px;
 			padding-bottom:80px;
 			font-weight:normal;
 			font-size:30px;
@@ -54,7 +53,7 @@
 		.row-title {
 			margin-bottom:30px;
 			font-size:18px;
-			font-weight:normal
+			font-weight:normal;
 		}
 		.in-line {
 			display:inline;
@@ -77,9 +76,21 @@
 		.img_code {
 			margin-bottom:-15px;
 		}
+		.login-submit {
+			margin-top:30px;
+			width:410px;
+			line-height:40px;
+			background: #ff6700;
+			font-size:16px;
+			color: #fff;
+			border:none;
+			text-align:center;
+			cursor:pointer;
+		}
 		.msg {
+
 			font-size: 14px;
-			margin-top: 40px;
+			margin-top: 50px;
     		font-family: arial,"Hiragino Sans GB", "Microsoft YaHei","微軟正黑體","儷黑 Pro", sans-serif;
 		}
 		.oth_type_links {
@@ -150,17 +161,13 @@
 				</div>
 			</div>
 			<div class="row-title row-con">
-				<input style="margin-top:30px;width:410px;line-height:40px;background: #ff6700;font-size:16px;color: #fff;border:none;text-align:center;cursor:pointer" type="button" id="ajsubmit" value="登录">
+				<input class="login-submit" tyle="" type="button" id="ajsubmit" value="登录">
 				<!-- <div class="msg">手机短信登录/注册</div> -->
 				<div class="msg"><a href="{:url('user/register')}">立即注册</a>&nbsp;|&nbsp;<a href="javascript:;">忘记密码？</a></div>
 			</div>
 		</form>
 		<div class="msg">其他方式登录</div>
 		<div id="sns-login-links" class="oth_type_links">
-			<!-- <a class="icon_type btn_qq"><i class="btn_sns_icontype icon_default_qq"></i></a>
-			<a class="icon_type btn_weibo"><i class="btn_sns_icontype icon_default_weibo"></i></a>
-			<a class="icon_type btn_alipay"><i class="btn_sns_icontype icon_default_alipay"></i></a>
-			<a class="icon_type btn_weixin"><i class="btn_sns_icontype icon_default_weixin"></i></a> -->
 			<a class="icon_type btn_qq sns-login-link" data-type="qq" href="javascript:;" title="QQ登录" target="_blank"><i class="btn_sns_icontype icon_default_qq"></i></a>
 			<a class="icon_type btn_weibo sns-login-link" data-type="weibo" href="javascript:;" title="微博登录" target="_blank"><i class="btn_sns_icontype icon_default_weibo"></i></a>
 			<a class="icon_type btn_alipay sns-login-link" data-type="alipay" href="javascript:;" title="支付宝登录" target="_blank"><i class="btn_sns_icontype icon_default_alipay"></i></a>
@@ -169,6 +176,7 @@
 	</div>
 	<script type="text/javascript">
 	// 同意协议说明
+	console.log('欢迎进入到Lucas个人网站登录页面，赠送100积分，点此领取');
 	$('#icon').click(function(){
 		var _now = $('#icon').attr('class');
 		if(_now === 'icon_select_now'){
@@ -183,20 +191,37 @@
 	$('#ajsubmit').click(function(){
 		var _email = $('#email').val();
 		var _password = $('#password').val();
-		$.ajax({
-			type: 'post',
-		    url: '/index/user/login',
-		    data: 'email='+_email+'&password='+_password,
-		    dataType: "json",
-		    success: function(res){
-		  	  	if(res.code != 0){
-		  	  		alert(res.msg);
-		  	  	}else{
-		  	  		location.href = '/';
-		  	  	}
-		    	
-		    }
-		});
+		var _captcha = $('#captcha').val();
+		var msg = '';
+		if(!_captcha){
+			msg = '请输入验证码';
+		}
+		if(!_password){
+			msg = '请输入密码';
+		}
+		if(!_email){
+			msg = '请输入邮箱号';
+		}
+		if(msg){
+			layer.msg(msg,{offset: 't',anim: 6});
+		}else{
+			$.ajax({
+				type: 'post',
+			    url: '/index/User/login',
+			    data: 'email='+_email+'&password='+_password+'&captcha='+_captcha,
+			    dataType: "json",
+			    success: function(res){
+			  	  	if(res.code != 0){
+			  	  		layer.msg(res.msg,{offset: 't',anim: 6});
+			  	  	}else{
+			  	  		layer.msg(res.msg,{offset: 't',anim: 6},function(){
+							//关闭后的操作
+							location.href = '/';
+						});
+			  	  	}
+			    }
+			});
+		}
 	})	
 	</script>
 </body>
