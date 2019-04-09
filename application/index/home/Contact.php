@@ -17,16 +17,21 @@ class Contact extends Base
          * $level 容错级别 ，$size 生成图片大小
          * $margin 图片的margin ，$saveandprint是否直接输出
          */
-    	/*$code = substr(md5(substr(uniqid(),-6)),6).substr(uniqid(),-6);
-        $$text = 'http://www.mylucas.com.cn/index/Contact/index';   //二维码内容
-        $level = 'L';    //容错级别 
-        $size = 10;           //生成图片大小
-        $url = '/upload/qrcode/'.$code.'.png';
-        $outfile = $_SERVER['DOCUMENT_ROOT'].$url;
-        $qrcode = new QRcode;
-        $qrcode::png($text,$outfile,$level,$size,0);
-   		$this->assign('qrcode_url',$url);*/
+    	// $code = substr(md5(substr(uniqid(),-6)),6).substr(uniqid(),-6);
+     //    $text = 'http://www.mylucas.com.cn/index/Contact/info';   //二维码内容
+     //    $level = 'L';    //容错级别
+     //    $size = 10;           //生成图片大小
+     //    $url = '/upload/qrcode/'.$code.'.png';
+     //    $outfile = $_SERVER['DOCUMENT_ROOT'].$url;
+     //    $qrcode = new QRcode;
+     //    $qrcode::png($text,$outfile,$level,$size,0);
+   		// $this->assign('qrcode_url',$url);
 
+        return $this->fetch();
+    }
+
+    public function info()
+    {
         return $this->fetch();
     }
 }

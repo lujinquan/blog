@@ -40,10 +40,17 @@ class Member extends Validate
         'mobile.regex'     => '手机号不正确',
     ];
 
-    // 自定义更新场景
-    public function sceneAdd()
+    //定义验证场景
+    protected $scene = [
+        //新增
+        'register'  =>  ['email', 'password', 'nick', '__token__'],
+  
+        
+    ];
+    /*// 自定义更新场景
+    public function sceneRegister()
     {
-        return $this->only(['username', 'email', 'mobile', 'password', 'nick', '__token__']);
+        return $this->only(['email', 'password', 'nick', '__token__']);
     }
 
     // 自定义更新场景
@@ -69,5 +76,5 @@ class Member extends Validate
                     ->remove('username', ['unique'])
                     ->remove('password', ['confirm'])
                     ->append('username', ['require']);
-    }
+    }*/
 }

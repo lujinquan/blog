@@ -24,7 +24,7 @@ class Member extends Admin
         return $this->fetch();
     }
 
-    public function add()
+    public function register()
     {
         if ($this->request->isPost()) {
             $data = $this->request->post();
@@ -33,7 +33,7 @@ class Member extends Admin
             $data['salt'] = random();
             //halt($data);
             // 验证
-            $result = $this->validate($data, 'Member.sceneAdd');
+            $result = $this->validate($data, 'Member.sceneRegister');
             if($result !== true) {
                 return $this->error($result);
             }
