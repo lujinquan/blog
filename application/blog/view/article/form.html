@@ -62,19 +62,6 @@
       <input type="checkbox" value="1" name="is_stick" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
     </div>
   </div>
-   <!-- <div class="layui-form-item">
-    <div class="layui-inline">
-      <label class="layui-form-label">复选框</label>
-      <div class="layui-input-inline" style="width:560px">
-        <input type="checkbox" name="attr_type[]" value="0" lay-skin="primary" title="正常" checked="">
-        <input type="checkbox" name="attr_type[]" value="1" lay-skin="primary" title="推荐">
-        <input type="checkbox" name="attr_type[]" value="2" title="火热">
-        <input type="checkbox" name="attr_type[]" value="3" title="滚动">
-        <input type="checkbox" name="attr_type[]" value="4" title="轮播">
-      </div>
-    </div>
-  </div> -->
-
   <div class="layui-form-item">
     <div class="layui-inline">
       <label class="layui-form-label">文章类型</label>
@@ -99,11 +86,8 @@
         <input type="text" name="keywords" autocomplete="off" class="layui-input">
       </div>
       <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i></div>
-      <!-- <div class="layui-btn">一个标准的按钮</div> -->
     </div>
-    
   </div>
-
   <div class="layui-form-item">
     <div class="layui-inline">
       <label class="layui-form-label">排序号</label>
@@ -120,12 +104,12 @@
       <div class="layui-form-mid layui-word-aux"><i style="color:red">*</i></div>
     </div>
   </div>
-
   <div class="layui-form-item">
     <div class="layui-inline">
       <label class="layui-form-label">文章内容</label>
-      <div class="layui-input-inline">
-        <textarea class="layui-textarea" name="article_content" id="LAY_demo_editor"></textarea>
+      <div class="layui-col-md10 layui-col-sm10">
+        <!-- <textarea class="layui-textarea" name="article_content" id="LAY_demo_editor"></textarea> -->
+          <script id="editor" type="text/plain" name="article_content" style="height:500px;"></script>
       </div>
     </div>
   </div>
@@ -133,7 +117,7 @@
     <div class="layui-inline">
       <label class="layui-form-label"></label>
       <div class="layui-form-mid layui-word-aux" style="width:700px">
-        推荐：1、标题使用加黑字体。&nbsp;2、正文字体颜色选择#64451D、每行缩进。&nbsp;3、整篇文章使用3倍行距。
+        推荐：1、标题使用加黑字体。&nbsp;2、正文字体颜色选择#64451D、每行缩进。
       </div>
     </div>
   </div>
@@ -154,14 +138,15 @@
   </div>
 </form>
 {include file="system@block/layui" /}
-<link rel="stylesheet" href="/kindeditor/themes/default/default.css" />
+<!-- <link rel="stylesheet" href="/kindeditor/themes/default/default.css" />
 <link rel="stylesheet" href="/kindeditor/plugins/code/prettify.css" />
 <script charset="utf-8" src="/kindeditor/kindeditor-all.js"></script>
 <script charset="utf-8" src="/kindeditor/lang/zh-CN.js"></script>
-<script charset="utf-8" src="/kindeditor/plugins/code/prettify.js"></script>
+<script charset="utf-8" src="/kindeditor/plugins/code/prettify.js"></script> -->
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>    
+<script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"> </script>     
+<script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
 <script>
-
-
   layui.use('form',function(){
     var $ = layui.jquery;
     var form = layui.form;
@@ -192,7 +177,7 @@
         });
       }
       ,done: function(res){
-        console.log(res);
+        //console.log(res);
         //如果上传失败
         if(res.code == 1){
           $('#thumb').val(res.data.file);
@@ -212,7 +197,8 @@
       }
     });
   });
-  KindEditor.ready(function(K) {
+  var ue = UE.getEditor('editor');
+/*  kindEditor编辑器 KindEditor.ready(function(K) {
     var editor1 = K.create('textarea[name="article_content"]', {
       cssPath : '/kindeditor/plugins/code/prettify.css',
       uploadJson : '/kindeditor/php/upload_json.php',
@@ -240,5 +226,5 @@
     }
   });
     prettyPrint();
-  });
+  });*/
 </script>

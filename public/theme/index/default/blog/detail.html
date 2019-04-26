@@ -3,12 +3,10 @@
 	<!--//header-->
 	<div class="single-page">
 		<div class="container">
-			<div class="work-title sngl-title">
-				<ol class="breadcrumb">
-					<li><a href="index.html">博客</a></li>
-					<li class="active">详情</li>
-				</ol>
-			</div>
+			<ol class="breadcrumb">
+				<li><a href="/index">首页</a></li>
+				<li class="live">详情</li>
+			</ol>
 			<div class="col-md-8 single-page-left">
 				<div class="single-page-info">
 				<h5>{$data_info['article_title']}</h5>
@@ -78,7 +76,7 @@
 						<input type="hidden" name="article_id" value="{$data_info['article_id']}" >
 						<input type="submit" value="提交评论" >
 						
-						<p class="help-block">提示：当前用户未<a href="#">登录</a>，此次评论将默认为匿名……</p>
+						<p class="help-block">提示：当前用户未<a target="_blank" href="{:url('user/login')}">登录</a>，此次评论将默认为匿名……</p>
 						<!-- <button type="button" class="btn btn-primary" >提交评论</button> -->
 					</form>
 				</div>		

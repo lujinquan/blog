@@ -7,10 +7,10 @@
 			<li><a href="/index">首页</a></li>
 			<li>博客</li>
 		</ol>
-		<div class="col-md-8 blog-left" >
+		<div class="col-md-8 blog-left">
 			{volist name="initArticles" id="vo"}
 			<!-- <div class="blog-info" style="border:1px solid red;padding:5px"> -->
-			<div class="blog-info">
+			<div class="blog-info shadow">
 				<h4><a href="{:url('detail')}?article_id={$vo['article_id']}">{$vo['article_title']}</a></h4>
 				<p>上传自 &nbsp;<a href="#">{$vo['author']}</a> &nbsp;&nbsp;{$vo['ctime']} &nbsp;&nbsp; <a href="#">浏览 ({$vo['click']})</a></p>
 				<div class="blog-info-text">
@@ -48,5 +48,7 @@
 		</nav> -->
 	</div>	
 </div>	
-	
+<script type="text/javascript">
+
+</script>
 {/block}

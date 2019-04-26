@@ -18,13 +18,13 @@
 					<li><a href="{$vo['link']}" {if condition="(strstr($vo['link'],$thisMenu))"}class="active"{/if}>{$vo['cate_name']}</a></li>
 					{/volist}
 					</ul>
-					<div class="social-icons">
+					<!-- <div class="social-icons">
 						<ul>
 							<li><a href="javascript:;" class="weixin"></a></li>
 							<li><a href="javascript:;" class="weibo"></a></li>
 							<li><a href="javascript:;" class="qq"></a></li>
 						</ul>	
-					</div>
+					</div> -->
 					<div class="login-out">
 						<ul>
 							{if condition="cookie('member_id')"}
@@ -35,7 +35,7 @@
 									<a href="{:url('user/info')}" target="_blank"><font color="#5F9EA0">>>个人中心</font></a>
 								</li>
 							{else/}
-								<li><a href="{:url('user/login')}" id="login">登录</a></li>
+								<li><a href="{:url('user/login')}" id="login">登录</a></li>/&nbsp;&nbsp;
 								<li><a href="javascript:;" id="register">免费注册</a></li>
 							{/if}
 						</ul>

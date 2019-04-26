@@ -1,52 +1,44 @@
 <div class="page-toolbar">
-    <div class="page-filter">
-        <div class="layui-input-inline layui-col-md2">
-            <a href="{:url('add')}" class="layui-btn layui-btn-normal layui-icon layui-icon-edit">&nbsp;新增文章</a>
-        </div>
-        <form class="layui-form layui-form-pane" action="{url('index')}"  method="get" id="hisi-table-search">
-            <div class="layui-input-inline layui-col-md2">
-                <select name="cate_id">
-                  <option value="">请选择栏目</option>
-                  <option value="0">顶级</option>
-                  {volist name="cates" id="vo"}
-                  {if condition="$vo['level'] == 1"}
-                  <option value="{$vo['cate_id']}">&nbsp;&nbsp;{$vo['cate_name']}</option>
+    <form class="layui-form layui-form-pane" action="{url('index')}"  method="get" id="hisi-table-search">
+        <div class="layui-input-inline" style="width:150px;">
+            <select name="cate_id">
+              <option value="">请选择栏目</option>
+              <option value="0">顶级</option>
+              {volist name="cates" id="vo"}
+              {if condition="$vo['level'] == 1"}
+              <option value="{$vo['cate_id']}">&nbsp;&nbsp;{$vo['cate_name']}</option>
                   {volist name="cates" id="vo1"}
                   {if condition="$vo1['p_id'] == $vo['cate_id']"}
                   <option value="{$vo1['cate_id']}" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$vo1['cate_name']}</option>
                   {/if}
                   {/volist}
-                    
-                  {/if}
-                  {/volist}
-                  <!-- <optgroup label="书屋">
-                    <option value="13">理财类</option>
-                    <option value="14">生活类</option>
-                    <option value="15">技能类</option>
-                    <option value="16">新闻类</option>
-                  </optgroup> -->
-                </select>
-            </div>
-            <div class="layui-input-inline layui-col-md2" style="margin-left:20px;">
-                <input type="text" name="keywords" placeholder="搜索" class="layui-input">
-            </div>
-            <div class="layui-input-inline layui-col-md3" style="margin-left:20px;">
-                
-                <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">
-                    <i class="layui-icon">&#xe615;</i>
-                    搜索
-                </button>
-                <button type="reset" class="layui-btn">重置</button>
-            </div>
-        </form>
-    </div>
+              {/if}
+              {/volist}
+            </select>
+        </div>
+        <div class="layui-input-inline" style="width:120px;padding-left:5px">
+            <input type="text" name="keywords" placeholder="关键词搜索" class="layui-input">
+        </div>
+        <div class="layui-input-inline" style="margin-left:10px;">
+            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">
+                <i class="layui-icon">&#xe615;</i>
+                搜索
+            </button>
+            <button type="reset" class="layui-btn">重置</button>
+        </div>
+    </form>
 </div>
 {include file="system@block/layui" /}
 <table id="dataTable" lay-filter='dataTable'></table>
+<script type="text/html" id="toolbar">
+  <div class="layui-btn-container">
+    <a href="{:url('add')}"><button class="layui-btn layui-btn-sm layui-btn-normal">新增文章</button></a>
+    <button data-href="{:url('del')}" data-id="house_id" class="layui-btn layui-btn-sm layui-btn-danger j-page-btns">批量删除</button>
+  </div>
+</script>
 <script type="text/html" title="状态模板" id="statusTpl">
     <input type="checkbox" name="is_show" value="{{ d.is_show }}" lay-skin="switch" lay-filter="switchStatus" lay-text="开启|禁用" {{ d.is_show == 1 ? 'checked' : '' }} {{ d.system == 1 ? 'disabled' : '' }} data-href="{:url('show')}?article_id={{ d.article_id }}">
 </script>
-
 <script type="text/html" title="排序模板" id="sortTpl">
     <input type="text" class="layui-input j-ajax-input input-sort" onkeyup="value=value.replace(/[^\d]/g,'')" value="{{ d.sort_order }}" data-value="{{ d.article_id }}" data-href="{:url('sort_order')}?article_id={{ d.article_id }}">
 </script>
@@ -60,8 +52,8 @@
         var table = layui.table;
         table.render({
             elem: '#dataTable'
-            ,height: 480
-            //,height: 'full-20' //浏览器最大高度
+            ,height: 550
+            ,toolbar: '#toolbar'
             ,url: '{:url("blog/Article/index")}' //数据接口
             ,page: true //开启分页
             ,limit: 10
@@ -69,7 +61,8 @@
                 none : '暂无相关数据'
             }
             ,cols: [[ //表头
-                {field: 'sort_order', width: 70, title: '排序', templet: '#sortTpl'}
+                {type: 'checkbox', fixed: 'left'}
+                ,{field: 'sort_order', width: 70, title: '排序', templet: '#sortTpl'}
                 ,{field: 'article_title', width: 180, title: '标题'}
                 ,{field: 'cate_name', width: 110, title: '所属栏目'}
                 ,{field: 'is_show', title: '状态', width: 100, templet: '#statusTpl'}
@@ -77,7 +70,7 @@
                 ,{field: 'love', width: 80, title: '点赞量'}
                 ,{field: 'com', width: 80, title: '评论量'}
                 ,{field: 'ctime', width: 160, title: '创建日期'}
-                ,{title: '操作', width: 180, templet: '#buttonTpl',fixed:'right'}
+                ,{title: '操作', minWidth: 180, templet: '#buttonTpl',fixed:'right'}
             ]]
             ,done:function(res,curr,count){
                
