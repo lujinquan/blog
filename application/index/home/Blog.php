@@ -47,7 +47,7 @@ class Blog extends Base
     public function index()
     {
     	$page = input('param.page/d', 1);
-        $limit = input('param.limit/d', 3);
+        $limit = input('param.limit/d', 5);
         $cateID = input('param.cate_id/d',7);
     	$articleWhere = [
         	'cate_id' => $cateID, //默认显示php语言的栏目
@@ -56,7 +56,7 @@ class Blog extends Base
         ];
         $articleFields = 'article_id,cate_id,article_title,article_long_title,article_desc,link,author,ctime,click,thumb';
     	//$initArticles = ArticleModel::with('cate')->where($articleWhere)->field($articleFields)->page($page)->limit(3)->order('sort_order asc')->select();
-    	$initArticles = ArticleModel::with('cate')->where($articleWhere)->field($articleFields)->page($page)->order('ctime desc')->paginate(5);
+    	$initArticles = ArticleModel::with('cate')->where($articleWhere)->field($articleFields)->page($page)->order('ctime desc')->paginate($limit);
 		//halt($initArticles);//->paginate(config('paginate.list_rows'));
 		$page = $initArticles->render();
 		$this->assign('page',$page);

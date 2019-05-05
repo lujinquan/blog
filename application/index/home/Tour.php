@@ -48,6 +48,6 @@ class Tour extends Base
         
         $this->assign('comments',$comments);
         $this->assign('data_info',$row);
-        return $this->fetch();
+        return $this->fetch('detail_word');
     }
 }

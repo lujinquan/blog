@@ -2491,9 +2491,7 @@ ol.breadcrumb li a {
 }
 
 .line-limit-length {
-overflow: hidden;
-text-overflow: ellipsis;
-white-space: nowrap;
-}
-
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

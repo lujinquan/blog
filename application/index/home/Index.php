@@ -45,6 +45,24 @@ class Index extends Base
         return $this->fetch('detail');
     }
 
+    public function search()
+    {
+        $page = input('param.page/d', 1);
+        $limit = input('param.limit/d', 10);
+        $keywords = input('param.keywords');
+        $where = [];
+        $where[] = ['is_show','eq',1];
+        $where[] = ['status','eq',1];
+        $where[] = ['keywords','like','%'.$keywords.'%'];
+        $articles = ArticleModel::where($where)->page($page)->order('ctime desc')->paginate($limit);
+        $page = $articles->render();
+        $this->assign('page',$page);
+        $this->assign('keywords',$keywords);
+        $this->assign('articles',$articles);
+
+        return $this->fetch('search_index');
+    }
+
     public function album()
     {
         $id = input('article_id');

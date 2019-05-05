@@ -1,0 +1,32 @@
+{extend name="block/layout" /}
+{block name="content"}
+<div class="blog">
+	<div class="container">
+		<ol class="breadcrumb">
+			<li><a href="/index">首页</a></li>
+			<li>搜索</li>
+		</ol>
+		<div class="col-md-12 blog-left">
+			{volist name="articles" id="vo"}
+			<div class="blog-info shadow">
+				<h4><a href="{:url('detail')}?article_id={$vo['article_id']}">{$vo['article_title']}</a></h4>
+				<p>上传自 &nbsp;<a href="#">{$vo['author']}</a> &nbsp;&nbsp;{$vo['ctime']} &nbsp;&nbsp; <a href="#">浏览 ({$vo['click']})</a></p>
+				<div class="blog-info-text">
+					
+					<p class="snglp">{$vo['article_desc']}</p>
+					<a href="{:url('detail')}?article_id={$vo['article_id']}" class="btn btn-primary hvr-rectangle-in">Read More</a>
+				</div>	
+			</div>
+			{/volist}
+		</div>
+		<div class="clearfix"></div>
+		<style>
+		.pages{
+			margin-left:20px;
+			margin-top:50px;
+		}
+		</style>
+		<div class="pages">{$page|raw}</div>
+	</div>	
+</div>
+{/block}

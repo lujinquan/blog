@@ -2,10 +2,10 @@
 return [
   'hisiphp' => 
   [
-    'name' => 'HisiPHP',
+    'name' => 'Lucas',
     'version' => '2.0.0',
     'release' => 0,
-    'copyright' => 'HisiPHP.com',
-    'url' => 'http://www.hisiphp.com',
+    'copyright' => 'www.mylucas.com.cn',
+    'url' => 'http://www.mylucas.com.cn',
   ],
 ];

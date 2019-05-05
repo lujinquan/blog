@@ -3,12 +3,10 @@
 	<!--//header-->
 	<div class="single-page">
 		<div class="container">
-			<div class="work-title sngl-title">
-				<ol class="breadcrumb">
-					<li><a href="index.html">首页</a></li>
-					<li class="active">推荐</li>
-				</ol>
-			</div>
+			<ol class="breadcrumb">
+				<li><a href="/index">旅行</a></li>
+				<li class="live">详情</li>
+			</ol>
 			<div class="col-md-12 single-page-left">
 				<div class="single-page-info">
 				<h5>{$data_info['article_title']}</h5>
@@ -19,7 +17,7 @@
 							<li><span class="clndr"></span>{$data_info['ctime']}</li>
 							<li><span class="admin"></span> <a href="#">{$data_info['author']}</a></li>
 							<li><span class="cmnts"></span> <a href="">{$data_info['com']}条评论</a></li>
-							<li><a href="{:url('blog/love')}?article_id={$data_info['article_id']}" class="like">{$data_info['love']}</a></li>
+							<li><a href="javascript:;" class="like" data-value="{$data_info['article_id']}">{$data_info['love']}</a></li>
 						</ul>
 					</div>
 				</div>	
@@ -44,7 +42,7 @@
 						</a>
 						<h5><a href="{:url('blog/detail')}?article_id={$vo['article_id']}">{$vo['article_title']}</a></h5>
 					</div>
-					{/volist}			
+					{/volist}				
 				</div>
 				<!--//related-posts-->
 				<div class="response">
@@ -70,16 +68,19 @@
 				</div>	
 				<div class="coment-form">
 					<h4>留言</h4>
-					<form>
-						<input type="text" value="姓名 " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '姓名';}" required="">
+					<form action="{:url('com')}" method="post">
+						<!-- <input type="text" name="" value="姓名" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '姓名';}" required="">
 						<input type="email" value="邮箱" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '邮箱';}" required="">
-						<input type="text" value="网站" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '网站';}" required="">
-						<textarea type="text"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '您的留言……';}" required="">您的留言……</textarea>
+						<input type="text" value="网站" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '网站';}" required=""> -->
+						<textarea type="text" name="com_content" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '您的留言……';}" required="">您的留言……</textarea>
+						<input type="hidden" name="article_id" value="{$data_info['article_id']}" >
 						<input type="submit" value="提交评论" >
+						
+						<p class="help-block">提示：当前用户未<a target="_blank" href="{:url('user/login')}">登录</a>，此次评论将默认为匿名……</p>
+						<!-- <button type="button" class="btn btn-primary" >提交评论</button> -->
 					</form>
 				</div>		
 			</div>	
-			
 			<div class="clearfix"> </div>
 		</div>	
 	</div>
