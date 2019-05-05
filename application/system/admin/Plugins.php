@@ -1,12 +1,12 @@
 <?php
 // +----------------------------------------------------------------------
-// | HisiPHP框架[基于ThinkPHP5.1开发]
+// | Thinkphp框架[基于ThinkPHP5.1开发]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2021 http://www.HisiPHP.com
+// | Copyright (c) 2018-2022 http://www.mylucas.com.cn
 // +----------------------------------------------------------------------
-// | HisiPHP承诺基础框架永久免费开源，您可用于学习和商用，但必须保留软件版权信息。
+// | ThinkPHP框架永久免费开源
 // +----------------------------------------------------------------------
-// | Author: 橘子俊 <364666827@qq.com>，开发者QQ群：50304283
+// | Author: Lucas <598936602@qq.com>
 // +----------------------------------------------------------------------
 
 namespace app\system\admin;
@@ -61,7 +61,7 @@ class Plugins extends Admin
 
     /**
      * 插件管理首页
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function index()
@@ -114,7 +114,7 @@ class Plugins extends Admin
 
     /**
      * 插件设计
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function design()
@@ -143,7 +143,7 @@ class Plugins extends Admin
 
     /**
      * 插件配置
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function setting($id = 0)
@@ -189,7 +189,7 @@ class Plugins extends Admin
 
     /**
      * 安装插件
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     public function install()
     {
@@ -205,7 +205,7 @@ class Plugins extends Admin
      * 执行插件安装
      * @date   2018-11-01
      * @access public
-     * @author 橘子俊 364666827@qq.com
+     * @author Lucas 598936602@qq.com
      * @param  int $id  模块ID
      * @return bool|string  
      */
@@ -305,7 +305,7 @@ class Plugins extends Admin
 
     /**
      * 卸载插件
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     public function uninstall($id = 0)
     {
@@ -378,7 +378,7 @@ class Plugins extends Admin
 
     /**
      * 导入插件
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function import()
@@ -453,7 +453,7 @@ class Plugins extends Admin
 
     /**
      * 状态设置
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     public function status()
     {
@@ -476,7 +476,7 @@ class Plugins extends Admin
 
     /**
      * 删除插件
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     public function del($id = 0)
     {
@@ -502,7 +502,7 @@ class Plugins extends Admin
 
     /**
      * 执行内部插件
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function run() {

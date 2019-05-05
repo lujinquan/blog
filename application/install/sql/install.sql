@@ -89,7 +89,7 @@ VALUES
   (39,1,'base','网站状态','site_status','1','switch','0:关闭\r\n1:开启','','站点关闭后将不能访问，后台可正常登录',1,1,1492049460,1494690024),
   (40,1,'sys','后台管理路径','admin_path','admin.php','input','','','必须以.php为后缀',1,1,1492139196,1492140215),
   (41,1,'base','网站标题','site_title','HisiPHP应用市场','input','','','网站标题是体现一个网站的主旨，要做到主题突出、标题简洁、连贯等特点，建议不超过28个字',6,1,1492502354,1494695131),
-  (42,1,'base','网站关键词','site_keywords','hisiphp,hisiphp框架,php开源框架','input','','','网页内容所包含的核心搜索关键词，多个关键字请用英文逗号&quot;,&quot;分隔',7,1,1494690508,1494690780),
+  (42,1,'base','网站关键词','site_keywords','hisiphp,Thinkphp框架,php开源框架','input','','','网页内容所包含的核心搜索关键词，多个关键字请用英文逗号&quot;,&quot;分隔',7,1,1494690508,1494690780),
   (43,1,'base','网站描述','site_description','','textarea','','','网页的描述信息，搜索引擎采纳后，作为搜索结果中的页面摘要显示，建议不超过80个字',8,1,1494690669,1494691075),
   (44,1,'base','ICP备案信息','site_icp','','input','','','请填写ICP备案号，用于展示在网站底部，ICP备案官网：&lt;a href=&quot;http://www.miibeian.gov.cn&quot; target=&quot;_blank&quot;&gt;http://www.miibeian.gov.cn&lt;/a&gt;',9,1,1494691721,1494692046),
   (45,1,'base','站点统计代码','site_statis','&lt;script&gt;alert(\'a\')&lt;/script&gt;','textarea','','','第三方流量统计代码，前台调用时请先用 htmlspecialchars_decode函数转义输出',10,1,1494691959,1494694797),

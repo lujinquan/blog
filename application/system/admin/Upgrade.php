@@ -1,12 +1,12 @@
 <?php
 // +----------------------------------------------------------------------
-// | HisiPHP框架[基于ThinkPHP5.1开发]
+// | Thinkphp框架[基于ThinkPHP5.1开发]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2021 http://www.hisiphp.com
+// | Copyright (c) 2018-2022 http://www.mylucas.com.cn
 // +----------------------------------------------------------------------
-// | HisiPHP承诺基础框架永久免费开源，您可用于学习和商用，但必须保留软件版权信息。
+// | ThinkPHP框架永久免费开源
 // +----------------------------------------------------------------------
-// | Author: 橘子俊 <364666827@qq.com>，开发者QQ群：50304283
+// | Author: Lucas <598936602@qq.com>
 // +----------------------------------------------------------------------
 
 namespace app\system\admin;
@@ -78,7 +78,7 @@ class Upgrade extends Admin
     
     /**
      * 首页
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     public function index()
     {
@@ -119,7 +119,7 @@ class Upgrade extends Admin
 
     /**
      * 升级文件列表
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function lists()
@@ -141,7 +141,7 @@ class Upgrade extends Admin
 
     /**
      * 下载升级包
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function download($version = '')
@@ -198,7 +198,7 @@ class Upgrade extends Admin
 
     /**
      * 安装方法
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function install($file = '', $version = '')
@@ -229,7 +229,7 @@ class Upgrade extends Admin
 
     /**
      * 执行安装
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return bool
      */
     private function _install($file = '', $version = '', $app_type = 'system')
@@ -257,7 +257,7 @@ class Upgrade extends Admin
 
     /**
      * 系统升级
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return bool
      */
     private function _systemInstall($file, $version)
@@ -344,7 +344,7 @@ class Upgrade extends Admin
 
     /**
      * 模块升级
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return bool
      */
     private function _moduleInstall($file, $version)
@@ -461,7 +461,7 @@ class Upgrade extends Admin
 
     /**
      * 插件升级
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return bool
      */
     private function _pluginsInstall($file, $version)
@@ -585,7 +585,7 @@ class Upgrade extends Admin
 
     /**
      * 主题升级
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return bool
      */
     private function _themeInstall($file, $version)
@@ -692,7 +692,7 @@ class Upgrade extends Admin
 
     /**
      * 获取升级版本
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return array
      */
     private function getVersion()
@@ -714,7 +714,7 @@ class Upgrade extends Admin
      * 清理升级包、升级锁、升级版本列表、升级解压文件
      * @param string $file 升级包文件路径
      * @param string $version 当前升级版本号
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     private function clearCache($file = '', $version = '')
     {

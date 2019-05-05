@@ -1,12 +1,12 @@
 <?php
 // +----------------------------------------------------------------------
-// | HisiPHP框架[基于ThinkPHP5.1开发]
+// | Thinkphp框架[基于ThinkPHP5.1开发]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2021 http://www.hisiphp.com
+// | Copyright (c) 2018-2022 http://www.mylucas.com.cn
 // +----------------------------------------------------------------------
-// | HisiPHP承诺基础框架永久免费开源，您可用于学习和商用，但必须保留软件版权信息。
+// | ThinkPHP框架永久免费开源
 // +----------------------------------------------------------------------
-// | Author: 橘子俊 <364666827@qq.com>，开发者QQ群：50304283
+// | Author: Lucas <598936602@qq.com>
 // +----------------------------------------------------------------------
 
 namespace app\system\model;
@@ -35,7 +35,7 @@ class SystemMenu extends Model
 
     /**
      * 保存入库
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return bool
      */
     public function storage($data = [])
@@ -118,7 +118,7 @@ class SystemMenu extends Model
      * @param int $pid 父ID
      * @param int $status 状态码 不等于1则调取所有状态
      * @param string $cache_tag 缓存标签名
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return array
      */
     public static function getAllChild($pid = 0, $status = 1, $field = 'id,pid,module,title,url,param,target,icon,sort,status', $level = 0, $data = [])
@@ -179,7 +179,7 @@ class SystemMenu extends Model
      * @param int $pid 父ID
      * @param int $level 层级数
      * @param int $uid 登陆用户ID
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return array
      */
     public static function getMainMenu($update = false, $pid = 0, $level = 0, $data = [])
@@ -253,7 +253,7 @@ class SystemMenu extends Model
     /**
      * 获取当前节点的面包屑
      * @param string $id 节点ID
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return array
      */
     public static function getBrandCrumbs($id)
@@ -286,7 +286,7 @@ class SystemMenu extends Model
     /**
      * 获取当前访问节点信息，支持扩展参数筛查
      * @param string $id 节点ID
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return array
      */
     public static function getInfo($id = 0)
@@ -396,7 +396,7 @@ class SystemMenu extends Model
     /**
      * 根据指定节点找出顶级节点的ID
      * @param string $id 节点ID
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return array
      */
     public static function getParents($id = 0)
@@ -430,7 +430,7 @@ class SystemMenu extends Model
     /**
      * 删除菜单
      * @param string|array $id 节点ID
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return bool
      */
     public function del($ids = '') {
@@ -473,7 +473,7 @@ class SystemMenu extends Model
     /**
      * 删除指定用户的快捷菜单
      * @param string $uid 用户UID
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return bool
      */
     public function delUser($uid = 0) {
@@ -500,7 +500,7 @@ class SystemMenu extends Model
      * @param string $mod 模型名称或插件名称
      * @param string $type [module,plugins]
      * @param int $pid 父ID
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return bool
      */    
     public static function importMenu($data = [], $mod = '', $type = 'module', $pid = 0)

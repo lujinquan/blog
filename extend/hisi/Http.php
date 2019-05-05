@@ -1,12 +1,12 @@
 <?php
 // +----------------------------------------------------------------------
-// | HisiPHP框架[基于ThinkPHP5.1开发]
+// | Thinkphp框架[基于ThinkPHP5.1开发]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2021 http://www.hisiphp.com
+// | Copyright (c) 2018-2022 http://www.mylucas.com.cn
 // +----------------------------------------------------------------------
-// | HisiPHP承诺基础框架永久免费开源，您可用于学习和商用，但必须保留软件版权信息。
+// | ThinkPHP框架永久免费开源
 // +----------------------------------------------------------------------
-// | Author: 橘子俊 <364666827@qq.com>，开发者QQ群：50304283
+// | Author: Lucas <598936602@qq.com>
 // +----------------------------------------------------------------------
 
 namespace hisi;
@@ -24,7 +24,7 @@ class Http {
      * @param int $timeout 超时设置，默认30秒
      * @param mixed $options CURL的参数
      * @return array|string
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     public static function get($url, $params = '', $header = [], $timeout = 30, $options = [])
     {
@@ -39,7 +39,7 @@ class Http {
      * @param int $timeout 超时设置，默认30秒
      * @param mixed $options CURL的参数
      * @return array|string
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     public static function post($url, $params = '', $header = [], $timeout = 30, $options = [])
     {
@@ -54,7 +54,7 @@ class Http {
      * @param int $timeout 超时设置，默认30秒
      * @param mixed $options CURL的参数
      * @return array|string
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     public static function delete($url, $params = '', $header = [], $timeout = 30, $options = [])
     {
@@ -69,7 +69,7 @@ class Http {
      * @param int $timeout 超时设置，默认30秒
      * @param mixed $options CURL的参数
      * @return array|string
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     public static function put($url, $params = '', $header = [], $timeout = 30, $options = [])
     {
@@ -84,7 +84,7 @@ class Http {
      * @param array $header 传递的头部参数
      * @param int $timeout 超时设置，默认3600秒
      * @return bool|string
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     public static function down($url, $savePath, $params = '', $header = [], $timeout = 3600)
     {
@@ -134,7 +134,7 @@ class Http {
      * @param int $timeout 超时设置，默认30秒
      * @param mixed $options CURL的参数
      * @return array|string
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     private static function send($url, $params = '', $method = 'GET', $header = [], $timeout = 30, $options = [])
     {

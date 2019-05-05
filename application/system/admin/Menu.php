@@ -1,12 +1,12 @@
 <?php
 // +----------------------------------------------------------------------
-// | HisiPHP框架[基于ThinkPHP5.1开发]
+// | Thinkphp框架[基于ThinkPHP5.1开发]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2021 http://www.HisiPHP.com
+// | Copyright (c) 2018-2022 http://www.mylucas.com.cn
 // +----------------------------------------------------------------------
-// | HisiPHP承诺基础框架永久免费开源，您可用于学习和商用，但必须保留软件版权信息。
+// | ThinkPHP框架永久免费开源
 // +----------------------------------------------------------------------
-// | Author: 橘子俊 <364666827@qq.com>，开发者QQ群：50304283
+// | Author: Lucas <598936602@qq.com>
 // +----------------------------------------------------------------------
 
 namespace app\system\admin;
@@ -22,7 +22,7 @@ class Menu extends Admin
     protected $hisiTable = 'SystemMenu';
     /**
      * 菜单管理
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function index()
@@ -47,7 +47,7 @@ class Menu extends Admin
 
     /**
      * 添加菜单
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function add($pid = '', $mod = '')
@@ -71,7 +71,7 @@ class Menu extends Admin
 
     /**
      * 修改菜单
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function edit()
@@ -109,7 +109,7 @@ class Menu extends Admin
 
     /**
      * 下拉菜单
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     private function menuOption($id = '', $str = '')
@@ -155,7 +155,7 @@ class Menu extends Admin
 
     /**
      * 删除菜单
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function del()
@@ -172,7 +172,7 @@ class Menu extends Admin
 
     /**
      * 导出模块菜单
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return string
      */
     public function export()
@@ -223,7 +223,7 @@ class Menu extends Admin
 
     /**
      * 添加快捷菜单
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return string
      */
     public function quick()
@@ -268,7 +268,7 @@ class Menu extends Admin
 
     /**
      * 菜单重组（导出专用），主要清除pid字段和空childs字段
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return array
      */
     private static function menuReor($data = [])

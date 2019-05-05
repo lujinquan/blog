@@ -1,12 +1,12 @@
 <?php
 // +----------------------------------------------------------------------
-// | HisiPHP框架[基于ThinkPHP5.1开发]
+// | Thinkphp框架[基于ThinkPHP5.1开发]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2021 http://www.hisiphp.com
+// | Copyright (c) 2018-2022 http://www.mylucas.com.cn
 // +----------------------------------------------------------------------
-// | HisiPHP承诺基础框架永久免费开源，您可用于学习和商用，但必须保留软件版权信息。
+// | ThinkPHP框架永久免费开源
 // +----------------------------------------------------------------------
-// | Author: 橘子俊 <364666827@qq.com>，开发者QQ群：50304283
+// | Author: Lucas <598936602@qq.com>
 // +----------------------------------------------------------------------
 
 namespace app\system\model;
@@ -32,7 +32,7 @@ class SystemModule extends Model
      * 获取模块配置信息
      * @param  string $name 配置名
      * @param  bool $update 是否更新缓存
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public static function getConfig($name = '', $update = false)
@@ -69,7 +69,7 @@ class SystemModule extends Model
     /**
      * 将已安装模块添加到路由配置文件
      * @param  bool $update 是否更新缓存
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return array
      */
     public static function moduleRoute($update = false)
@@ -96,7 +96,7 @@ class SystemModule extends Model
     /**
      * 获取所有已安装模块(下拉列)
      * @param string $select 选中的值
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return string
      */
     public static function getOption($select = '', $field='name,title')
@@ -118,7 +118,7 @@ class SystemModule extends Model
 
     /**
      * 设计并生成标准模块结构
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return bool
      */
     public function design($data = [])
@@ -209,7 +209,7 @@ class SystemModule extends Model
     /**
      * 生成目录
      * @param array $list 目录列表
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     public static function mkDir($list)
     {
@@ -224,7 +224,7 @@ class SystemModule extends Model
 
     /**
      * 生成模块控制器
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     public static function mkControl($path = '', $data = [])
     {
@@ -250,7 +250,7 @@ class SystemModule extends Model
 
     /**
      * 生成SQL文件
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     public static function mkSql($path = '')
     {
@@ -270,13 +270,13 @@ class SystemModule extends Model
         $menus = <<<INFO
 <?php
 // +----------------------------------------------------------------------
-// | HisiPHP框架[基于ThinkPHP5.1开发]
+// | Thinkphp框架[基于ThinkPHP5.1开发]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2021 http://www.hisiphp.com
+// | Copyright (c) 2018-2022 http://www.mylucas.com.cn
 // +----------------------------------------------------------------------
-// | HisiPHP承诺基础框架永久免费开源，您可用于学习和商用，但必须保留软件版权信息。
+// | ThinkPHP框架永久免费开源
 // +----------------------------------------------------------------------
-// | Author: 橘子俊 <364666827@qq.com>，开发者QQ群：50304283
+// | Author: Lucas <598936602@qq.com>
 // +----------------------------------------------------------------------
 /**
  * 模块菜单
@@ -302,7 +302,7 @@ INFO;
 
     /**
      * 生成模块信息文件
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     public static function mkInfo($path = '', $data = [])
     {
@@ -310,13 +310,13 @@ INFO;
         $config = <<<INFO
 <?php
 // +----------------------------------------------------------------------
-// | HisiPHP框架[基于ThinkPHP5.1开发]
+// | Thinkphp框架[基于ThinkPHP5.1开发]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2021 http://www.hisiphp.com
+// | Copyright (c) 2018-2022 http://www.mylucas.com.cn
 // +----------------------------------------------------------------------
-// | HisiPHP承诺基础框架永久免费开源，您可用于学习和商用，但必须保留软件版权信息。
+// | ThinkPHP框架永久免费开源
 // +----------------------------------------------------------------------
-// | Author: 橘子俊 <364666827@qq.com>，开发者QQ群：50304283
+// | Author: Lucas <598936602@qq.com>
 // +----------------------------------------------------------------------
 /**
  * 模块基本信息

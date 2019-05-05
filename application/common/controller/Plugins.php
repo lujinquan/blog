@@ -1,12 +1,12 @@
 <?php
 // +----------------------------------------------------------------------
-// | HisiPHP框架[基于ThinkPHP5.1开发]
+// | Thinkphp框架[基于ThinkPHP5.1开发]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2021 http://www.HisiPHP.com
+// | Copyright (c) 2018-2022 http://www.mylucas.com.cn
 // +----------------------------------------------------------------------
-// | HisiPHP承诺基础框架永久免费开源，您可用于学习和商用，但必须保留软件版权信息。
+// | ThinkPHP框架永久免费开源
 // +----------------------------------------------------------------------
-// | Author: 橘子俊 <364666827@qq.com>，开发者QQ群：50304283
+// | Author: Lucas <598936602@qq.com>
 // +----------------------------------------------------------------------
 namespace app\common\controller;
 
@@ -55,7 +55,7 @@ abstract class Plugins
     /**
      * 获取插件基础信息
      * @param string $key 主键
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     final protected function getInfo($key = '')
@@ -75,7 +75,7 @@ abstract class Plugins
     /**
      * 获取插件配置
      * @param string $key 主键
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     final protected function getConfig($key = '')
@@ -98,7 +98,7 @@ abstract class Plugins
      * 模板变量赋值
      * @param string $name 模板变量
      * @param string $value 变量的值
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return $this
      */
     final protected function assign($name = '', $value='')
@@ -113,7 +113,7 @@ abstract class Plugins
      * @param array $vars 模板输出变量
      * @param array $replace 替换内容
      * @param array $config 模板参数
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     final protected function fetch($template = '', $vars = [], $replace = [], $config = [], $renderContent = false)
@@ -129,7 +129,7 @@ abstract class Plugins
 
     /**
      * 获取错误信息
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return string
      */
     final public function getError()
@@ -139,14 +139,14 @@ abstract class Plugins
 
     /**
      * 必须实现安装方法
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     abstract public function install();
 
     /**
      * 必须实现卸载方法
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     abstract public function uninstall();

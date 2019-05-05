@@ -1,12 +1,12 @@
 <?php
 // +----------------------------------------------------------------------
-// | HisiPHP框架[基于ThinkPHP5.1开发]
+// | Thinkphp框架[基于ThinkPHP5.1开发]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2021 http://www.hisiphp.com
+// | Copyright (c) 2018-2022 http://www.mylucas.com.cn
 // +----------------------------------------------------------------------
-// | HisiPHP承诺基础框架永久免费开源，您可用于学习和商用，但必须保留软件版权信息。
+// | ThinkPHP框架永久免费开源
 // +----------------------------------------------------------------------
-// | Author: 橘子俊 <364666827@qq.com>，开发者QQ群：50304283
+// | Author: Lucas <598936602@qq.com>
 // +----------------------------------------------------------------------
 namespace app\system\model;
 
@@ -59,7 +59,7 @@ class SystemUser extends Model
     /**
      * 删除用户
      * @param string $id 用户ID
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return bool
      */
     public function del($id = 0) 
@@ -128,7 +128,7 @@ class SystemUser extends Model
      * @param string $username 用户名
      * @param string $password 密码
      * @param bool $remember 记住登录 TODO
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return bool|mixed
      */
     public function login($username = '', $password = '', $remember = false)
@@ -200,7 +200,7 @@ class SystemUser extends Model
 
     /**
      * 获取主题列表
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return bool
      */
     public static function getThemes($cache = false)
@@ -227,7 +227,7 @@ class SystemUser extends Model
 
     /**
      * 设置主题
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return bool
      */
     public static function setTheme($name = 'default', $update = false)
@@ -242,7 +242,7 @@ class SystemUser extends Model
 
     /**
      * 判断是否登录
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return bool|array
      */
     public function isLogin() 
@@ -259,7 +259,7 @@ class SystemUser extends Model
 
     /**
      * 退出登陆
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return bool
      */
     public function logout() 
@@ -271,7 +271,7 @@ class SystemUser extends Model
     /**
      * 数据签名认证
      * @param array $data 被认证的数据
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return string 签名
      */
     public function dataSign($data = [])

@@ -1,12 +1,12 @@
 <?php
 // +----------------------------------------------------------------------
-// | HisiPHP框架[基于ThinkPHP5.1开发]
+// | Thinkphp框架[基于ThinkPHP5.1开发]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2021 http://www.HisiPHP.com
+// | Copyright (c) 2018-2022 http://www.mylucas.com.cn
 // +----------------------------------------------------------------------
 // | HisiPHP承诺基础框架永久免费开源，您可用于学习和商用，但必须保留软件版权信息
 // +----------------------------------------------------------------------
-// | Author: 橘子俊 <364666827@qq.com>，开发者QQ群：50304283
+// | Author: Lucas <598936602@qq.com>
 // +----------------------------------------------------------------------
 
 namespace app\system\admin;
@@ -64,7 +64,7 @@ class Module extends Admin
 
     /**
      * 模块管理首页
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function index()
@@ -132,7 +132,7 @@ class Module extends Admin
 
     /**
      * 模块设计
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function design()
@@ -157,7 +157,7 @@ class Module extends Admin
 
     /**
      * 安装模块
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function install($id = 0)
@@ -233,7 +233,7 @@ class Module extends Admin
      * 执行模块安装
      * @date   2018-11-01
      * @access public
-     * @author 橘子俊 364666827@qq.com
+     * @author Lucas 598936602@qq.com
      * @param  int          $id    模块ID
      * @param  integer      $clear 清空旧数据
      * @return bool|string  
@@ -367,7 +367,7 @@ class Module extends Admin
 
     /**
      * 模块图标上传
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function icon()
@@ -404,7 +404,7 @@ class Module extends Admin
 
     /**
      * 导入模块
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function import()
@@ -514,7 +514,7 @@ class Module extends Admin
 
     /**
      * 卸载模块
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function uninstall()
@@ -591,7 +591,7 @@ class Module extends Admin
 
     /**
      * 删除模块
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function del()
@@ -647,7 +647,7 @@ class Module extends Admin
 
     /**
      * 设置默认模块
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function setDefault()
@@ -673,7 +673,7 @@ class Module extends Admin
 
     /**
      * 状态设置
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function status()
@@ -701,7 +701,7 @@ class Module extends Admin
 
     /**
      * 主题管理
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function theme($id = 0)
@@ -735,7 +735,7 @@ class Module extends Admin
 
     /**
      * 设置默认主题
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function setDefaultTheme($id = 0, $theme = '')
@@ -758,7 +758,7 @@ class Module extends Admin
 
     /**
      * 删除主题
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function delTheme($id = 0, $theme = '')
@@ -779,7 +779,7 @@ class Module extends Admin
     /**
      * 生成目录
      * @param array $list 目录列表
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     private function mkDir($list)
     {
@@ -795,7 +795,7 @@ class Module extends Admin
      * @param array $data 菜单数据
      * @param string $mod 模型名称
      * @param int $pid 父ID
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return bool
      */    
     private function addMenu($data = [], $mod = '', $pid = 0)
@@ -821,7 +821,7 @@ class Module extends Admin
     /**
      * 检查表是否存在
      * @param array $list 目录列表
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return array
      */
     private function checkTable($tables = [])
@@ -839,7 +839,7 @@ class Module extends Admin
 
     /**
      * 生成模块信息文件
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     private function mkInfo($data = [])
     {
@@ -847,13 +847,13 @@ class Module extends Admin
         $config = <<<INFO
 <?php
 // +----------------------------------------------------------------------
-// | HisiPHP框架[基于ThinkPHP5.1开发]
+// | Thinkphp框架[基于ThinkPHP5.1开发]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2021 http://www.hisiphp.com
+// | Copyright (c) 2018-2022 http://www.mylucas.com.cn
 // +----------------------------------------------------------------------
-// | HisiPHP承诺基础框架永久免费开源，您可用于学习和商用，但必须保留软件版权信息。
+// | ThinkPHP框架永久免费开源
 // +----------------------------------------------------------------------
-// | Author: 橘子俊 <364666827@qq.com>，开发者QQ群：50304283
+// | Author: Lucas <598936602@qq.com>
 // +----------------------------------------------------------------------
 /**
  * 模块基本信息

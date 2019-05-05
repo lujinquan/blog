@@ -1,12 +1,12 @@
 <?php
 // +----------------------------------------------------------------------
-// | HisiPHP框架[基于ThinkPHP5.1开发]
+// | Thinkphp框架[基于ThinkPHP5.1开发]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2021 http://www.hisiphp.com
+// | Copyright (c) 2018-2022 http://www.mylucas.com.cn
 // +----------------------------------------------------------------------
-// | HisiPHP承诺基础框架永久免费开源，您可用于学习和商用，但必须保留软件版权信息。
+// | ThinkPHP框架永久免费开源
 // +----------------------------------------------------------------------
-// | Author: 橘子俊 <364666827@qq.com>，开发者QQ群：50304283
+// | Author: Lucas <598936602@qq.com>
 // +----------------------------------------------------------------------
 
 namespace app\system\admin;
@@ -40,7 +40,7 @@ class Store extends Admin
     
     /**
      * 应用列表
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function index()
@@ -110,7 +110,7 @@ class Store extends Admin
      * 安装应用
      * @date   2018-10-31
      * @access public
-     * @author 橘子俊 364666827@qq.com
+     * @author Lucas 598936602@qq.com
      * @return json
      */
     public function install()
@@ -165,7 +165,7 @@ class Store extends Admin
      * 安装模块
      * @date   2018-10-31
      * @access private
-     * @author 橘子俊 364666827@qq.com
+     * @author Lucas 598936602@qq.com
      * @param  string     $appName   应用名称
      * @param  string     $appKeys   应用私钥
      * @param  string     $file      安装包路径
@@ -241,7 +241,7 @@ class Store extends Admin
      * 安装插件
      * @date   2018-10-31
      * @access private
-     * @author 橘子俊 364666827@qq.com
+     * @author Lucas 598936602@qq.com
      * @param  string     $appName   应用名称
      * @param  string     $appKeys   应用私钥
      * @param  string     $file      安装包路径
@@ -302,7 +302,7 @@ class Store extends Admin
      * 安装主题
      * @date   2018-10-31
      * @access private
-     * @author 橘子俊 364666827@qq.com
+     * @author Lucas 598936602@qq.com
      * @param  [string]     $appName   应用名称
      * @param  [string]     $appKeys   应用私钥
      * @param  [string]     $file      安装包路径

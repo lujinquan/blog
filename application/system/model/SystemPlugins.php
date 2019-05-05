@@ -1,12 +1,12 @@
 <?php
 // +----------------------------------------------------------------------
-// | HisiPHP框架[基于ThinkPHP5.1开发]
+// | Thinkphp框架[基于ThinkPHP5.1开发]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2021 http://www.hisiphp.com
+// | Copyright (c) 2018-2022 http://www.mylucas.com.cn
 // +----------------------------------------------------------------------
-// | HisiPHP承诺基础框架永久免费开源，您可用于学习和商用，但必须保留软件版权信息。
+// | ThinkPHP框架永久免费开源
 // +----------------------------------------------------------------------
-// | Author: 橘子俊 <364666827@qq.com>，开发者QQ群：50304283
+// | Author: Lucas <598936602@qq.com>
 // +----------------------------------------------------------------------
 
 namespace app\system\model;
@@ -38,7 +38,7 @@ class SystemPlugins extends Model
      * 获取插件配置信息
      * @param  string $name 配置名
      * @param  bool $update 是否更新缓存
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public static function getConfig($name = '', $update = false)
@@ -74,7 +74,7 @@ class SystemPlugins extends Model
 
     /**
      * 设计并生成标准插件结构
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return bool
      */
     public function design($data = [])
@@ -162,7 +162,7 @@ class SystemPlugins extends Model
      * 生成插件配置
      * @param string $path 插件完整路径
      * @param string $config 插件配置信息
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     public function mkConfig($path = '', $config = [])
     {
@@ -181,7 +181,7 @@ class SystemPlugins extends Model
      * 生成默认示例控制器
      * @param string $path 插件完整路径
      * @param string $data 插件基本信息
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     public function mkExample($path = '', $data = [])
     {
@@ -201,7 +201,7 @@ class SystemPlugins extends Model
      * 生成目录结构
      * @param string $path 插件完整路径
      * @param array $list 目录列表
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     public function mkDir($path = '', $list = [])
     {
@@ -216,7 +216,7 @@ class SystemPlugins extends Model
     /**
      * 生成SQL文件
      * @param string $path 插件完整路径
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     public function mkSql($path = '')
     {
@@ -231,7 +231,7 @@ class SystemPlugins extends Model
      * 生成钩子文件
      * @param string $path 插件完整路径
      * @param string $data 插件基本信息
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     public function mkHook($path = '', $data = [])
     {
@@ -240,13 +240,13 @@ class SystemPlugins extends Model
         $code = <<<INFO
 <?php
 // +----------------------------------------------------------------------
-// | HisiPHP框架[基于ThinkPHP5.1开发]
+// | Thinkphp框架[基于ThinkPHP5.1开发]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2021 http://www.hisiphp.com
+// | Copyright (c) 2018-2022 http://www.mylucas.com.cn
 // +----------------------------------------------------------------------
-// | HisiPHP承诺基础框架永久免费开源，您可用于学习和商用，但必须保留软件版权信息。
+// | ThinkPHP框架永久免费开源
 // +----------------------------------------------------------------------
-// | Author: 橘子俊 <364666827@qq.com>，开发者QQ群：50304283
+// | Author: Lucas <598936602@qq.com>
 // +----------------------------------------------------------------------
 namespace plugins\\{$data['name']};
 use app\common\controller\Plugins;
@@ -318,20 +318,20 @@ INFO;
     /**
      * 生成菜单文件
      * @param string $path 插件完整路径
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     public function mkMenu($path = '', $data = [])
     {
         $menus = <<<INFO
 <?php
 // +----------------------------------------------------------------------
-// | HisiPHP框架[基于ThinkPHP5.1开发]
+// | Thinkphp框架[基于ThinkPHP5.1开发]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2021 http://www.hisiphp.com
+// | Copyright (c) 2018-2022 http://www.mylucas.com.cn
 // +----------------------------------------------------------------------
-// | HisiPHP承诺基础框架永久免费开源，您可用于学习和商用，但必须保留软件版权信息。
+// | ThinkPHP框架永久免费开源
 // +----------------------------------------------------------------------
-// | Author: 橘子俊 <364666827@qq.com>，开发者QQ群：50304283
+// | Author: Lucas <598936602@qq.com>
 // +----------------------------------------------------------------------
 /**
  * 插件后台菜单
@@ -410,7 +410,7 @@ INFO;
      * 生成插件基本信息
      * @param string $path 插件完整路径
      * @param string $data 插件基本信息
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     public function mkInfo($path = '', $data = [], $config = [])
     {
@@ -424,13 +424,13 @@ INFO;
         $code = <<<INFO
 <?php
 // +----------------------------------------------------------------------
-// | HisiPHP框架[基于ThinkPHP5.1开发]
+// | Thinkphp框架[基于ThinkPHP5.1开发]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2021 http://www.HisiPHP.com
+// | Copyright (c) 2018-2022 http://www.mylucas.com.cn
 // +----------------------------------------------------------------------
-// | HisiPHP承诺基础框架永久免费开源，您可用于学习和商用，但必须保留软件版权信息。
+// | ThinkPHP框架永久免费开源
 // +----------------------------------------------------------------------
-// | Author: 橘子俊 <364666827@qq.com>，开发者QQ群：50304283
+// | Author: Lucas <598936602@qq.com>
 // +----------------------------------------------------------------------
 /**
  * 插件基本信息

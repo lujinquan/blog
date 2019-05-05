@@ -1,12 +1,12 @@
 <?php
 // +----------------------------------------------------------------------
-// | HisiPHP框架[基于ThinkPHP5.1开发]
+// | Thinkphp框架[基于ThinkPHP5.1开发]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2021 http://www.hisiphp.com
+// | Copyright (c) 2018-2022 http://www.mylucas.com.cn
 // +----------------------------------------------------------------------
-// | HisiPHP承诺基础框架永久免费开源，您可用于学习和商用，但必须保留软件版权信息。
+// | ThinkPHP框架永久免费开源
 // +----------------------------------------------------------------------
-// | Author: 橘子俊 <364666827@qq.com>，开发者QQ群：50304283
+// | Author: Lucas <598936602@qq.com>
 // +----------------------------------------------------------------------
 
 namespace hisi;
@@ -43,7 +43,7 @@ class Cloud {
     /**
      * 架构函数
      * @param string $path  目录路径
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     public function __construct($identifier = '', $path = './') {
         $this->identifier = $identifier;
@@ -53,7 +53,7 @@ class Cloud {
 
     /**
      * 获取服务器地址
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return string
      */
     public function apiUrl()
@@ -63,7 +63,7 @@ class Cloud {
 
     /**
      * 获取错误信息
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return string
      */
     public function getError()
@@ -74,7 +74,7 @@ class Cloud {
     /**
      * 需要发送的数据
      * @param  array $data 数据
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return obj
      */
     public function data($data = [])
@@ -86,7 +86,7 @@ class Cloud {
     /**
      * api 请求接口
      * @param  string $api 接口
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return array
      */
     public function api($api = '')
@@ -98,7 +98,7 @@ class Cloud {
     /**
      * type 请求类型
      * @param  string $type 请求类型(get,post)
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return obj
      */
     public function type($type)
@@ -110,7 +110,7 @@ class Cloud {
     /**
      * 文件下载
      * @param  string $api 接口
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return array
      */
     public function down($api)
@@ -132,7 +132,7 @@ class Cloud {
     /**
      * 执行接口
      * @return array
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     private function run($down = false)
     {
@@ -167,7 +167,7 @@ class Cloud {
     /**
      * 以数组格式返回
      * @return array
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      */
     private function _response($result = [])
     {

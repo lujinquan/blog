@@ -1,12 +1,12 @@
 <?php
 // +----------------------------------------------------------------------
-// | HisiPHP框架[基于ThinkPHP5.1开发]
+// | Thinkphp框架[基于ThinkPHP5.1开发]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016-2021 http://www.hisiphp.com
+// | Copyright (c) 2018-2022 http://www.mylucas.com.cn
 // +----------------------------------------------------------------------
-// | HisiPHP承诺基础框架永久免费开源，您可用于学习和商用，但必须保留软件版权信息。
+// | ThinkPHP框架永久免费开源
 // +----------------------------------------------------------------------
-// | Author: 橘子俊 <364666827@qq.com>，开发者QQ群：50304283
+// | Author: Lucas <598936602@qq.com>
 // +----------------------------------------------------------------------
 
 namespace app\system\admin;
@@ -45,7 +45,7 @@ class Database extends Admin
 
     /**
      * 数据库管理
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function index($group = 'export')
@@ -130,7 +130,7 @@ class Database extends Admin
      * 备份数据库 [参考原作者 麦当苗儿 <zuojiazi@vip.qq.com>]
      * @param string|array $id 表名
      * @param integer $start 起始行数
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function export($id = '', $start = 0)
@@ -206,7 +206,7 @@ class Database extends Admin
      * 恢复数据库 [参考原作者 麦当苗儿 <zuojiazi@vip.qq.com>]
      * @param string|array $ids 表名
      * @param integer $start 起始行数
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function import($id = '')
@@ -263,7 +263,7 @@ class Database extends Admin
 
     /**
      * 优化数据表
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function optimize($id = '')
@@ -289,7 +289,7 @@ class Database extends Admin
 
     /**
      * 修复数据表
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function repair($id = '')
@@ -316,7 +316,7 @@ class Database extends Admin
 
     /**
      * 删除备份
-     * @author 橘子俊 <364666827@qq.com>
+     * @author Lucas <598936602@qq.com>
      * @return mixed
      */
     public function del($id = '')
