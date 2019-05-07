@@ -15,7 +15,7 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-left">
 					{volist name="topMenus" id="vo"}
-					<li><a href="{$vo['link']}" {if condition="(strstr($vo['link'],$thisMenu))"}class="active"{/if}>{$vo['cate_name']}</a></li>
+					<li><a href="{$vo['link']}" {if condition="($vo['link'] === $thisMenu)"}class="active"{/if}>{$vo['cate_name']}</a></li>
 					{/volist}
 					</ul>
 					<!-- <div class="social-icons">

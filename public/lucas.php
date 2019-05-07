@@ -19,7 +19,7 @@ define('APP_PATH', __DIR__ . '/application/');
 
 define('EXTEND_PATH', __DIR__ .'/../extend/');
 
-// 定义入口为admin
+// 定义默认控制器为admin【当前文件命名并不重要，可以是lucas.php也可以是admin.php，重要的是ENTRANCE的定义，决定控制器的访问地址】
 define('ENTRANCE', 'admin');
 
 // 加载基础文件

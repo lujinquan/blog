@@ -8,26 +8,32 @@
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
-// 
 
-//顶部导航
+
+/**
+ * 网站路由
+ */
+Route::pattern([
+    'name' => '\w+',
+    'id'   => '\d+',
+]);
+
+//顶部导航,$表示全匹配,:id表示变量，[]表示该变量是路由匹配的可选变量
 Route::rule('tour$','index/Tour/index');
 Route::rule('gallery$','index/Gallery/index');
 Route::rule('blog$','index/Blog/index');
 Route::rule('contact$','index/Contact/index');
-
 //首页的album
 Route::rule('album/[:id]','index/Index/album?article_id=:id');
 //首页的book
 Route::rule('book/[:id]','index/Index/book?article_id=:id');
-
 //博客的详情
 Route::rule('blog/:id$','index/Blog/detail?article_id=:id');
-
+//博客右侧的分类
 Route::rule('blog/cate/:id','index/Blog/index?cate_id=:id');
 
+/**
+ * 系统路由
+ */
 
-// Route::group('blog', [
-//     ':id'   => 'index/Blog/index',
-//     ':name' => 'index/Blog/index',
-// ])->ext('html')->pattern(['id' => '\d+']);
+Route::rule('admin.php/lucas','admin.php/system/publics/index');

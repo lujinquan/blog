@@ -63,7 +63,7 @@ class Base
         $rootDir= preg_replace(['/index.php$/', '/plugins.php$/', '/'.config('sys.admin_path').'$/'], ['', '', ''], $entry);
 
         define('ROOT_DIR', $rootDir);
-        
+        //dump($entry);dump($rootDir);halt(config('sys.admin_path'));
         //静态目录扩展配置
         $viewReplaceStr = [
             // 站点根目录
