@@ -67,7 +67,7 @@ class Blog extends Base
 
     public function detail()
     {
-    	$id = input('get.article_id');
+    	$id = input('article_id');
     	if(!$id){
     		return $this->error('文章不存在','blog/index');
     	}

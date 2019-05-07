@@ -1,0 +1,53 @@
+{extend name="block/layout" /}
+{block name="content"}
+<link rel="stylesheet" href="__HOME_CSS__/gallery/reset.css" media="screen" />
+<link rel="stylesheet" href="__HOME_CSS__/gallery/css3_3d.css" media="screen" />
+<!-- <script type="text/javascript" src="__HOME_JS__/gallery/modernizr.js"></script> -->
+
+<div class="gallery">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="/index">首页</a></li>
+            <li>书屋</li>
+        </ol>
+        <div class="tesimonial"><h3>书屋</h3></div>
+        <div class="gallry-info">
+            <ul id="grid" class="group">
+            {volist name="galleryArticles" id="vo"}
+                {volist name="vo" key="k" id="voo"}
+                <li {if condition="$k == 3"} class="end"{/if}>
+                    <div class="details">
+                    	<h3>{$voo['article_title']}</h3>
+                        <a class="more" href="{:url('detail')}?article_id={$voo['article_id']}">Read More……</a> 
+                    </div>
+                   <a class="more" href="{:url('detail')}?article_id={$voo['article_id']}"><img src="{$voo['thumb']}" /></a>
+                </li>
+                {/volist}
+            {/volist}
+                <!-- <li>
+                     <div class="details">
+    	                <h3>Pregnant Maiden</h3>
+                        <a class="more" href="#info7">view details</a>
+        			</div>
+                    <a href="#info7"><img src="__HOME_IMG__/gallery/maiden.jpg" /></a>
+                </li>
+                <li>
+                     <div class="details">
+    	                <h3>Clouds of Doom</h3>
+                        <a class="more" href="#info8">view details</a>
+        			</div>
+                    <a href="#info8"><img src="__HOME_IMG__/gallery/clouds.jpg" /></a>
+                </li>
+                <li class="end">
+                     <div class="details">
+    	                <h3>Silver Statue</h3>
+                        <a class="more" href="#info9">view details</a>
+        			</div>
+                    <a href="#info9"><img src="__HOME_IMG__/gallery/statue2.jpg" /></a>
+                </li> -->
+            </ul>
+        </div>
+        <div style="text-align:center;clear:both"></div>
+    </div>
+</div>
+{/block}

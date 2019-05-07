@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lucas账号-注册</title>
+	<script src="__HOME_JS__/jquery.min-2.2.1.js?v={:config('hisiphp.version')}"></script>
+	<script src="__STATIC__/js/layer/layer.js?v={:config('hisiphp.version')}"></script>
+	<style>
+		/* CSS Document */
+		html, body, div, span, object, iframe,h1, h2, 
+		h3, h4, h5, h6, p, blockquote, pre,abbr, address, cite, code,del, dfn, 
+		em, img, ins,kbd, q, samp,small, strong, sub, sup, var,b, i,dl, dt, dd, 
+		ol, ul, li,fieldset, form, label, legend,table, caption, tbody, 
+		tfoot,thead,tr, th, td,article, aside, canvas, details, figcaption, 
+		figure, footer, header, hgroup, menu, nav, section, summary,time, mark, 
+		audio, video {
+		    margin:0;
+		    padding:0;
+		    border:0;
+		    outline:0;
+		    font-size:100%;
+		    vertical-align:baseline;
+		    background:transparent;
+		    outline-style:none;/*FF*/ 
+		}
+
+		body {
+			background-color:#E6E6E6;
+		    line-height:1;
+		    text-align:center
+		}
+		 
+		a{
+		    margin:0;
+		    padding:0;
+		    border:0;
+		    font-size:100%;
+		    vertical-align:baseline;
+		    background:transparent;
+		     
+		}
+		a:hover,a:focus{
+		    text-decoration:none;
+		    bblr:expression(this.onFocus=this.blur());/*IE*/
+		    outline-style:none;/*FF*/ 
+		    }
+		table {
+		    border-collapse:collapse;
+		    border-spacing:0;
+		}
+		 
+		input, select {
+		    vertical-align:middle;
+		}
+
+		/*css为clearfix，清除浮动*/
+		.clearfix::before,
+		.clearfix::after{
+		    content: "";
+		    height: 0;
+		    line-height: 0;
+		    display: block;
+		    visibility: hidden;
+		    clear: both;
+		}
+		.clearfix:after{clear:both;} 
+		.clearfix{ 
+		    *zoom:1;/*IE/7/6*/
+		}
+
+		.row-title {
+			margin-bottom:30px;
+			font-size:18px;
+			font-weight:normal
+		}
+		.in-line {
+			display:inline;
+		}
+		.lab {
+			/*margin-left:20px;*/
+		}
+		.inp {
+			width:300px;
+			line-height:36px;
+			border:1px solid #e8e8e8;
+			cursor:pointer;
+			padding-left:10px
+		}
+		.msg {
+			font-size: 14px;
+			margin-top: 40px;
+    		font-family: arial,"Hiragino Sans GB", "Microsoft YaHei","微軟正黑體","儷黑 Pro", sans-serif;
+		}
+		.icon_select {
+			width:20px;
+			height:20px;
+			margin-right:10px;
+			display: inline-block;
+			vertical-align:middle;
+			background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAcxJREFUOBGdVb1qAkEQ9vYwiBcwXiyuiOGKEJLaIoHUh/U9RSxS5Ql8BIsUpsgLHAlCGhEby1xhnZ9CvBDQQs5IvEMQNPMdrviz/twt6O7OzPfN7O7MnBTbMiqVylEikThljB3CbDKZDEej0bdpmr+bYJJIUavVLjKZTCGZTF6nUqmTeDyuwm48HruDweDH9/23Xq9XzufzHyL8XFYsFplt2/etVuuTQFOKaLo6IIMONrC1LOtgTkALmW+gyOVyT5qm3em6rlFUMUlaPwBk0KXT6WNZlm/I4Vk2m31tNBpTzhXM8NbpdP5WI9q1b7fbHrBLZPV6/RJH2AXepAcW9w5Shj8Kv0BHPcc6ygAWjwgsQ2ooinJF6RGFK8AAi4wAF0OeITVED7CvB2DBEeQsgRSeZ/sSiOzAgQII7lBkEFUGQg8VEJWA48CB0mSoTZQTpQTXhZ6BBQe4AnCz2SyhnKIOYMEBsuAOXdd97Ha7X6FDmwGARbNYwqN8UEZho0S5Lpbe/JWr1WqJPD3Tb7jkacvGcRyfgnih+UFoho4Db2HaF1reItl6fyItmoWqqrebGqzneXa/3y8bhvG+SIa1kJAb8U8A7ZWZzNv1CfgHv1r3E9DWv4gAAAAASUVORK5CYII=);
+		}
+		.icon_select_now {
+			width:20px;
+			height:20px;
+			margin-right:10px;
+			display: inline-block;
+			vertical-align:middle;
+			background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAk5JREFUOBGVlctrU1EQxn/3tqZVKxQRCirdWRRX4sKuK7j1GYoLN4JYULT6FwiuFSOiEf+A+iq6FwV3uhIXWqmugigVKT5iTUKa6zfn5CQ3MUnTgXPPa+Y7c+bMNzeihyRHGGWAcSJGnFpCkVUK0VN+dDOLOm0kx9lNhhmBTartFODWOuCyAD+rvaJCPprnQ7t9C2ACMdPMCuys2oRmCKxVpERNrcKi2l2Nb0WPNKpLQz3JCiLmHkOcYJhNQaFnX1YIysxzn9MCsmOcD94m5ryAjvUNZlZDim2GrLuVR/GAyVH2uGuawnrFbqMQubjL1qJkJ81occKN1/rEg5Bpi4jZ2iNKYpcagxxIXb475OgOuPIern6UpYCDmFvKCMOKXZ751Ajbvo8GWudbxuDyCxjbBd8+6QmqzX17WsNQzsbybHMjz4LK/izc/AVTF/zKyDaBPReYolJ4A7cPB81mb7kqAqT8bu6xIiJs2AjTOeWhPJ08Bdv3wpd3kDsEf7sSRf7V+EPCcgoOFp7B3Dm/lL0G4/tgaRGuH4Ti9xbVxsQwRM3YuOnoZAxIy8s78PCSVrTx86vApuD3UlqjOTZbT8mCY0pykhvKposK6v+SUWpWS62P0K61qoUVctEcsz4PS+KkcbOTVIq9wczG8zpvQwcYPWHBEb2kc9YrxmcViVB5vIcG8kDXLvNYTS71KeaAFQdVnGDRSBurFkmNM5R4K4X+y5ccCZXGQN2jBPTQu2IxLNBuBbbKa3mWd6EKRvW+I2DQafwCjE0mlrNr/AL+AbcOsj+c24+/AAAAAElFTkSuQmCC);
+		}
+	</style>
+</head>
+
+<body>
+	<div style="width:50%;height:600px;background: #fff;min-height:500px;margin:80px auto;min-width:800px">
+		<h2 style="padding-top:50px;padding-bottom:80px;font-size:30px;font-weight:normal;">账号注册</h2>
+		<div>
+		<form>
+			<div class="row-title">
+				<div class="in-line">邮箱号：&nbsp;&nbsp;</div>
+				<div class="lab in-line"><input class="inp" type="text" id="email" name="email" value=""></div>
+			</div>
+			<div class="row-title">
+				<div class="in-line">昵&nbsp;&nbsp;&nbsp;称：&nbsp;&nbsp;&nbsp;</div>
+				<div class="lab in-line"><input class="inp" type="text" id="nick" name="nick" value=""></div>
+			</div>
+			<div class="row-title">
+				<div class="in-line">密&nbsp;&nbsp;&nbsp;码：&nbsp;&nbsp;&nbsp;</div>
+				<div class="lab in-line"><input class="inp" type="password" id="password" name="password" value=""></div>
+			</div>
+			<div class="row-title">
+				<div class="in-line">确认密码：</div>
+				<div class="lab in-line"><input class="inp" type="password" id="password_confirm" name="password_confirm" value=""></div>
+			</div>
+			<div class="row-title">
+				<input style="margin-top:30px;width:410px;line-height:34px;background: #ff6700;font-size:16px;color: #fff;border:none;text-align:center" id="ajsubmit" type="button" value="提交">
+				<div class="msg"><i class="icon_select_now" id="icon"><input type="hidden" id="is_agree" name="is_agree" value="1"></i>注册帐号即表示您同意并愿意遵守 用户协议和 隐私政策</div>
+			</div>
+		</form>
+		</div>
+	</div>
+	<script type="text/javascript">
+	$('#icon').click(function(){
+		var _now = $('#icon').attr('class');
+		if(_now === 'icon_select_now'){
+			$('#icon').attr('class','icon_select');
+			$('#is_agree').val(0);
+		}else{
+			$('#icon').attr('class','icon_select_now');
+			$('#is_agree').val(1);
+		}
+	})
+		// 会员登录
+	$('#ajsubmit').click(function(){
+		var _is_agree = $('#is_agree').val();
+		var _email = $('#email').val();
+		var _nick = $('#nick').val();
+		var _password = $('#password').val();
+		var _password_confirm = $('#password_confirm').val();
+		var msg = '';
+
+		if(_password_confirm != _password){
+			msg = '两次密码输入不一致';
+		}
+		if(!_password_confirm){
+			msg = '请再次确认密码';
+		}
+		if(!_password){
+			msg = '请输入密码';
+		}
+		if(!_nick){
+			msg = '请输入昵称';
+		}
+		if(!_email){
+			msg = '请输入邮箱号';
+		}
+		if(!_is_agree){
+			msg = '未同意相关协议条款！';
+		}
+		if(msg){
+			layer.msg(msg,{offset: 't',anim: 6});
+		}else{
+			$.ajax({
+				type: 'post',
+			    url: '/index/User/register',
+			    data: 'email='+_email+'&nick='+_nick+'&password='+_password+'&password_confirm='+_password_confirm+'&is_agree='+_is_agree,
+			    dataType: "json",
+			    success: function(res){
+			  	  	if(res.code != 0){
+			  	  		layer.msg(res.msg,{offset: 't',anim: 6});
+			  	  	}else{
+			  	  		layer.msg(res.msg,{offset: 't',anim: 6},function(){
+							//关闭后的操作
+							location.href = '{:url('user/login')}';
+						});
+			  	  	}
+			    }
+			});
+		}
+	})	
+	</script>
+</body>
+</html>

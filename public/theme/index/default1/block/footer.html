@@ -1,0 +1,68 @@
+<div class="footer">
+		<div class="container">
+			<div class="col-md-4 about">
+				<h3>关于我</h3>
+				<p>谁定义了程序员的世界只有黑和白，谁说格子衫和人字拖更配？看书写文、唱歌吉他、桌球电玩、跑步健身、美食旅行才是我的生活……</p>	
+				<p>一个程序员的代码生涯不应该是熬夜和码砖，而是兴趣所致，正如我写博文的初衷！</p>
+			</div>
+			<div class="col-md-4 posts">
+				<h3>热门文章</h3>
+				{volist name="hotArticles" id="vo" key="k"}
+				<div class="media">
+					<div class="media-left">
+						<a href="{:url('blog/detail')}?article_id={$vo['article_id']}">
+						  <img class="media-object thumbnail" src="{$vo['thumb']}" style="width:70px;height:55px" alt="">
+						</a>
+				    </div>
+					<div class="media-body">
+						<h4 class="media-heading"><a href="{:url('blog/detail')}?article_id={$vo['article_id']}">TOP {$k} {$vo['article_title']}</a></h4>
+						<h5>{$vo['ctime']}</h5>
+					</div>
+				</div>
+				{/volist}
+			</div>
+			<div class="col-md-4 address">
+				<h3>联系地址</h3>
+				<p>箴言：一个人只要知道自己去哪儿，全世界都会给你让路。生活是自己的，如鱼饮水，冷暖自知。</p>
+				<ul>
+					<li><span></span>湖北省武汉市洪山区积玉桥街道沙湖明珠六栋x单元xx号</li>
+					<li><span class="ph-no"></span>+0086 (027) 186****2767</li>
+					<li><span class="mail"></span><a href="mailto:598936602@qq.com">598936602@qq.com</a></li>
+				</ul>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<div class="copy-right">
+		<div class="container">
+			<p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://www.lucasgalina.com"></a></p>
+		</div>
+	</div>
+
+	<!--smooth-scrolling-of-move-up-->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				/*
+				var defaults = {
+					containerID: 'toTop', // fading element id
+					containerHoverID: 'toTopHover', // fading element hover id
+					scrollSpeed: 1200,
+					easingType: 'linear' 
+				};
+				*/
+				
+				$().UItoTop({ easingType: 'easeOutQuart' });
+				
+			});
+		</script>
+	
+		<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+	<!--//smooth-scrolling-of-move-up-->
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="__HOME_JS__/bootstrap.js?v={:config('hisiphp.version')}"></script>
+    <script src="__HOME_JS__/global.js?v={:config('hisiphp.version')}"></script>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+{extend name="block/layout" /}
+{block name="content"}
+<link href="__HOME_CSS__/docs.theme.min.css" rel="stylesheet">
+<link href="__HOME_CSS__/owl.carousel.min.css" rel="stylesheet">
+<link href="__HOME_CSS__/owl.theme.default.min.css" rel="stylesheet">
+<script src="__HOME_JS__/owl.carousel.js"></script>
+
+<!--//header-->
+<div class="tour">
+	<div class="container">
+		<ol class="breadcrumb">
+			<li><a href="/">首页</a></li>
+			<li>旅行</li>
+		</ol>
+		    <!--  Demos -->
+    <section id="demos">
+      <!-- <div class="row"> 注意：根据图片的实际剪裁高度修改 owl.carousel.min.css 第31行height的值 -->
+        <div class="large-12 columns">
+          <div class="owl-carousel owl-theme">
+            <div class="item" data-hash="zero">
+              <img src="__HOME_IMG__/img/a1.jpg">
+            </div>
+            <div class="item" data-hash="one">
+              <img src="__HOME_IMG__/img/a2.jpg">
+            </div>
+            <div class="item" data-hash="two">
+              <img src="__HOME_IMG__/img/a3.jpg">
+            </div>
+            <div class="item" data-hash="three">
+              <img src="__HOME_IMG__/img/a4.jpg">
+            </div>
+            <div class="item" data-hash="four">
+              <img src="__HOME_IMG__/img/a5.jpg">
+            </div>
+            <div class="item" data-hash="five">
+              <img src="__HOME_IMG__/img/a6.jpg">
+            </div>
+            <div class="item" data-hash="six">
+              <img src="__HOME_IMG__/img/a7.jpg">
+            </div>
+            <div class="item" data-hash="seven">
+              <img src="__HOME_IMG__/img/a8.jpg">
+            </div>
+            <div class="item" data-hash="eight">
+              <img src="__HOME_IMG__/img/a9.jpg">
+            </div>
+            <div class="item" data-hash="nine">
+              <img src="__HOME_IMG__/img/a10.jpg">
+            </div>
+            <div class="item" data-hash="ten">
+              <img src="__HOME_IMG__/img/a11.jpg">
+            </div>
+            <div class="item" data-hash="eleven">
+              <img src="__HOME_IMG__/img/a12.jpg">
+            </div>
+            <div class="item" data-hash="tweleve">
+              <img src="__HOME_IMG__/img/a13.jpg">
+            </div>
+            <div class="item" data-hash="thirteen">
+              <img src="__HOME_IMG__/img/a14.jpg">
+            </div>
+            <div class="item" data-hash="fourteen">
+              <img src="__HOME_IMG__/img/a15.jpg">
+            </div>
+          </div>
+          <hr>
+          <a class="button secondary url" href="#zero"><img src="__HOME_IMG__/img/a1_thumb.jpg"></a> 
+          <a class="button secondary url" href="#one"><img src="__HOME_IMG__/img/a2_thumb.jpg"></a> 
+          <a class="button secondary url" href="#two"><img src="__HOME_IMG__/img/a3_thumb.jpg"></a> 
+          <a class="button secondary url" href="#three"><img src="__HOME_IMG__/img/a4_thumb.jpg"></a> 
+          <a class="button secondary url" href="#four"><img src="__HOME_IMG__/img/a5_thumb.jpg"></a> 
+          <a class="button secondary url" href="#five"><img src="__HOME_IMG__/img/a6_thumb.jpg"></a> 
+          <a class="button secondary url" href="#six"><img src="__HOME_IMG__/img/a7_thumb.jpg"></a> 
+          <a class="button secondary url" href="#seven"><img src="__HOME_IMG__/img/a8_thumb.jpg"></a> 
+          <a class="button secondary url" href="#eight"><img src="__HOME_IMG__/img/a9_thumb.jpg"></a> 
+          <a class="button secondary url" href="#nine"><img src="__HOME_IMG__/img/a10_thumb.jpg"></a> 
+          <a class="button secondary url" href="#ten"><img src="__HOME_IMG__/img/a11_thumb.jpg"></a> 
+          <a class="button secondary url" href="#eleven"><img src="__HOME_IMG__/img/a12_thumb.jpg"></a> 
+          <a class="button secondary url" href="#tweleve"><img src="__HOME_IMG__/img/a13_thumb.jpg"></a> 
+          <a class="button secondary url" href="#thirteen"><img src="__HOME_IMG__/img/a14_thumb.jpg"></a> 
+          <a class="button secondary url" href="#fourteen"><img src="__HOME_IMG__/img/a15_thumb.jpg"></a> 
+    
+          <script>
+            $(document).ready(function() {
+              var owl = $('.owl-carousel');
+              owl.owlCarousel({
+                items: 2,
+                loop: true,
+                center: true,
+                margin: 10,
+                //nav:true,
+                animateOut: 'slideOutDown', //淡出样式
+                animateIn: 'flipInX', //淡入样式
+                callbacks: true,
+                URLhashListener: true,
+                autoplayHoverPause: true,
+                startPosition: 'URLHash'
+              });
+              owl.on('mousewheel', '.owl-stage', function (e) {
+                  var delta = window.event.wheelDelta; //获取window鼠标滚动属性
+                  // console.log(delta);
+                  if (delta<0) {
+                      owl.trigger('next.owl'); //调用“下一个”事件
+                  } else {
+                      owl.trigger('prev.owl'); //调用“上一个”事件
+                  }
+                  e.preventDefault();
+              });
+              owl.on('translated.owl.carousel', function (e) {
+                  var currentIndex = e.page.index //获取当前index索引，
+                  $('.secondary').eq(currentIndex).addClass('warning');
+
+              });
+              owl.on('changed.owl.carousel', function (e) { //切换幻灯片事件
+                  var currentIndex = e.page.index //获取当前index索引，
+                  $('.secondary').removeClass('warning');
+              });
+              // owl.on('initialize.owl.carousel initialized.owl.carousel ' +
+              //   'initialize.owl.carousel initialize.owl.carousel ' +
+              //   'resize.owl.carousel resized.owl.carousel ' +
+              //   'refresh.owl.carousel refreshed.owl.carousel ' +
+              //   'update.owl.carousel updated.owl.carousel ' +
+              //   'drag.owl.carousel dragged.owl.carousel ' +
+              //   'translate.owl.carousel translated.owl.carousel ' +
+              //   'to.owl.carousel changed.owl.carousel',
+              //   function(e) {
+              //     $('.' + e.type)
+
+              //       .removeClass('secondary')
+              //       .addClass('success');
+              //     window.setTimeout(function() {
+              //       $('.' + e.type)
+              //         .removeClass('success')
+              //         .addClass('secondary');
+              //     }, 500);
+
+              //     console.log(e);
+
+              //   });
+            })
+          </script>
+        <!-- </div> -->
+      </div>
+    </section>
+	</div>
+</div>
+{/block}

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lucas账号-登录</title>
+	<script src="__HOME_JS__/jquery.min-2.2.1.js?v={:config('hisiphp.version')}"></script>
+	<script src="__STATIC__/js/layer/layer.js?v={:config('hisiphp.version')}"></script>
+	<style>
+		/* CSS Document */
+		html, body, div, span, object, iframe,h1, h2, 
+		h3, h4, h5, h6, p, blockquote, pre,abbr, address, cite, code,del, dfn, 
+		em, img, ins,kbd, q, samp,small, strong, sub, sup, var,b, i,dl, dt, dd, 
+		ol, ul, li,fieldset, form, label, legend,table, caption, tbody, 
+		tfoot,thead,tr, th, td,article, aside, canvas, details, figcaption, 
+		figure, footer, header, hgroup, menu, nav, section, summary,time, mark, 
+		audio, video {
+		    margin:0;
+		    padding:0;
+		    border:0;
+		    outline:0;
+		    background:transparent;
+		    outline-style:none;/*FF*/ 
+		}
+		body {
+			background-color:#E6E6E6;
+		    line-height:1;
+		    text-align:center
+		}
+		a{
+		    margin:0;
+		    padding:0;
+		    border:0;
+		    background:transparent;
+		    text-decoration:none;
+		}
+		a:hover,a:focus{
+		    text-decoration:none;
+		    outline-style:none;/*FF*/ 
+		}
+		.main-form {
+			width:50%;
+			height:650px;
+			background: #fff;
+			min-height:500px;
+			margin:80px auto;
+			min-width:800px;
+		}
+		.title_big30 {
+			padding-top:40px;
+			padding-bottom:80px;
+			font-weight:normal;
+			font-size:30px;
+		}
+		.row-title {
+			margin-bottom:30px;
+			font-size:18px;
+			font-weight:normal;
+		}
+		.in-line {
+			display:inline;
+		}
+		.lab {
+			width: 70%;
+		}
+		.inp {
+			line-height:40px;
+			border:1px solid #e8e8e8;
+			cursor:pointer;
+			padding-left:10px;
+		}
+		.len {
+			width:400px;
+		}
+		.sh {
+			width:270px;
+		}
+		.img_code {
+			margin-bottom:-15px;
+		}
+		.login-submit {
+			margin-top:30px;
+			width:410px;
+			line-height:40px;
+			background: #ff6700;
+			font-size:16px;
+			color: #fff;
+			border:none;
+			text-align:center;
+			cursor:pointer;
+		}
+		.msg {
+
+			font-size: 14px;
+			margin-top: 50px;
+    		font-family: arial,"Hiragino Sans GB", "Microsoft YaHei","微軟正黑體","儷黑 Pro", sans-serif;
+		}
+		.oth_type_links {
+			width: 400px;
+			height: 80px;
+			/*border: 1px solid red;*/
+			margin: 30px auto;
+		}
+		.icon_type {
+			width: 30px;
+			height: 30px;
+			margin: 0 30px 0;
+			background-color: #0288d1;
+			border-radius: 50%;
+			-moz-border-radius: 50%;
+			-webkit-border-radius: 50%;
+		}
+		.btn_sns_icontype{
+			display: inline-block;
+			padding:0px 1px;
+			width:18px;
+			height:18px;
+			background: url(/static/image/icons_type.png);
+		}
+		.btn_qq {
+			background-color: #0288d1;
+		}
+		.btn_weibo {
+			background-color: #d32f2f;
+		}
+		.btn_alipay {
+			background-color: #0ae;
+		}
+		.btn_weixin {
+			background-color: #00d20d;
+		}
+		.icon_default_qq {
+			background-position: -18px 0;
+		}
+		.icon_default_weibo {
+			background-position: -38px 0;
+		}
+		.icon_default_alipay {
+			background-position: -56px 0;
+		}
+		.icon_default_weixin {
+			background-position: -85px 0;
+		}
+		
+	</style>
+</head>
+
+<body>
+	<div class="main-form">
+		<h2 class="title_big30">账号登录</h2>
+		<div>
+		<form>
+			<div class="row-title">
+				<div><input class="inp len" id="email" type="text" name="email" placeholder="邮箱" value=""></div>
+			</div>
+			<div class="row-title">
+				<div><input class="inp len" id="password" type="password" name="password" placeholder="密码" value=""></div>
+			</div>
+			<div class="row-title">
+				<div class="lab in-line">
+					<input class="inp sh" id="captcha" type="text" name="captcha" placeholder="验证码" value="">
+					<img class="img_code" src='/captcha.html' onclick="this.src='/captcha.html?d='+Math.random();" />
+				</div>
+			</div>
+			<div class="row-title row-con">
+				<input class="login-submit" tyle="" type="button" id="ajsubmit" value="登录">
+				<!-- <div class="msg">手机短信登录/注册</div> -->
+				<div class="msg"><a href="{:url('user/register')}">立即注册</a>&nbsp;|&nbsp;<a href="javascript:;">忘记密码？</a></div>
+			</div>
+		</form>
+		<div class="msg">其他方式登录</div>
+		<div id="sns-login-links" class="oth_type_links">
+			<a class="icon_type btn_qq sns-login-link" data-type="qq" href="javascript:;" title="QQ登录" target="_blank"><i class="btn_sns_icontype icon_default_qq"></i></a>
+			<a class="icon_type btn_weibo sns-login-link" data-type="weibo" href="javascript:;" title="微博登录" target="_blank"><i class="btn_sns_icontype icon_default_weibo"></i></a>
+			<a class="icon_type btn_alipay sns-login-link" data-type="alipay" href="javascript:;" title="支付宝登录" target="_blank"><i class="btn_sns_icontype icon_default_alipay"></i></a>
+			<a class="icon_type btn_weixin sns-login-link" data-type="weixin" href="javascript:;" title="微信登录" target="_blank"><i class="btn_sns_icontype icon_default_weixin"></i></a>
+		</div>
+	</div>
+	<script type="text/javascript">
+	// 同意协议说明
+	console.log('欢迎进入到Lucas个人网站登录页面，赠送100积分，点此领取');
+	$('#icon').click(function(){
+		var _now = $('#icon').attr('class');
+		if(_now === 'icon_select_now'){
+			$('#icon').attr('class','icon_select');
+			$('#is_agree').val(0);
+		}else{
+			$('#icon').attr('class','icon_select_now');
+			$('#is_agree').val(1);
+		}
+	})
+	// 会员登录
+	$('#ajsubmit').click(function(){
+		var _email = $('#email').val();
+		var _password = $('#password').val();
+		var _captcha = $('#captcha').val();
+		var msg = '';
+		if(!_captcha){
+			msg = '请输入验证码';
+		}
+		if(!_password){
+			msg = '请输入密码';
+		}
+		if(!_email){
+			msg = '请输入邮箱号';
+		}
+		if(msg){
+			layer.msg(msg,{offset: 't',anim: 6});
+		}else{
+			$.ajax({
+				type: 'post',
+			    url: '/index/User/login',
+			    data: 'email='+_email+'&password='+_password+'&captcha='+_captcha,
+			    dataType: "json",
+			    success: function(res){
+			  	  	if(res.code != 0){
+			  	  		layer.msg(res.msg,{offset: 't',anim: 6});
+			  	  	}else{
+			  	  		layer.msg(res.msg,{offset: 't',anim: 6},function(){
+							//关闭后的操作
+							location.href = '/';
+						});
+			  	  	}
+			    }
+			});
+		}
+	})	
+	</script>
+</body>
+</html>

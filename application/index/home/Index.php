@@ -66,6 +66,7 @@ class Index extends Base
     public function album()
     {
         $id = input('article_id');
+        //halt($id);
         $data_info = ArticleModel::where('article_id',$id)->find();
         $this->assign('data_info',$data_info);
         return $this->fetch('album');
