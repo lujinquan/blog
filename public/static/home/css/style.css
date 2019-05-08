@@ -897,11 +897,12 @@ ul.pagination li a {
   width: 100%;
 }
 .single-page-info h5 {
-  font-size: 18px;
+  font-size: 2em;
   font-weight: 600;
   color: #5F9EA0;
-  margin: 4em 0 2em;
+  margin: 3em 0 2em;
   line-height: 1.6em;
+  text-align: center;
 }
 .read-more-grids {
   padding-left: 0 !important;
@@ -1184,6 +1185,7 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
   color: #1C5C5E;
 }
 .caption.tour-caption p {
+  margin-top:1em;
   font-size: 14px;
   color: #EDEDED;
 }
