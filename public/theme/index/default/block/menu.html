@@ -1,4 +1,9 @@
 <body>
+	<style>
+	  body .lu-btn .layui-layer-btn0{
+	    background-color: #5F9EA0;
+	}
+	</style>
 	<!--navigation-->
 	<div class="top-nav">
 		<nav class="navbar navbar-default">
@@ -32,10 +37,10 @@
 									<span style="color:#BBBBBB">当前账号：</span><font color="#5F9EA0">{:cookie('nick')}<a href="javascript:;" id="logout">&nbsp;&nbsp;[退出]</a></font>
 								</li>
 								<li>
-									<a href="{:url('user/info')}" target="_blank"><font color="#5F9EA0">>>个人中心</font></a>
+									<a href="/info" target="_blank"><font color="#5F9EA0">>>个人中心</font></a>
 								</li>
 							{else/}
-								<li><a href="{:url('user/login')}" id="login">登录</a></li>/&nbsp;&nbsp;
+								<li><a href="/login" id="login">登录</a></li>/&nbsp;&nbsp;
 								<li><a href="javascript:;" id="register">免费注册</a></li>
 							{/if}
 						</ul>
@@ -57,13 +62,15 @@
 								</div>';
 							layer.open({
 							  	type: 1,
+							  	skin: 'lu-btn',
+							  	btnAlign: 'c',
 							  	title:'<span style="font-size:20px;font-weight:bold;font-family:STKaiti">协议声明</span>',
 						        zIndex:19911117,
 						        btn:['同意','不同意'],
 						        area:['800px','570px'],
 						        content: str, //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
 						        yes: function(index, layero){
-						        	window.location.href="/index/User/register";
+						        	window.location.href="/register";
 						        },
 
 							});
@@ -72,7 +79,7 @@
 							var _member_id = '{:cookie('member_id')}';
 							$.ajax({
 								type: 'post',
-							    url: '/index/user/logout',
+							    url: '/logout',
 							    data: 'member_id='+_member_id,
 							    dataType: "json",
 							    success: function(res){

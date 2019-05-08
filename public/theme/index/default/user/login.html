@@ -80,7 +80,7 @@
 			margin-top:30px;
 			width:410px;
 			line-height:40px;
-			background: #ff6700;
+			background: #5F9EA0;
 			font-size:16px;
 			color: #fff;
 			border:none;
@@ -161,9 +161,9 @@
 				</div>
 			</div>
 			<div class="row-title row-con">
-				<input class="login-submit" tyle="" type="button" id="ajsubmit" value="登录">
+				<input class="login-submit" type="button" id="ajsubmit" value="登录">
 				<!-- <div class="msg">手机短信登录/注册</div> -->
-				<div class="msg"><a href="{:url('user/register')}">立即注册</a>&nbsp;|&nbsp;<a href="javascript:;">忘记密码？</a></div>
+				<div class="msg"><a href="/register">立即注册</a>&nbsp;|&nbsp;<a href="javascript:;">忘记密码？</a></div>
 			</div>
 		</form>
 		<div class="msg">其他方式登录</div>
@@ -207,7 +207,7 @@
 		}else{
 			$.ajax({
 				type: 'post',
-			    url: '/index/User/login',
+			    url: '/login',
 			    data: 'email='+_email+'&password='+_password+'&captcha='+_captcha,
 			    dataType: "json",
 			    success: function(res){

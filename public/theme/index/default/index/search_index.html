@@ -9,12 +9,11 @@
 		<div class="col-md-12 blog-left">
 			{volist name="articles" id="vo"}
 			<div class="blog-info shadow">
-				<h4><a href="{:url('detail')}?article_id={$vo['article_id']}">{$vo['article_title']}</a></h4>
+				<h4><a href="/blog/{$vo['article_id']}">{$vo['article_title']}</a></h4>
 				<p>上传自 &nbsp;<a href="#">{$vo['author']}</a> &nbsp;&nbsp;{$vo['ctime']} &nbsp;&nbsp; <a href="#">浏览 ({$vo['click']})</a></p>
 				<div class="blog-info-text">
-					
 					<p class="snglp">{$vo['article_desc']}</p>
-					<a href="{:url('detail')}?article_id={$vo['article_id']}" class="btn btn-primary hvr-rectangle-in">Read More</a>
+					<a href="/blog/{$vo['article_id']}" class="btn btn-primary hvr-rectangle-in">Read More</a>
 				</div>	
 			</div>
 			{/volist}

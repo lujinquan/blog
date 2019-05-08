@@ -70,6 +70,8 @@ class Base
             '__ROOT_DIR__'      => $rootDir,
             // 静态资源根目录
             '__STATIC__'        => $rootDir.'static',
+            // 第三方扩展目录
+            '__LIB__'        => $rootDir.'lib',
             // 文件上传目录
             '__UPLOAD__'        => $rootDir.'upload',
             // 插件目录
@@ -114,7 +116,15 @@ class Base
         if(defined('ENTRANCE') && ENTRANCE == 'admin') {
 
             if ($module == 'index') {
-                header('Location: '.url('system/publics/index'));
+
+                // 检查登录标识 http://domainName/admin.php?key=lucas
+                if(isset($_GET['key']) && $_GET['key'] == config('sys.key')){
+                    // 302 重定向到登录页面
+                    header('Location: '.url('system/publics/index').'?key='.config('sys.key'));
+                    exit;
+                }
+                // 302 重定向到前端页面
+                header('Location: /');
                 exit;
             }
 

@@ -66,7 +66,7 @@
 		{volist name="newComments" id="vo"}
 		<div class="comments-info">
 			<div class="cmnt-icon-left">
-				<a href="{:url('blog/detail')}?article_id={$vo['article_id']}"><img src="{$vo['avatar']}" style="width:64px;height:64px" alt=""/></a>
+				<a href="/blog/{$vo['article_id']}"><img src="{$vo['avatar']}" style="width:64px;height:64px" alt=""/></a>
 			</div>
 			<div class="cmnt-icon-right">
 				<p>标题：{$vo['article_title']}</p>

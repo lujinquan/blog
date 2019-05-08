@@ -31,9 +31,17 @@ Route::rule('book/[:id]','index/Index/book?article_id=:id');
 Route::rule('blog/:id$','index/Blog/detail?article_id=:id');
 //博客右侧的分类
 Route::rule('blog/cate/:id','index/Blog/index?cate_id=:id');
+//博客点赞
+Route::rule('love/:id$','index/Blog/love?article_id=:id');
 
+//网站会员登录
+Route::rule('login$','index/User/login');
+//网站会员登出
+Route::rule('logout$','index/User/logout');
+//网站会员注册
+Route::rule('register$','index/User/register');
 /**
  * 系统路由
  */
 
-Route::rule('admin.php/lucas','admin.php/system/publics/index');
+// Route::rule('admin.php/lucas','admin.php/system/publics/index');

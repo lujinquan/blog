@@ -39,13 +39,17 @@ class Publics extends Common
             }
             return $this->success('登录成功，页面跳转中...', url('index/index'));
         }
-
         if ($model->isLogin()) {
             $this->redirect(url('index/index', '', true, true));
         }
-
-        $this->view->engine->layout(false);
-        return $this->fetch();
+        // 检查登录入口的key
+        if (isset($_GET['key']) && $_GET['key'] == config('sys.key')) {
+            $this->view->engine->layout(false);
+            return $this->fetch();
+        }else{
+            $this->redirect(ROOT_DIR);
+        }
+        
     }
 
     /**
