@@ -77,6 +77,7 @@ class Blog extends Base
         $row = ArticleModel::find($id);
         // 获取当前文章的评论
         $comments = $row->comment()->with('member')->where(['is_show'=>1,'status'=>1])->order('ctime desc')->limit(4)->select();
+
         //halt($comments);
         // 获取推荐的文章
         $tuiWhere = [
@@ -102,13 +103,14 @@ class Blog extends Base
     {
         if ($this->request->isPost()) {
             $data = $this->request->post();
-            
+            if(!$data['com_content']){
+                return $this->error('评论不能为空');
+            }
             if(!isset($data['member_id'])){
                 $data['member_id'] = 10000;
             }
             $mod = new CommentModel;
             if (!$mod->allowField(true)->create($data)) {
-
                 return $this->error('评论失败');
             }
             ArticleModel::where('article_id',$data['article_id'])->setInc('com');

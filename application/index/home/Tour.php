@@ -5,6 +5,7 @@ namespace app\index\home;
 use app\index\home\Base;
 use app\blog\model\Cate as CateModel;
 use app\blog\model\Article as ArticleModel;
+use app\blog\model\Comment as CommentModel;
 
 class Tour extends Base
 {
@@ -29,7 +30,10 @@ class Tour extends Base
         // 获取当前文章详情
         $row = ArticleModel::find($id);
         // 获取当前文章的评论
-        $comments = $row->comment()->with('member')->where(['is_show'=>1,'status'=>1])->order('ctime desc')->limit(4)->select();
+        $comments = $row->comment()->with('member')->where([['is_show','eq',1],['status','eq',1]])->order('ctime desc')->limit(10)->select();
+        foreach($comments as &$c){
+            $c['replay'] = CommentModel::with(['member'])->where([['com_pid','eq',$c['com_id']],['is_show','eq',1],['status','eq',1]])->order('ctime asc')->select();
+        }
         //halt($comments);
         // 获取推荐的文章
         $tuiWhere = [

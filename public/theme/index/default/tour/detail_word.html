@@ -1,5 +1,20 @@
 {extend name="block/layout" /}
 {block name="content"}
+<style type="text/css">
+	.espace10{
+		padding:10px 0;	
+	}
+	.espace20{
+		padding:20px 0;	
+	}
+	.espace30{
+		padding:30px 0;	
+	}
+	.eline{
+		border-bottom:1px solid #f1f1f1;
+	}
+
+</style>
 	<!--//header-->
 	<div class="single-page">
 		<div class="container">
@@ -37,10 +52,10 @@
 					<h4>相关推荐</h4>
 					{volist name="tuiArticles" id="vo"}
 					<div class="col-xs-6 col-md-3 related-grids">
-						<a href="singlepage.html" class="thumbnail">
-							<img src="{$vo['thumb']}" style="width:157px;height:106px" alt=""/>
+						<a href="/blog/{$vo['article_id']}" class="thumbnail">
+							<img src="{$vo['thumb']}" style="width:100%;height:106px" alt=""/>
 						</a>
-						<h5><a href="{:url('blog/detail')}?article_id={$vo['article_id']}">{$vo['article_title']}</a></h5>
+						<h5><a href="/blog/{$vo['article_id']}">{$vo['article_title']}</a></h5>
 					</div>
 					{/volist}				
 				</div>
@@ -53,30 +68,50 @@
 							<a href="#">
 								<img class="media-object" src="{$vo['avatar']}" alt=""/>
 							</a>
-							<h5><a href="#">{$vo['nick']}</a></h5>
 						</div>
 						<div class="media-body response-text-right">
+							<p><font style="color:#282828;font-weight:800;">{$vo['nick']}</font></p>
 							<p>{$vo['com_content']}</p>
 							<ul>
-								<li>{$vo['ctime']}</li>
-								<li><a href="">回复</a></li>
+								<li style="float:left;color:#bbb">{$vo['ctime']}</li>
+								<li><span class="replay"></span><a href="javascript:;" class="like" data-value="{$data_info['article_id']}">1</a></li>
 							</ul>		
 						</div>
 						<div class="clearfix"> </div>
 					</div>
+					<div class="espace10"></div>
+						{volist name="vo['replay']" id="vvo"}
+						<div class="media response-info-aux">
+							<div class="media-left response-text-left">
+								<a href="#">
+									<img class="media-object" src="{$vo['avatar']}" alt=""/>
+								</a>
+							</div>
+							<div class="media-body response-text-right">
+								<p><font style="color:#282828;font-weight:800;">{$vvo['nick']}：</font></p>
+								<p>回复&nbsp;<font style="color:#282828;font-weight:800;">{$vo['nick']}：</font>{$vvo['com_content']}</p>
+								<ul>
+									<li style="float:left;color:#bbb">{$vvo['ctime']}</li>
+									<li><a href="javascript:;" class="like" data-value="{$data_info['article_id']}">1</a></li>
+								</ul>		
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+						{/volist}
+						<div class="espace20 eline"></div>
 					{/volist}
 				</div>	
 				<div class="coment-form">
 					<h4>留言</h4>
-					<form action="{:url('com')}" method="post">
+					<form action="{:url('blog/com')}" method="post">
 						<!-- <input type="text" name="" value="姓名" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '姓名';}" required="">
 						<input type="email" value="邮箱" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '邮箱';}" required="">
 						<input type="text" value="网站" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '网站';}" required=""> -->
-						<textarea type="text" name="com_content" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '您的留言……';}" required="">您的留言……</textarea>
+						<textarea type="text" name="com_content" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">您的留言……</textarea>
 						<input type="hidden" name="article_id" value="{$data_info['article_id']}" >
 						<input type="submit" value="提交评论" >
 						
-						<p class="help-block">提示：当前用户未<a target="_blank" href="{:url('user/login')}">登录</a>，此次评论将默认为匿名……</p>
+						<p class="help-block">提示：当前用户未<a target="_blank" href="/login">登录</a>，此次评论将默认为匿名……</p>
 						<!-- <button type="button" class="btn btn-primary" >提交评论</button> -->
 					</form>
 				</div>		
@@ -84,4 +119,24 @@
 			<div class="clearfix"> </div>
 		</div>	
 	</div>
+	<script type="text/javascript">
+	$('.replay').on('click',function(data){
+		layer.open({
+			type:1,
+			area:['500px','200px'],
+			resize:false,
+			zIndex:100,
+			title:false,
+			closeBtn:0,
+			//title:['回复','font-size:1.6rem;font-weight:600;'],
+			btn:['回复','取消'],
+			content:'<textarea style="display:block;resize:none;width:100%;height:100%;"></textarea>',
+			succcess:function(){
+
+			},
+			yes:function(thisIndex){
+			}
+	    });
+	});
+	</script>
 {/block}

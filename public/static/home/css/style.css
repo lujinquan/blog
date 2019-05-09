@@ -950,10 +950,19 @@ ul.pagination li a {
   margin-right: 5px;
   width: 17px;
 }
-.comment-icons ul li a.like{
+a.like{
 	background: url(../image/iconsprite.png) no-repeat -63px -66px;
 	margin-right: 6px;
 	padding-left: 1.5em;
+}
+.replay{
+    display:inline-block;
+    margin-top:5px;
+    width:30px;
+    height:16px;
+    line-height:16px;
+    background-repeat:no-repeat;
+    background-image:url(../image/pinglunhover.svg);
 }
 .comment-icons ul li a{
   color: #747474;
@@ -1034,6 +1043,15 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
 .media.response-info {
   margin-top: 3em;
 }
+.media.response-info-aux {
+  margin-top:0px;
+  margin-left:50px;
+  padding:10px;
+  border-radius:1%;
+  /*margin-top: 1.5em;*/
+  background-color: #f3f3f3;
+  border-bottom:1px solid #e5e5e5;
+}
 .response-info-mdl {
   margin: 1em 0px 1em 4em;
 }
@@ -1042,7 +1060,7 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
   margin-right: 4em;
 }
 .media-left.response-text-left {
-  width: 11%;
+  width: 7%;
 }
 .response-text h5 {
 	font-size: 15px;
@@ -1089,7 +1107,9 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
 	text-decoration:none;
 }
 .media-left a img {
-  width: initial;
+  border-radius: 50%;
+  width: 50px;
+  height:50px;
 }
 .coment-form input[type="text"] {
   display: block;
