@@ -65,6 +65,10 @@ class Blog extends Base
         return $this->fetch();
     }
 
+    /**
+     * [detail 获取文章的详情]
+     * @return [json] [回复是否成功]
+     */
     public function detail()
     {
     	$id = input('article_id');
@@ -99,6 +103,10 @@ class Blog extends Base
     	return $this->fetch();
     }
 
+    /**
+     * [com 文章的评论功能]
+     * @return [json] [评论是否成功]
+     */
     public function com()
     {
         if ($this->request->isPost()) {
@@ -118,10 +126,51 @@ class Blog extends Base
         }
     }
 
+    /**
+     * [replay 文章评论的回复功能]
+     * @return [json] [回复是否成功]
+     */
+    public function replay()
+    {
+        if ($this->request->isPost()) {
+            $data = $this->request->post();
+            //halt($data);
+            if(!$data['com_content']){
+                return $this->error('回复不能为空');
+            }
+            $data['member_id'] = cookie('member_id')?cookie('member_id'):10000;
+            $mod = new CommentModel;
+            if (!$mod->allowField(true)->create($data)) {
+                return $this->error('回复失败');
+            }
+            // ArticleModel::where('article_id',$data['article_id'])->setInc('com');
+            return $this->success('回复成功');
+        }
+        
+    }
+
+    /**
+     * [love 文章的点赞功能]
+     * @return [json] [回复是否成功]
+     */
     public function love()
     {
         $id = input('article_id');
         $res = ArticleModel::where('article_id',$id)->setInc('love');
+        if($res){
+           return $this->success('点赞成功'); 
+        }
+        return $this->error('点赞失败');
+    }
+
+    /**
+     * [love 文章评论的点赞功能]
+     * @return [json] [回复是否成功]
+     */
+    public function response_love()
+    {
+        $id = input('com_id');
+        $res = CommentModel::where('com_id',$id)->setInc('love');
         if($res){
            return $this->success('点赞成功'); 
         }

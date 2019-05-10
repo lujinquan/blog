@@ -33,6 +33,11 @@ Route::rule('blog/:id$','index/Blog/detail?article_id=:id');
 Route::rule('blog/cate/:id','index/Blog/index?cate_id=:id');
 //博客点赞
 Route::rule('love/:id$','index/Blog/love?article_id=:id');
+//博客评论
+Route::rule('com/:id$','index/Blog/com');
+//博客的评论点赞
+Route::rule('response_love$','index/Blog/response_love');
+
 
 //网站会员登录
 Route::rule('login$','index/User/login');
@@ -40,6 +45,9 @@ Route::rule('login$','index/User/login');
 Route::rule('logout$','index/User/logout');
 //网站会员注册
 Route::rule('register$','index/User/register');
+
+//评论的回复留言
+Route::rule('replay$','index/Blog/replay');
 /**
  * 系统路由
  */

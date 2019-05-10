@@ -26,6 +26,9 @@ ul,label{
 body a:hover{
 	text-decoration:none;
 }
+body a:focus{
+  text-decoration: none;
+}
 button.btn.btn-default {
   background-color: #5e5e5e;
   color: #fff;
@@ -955,12 +958,17 @@ a.like{
 	margin-right: 6px;
 	padding-left: 1.5em;
 }
+a.like-replay{
+  background: url(../image/iconsprite.png) no-repeat -63px -66px;
+  padding-left: 1.5em;
+  padding-top:0.2em;
+}
 .replay{
     display:inline-block;
-    margin-top:5px;
+    /*margin-top:5px;*/
     width:30px;
-    height:16px;
-    line-height:16px;
+    height:14px;
+    /*line-height:16px;*/
     background-repeat:no-repeat;
     background-image:url(../image/pinglunhover.svg);
 }
@@ -1043,15 +1051,33 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
 .media.response-info {
   margin-top: 3em;
 }
+.response-info-aux-before {
+  padding-top:20px;
+  position: relative;
+}
+.response-info-aux-before:before {
+    content: "";
+    display: block;
+    border-top: none;
+    /*background-color: red; */
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid #f4f4f4;
+    border-left: 15px solid transparent;
+    position: absolute;
+    top: 5px;
+    left: 95px;
+} 
 .media.response-info-aux {
   margin-top:0px;
-  margin-left:50px;
+  margin-left:75px;
   padding:10px;
   border-radius:1%;
+  
   /*margin-top: 1.5em;*/
-  background-color: #f3f3f3;
+  background-color: #f4f4f4;
   border-bottom:1px solid #e5e5e5;
 }
+   
 .response-info-mdl {
   margin: 1em 0px 1em 4em;
 }
@@ -1150,7 +1176,7 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
 .coment-form textarea {
 	background: #F3F3F3;
 	border: none;
-	width: 90%;
+	width: 95%;
 	display: block;
 	height: 150px;
 	outline: none;
@@ -1161,11 +1187,11 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
 	padding: 13px 15px;
   
 }
-.coment-form input[type="submit"] {
+.coment-form input[type="button"] {
   background: #F3F3F3;
   padding: .8em 0;
   border: none;
-  width: 90%;
+  width: 95%;
   margin-top: .5em;
   font-size: 15px;
   color: #9C9CA0;
@@ -1177,7 +1203,7 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
   -o-transition:.5s all;
   -ms-transition:.5s all;
 }
-.coment-form input[type="submit"]:hover{
+.coment-form input[type="button"]:hover{
 	color: #fff;
 	background:#5F9EA0;
 	outline: none;
@@ -2516,4 +2542,17 @@ ol.breadcrumb li a {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.espace10{
+  padding:10px 0; 
+}
+.espace20{
+  padding:20px 0; 
+}
+.espace30{
+  padding:30px 0; 
+}
+.eline{
+  border-bottom:1px solid #f1f1f1;
 }

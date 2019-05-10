@@ -34,7 +34,7 @@ class Article extends Model
 
     public function comment()
     {
-        return $this->hasMany('comment')->field('com_content,com_id,com_pid,member_id,ctime');
+        return $this->hasMany('comment')->field('com_content,com_id,com_pid,member_id,love,ctime');
     }
 
 }
