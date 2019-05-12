@@ -11,12 +11,12 @@
 				<div class="media">
 					<div class="media-left">
 						<a href="/blog/{$vo['article_id']}">
-						  <img class="media-object thumbnail" src="{$vo['thumb']}" style="width:70px;height:55px" alt="">
+						  <img class="media-object thumbnail" src="{$vo['thumb']}" style="width:50px;height:50px" alt="">
 						</a>
 				    </div>
 					<div class="media-body">
 						<h4 class="media-heading"><a href="{:url('/blog/{$vo['article_id']}">TOP {$k} {$vo['article_title']}</a></h4>
-						<h5>{$vo['ctime']}</h5>
+						<p style="padding-top:5px">{$vo['ctime']}</p>
 					</div>
 				</div>
 				{/volist}

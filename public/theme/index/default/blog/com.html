@@ -1,0 +1,9 @@
+<div class="coment-form">
+	<h4>留言</h4>
+	<form>
+		<textarea type="text" id="com_content" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">您的留言……</textarea>
+		<input type="hidden" id="article_id" value="{$data_info['article_id']}" >
+		<input type="button" class="submit" value="提交评论" >
+		<p class="help-block">提示：当前用户未<a target="_blank" href="/login">登录</a>，此次评论将默认为匿名……</p>
+	</form>
+</div>

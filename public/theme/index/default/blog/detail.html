@@ -33,55 +33,12 @@
 					<div class="clearfix"> </div>
 				</div>
 				<!--related-posts-->
-				<div class="row related-posts">
-					<h4>相关推荐</h4>
-					{volist name="tuiArticles" id="vo"}
-					<div class="col-xs-6 col-md-3 related-grids">
-						<a href="singlepage.html" class="thumbnail">
-							<img src="{$vo['thumb']}" style="width:100%;height:106px" alt=""/>
-						</a>
-						<h5><a href="{:url('blog/detail')}?article_id={$vo['article_id']}">{$vo['article_title']}</a></h5>
-					</div>
-					{/volist}				
-				</div>
+				{include file="blog/tuijian" /}	
 				<!--//related-posts-->
-				<div class="response">
-					<h4>回复</h4>
-					{volist name="comments" id='vo'}
-					<div class="media response-info">
-						<div class="media-left response-text-left">
-							<a href="#">
-								<img class="media-object" src="{$vo['avatar']}" alt=""/>
-							</a>
-							<h5><a href="#">{$vo['nick']}</a></h5>
-						</div>
-						<div class="media-body response-text-right">
-							<p>{$vo['com_content']}</p>
-							<ul>
-								<li>{$vo['ctime']}</li>
-								<li><a href="">回复</a></li>
-							</ul>		
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					{/volist}
-				</div>	
-				<div class="coment-form">
-					<h4>留言</h4>
-					<form action="{:url('com')}" method="post">
-						<!-- <input type="text" name="" value="姓名" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '姓名';}" required="">
-						<input type="email" value="邮箱" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '邮箱';}" required="">
-						<input type="text" value="网站" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '网站';}" required=""> -->
-						<textarea type="text" name="com_content" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '您的留言……';}" required="">您的留言……</textarea>
-						<input type="hidden" name="article_id" value="{$data_info['article_id']}" >
-						<input type="submit" value="提交评论" >
-						
-						<p class="help-block">提示：当前用户未<a target="_blank" href="{:url('user/login')}">登录</a>，此次评论将默认为匿名……</p>
-						<!-- <button type="button" class="btn btn-primary" >提交评论</button> -->
-					</form>
-				</div>		
+				{include file="blog/response" /} 
+				{include file="blog/com" /}	
 			</div>	
-			{include file="blog/right_category" /}
+			{include file="blog/right" /}
 			<div class="clearfix"> </div>
 		</div>	
 	</div>

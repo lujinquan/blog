@@ -1,0 +1,50 @@
+<!--//related-posts-->
+{if condition="count($comments) > 0"}
+<div class="response">
+	<h4>评论</h4>
+	{volist name="comments" id='vo'}
+	<div class="media response-info">
+		<div class="media-left response-text-left">
+			<a href="javascript:;">
+				<img class="media-object" src="{$vo['avatar']}" alt=""/>
+			</a>
+		</div>
+		<div class="media-body response-text-right">
+			<p><font style="color:#282828;font-weight:800;">{$vo['nick']}</font></p>
+			<p>{$vo['com_content']}</p>
+			<ul>
+				<li style="float:left;color:#bbb">{$vo['ctime']}</li>
+				<li><a href="javascript:;" data-value="{$vo['com_id']}" class="replay"></a><a href="javascript:;" class="like-replay" data-value="{$vo['com_id']}">{$vo['love']}</a></li>
+			</ul>		
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+	{if condition="count($vo['replay']) > 0"}
+	<div class="espace10"></div>
+	<div class="response-info-aux-before">
+		{volist name="vo['replay']" id="vvo"}
+		<div class="media response-info-aux">
+			<div class="media-left response-text-left">
+				<a href="#">
+					<img class="media-object" src="{$vo['avatar']}" alt=""/>
+				</a>
+			</div>
+			<div class="media-body response-text-right">
+				<p><font class="replay-nick">{$vvo['nick']}：</font></p>
+				<p>回复&nbsp;<font class="replay-nick">{$vo['nick']}：</font>{$vvo['com_content']}</p>
+				<ul>
+					<li class="replay-ctime">{$vvo['ctime']}</li>
+					<li><a href="javascript:;" class="like-replay" data-value="{$vo['com_id']}">{$vvo['love']}</a></li>
+				</ul>		
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+		{/volist}
+		<div class="espace20 eline"></div>
+		</div>
+		{else /}
+		<div class="espace20 eline"></div>
+		{/if}
+	{/volist}
+</div>
+{/if}

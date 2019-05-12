@@ -34,7 +34,7 @@ Route::rule('blog/cate/:id','index/Blog/index?cate_id=:id');
 //博客点赞
 Route::rule('love/:id$','index/Blog/love?article_id=:id');
 //博客评论
-Route::rule('com/:id$','index/Blog/com');
+Route::rule('com$','index/Blog/com');
 //博客的评论点赞
 Route::rule('response_love$','index/Blog/response_love');
 
