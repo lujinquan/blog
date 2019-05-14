@@ -102,7 +102,7 @@
 		.icon_type {
 			width: 30px;
 			height: 30px;
-			margin: 0 30px 0;
+			margin: 0 20px 0;
 			background-color: #0288d1;
 			border-radius: 50%;
 			-moz-border-radius: 50%;
@@ -110,10 +110,11 @@
 		}
 		.btn_sns_icontype{
 			display: inline-block;
-			padding:0px 1px;
-			width:18px;
-			height:18px;
-			background: url(/static/image/icons_type.png);
+			/*padding:2px 1px;*/
+			/*margin-top:5px;*/
+			width:23px;
+			height:23px;
+			background: url(/static/image/icons_type.png) no-repeat;
 		}
 		.btn_qq {
 			background-color: #0288d1;
@@ -128,16 +129,16 @@
 			background-color: #00d20d;
 		}
 		.icon_default_qq {
-			background-position: -18px 0;
+			background-position: -16px 120%;
 		}
 		.icon_default_weibo {
-			background-position: -38px 0;
+			background-position: -35px 120%;
 		}
 		.icon_default_alipay {
-			background-position: -56px 0;
+			background-position: -56px 120%;
 		}
 		.icon_default_weixin {
-			background-position: -85px 0;
+			background-position: -84px 120%;
 		}
 		
 	</style>
@@ -176,7 +177,7 @@
 	</div>
 	<script type="text/javascript">
 	// 同意协议说明
-	console.log('欢迎进入到Lucas个人网站登录页面，赠送100积分，点此领取');
+	console.log('欢迎进入到Lucas个人网站登录页面！');
 	$('#icon').click(function(){
 		var _now = $('#icon').attr('class');
 		if(_now === 'icon_select_now'){
