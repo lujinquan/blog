@@ -230,7 +230,15 @@ layui.use('upload', function(){
     }
   });
 });
-var ue = UE.getEditor('editor');
+  var ue = UE.getEditor('editor', {
+        // toolbars: [
+        //     ['fullscreen', 'emotion','InsertImage', 'preview', 'link']
+        // ],
+        initialFrameWidth: "100%",
+        initialFrameHeight: "400",
+        //position: "fixed",
+        autoFloatEnabled: false, //取消浮动，默认true，但是开启浮动后会出现bug，工具栏置顶了。
+    });
 /*KindEditor.ready(function(K) {
   var editor1 = K.create('textarea[name="article_content"]', {
     cssPath : '/kindeditor/plugins/code/prettify.css',

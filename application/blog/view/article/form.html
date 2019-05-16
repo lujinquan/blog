@@ -109,7 +109,7 @@
       <label class="layui-form-label">文章内容</label>
       <div class="layui-col-md10 layui-col-sm10">
         <!-- <textarea class="layui-textarea" name="article_content" id="LAY_demo_editor"></textarea> -->
-          <script id="editor" type="text/plain" name="article_content" style="height:500px;"></script>
+          <script id="editor" type="text/plain" name="article_content"></script>
       </div>
     </div>
   </div>
@@ -144,7 +144,7 @@
 <script charset="utf-8" src="__LIB__/kindeditor/lang/zh-CN.js"></script>
 <script charset="utf-8" src="__LIB__/kindeditor/plugins/code/prettify.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="__LIB__/ueditor/ueditor.config.js"></script>    
-<script type="text/javascript" charset="utf-8" src="__LIB__/ueditor/ueditor.all.min.js"> </script>     
+<script type="text/javascript" charset="utf-8" src="__LIB__/ueditor/ueditor.all.js"> </script>     
 <script type="text/javascript" charset="utf-8" src="__LIB__/ueditor/lang/zh-cn/zh-cn.js"></script>
 <script type="text/javascript" charset="utf-8" src="__LIB__/ueditor/third-party/SyntaxHighlighter/shCore.js"></script>
 <link rel="stylesheet" href="__LIB__/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css">
@@ -200,9 +200,25 @@
       }
     });
   });
-  var ue = UE.getEditor('editor');
+  // var ue = UE.getEditor('editor');
 
-  SyntaxHighlighter.all();
+  var ue = UE.getEditor('editor', {
+        // toolbars: [
+        //     ['fullscreen', 'emotion','InsertImage', 'preview', 'link']
+        // ],
+        initialFrameWidth: "100%",
+        initialFrameHeight: "400",
+        // minFrameWidth:800,
+        // minFrameHeight:400,
+        // scaleEnabled:true, //表格是否可拖拽
+        //position: "fixed",
+        //autoFloatEnabled: false, //取消浮动，默认true，但是开启浮动后会出现bug，工具栏置顶了。
+        position: "relative", //relative , fixed , absolute
+        topOffset:80,
+        toolbarTopOffset:200,
+    });
+
+  //SyntaxHighlighter.all();
 /*  kindEditor编辑器 KindEditor.ready(function(K) {
     var editor1 = K.create('textarea[name="article_content"]', {
       cssPath : '/kindeditor/plugins/code/prettify.css',
