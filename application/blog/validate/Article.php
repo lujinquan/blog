@@ -23,7 +23,7 @@ class Article extends Validate
     protected $rule = [
         'cate_id|所属栏目'    => 'require',
         'article_title|文章标题'      => 'require|unique:article',
-        'sort_order|排序号'   => 'require|number',
+        'sort_order|排序号'   => 'number',
         'article_desc|文章描述'   => 'require',
         'keywords|关键词' => 'require',
         //'__token__'      => 'require|token',
