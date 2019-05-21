@@ -28,6 +28,10 @@ class SystemUser extends Model
     // 自动写入时间戳
     protected $autoWriteTimestamp = true;
 
+    protected $type = [
+        //'last_login_time' => 'timestamp:Y-m-d H:i:s',
+    ];
+
     // 对密码进行加密
     public function setPasswordAttr($value)
     {
@@ -48,6 +52,11 @@ class SystemUser extends Model
     public function setLastLoginIpAttr()
     {
         return get_client_ip();
+    }
+
+    public function setLastLoginTimeAttr($value)
+    {
+        return date('Y-m-d H:i:s',$value);
     }
 
     // 权限
