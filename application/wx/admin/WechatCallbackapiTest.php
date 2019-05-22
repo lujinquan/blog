@@ -1,14 +1,16 @@
 <?php
 
+namespace app\wx\admin;
+
 define("TOKEN", "weixin");//自己定义的token 就是个通信的私钥
 
-$wechatObj = new wechatCallbackapiTest();
+$wechatObj = new Wechatcallbackapitest();
 
 $wechatObj->valid();
 
 //$wechatObj->responseMsg();
 
-class WechatCallbackapiTest
+class Wechatcallbackapitest
 
 {
 
