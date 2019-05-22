@@ -2,9 +2,10 @@
 
 namespace app\wx\admin;
 
+use think\Controller;
 include_once EXTEND_PATH."wxpub/wxBizMsgCrypt.php";
 
-class Api
+class Api extends Controller
 {
 	public function checkSignature()
 	{
