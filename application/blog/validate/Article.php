@@ -25,7 +25,7 @@ class Article extends Validate
         'article_title|文章标题'      => 'require|unique:article',
         'sort_order|排序号'   => 'number',
         'article_desc|文章描述'   => 'require',
-        'keywords|关键词' => 'require',
+        //'keywords|关键词' => 'require',
         //'__token__'      => 'require|token',
     ];
 
@@ -37,13 +37,13 @@ class Article extends Validate
         'sort_order.require'    => '排序号不能为空',
         'sort_order.number'    => '排序号必须为数字',
         'article_desc.require'    => '文章描述不能为空',
-        'keywords.require'      => '关键词不能为空',
+        //'keywords.require'      => '关键词不能为空',
     ];
 
     // 自定义新增场景
     public function sceneAdd()
     {
-        return $this->only(['cate_id', 'article_title', 'sort_order', 'article_desc', 'keywords', '__token__']);    
+        return $this->only(['cate_id', 'article_title', 'sort_order', 'article_desc', '__token__']);    
     }
 
 }
