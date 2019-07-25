@@ -9,19 +9,15 @@ class Api extends Controller
 {
 	public function checkSignature()
 	{
-		$signature = $_GET["signature"];
-		$times = $_GET["timestamp"];
-		$nonce = $_GET["nonce"];
-
-		$tmpArr = array($timestamp, $nonce);
-		sort($tmpArr, SORT_STRING);
-		$tmpStr = implode( $tmpArr );
-		$tmpStr = sha1( $tmpStr );
-
-		if($signature){
-			return true;
-		}else{
-			return false;
-		}
+		$toUser = 'a'; 
+        $fromUser = 'b';
+        $time = time();
+        //返回文字消息的模板
+        $textTpl = "<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime><MsgType><![CDATA[%s]]></MsgType><Content><![CDATA[%s]]></Content><MsgId>1234567890123456</MsgId></xml>";
+        $msgType = "text";
+        $content = 'ok';
+        //dump();dump();dump();
+        $info = sprintf($textTpl, $toUser,$fromUser, $time ,$msgType,$content);
+        halt($info);
 	}
 }
