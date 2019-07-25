@@ -54,7 +54,7 @@ class SystemUser extends Model
         return get_client_ip();
     }
 
-    public function setLastLoginTimeAttr($value)
+    public function getLastLoginTimeAttr($value)
     {
         return date('Y-m-d H:i:s',$value);
     }
@@ -186,6 +186,7 @@ class SystemUser extends Model
         // 更新登录信息
         $user->last_login_time = time();
         $user->last_login_ip   = get_client_ip();
+        //halt($user);
         if ($user->save()) {
             // 执行登陆
             $login = [];

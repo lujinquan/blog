@@ -31,7 +31,6 @@ class Publics extends Common
         if ($this->request->isPost()) {
             $username = $this->request->post('username/s');
             $password = $this->request->post('password/s');
-            
             if (!$model->login($username, $password)) {
                 $data = [];
                 $data['token'] = $this->request->token();
