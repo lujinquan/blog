@@ -29,7 +29,7 @@ class Blog extends Base
             'status' => 1,
             'is_stick' => 1
         ];
-        $newArticles = ArticleModel::where($newWhere)->field('thumb,medium_thumb,article_id,article_title,article_long_title')->order('ctime desc')->limit(3)->select();
+        $newArticles = ArticleModel::where($newWhere)->field('thumb,medium_thumb,article_id,article_title,article_long_title')->order('click desc,ctime desc')->limit(4)->select();
         // 获取右侧最新评论
         $newComWhere = [
             'is_show' => 1,
