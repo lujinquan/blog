@@ -35,7 +35,7 @@ class Base extends Common
             'is_show' => 1,
             'status' => 1,
         ];
-        $hotArticles = ArticleModel::where($hotWhere)->field('thumb,article_id,article_title,ctime')->order('click desc')->limit(3)->select();
+        $hotArticles = ArticleModel::where($hotWhere)->field('thumb,medium_thumb,article_id,article_title,ctime')->order('click desc')->limit(3)->select();
 
         $this->assign('hotArticles',$hotArticles);
         $this->assign('thisMenu',$thisMenu);

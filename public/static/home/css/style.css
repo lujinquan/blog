@@ -726,6 +726,9 @@ a.list-group-item:hover {
 .blog-ctgry{
   margin: 5em 0;
 }
+.recent-posts{
+  min-width:350px;
+}
 .recent-posts-info {
 	margin-bottom: 4em;
 }

@@ -102,7 +102,7 @@ class SystemAnnex extends Model
         // 移动到upload 目录下
         $upfile = $file->rule('md5')->move($_upload_path);
         if (!is_file($_upload_path.$upfile->getSaveName())) {
-            return self::result('文件上传失败！', $from);
+            return self::result($file->getError(), $from);
         }
         $file_count = 1;
         $file_size = round($upfile->getInfo('size')/1024, 2);

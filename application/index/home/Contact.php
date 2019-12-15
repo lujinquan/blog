@@ -10,6 +10,7 @@ class Contact extends Base
 {
     public function index()
     {
+        $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
     	/**
     	 * 生成二维码
          * png($text, $outfile = false, $level = QR_ECLEVEL_L, $size = 3, $margin = 4, $saveandprint=false)
@@ -26,7 +27,7 @@ class Contact extends Base
      //    $qrcode = new QRcode;
      //    $qrcode::png($text,$outfile,$level,$size,0);
    		// $this->assign('qrcode_url',$url);
-
+        $this->assign('http_type',$http_type);
         return $this->fetch();
     }
 
