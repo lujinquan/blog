@@ -37,7 +37,7 @@ class Blog extends Base
         ];
         // 获取右侧云标签
         $newComments = CommentModel::with('article,member')->where($newComWhere)->field('com_id,article_id,member_id,com_content,ctime')->order('ctime desc')->limit(4)->select();
-        $tags = TagModel::where('status',1)->field('tag_name,url')->limit(30)->select();
+        $tags = TagModel::where('status',1)->field('id,tag_name,url')->limit(30)->order('order_sort asc')->select();
         $this->assign('tags',$tags);
         $this->assign('newArticles',$newArticles);
         $this->assign('newComments',$newComments);
@@ -148,6 +148,35 @@ class Blog extends Base
             return $this->success('回复成功');
         }
         
+    }
+
+    /**
+     * [love 文章的点赞功能]
+     * @return [json] [回复是否成功]
+     */
+    public function tag()
+    {
+        $id = input('id');
+        $row = TagModel::get($id);
+//halt($row);
+        $page = input('param.page/d', 1);
+        $limit = input('param.limit/d', 5);
+        
+        $articleWhere = [
+            ['cate_id' , 'eq' , $row['cate_id']], //默认显示php语言的栏目
+            ['keywords' , 'like' , '%'.$row['tag_name'].'%'],
+            ['is_show' , 'eq' , 1],
+            ['status' , 'eq' , 1],
+        ];
+        //halt($articleWhere);
+        $articleFields = 'article_id,cate_id,article_title,article_long_title,article_desc,link,author,ctime,click,thumb';
+        $initArticles = ArticleModel::with('cate')->where($articleWhere)->field($articleFields)->page($page)->order('ctime desc')->paginate($limit);
+        //halt($initArticles);
+        $page = $initArticles->render();
+        $this->assign('page',$page);
+        $this->assign('cateID',$row['cate_id']);
+        $this->assign('initArticles',$initArticles);
+        return $this->fetch('index');
     }
 
     /**

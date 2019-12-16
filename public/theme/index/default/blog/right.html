@@ -70,7 +70,7 @@
 			</div>
 			<div class="cmnt-icon-right">
 				<p>标题：{$vo['article_title']}</p>
-				<p>游客：<a href="#">{$vo['nick']}</a></p>
+				<p>{if condition="$vo['member_id'] == 10000"}游客{else /}会员{/if}：<a href="#">{$vo['nick']}</a></p>
 				<p>评论：{if condition="mb_strlen($vo['com_content']) > 13"}{:mb_substr($vo['com_content'],0,13)}...{else /}{$vo['com_content']}{/if}</p>
 			</div>
 			<div class="clearfix"> </div>
@@ -83,7 +83,7 @@
 	<h4>热门标签</h4>
 	<ul class="tpt-f cl" style="list-style:none;">
 		{volist name="tags" key="k" id="vo"}
-		<li><a class="tpt-f-{$k} bck" href='{$vo["url"]}'>{$vo['tag_name']}</a></li>
+		<li><a class="tpt-f-{$k} bck" href='{$vo["url"]}{$vo["id"]}'>{$vo['tag_name']}</a></li>
 		{/volist}
 	</ul>
 </div>

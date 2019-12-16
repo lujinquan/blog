@@ -4,6 +4,21 @@ $('.shadow').on('mouseover',function(){
 $('.shadow').on('mouseleave',function(){
 	$(this).removeClass("lu-box-shadow");
 });
+
+// 全栈搜索
+// $('#whole_search').on('click',function(){
+// 	var keywords = $('#whole_keywords').val();
+// 	console.log('全站搜索的关键词是：',keywords);
+// 	if(!keywords){
+// 		return false;
+// 	}else{
+// 		$.get("/search/"+keywords,function(data){
+			
+// 		});
+// 	}
+	
+// });
+
 // 文章点赞
 $('.like').on('click',function(){
 	var that = this;

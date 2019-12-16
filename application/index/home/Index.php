@@ -54,6 +54,7 @@ class Index extends Base
         $where[] = ['is_show','eq',1];
         $where[] = ['status','eq',1];
         $where[] = ['keywords','like','%'.$keywords.'%'];
+        //halt($keywords);
         $articles = ArticleModel::where($where)->page($page)->order('ctime desc')->paginate($limit);
         $page = $articles->render();
         $this->assign('page',$page);

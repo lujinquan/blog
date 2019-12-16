@@ -23,6 +23,8 @@ Route::rule('tour$','index/Tour/index');
 Route::rule('gallery$','index/Gallery/index');
 Route::rule('blog$','index/Blog/index');
 Route::rule('contact$','index/Contact/index');
+//全站搜索
+Route::rule('search/:name','index/Index/search?keywords=:name');
 //首页的album
 Route::rule('album/[:id]','index/Index/album?article_id=:id');
 //首页的book
@@ -37,8 +39,8 @@ Route::rule('love/:id$','index/Blog/love?article_id=:id');
 Route::rule('com$','index/Blog/com');
 //博客的评论点赞
 Route::rule('response_love$','index/Blog/response_love');
-
-
+//博客标签跳转
+Route::rule('tag/:id$','index/Blog/tag?tag_id=:id');
 //网站会员登录
 Route::rule('login$','index/User/login');
 //网站会员登出
