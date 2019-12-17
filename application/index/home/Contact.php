@@ -35,4 +35,10 @@ class Contact extends Base
     {
         return $this->fetch();
     }
+
+    public function pay()
+    {
+        halt('给博主打赏的二维码跳转页面，制作中……');
+        return $this->fetch();
+    }
 }

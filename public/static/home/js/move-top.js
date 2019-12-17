@@ -1,4 +1,5 @@
 /* UItoTop jQuery Plugin 1.2 | Matt Varone | http://www.mattvarone.com/web-design/uitotop-jquery-plugin */
+
 (function($) {
     $.fn.UItoTop = function(options) {
         var defaults = {
@@ -17,26 +18,16 @@
         $('body').append('<a href="#" id="' + settings.containerID + '">' + settings.text + '</a>');
         $(containerIDhash).hide().on('click.UItoTop',
         function() {
-            $('html, body').animate({
-                scrollTop: 0
-            },
-            settings.scrollSpeed, settings.easingType);
-            $('#' + settings.containerHoverID, this).stop().animate({
-                'opacity': 0
-            },
-            settings.inDelay, settings.easingType);
+//try{ 
+            $('html, body').animate({scrollTop: 0},settings.scrollSpeed, settings.easingType);
+            $('#' + settings.containerHoverID, this).stop().animate({'opacity': 0},settings.inDelay, settings.easingType);
+//}catch(err){console.log('报错1');}
             return false;
         }).prepend('<span id="' + settings.containerHoverID + '"></span>').hover(function() {
-            $(containerHoverIDHash, this).stop().animate({
-                'opacity': 1
-            },
-            600, 'linear');
+            $(containerHoverIDHash, this).stop().animate({'opacity': 1},600, 'linear');
         },
         function() {
-            $(containerHoverIDHash, this).stop().animate({
-                'opacity': 0
-            },
-            700, 'linear');
+            $(containerHoverIDHash, this).stop().animate({'opacity': 0},700, 'linear');
         });
         $(window).scroll(function() {
             var sd = $(window).scrollTop();
@@ -51,3 +42,4 @@
         });
     };
 })(jQuery);
+
