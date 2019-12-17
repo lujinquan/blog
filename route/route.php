@@ -47,6 +47,8 @@ Route::rule('login$','index/User/login');
 Route::rule('logout$','index/User/logout');
 //网站会员注册
 Route::rule('register$','index/User/register');
+//个人二维码信息
+Route::rule('lucas','index/Contact/info');
 
 //评论的回复留言
 Route::rule('replay$','index/Blog/replay');
