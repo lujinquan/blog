@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lucas 申诉单</title>
+	<script src="__HOME_JS__/jquery.min-2.2.1.js?v={:config('hisiphp.version')}"></script>
+	<script src="__STATIC__/js/layer/layer.js?v={:config('hisiphp.version')}"></script>
+	<style>
+		/* CSS Document */
+		html, body, div, span, object, iframe,h1, h2, 
+		h3, h4, h5, h6, p, blockquote, pre,abbr, address, cite, code,del, dfn, 
+		em, img, ins,kbd, q, samp,small, strong, sub, sup, var,b, i,dl, dt, dd, 
+		ol, ul, li,fieldset, form, label, legend,table, caption, tbody, 
+		tfoot,thead,tr, th, td,article, aside, canvas, details, figcaption, 
+		figure, footer, header, hgroup, menu, nav, section, summary,time, mark, 
+		audio, video {
+		    margin:0;
+		    padding:0;
+		    border:0;
+		    outline:0;
+		    background:transparent;
+		    outline-style:none;/*FF*/ 
+		}
+		body {
+			background-color:#E6E6E6;
+		    line-height:1;
+		    text-align:center
+		}
+		a{
+		    margin:0;
+		    padding:0;
+		    border:0;
+		    background:transparent;
+		    text-decoration:none;
+		}
+		a:hover,a:focus{
+		    text-decoration:none;
+		    outline-style:none;/*FF*/ 
+		}
+		.main-form {
+			width:50%;
+			height:650px;
+			background: #fff;
+			min-height:800px;
+			margin:80px auto;
+			min-width:800px;
+		}
+		.title_big30 {
+			padding-top:40px;
+			padding-bottom:80px;
+			font-weight:normal;
+			font-size:30px;
+		}
+		.row-title {
+			margin-bottom:30px;
+			font-size:18px;
+			font-weight:normal;
+		}
+		.in-line {
+			display:inline;
+		}
+		.lab {
+			width: 70%;
+		}
+		.inp {
+			line-height:40px;
+			border:1px solid #e8e8e8;
+			cursor:pointer;
+			padding-left:10px;
+		}
+		.len {
+			width:400px;
+		}
+		.sh {
+			width:270px;
+		}
+		.img_code {
+			margin-bottom:-15px;
+		}
+		.login-submit {
+			margin-top:30px;
+			width:410px;
+			line-height:40px;
+			background: #5F9EA0;
+			font-size:16px;
+			color: #fff;
+			border:none;
+			text-align:center;
+			cursor:pointer;
+		}
+		.msg {
+
+			font-size: 14px;
+			margin-top: 50px;
+    		font-family: arial,"Hiragino Sans GB", "Microsoft YaHei","微軟正黑體","儷黑 Pro", sans-serif;
+		}
+		.oth_type_links {
+			width: 400px;
+			height: 80px;
+			/*border: 1px solid red;*/
+			margin: 30px auto;
+		}
+		.icon_type {
+			width: 30px;
+			height: 30px;
+			margin: 0 20px 0;
+			background-color: #0288d1;
+			border-radius: 50%;
+			-moz-border-radius: 50%;
+			-webkit-border-radius: 50%;
+		}
+		.btn_sns_icontype{
+			display: inline-block;
+			/*padding:2px 1px;*/
+			/*margin-top:5px;*/
+			width:23px;
+			height:23px;
+			background: url(/static/image/icons_type.png) no-repeat;
+		}
+		.btn_qq {
+			background-color: #0288d1;
+		}
+		.btn_weibo {
+			background-color: #d32f2f;
+		}
+		.btn_alipay {
+			background-color: #0ae;
+		}
+		.btn_weixin {
+			background-color: #00d20d;
+		}
+		.icon_default_qq {
+			background-position: -16px 120%;
+		}
+		.icon_default_weibo {
+			background-position: -35px 120%;
+		}
+		.icon_default_alipay {
+			background-position: -56px 120%;
+		}
+		.icon_default_weixin {
+			background-position: -84px 120%;
+		}
+		
+	</style>
+</head>
+
+<body>
+	<div class="main-form">
+		<h2 class="title_big30">申诉工单表</h2>
+		<div>
+		<form>
+			<div class="row-title">
+				<div><input class="inp len" id="email" type="text" name="email" placeholder="邮箱：申诉结果会发送到该邮箱，请注意查收！" value=""></div>
+			</div>
+			<div class="row-title">
+				<select name="appeal_type" style="width:412px;height:44px;line-height:44px;font-size:14px;">
+				  <option value ="1">忘记密码</option>
+				  <option value ="2">无法登录</option>
+				  <option value ="3">网站报错</option>
+				  <option value ="4">其他</option>
+				</select>
+			</div>
+			<div class="row-title">
+				<textarea style="width:406px;height:200px;" name="password" placeholder="密码">  这里填写申诉内容……</textarea>
+				<!-- <div><input class="inp len" id="password" type="password" name="password" placeholder="密码" value=""></div> -->
+			</div>
+			<div class="row-title">
+				<div class="lab in-line">
+					<input class="inp sh" id="captcha" type="text" name="captcha" placeholder="验证码" value="">
+					<img class="img_code" src='/captcha.html' onclick="this.src='/captcha.html?d='+Math.random();" />
+				</div>
+			</div>
+			<div class="row-title row-con">
+				<input class="login-submit" type="button" id="ajsubmit" value="提交">
+				<!-- <div class="msg">手机短信登录/注册</div> -->
+				<div class="msg"><a href="javascript:history.go(-1)">返回</a>&nbsp;|&nbsp;<a href="/login">登录</a></div>
+			</div>
+		</form>
+	</div>
+	<script type="text/javascript">
+	// 会员登录
+	$('#ajsubmit').click(function(){
+		var _email = $('#email').val();
+		var _password = $('#password').val();
+		var _captcha = $('#captcha').val();
+		var msg = '';
+		if(!_captcha){
+			msg = '请输入验证码';
+		}
+		if(!_password){
+			msg = '请输入密码';
+		}
+		if(!_email){
+			msg = '请输入邮箱号';
+		}
+		if(msg){
+			layer.msg(msg,{offset: 't',anim: 6});
+		}else{
+			$.ajax({
+				type: 'post',
+			    url: '/login',
+			    data: 'email='+_email+'&password='+_password+'&captcha='+_captcha,
+			    dataType: "json",
+			    success: function(res){
+			  	  	if(res.code != 0){
+			  	  		layer.msg(res.msg,{offset: 't',anim: 6});
+			  	  	}else{
+			  	  		layer.msg(res.msg,{offset: 't',anim: 6},function(){
+							//关闭后的操作
+							location.href = '/';
+						});
+			  	  	}
+			    }
+			});
+		}
+	})	
+	</script>
+</body>
+</html>

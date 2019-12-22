@@ -18,6 +18,7 @@ class Index extends Base
         $this->assign('imgs',array_chunk($imgs->toArray(),3,true));
 
         $imgsTui = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>99])->field('article_id,article_title,author,article_long_title,thumb')->limit(3)->select();
+        //halt($imgsTui);
         $this->assign('imgsTui',$imgsTui);
         return $this->fetch();
     }

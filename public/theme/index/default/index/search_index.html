@@ -7,6 +7,7 @@
 			<li>搜索</li>
 		</ol>
 		<div class="col-md-12 blog-left">
+			{if condition="count($articles)"}
 			{volist name="articles" id="vo"}
 			<!-- <div class="blog-info" style="border:1px solid red;padding:5px"> -->
 			<div class="blog-info shadow">
@@ -22,6 +23,12 @@
 				</div>	
 			</div>
 			{/volist}
+			{else /}
+				<!-- 数据为空 -->
+				<div style="text-align:center;">
+				<img src="__PUBLIC_IMG__/wushuju_1.png" />
+				</div>
+			{/if}
 		</div>
 		<div class="clearfix"></div>
 		<style>

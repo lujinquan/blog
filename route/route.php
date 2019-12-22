@@ -45,8 +45,16 @@ Route::rule('tag/:id$','index/Blog/tag?tag_id=:id');
 Route::rule('login$','index/User/login');
 //网站会员登出
 Route::rule('logout$','index/User/logout');
+//网站会员忘记密码
+Route::rule('forget$','index/User/forget');
+//网站会员忘记密码发送回执
+Route::rule('receipt$','index/User/receipt');
+//网站会员设置密码
+Route::rule('setting$','index/User/setting');
 //网站会员注册
 Route::rule('register$','index/User/register');
+//网站会员提交申诉
+Route::rule('appeal$','index/User/appeal');
 //个人二维码信息
 Route::rule('lucas','index/Contact/info');
 //打赏功能

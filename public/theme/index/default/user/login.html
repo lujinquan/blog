@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Lucas账号-登录</title>
+	<title>Lucas 账号-登录</title>
 	<script src="__HOME_JS__/jquery.min-2.2.1.js?v={:config('hisiphp.version')}"></script>
 	<script src="__STATIC__/js/layer/layer.js?v={:config('hisiphp.version')}"></script>
 	<style>
@@ -164,65 +164,53 @@
 			<div class="row-title row-con">
 				<input class="login-submit" type="button" id="ajsubmit" value="登录">
 				<!-- <div class="msg">手机短信登录/注册</div> -->
-				<div class="msg"><a href="/register">立即注册</a>&nbsp;|&nbsp;<a href="javascript:;">忘记密码？</a></div>
+				<div class="msg"><a href="/register">立即注册</a>&nbsp;|&nbsp;<a href="/forget">忘记密码？</a></div>
 			</div>
 		</form>
 		<div class="msg">其他方式登录</div>
 		<div id="sns-login-links" class="oth_type_links">
-			<a class="icon_type btn_qq sns-login-link" data-type="qq" href="javascript:;" title="QQ登录" target="_blank"><i class="btn_sns_icontype icon_default_qq"></i></a>
-			<a class="icon_type btn_weibo sns-login-link" data-type="weibo" href="javascript:;" title="微博登录" target="_blank"><i class="btn_sns_icontype icon_default_weibo"></i></a>
-			<a class="icon_type btn_alipay sns-login-link" data-type="alipay" href="javascript:;" title="支付宝登录" target="_blank"><i class="btn_sns_icontype icon_default_alipay"></i></a>
-			<a class="icon_type btn_weixin sns-login-link" data-type="weixin" href="javascript:;" title="微信登录" target="_blank"><i class="btn_sns_icontype icon_default_weixin"></i></a>
+			<a class="icon_type btn_qq sns-login-link" data-type="qq" href="javascript:;" title="QQ登录"><i class="btn_sns_icontype icon_default_qq"></i></a>
+			<a class="icon_type btn_weibo sns-login-link" data-type="weibo" href="javascript:;" title="微博登录"><i class="btn_sns_icontype icon_default_weibo"></i></a>
+			<a class="icon_type btn_alipay sns-login-link" data-type="alipay" href="javascript:;" title="支付宝登录"><i class="btn_sns_icontype icon_default_alipay"></i></a>
+			<a class="icon_type btn_weixin sns-login-link" data-type="weixin" href="javascript:;" title="微信登录"><i class="btn_sns_icontype icon_default_weixin"></i></a>
 		</div>
 	</div>
 	<script type="text/javascript">
-	// 同意协议说明
 	console.log('欢迎进入到Lucas个人网站登录页面！');
-	$('#icon').click(function(){
-		var _now = $('#icon').attr('class');
-		if(_now === 'icon_select_now'){
-			$('#icon').attr('class','icon_select');
-			$('#is_agree').val(0);
-		}else{
-			$('#icon').attr('class','icon_select_now');
-			$('#is_agree').val(1);
-		}
-	})
 	// 会员登录
 	$('#ajsubmit').click(function(){
 		var _email = $('#email').val();
 		var _password = $('#password').val();
 		var _captcha = $('#captcha').val();
-		var msg = '';
-		if(!_captcha){
-			msg = '请输入验证码';
+		if(!_email){
+			layer.tips('请输入邮箱号!', '#email');
+			return false;
 		}
 		if(!_password){
-			msg = '请输入密码';
+			layer.tips('请输入密码!', '#password');
+			return false;
 		}
-		if(!_email){
-			msg = '请输入邮箱号';
+		if(!_captcha){
+			layer.tips('请输入验证码!', '#captcha');
+			return false;
 		}
-		if(msg){
-			layer.msg(msg,{offset: 't',anim: 6});
-		}else{
-			$.ajax({
-				type: 'post',
-			    url: '/login',
-			    data: 'email='+_email+'&password='+_password+'&captcha='+_captcha,
-			    dataType: "json",
-			    success: function(res){
-			  	  	if(res.code != 0){
-			  	  		layer.msg(res.msg,{offset: 't',anim: 6});
-			  	  	}else{
-			  	  		layer.msg(res.msg,{offset: 't',anim: 6},function(){
-							//关闭后的操作
-							location.href = '/';
-						});
-			  	  	}
-			    }
-			});
-		}
+		$.ajax({
+			type: 'post',
+		    url: '/login',
+		    data: 'email='+_email+'&password='+_password+'&captcha='+_captcha,
+		    dataType: "json",
+		    success: function(res){
+		  	  	if(res.code != 0){
+		  	  		layer.msg(res.msg,{offset: 't'});
+		  	  	}else{
+		  	  		layer.msg(res.msg,{offset: 't'},function(){
+						//关闭后的操作
+						location.href = '/';
+					});
+		  	  	}
+		    }
+		});
+		
 	})	
 	</script>
 </body>
