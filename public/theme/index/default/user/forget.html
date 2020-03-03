@@ -185,7 +185,7 @@
 		// 获取回执码
 		$.ajax({
 			type: 'post',
-		    url: '/receipt',
+		    url: '/receipt.html',
 		    data: {'email':_email},
 		    dataType: "json",
 		    success: function(res){
@@ -231,7 +231,7 @@
 		}
 		$.ajax({
 			type: 'post',
-		    url: '/forget',
+		    url: '/forget.html',
 		    data: 'email='+_email+'&receipt='+_receipt,
 		    dataType: "json",
 		    success: function(res){

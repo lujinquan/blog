@@ -37,10 +37,10 @@
 									<span style="color:#BBBBBB">当前账号：</span><font color="#5F9EA0">{:cookie('nick')}<a href="javascript:;" id="logout">&nbsp;&nbsp;[退出]</a></font>
 								</li>
 								<li>
-									<a href="/info" target="_blank"><font color="#5F9EA0">>>个人中心</font></a>
+									<a href="/info.html" target="_blank"><font color="#5F9EA0">>>个人中心</font></a>
 								</li>
 							{else/}
-								<li><a href="/login" id="login">登录</a></li>/&nbsp;&nbsp;
+								<li><a href="/login.html" id="login">登录</a></li>/&nbsp;&nbsp;
 								<li><a href="javascript:;" id="register">免费注册</a></li>
 							{/if}
 						</ul>
@@ -70,7 +70,7 @@
 						        area:['800px','570px'],
 						        content: str, //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
 						        yes: function(index, layero){
-						        	window.location.href="/register";
+						        	window.location.href="/register.html";
 						        },
 
 							});
