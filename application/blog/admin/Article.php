@@ -12,7 +12,7 @@ class Article extends Admin
         if ($this->request->isAjax()) {
             $page = input('param.page/d', 1);
             $limit = input('param.limit/d', 10);
-            $keywords = input('param.keywords');
+            $keywords = trim(input('param.keywords'));
             $cateid = input('param.cate_id');
 
             if($cateid === 0){
@@ -29,14 +29,19 @@ class Article extends Admin
             $where = [
                 ['status','eq',1],
             ];
-            if($keywords){
-                $where[] = ['keywords','like','%'.$keywords.'%'];
-            }
             if($cateid){
                 $where[] = ['cate_id','in',$cateArr];
             }
-            $fields = 'article_id,article_title,cate_id,author,link,sort_order,is_show,ctime,com,love,click';
-            $data['data'] = ArticleModel::with('cate')->field($fields)->where($where)->page($page)->order('ctime desc')->limit($limit)->select();
+            // 关键词搜索，匹配关键词或标题
+            if($keywords){
+                $whereKeywords = "keywords like '%".$keywords."%' or article_title like '%".$keywords."%'";
+                //$where[] = ['keywords','like','%'.$keywords.'%'];
+            }else{
+                $whereKeywords = '';
+            }
+            $fields = 'article_id,keywords,article_title,cate_id,author,link,sort_order,is_show,ctime,com,love,click';
+            $data['data'] = ArticleModel::with('cate')->field($fields)->where($where)->where($whereKeywords)->page($page)->order('ctime desc')->limit($limit)->select();
+            //halt(ArticleModel::getLastSql());
             $data['count'] = ArticleModel::where($where)->count('cate_id');
             $data['code'] = 0;
             $data['msg'] = '';
