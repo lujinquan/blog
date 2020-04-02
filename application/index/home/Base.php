@@ -28,6 +28,8 @@ class Base extends Common
         $thisMenu = '/'.strtolower($controller).'.html';
         if($controller == 'Index'){
             $thisMenu = '/';
+        }else{
+            $thisMenu = '/'.strtolower($controller).'.html';
         }
 
         // 获取最热门文章TOP3

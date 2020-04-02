@@ -185,7 +185,7 @@ class Blog extends Base
      */
     public function love()
     {
-        $id = input('article_id');
+        $id = input('id');
         $res = ArticleModel::where('article_id',$id)->setInc('love');
         if($res){
            return $this->success('点赞成功'); 

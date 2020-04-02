@@ -3,7 +3,7 @@
 	<!--//header-->
 
 	<!-- 这是第一种,开始 -->
-	<a href="{:url('detail')}?article_id={$banner['article_id']}">
+	<a href="{:url('detail')}?article_id={$banner['article_id']}.html">
 	<div class="banner" style="background: url({$banner['thumb']}) no-repeat 0px 0px;background-size: cover;min-height:700px;position:relative;">
 		<!-- banner-text Slider starts Here -->
 			<script src="__HOME_JS__/responsiveslides.min.js?v={:config('hisiphp.version')}"></script>
@@ -85,7 +85,7 @@
 			<div class="row">
 				{volist name="vo" id="vo1"}
 				<div class="col-md-4 bb-grids">
-					<a href="/album/{$vo1['article_id']}" class="thumbnail">
+					<a href="/album/{$vo1['article_id']}.html" class="thumbnail">
 					  <img src="{$vo1['thumb']}?v={:config('hisiphp.version')}" alt="">
 					</a>
 				</div>
@@ -111,7 +111,11 @@
 						<h4>{$vo['author']}《{$vo['article_title']}》</h4>
 						<img src="{$vo['thumb']}?v={:config('hisiphp.version')}" alt="">
 						<div class="caption">
+<<<<<<< HEAD
 							<h5><a href="/book/{$vo['article_id']}.html">{$vo['article_title']}<a></h5>
+=======
+							<h5><a href="/album/{$vo1['article_id']}.html">{$vo['article_title']}<a></h5>
+>>>>>>> 245c718d69b9e1d3e7b122844098f8077205a1e0
 							<p>{$vo['article_long_title']}</p>
 							<a href="/book/{$vo['article_id']}.html" class="btn btn-primary hvr-rectangle-in">Read More</a>
 						</div>

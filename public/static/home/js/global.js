@@ -25,12 +25,13 @@ $('.like').on('click',function(){
 	var article_id = $(this).attr('data-value');
 	var likes = $(this).html();
 	$(this).html(parseInt(likes) + 1);
-	$.post("/love", { article_id: article_id},function(data){
+	$.get("/love/"+article_id,function(data){
 		layer.tips('点赞成功！',that, {
 		  tips: [1, '#5F9EA0'],
 		  time: 2000
 		});
 	});
+	return false;
 });
 // 评论点赞
 $('.like-replay').on('click',function(){
@@ -38,12 +39,13 @@ $('.like-replay').on('click',function(){
 	var com_id = $(this).attr('data-value');
 	var likes = $(this).html();
 	$(this).html(parseInt(likes) + 1);
-	$.post("/response_love", { com_id: com_id},function(data){
+	$.get("/response_love/"+com_id, function(data){
 		layer.tips('点赞成功！',that, {
 		  tips: [1, '#5F9EA0'],
 		  time: 2000
 		});
 	});
+	return false;
 });
 // 评论提交
 $('.submit').on('click',function(){
