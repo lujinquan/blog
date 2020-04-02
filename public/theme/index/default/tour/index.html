@@ -12,11 +12,11 @@
 				{volist name='toursArr' id='vo'}			
 				<div class="col-sm-6 col-md-4 tour-grids">
 					<div class="thumbnail">
-						<a href="{:url('detail')}?article_id={$vo['article_id']}" title="">
+						<a href="/tour/{$vo['article_id']}.html" title="">
 							<img src="{$vo['thumb']}?v={:config('hisiphp.version')}" class="img-responsive zoom-img " alt="">
 						</a>
 						<div class="caption tour-caption">
-							<h3><a href="/singlepage">{$vo['article_title']}</a></h3>
+							<h3><a href="/tour/{$vo['article_id']}.html">{$vo['article_title']}</a></h3>
 							<p>{$vo['article_long_title']}</p>				
 						</div>
 					</div>

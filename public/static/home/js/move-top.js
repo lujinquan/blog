@@ -1,5 +1,5 @@
 /* UItoTop jQuery Plugin 1.2 | Matt Varone | http://www.mattvarone.com/web-design/uitotop-jquery-plugin */
-
+/*! jQuery v1.7.2 jquery.com | jquery.org/license */
 (function($) {
     $.fn.UItoTop = function(options) {
         var defaults = {

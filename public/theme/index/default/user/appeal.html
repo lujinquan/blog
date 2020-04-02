@@ -173,7 +173,7 @@
 			<div class="row-title row-con">
 				<input class="login-submit" type="button" id="ajsubmit" value="提交">
 				<!-- <div class="msg">手机短信登录/注册</div> -->
-				<div class="msg"><a href="javascript:history.go(-1)">返回</a>&nbsp;|&nbsp;<a href="/login">登录</a></div>
+				<div class="msg"><a href="javascript:history.go(-1)">返回</a>&nbsp;|&nbsp;<a href="/login.html">登录</a></div>
 			</div>
 		</form>
 	</div>
@@ -198,7 +198,7 @@
 		}else{
 			$.ajax({
 				type: 'post',
-			    url: '/login',
+			    url: '/login.html',
 			    data: 'email='+_email+'&password='+_password+'&captcha='+_captcha,
 			    dataType: "json",
 			    success: function(res){

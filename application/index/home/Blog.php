@@ -56,7 +56,7 @@ class Blog extends Base
         ];
         $articleFields = 'article_id,cate_id,article_title,article_long_title,article_desc,link,author,ctime,click,thumb';
     	//$initArticles = ArticleModel::with('cate')->where($articleWhere)->field($articleFields)->page($page)->limit(3)->order('sort_order asc')->select();
-    	$initArticles = ArticleModel::with('cate')->where($articleWhere)->field($articleFields)->page($page)->order('ctime desc')->paginate($limit);
+    	$initArticles = ArticleModel::with('cate')->where($articleWhere)->field($articleFields)->page($page)->order('sort_order asc,ctime desc')->paginate($limit);
 		//halt(count($initArticles));//->paginate(config('paginate.list_rows'));
 		$page = $initArticles->render();
 		$this->assign('page',$page);

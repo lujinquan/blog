@@ -182,7 +182,7 @@
 		}
 		$.ajax({
 			type: 'post',
-		    url: '/register',
+		    url: '/register.html',
 		    data: 'email='+_email+'&nick='+_nick+'&password='+_password+'&password_confirm='+_password_confirm+'&is_agree='+_is_agree,
 		    dataType: "json",
 		    success: function(res){
@@ -191,7 +191,7 @@
 		  	  	}else{
 		  	  		layer.msg(res.msg,{offset: 't'},function(){
 						//关闭后的操作
-						location.href = '/login';
+						location.href = '/login.html';
 					});
 		  	  	}
 		    }

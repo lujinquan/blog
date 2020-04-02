@@ -39,31 +39,30 @@
 			<p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://www.lucasgalina.com"></a></p>
 		</div>
 	</div>
-
-	<!--smooth-scrolling-of-move-up-->
-		<script type="text/javascript">
-			$(document).ready(function() {
-				/*
-				var defaults = {
-					containerID: 'toTop', // fading element id
-					containerHoverID: 'toTopHover', // fading element hover id
-					scrollSpeed: 1200,
-					easingType: 'linear' 
-				};
-				*/
-				
-				$().UItoTop({ easingType: 'easeOutQuart' });
-				
-			});
-		</script>
 	
-		<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
-	<!--//smooth-scrolling-of-move-up-->
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+	<a href="#" id="back-top"></a>
+
     <script src="__HOME_JS__/bootstrap.js?v={:config('hisiphp.version')}"></script>
     <script src="__HOME_JS__/global.js?v={:config('hisiphp.version')}"></script>
+    <script type="text/javascript">
+		//$('body,html').animate({scrollTop: '0'}, 1000);
+		//当滚动条的垂直位置距顶部100像素一下时，跳转链接出现，否则消失
+	    $(window).scroll(function() {
+	        if ($(window).scrollTop() > 100) {
+	            $('#back-top').fadeIn(1000);
+	        } else {
+	            $("#back-top").fadeOut(1000);
+	        }
+	    });
+
+	    //点击跳转链接，滚动条跳到0的位置，页面移动速度是1000
+	    $("#back-top").click(function() {
+	        $('body,html').animate({
+	            scrollTop: '0'
+	        }, 1000);
+	        return false; //防止默认事件行为
+	    })
+	</script>
 
 </body>
 </html>

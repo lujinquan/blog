@@ -25,11 +25,11 @@ class Base extends Common
         $controller = request()->controller();
         //$action     = request()->action();
         //$thisMenu = '/'.$module.'/'.$controller;
-        $thisMenu = '/'.strtolower($controller);
+        $thisMenu = '/'.strtolower($controller).'.html';
         if($controller == 'Index'){
             $thisMenu = '/';
         }
-//dump($module);halt($controller);
+
         // 获取最热门文章TOP3
         $hotWhere = [
             'is_show' => 1,

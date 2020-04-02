@@ -24,7 +24,8 @@ class Tour extends Base
 
     public function detail()
     {
-        $id = input('get.article_id');
+        $id = input('param.article_id');
+        //halt($id);
         // 浏览量 +1
         ArticleModel::where('article_id',$id)->setInc('click');
         // 获取当前文章详情
@@ -44,9 +45,7 @@ class Tour extends Base
             ['article_id' ,'neq',$id]
         ];
         $tuiArticles = ArticleModel::where($tuiWhere)->field('thumb,article_id,article_title')->order('click desc')->limit(4)->select();
-        //halt(ArticleModel::getLastSql());
         
-        //halt($tuiArticles);
         $this->assign('cateID',$row['cate_id']);
         $this->assign('tuiArticles',$tuiArticles);
         

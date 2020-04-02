@@ -164,7 +164,7 @@
 			<div class="row-title row-con">
 				<input class="login-submit" type="button" id="ajsubmit" value="登录">
 				<!-- <div class="msg">手机短信登录/注册</div> -->
-				<div class="msg"><a href="/register">立即注册</a>&nbsp;|&nbsp;<a href="/forget">忘记密码？</a></div>
+				<div class="msg"><a href="/register.html">立即注册</a>&nbsp;|&nbsp;<a href="/forget.html">忘记密码？</a></div>
 			</div>
 		</form>
 		<div class="msg">其他方式登录</div>
@@ -196,7 +196,7 @@
 		}
 		$.ajax({
 			type: 'post',
-		    url: '/login',
+		    url: '/login.html',
 		    data: 'email='+_email+'&password='+_password+'&captcha='+_captcha,
 		    dataType: "json",
 		    success: function(res){

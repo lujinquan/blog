@@ -19,16 +19,17 @@
 <!-- <script src="__HOME_JS__/jquery.min-1.7.2.js?v={:config('hisiphp.version')}"></script> -->
 <!-- 弹出层layer -->
 <script src="__STATIC__/js/layer/layer.js?v={:config('hisiphp.version')}"></script>
+
 <!-- start-smoth-scrolling-->
-<script type="text/javascript" src="__HOME_JS__/move-top.js?v={:config('hisiphp.version')}"></script>
+<!-- <script type="text/javascript" src="__HOME_JS__/move-top.js?v={:config('hisiphp.version')}"></script> -->
 <!-- Hand to tear calendar-->
 
 <script type="text/javascript">
 		jQuery(document).ready(function($) {
-			$(".scroll").click(function(event){		
-				event.preventDefault();
-				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-			});
+			//$(".scroll").click(function(event){		
+				//event.preventDefault();
+				$('html,body').animate({scrollTop:0},500);
+			//});
         });
 </script>
 

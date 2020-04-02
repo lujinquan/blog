@@ -29,6 +29,10 @@ Route::rule('search/:name','index/Index/search?keywords=:name');
 Route::rule('album/[:id]','index/Index/album?article_id=:id');
 //首页的book
 Route::rule('book/[:id]','index/Index/book?article_id=:id');
+//旅行的详情
+Route::rule('tour/:id$','index/Tour/detail?article_id=:id');
+//书屋的详情
+Route::rule('gallery/:id$','index/Gallery/detail?article_id=:id');
 //博客的详情
 Route::rule('blog/:id$','index/Blog/detail?article_id=:id');
 //博客右侧的分类
@@ -61,6 +65,8 @@ Route::rule('lucas','index/Contact/info');
 Route::rule('pay','index/Contact/pay');
 //评论的回复留言
 Route::rule('replay$','index/Blog/replay');
+//全局搜索
+Route::rule('search$','index/Index/search');
 /**
  * 系统路由
  */

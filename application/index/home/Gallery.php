@@ -25,7 +25,7 @@ class Gallery extends Base
 
     public function detail()
     {
-        $id = input('get.article_id');
+        $id = input('param.article_id');
         // 浏览量 +1
         ArticleModel::where('article_id',$id)->setInc('click');
         // 获取当前文章详情
