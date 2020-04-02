@@ -71,14 +71,15 @@ class Blog extends Base
      */
     public function detail()
     {
-    	$id = input('article_id');
-    	if(!$id){
-    		return $this->error('文章不存在','blog/index');
-    	}
+    	$id = input('article_id','');
+    	// 获取当前文章详情
+        $row = ArticleModel::where(['article_id'=>$id,'is_show'=>1,'status'=>1])->find();
+        if(!$row){
+            return $this->error('页面不存在','/index.html');
+        }
         // 浏览量 +1
-        ArticleModel::where('article_id',$id)->setInc('click');
-        // 获取当前文章详情
-        $row = ArticleModel::find($id);
+        ArticleModel::where(['article_id'=>$id,'is_show'=>1,'status'=>1])->setInc('click');
+
         // 获取当前文章的评论
         $comments = $row->comment()->with('member')->where(['is_show'=>1,'status'=>1])->order('ctime desc')->select();
         foreach($comments as &$c){
