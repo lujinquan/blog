@@ -48,6 +48,33 @@ class Index extends Base
 
     public function search()
     {
+        //$page = input('param.page/d', 1);
+        $limit = input('param.limit/d', 10);
+        $keywords = input('param.keywords');
+        $where = [];
+        $where[] = ['is_show','eq',1];
+        $where[] = ['status','eq',1];
+        // 关键词搜索，匹配关键词或标题
+        if($keywords){
+            $whereKeywords = "keywords like '%".$keywords."%' or article_title like '%".$keywords."%'";  
+        }else{
+            $whereKeywords = '';
+        }
+        //$whereQuery['query']['page'] = $page;
+        $whereQuery['query']['keywords'] = $keywords;
+        $articles = ArticleModel::where($where)->where($whereKeywords)->order('ctime desc')->paginate($limit,'',$whereQuery);
+        // $articles = ArticleModel::where($where)->where($whereKeywords)->paginate($limit,'',$whereQuery)->each(function($item, $key){
+        //     //$item->nickname = 'think';
+        // });
+        $page = $articles->render();
+        $this->assign('page',$page);
+        $this->assign('keywords',$keywords);
+        $this->assign('articles',$articles);
+        return $this->fetch('search_index');
+    }
+
+    public function search_old()
+    {
         $page = input('param.page/d', 1);
         $limit = input('param.limit/d', 10);
         $keywords = input('param.keywords');
