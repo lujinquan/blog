@@ -54,9 +54,17 @@ class Index extends Base
         $where = [];
         $where[] = ['is_show','eq',1];
         $where[] = ['status','eq',1];
-        $where[] = ['keywords','like','%'.$keywords.'%'];
+        //$where[] = ['keywords','like','%'.$keywords.'%'];
+        // 关键词搜索，匹配关键词或标题
+        if($keywords){
+            $whereKeywords = "keywords like '%".$keywords."%' or article_title like '%".$keywords."%'";
+            //$where[] = ['keywords','like','%'.$keywords.'%'];
+        }else{
+            $whereKeywords = '';
+        }
+        $whereQuery['query']['keywords'] = $keywords;
         //halt($keywords);
-        $articles = ArticleModel::where($where)->page($page)->order('ctime desc')->paginate($limit);
+        $articles = ArticleModel::where($where)->where($whereKeywords)->page($page)->order('ctime desc')->paginate($limit,'',$whereQuery);
         $page = $articles->render();
         $this->assign('page',$page);
         $this->assign('keywords',$keywords);

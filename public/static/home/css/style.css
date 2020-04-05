@@ -640,6 +640,12 @@ ol.breadcrumb li a {
 	font-weight: 500;
 	color: #555555;
 }
+.blog-right p {
+  margin: 0 0 0.7em;
+  font-size: 15px;
+  font-weight: 500;
+  color: #555555;
+}
 .blog-left p a {
 	color:#5F9EA0;
 }
