@@ -1,9 +1,5 @@
 <body>
-	<style>
-	  body .lu-btn .layui-layer-btn0{
-	    background-color: #5F9EA0;
-	}
-	</style>
+	<style>body .lu-btn .layui-layer-btn0{background-color: #5F9EA0;}</style>
 	<!--navigation-->
 	<div class="top-nav">
 		<nav class="navbar navbar-default">
@@ -23,13 +19,6 @@
 					<li><a href="{$vo['link']}" {if condition="($vo['link'] === $thisMenu)"}class="active"{/if}>{$vo['cate_name']}</a></li>
 					{/volist}
 					</ul>
-					<!-- <div class="social-icons">
-						<ul>
-							<li><a href="javascript:;" class="weixin"></a></li>
-							<li><a href="javascript:;" class="weibo"></a></li>
-							<li><a href="javascript:;" class="qq"></a></li>
-						</ul>	
-					</div> -->
 					<div class="login-out">
 						<ul>
 							{if condition="cookie('member_id')"}

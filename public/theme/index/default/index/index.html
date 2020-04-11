@@ -3,19 +3,19 @@
 	<!--//header-->
 
 	<!-- 这是第一种,开始 -->
-	<a href="{:url('detail')}?article_id={$banner['article_id']}.html">
-	<div class="banner" style="background: url({$banner['thumb']}) no-repeat 0px 0px;background-size: cover;min-height:700px;position:relative;">
+	<a href="/blog/{$banner['article_id']}.html">
+	<div class="banner" style="background: url({$banner['thumb']}) no-repeat 0px 0px;background-size: cover;min-height:600px;position:relative;">
+
 		<!-- banner-text Slider starts Here -->
 			<script src="__HOME_JS__/responsiveslides.min.js?v={:config('hisiphp.version')}"></script>
 			 <script>
-				// You can also use "$(window).load(function() {"
 					$(function () {
 					// Slideshow 4
 						$("#slider3").responsiveSlides({
 						auto: true,
 						pager:false,
 						nav:true,
-						speed: 500,
+						speed: 300,
 						namespace: "callbacks",
 						before: function () {
 							$('.events').append("<li>before event fired.</li>");
@@ -34,6 +34,7 @@
 							<li>
 								<h5>《木兰词·拟古决绝词柬友》</h5>
 								<h5>&nbsp;纳兰容若</h5>
+								<!-- <img src="/upload/article/image/6f/456c6650260956a30e639ec87e1c90.jpg?v=2.0.0"> -->
 							</li>
 							<li>
 								<h5>人生若只如初见，何事秋风悲画扇？</h5>
@@ -50,35 +51,6 @@
             </div>	
 	</div>	
 	</a>
-	<!-- 这是第一种,结束 -->
-
-	<!-- 这是第二种,开始 -->
-	<!-- <div class="banner">	
-		<script src="__HOME_JS__/responsiveslides.min.js?v={:config('hisiphp.version')}"></script>
-		 <script>
-				$(function () {
-					$("#slider3").responsiveSlides({
-					auto: true,
-					pager:false,
-					nav:true,
-					speed: 500,
-					namespace: "callbacks",
-					before: function () {
-						$('.events').append("<li>before event fired.</li>");
-					},
-					after: function () {
-						$('.events').append("<li>after event fired.</li>");
-					}
-				});	
-			});
-		</script>
-		<ul class="rslides" id="slider3">
-		    <li><img src="__HOME_IMG__/banner.jpg" style="width:100%" alt=""></li>
-		    <li><img src="__HOME_IMG__/img13.jpg" alt=""></li>
-		    <li><img src="__HOME_IMG__/img31.jpg" alt=""></li>
-		</ul>
-	</div> -->
-	<!-- 这是第二种,结束 -->
 	<div class="banner-bottom">
 		<div class="container">
 			{volist name="imgs" id="vo"}

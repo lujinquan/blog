@@ -33,6 +33,10 @@
         var $ = layui.jquery;
         var jsonstr = $('#myChart1').attr('v');
         var articlesArr = JSON.parse(jsonstr);
+        var catesArr = '{:json_encode($cates)}';
+        catesArr = JSON.parse(catesArr);
+        //console.log(JSON.parse(catesArr));
+        //var catesArr = '';
         var xAxisArr = new Array();
         var yAxisArr = new Array();
         for ( var i = 0; i <articlesArr.length; i++){
@@ -137,7 +141,7 @@
 		        right: 10,
 		        top: 20,
 		        bottom: 20,
-		        data: ['生活随想','PHP'],
+		        data: catesArr,
 
 		        //selected: data.selected
 		    },

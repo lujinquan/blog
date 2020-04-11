@@ -550,7 +550,7 @@ span.glyphicon.glyphicon-triangle-right {
 }
 .address ul li {
   display: block;
-  padding: .5em 0;
+  padding: 1em 0;
   font-size: 14px;
   color: #747474;
 }
@@ -579,20 +579,21 @@ span.glyphicon.glyphicon-triangle-right {
 }
 .copy-right {
   background-color: #bdbdbd;
-  padding: 1.5em 0;
+  padding: 1.0em 0;
 }
 .copy-right p {
   color: #645d5d;
-  font-size: 16px;
+  font-size: 14px;
   text-align: center;
 }
 .copy-right p a {
   color: #645d5d;
-  font-size: 16px;
+  font-size: 14px;
+
 }
 .copy-right p a:hover{
-  color: rgb(192, 58, 58);
-  text-decoration: underline;
+  color: #5F9EA0;
+  /*text-decoration: underline;*/
 }
 /*----blog----*/
 .blog {
@@ -1472,32 +1473,19 @@ p.m_5 {
 .contact input[type="submit"]:hover{
 	background-color:rgba(242, 114, 66, 0.91);
 }
-/*--slider-up-arrow--*/
 #back-top {
 	display: none;
 	text-decoration: none;
 	position: fixed;
-	bottom: 3%;
-	right: 3%;
+	bottom: 1%;
+	right: 2%;
 	overflow: hidden;
 	width: 31px;
-	height: 32px;
+	height: 33px;
 	border: none;
 	text-indent: 100%;
 	background: url("../image/move-up.png") no-repeat 0px 0px;
 }
-/*#back-top {
-	width: 32px;
-	height: 32px;
-	display: block;
-	overflow: hidden;
-	float: right;
-	opacity: 0;
-	-moz-opacity: 0;
-	filter: alpha(opacity=0);
-}*/
-/*--//slider-up-arrow--*/
-/*---- responsive-design -----*/
 @media(max-width:1280px){
 .banner {
   min-height: 620px;

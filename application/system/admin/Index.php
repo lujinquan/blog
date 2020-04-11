@@ -66,7 +66,12 @@ class Index extends Admin
         // 获取柱状图和饼状图数据【栏目类别+文章数量】
         $data = ArticleModel::with('cate')->where($where)->field('count(article_id) as article_ids,cate_id')->group('cate_id')->select()->toArray();
         $articles = json_encode($data);
-
+        $cates = [];
+        foreach ($data as $d) {
+            $cates[] = $d['cate_name'];
+        }
+        //halt($cates);
+        $this->assign('cates',$cates);
         $this->assign('articles',$articles);
         $this->assign('articlesTimeKeys',$articlesTimeKeys);
         $this->assign('articlesTimeVals',$articlesTimeVals);

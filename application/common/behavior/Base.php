@@ -40,9 +40,10 @@ class Base
 
         // 设置系统配置
         config(ConfigModel::getConfig());
-        
+        $templateInfo = ConfigModel::where(['name' => 'site_template'])->find();
+        //halt($templateInfo);
         // 判断模块是否存在且已安装
-        $theme = 'default';
+        $theme = $templateInfo['value']?$templateInfo['value']:'default';
         if ($module != 'index' && !defined('ENTRANCE')) {
 
             if (empty($module)) {
