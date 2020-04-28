@@ -19,6 +19,13 @@ class Base extends Common
         	'is_show' => 1,
         	'status' => 1
         ];
+        $ip = get_client_ip();
+        // 设置ip白名单
+        $white_list_ip = ['119.97.248.198'];
+        if(!in_array($ip,$white_list_ip)){ 
+            echo '<h1 style="text-align:center;font-size:12rem;font-weight:normal;vertical-align:middle;font-family:&quot;background-color:#FFFFFF;"><span style="font-size:12rem;">203</span></h1><p class="text" style="text-align:center;font-size:1.6rem;color:#D93641;font-family:&quot;background-color:#FFFFFF;">很抱歉，页面已被限制访问！</p>';exit;
+            //$this->fetch('error');exit;
+        }
         $topMenus = CateModel::where('p_id',0)->field('cate_name,cate_id,link')->order('sort_order asc')->select();
         // 定位当前菜单
         $module     = request()->module();
