@@ -111,7 +111,7 @@ return [
 
     // 异常页面的模板文件
     //'exception_tmpl'         => Env::get('think_path') . 'tpl/think_exception.tpl',
-    'exception_tmpl'         => Env::get('root_path').'public/error/404.html',
+    //'exception_tmpl'         => Env::get('root_path').'public/error/404.html',
 
     // 错误显示信息,非调试模式有效
     'error_message'          => '页面错误！请稍后再试～',

@@ -24,6 +24,7 @@ class Base extends Common
         $client_ip = get_client_ip();
         // 更新游客ip库
         $visitor = new VisitorModel;
+        //halt($_SERVER);
         //$visitor_row = $VisitorModel->where([['ip','eq',$ip]])->find();
         // if($visitor_row){
         //     $visitor_row->times = Db::raw('times+1');
@@ -35,7 +36,10 @@ class Base extends Common
         $visitor->client_browser = trim(implode('-',$client_browser),'-');
         $visitor->http_cookie = $_SERVER['HTTP_COOKIE'];
         $visitor->agent_type = client_os();
-        $visitor->page_url = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        if(isset($_SERVER['REQUEST_SCHEME'])){
+            $visitor->page_url = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+        }
+        
         $visitor->redirect_status = $_SERVER['REDIRECT_STATUS'];
         if(isset($_SERVER['HTTP_REFERER'])){
             $visitor->http_referer = $_SERVER['HTTP_REFERER'];
@@ -47,15 +51,15 @@ class Base extends Common
 
         
         // 页面是否开放，如果设置为 false 则直接弹出限制访问提示
-        $is_open = false;
+        $is_open = true;
 
         if($is_open){
             // 设置白名单ip
             $white_list_ip = ['119.97.248.198','127.0.0.1','221.235.84.238'];
             // 设置黑名单ip
             $black_list_ip = [];
-            if(!in_array($ip,$white_list_ip) || in_array($ip,$black_list_ip)){
-                echo '<h1 style="text-align:center;font-size:12rem;margin-top:10%;font-weight:normal;vertical-align:middle;font-family:&quot;background-color:#FFFFFF;"><span style="font-size:12rem;">203</span></h1><p class="text" style="text-align:center;font-size:1.6rem;color:#D93641;font-family:&quot;background-color:#FFFFFF;">很抱歉，页面已被限制访问！</p>';exit;
+            if(!in_array($client_ip,$white_list_ip) || in_array($client_ip,$black_list_ip)){
+                //echo '<h1 style="text-align:center;font-size:12rem;margin-top:10%;font-weight:normal;vertical-align:middle;font-family:&quot;background-color:#FFFFFF;"><span style="font-size:12rem;">203</span></h1><p class="text" style="text-align:center;font-size:1.6rem;color:#D93641;font-family:&quot;background-color:#FFFFFF;">很抱歉，页面已被限制访问！</p>';exit;
             }
         }else{
             echo '<h1 style="text-align:center;font-size:12rem;margin-top:10%;font-weight:normal;vertical-align:middle;font-family:&quot;background-color:#FFFFFF;"><span style="font-size:12rem;">203</span></h1><p class="text" style="text-align:center;font-size:1.6rem;color:#D93641;font-family:&quot;background-color:#FFFFFF;">很抱歉，页面已被限制访问！</p>';exit;
