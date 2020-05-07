@@ -34,16 +34,13 @@ class Base extends Common
         $visitor->user_agent = $_SERVER['HTTP_USER_AGENT'];
         $client_browser = get_client_browser();
         $visitor->client_browser = trim(implode('-',$client_browser),'-');
-        $visitor->http_cookie = $_SERVER['HTTP_COOKIE'];
+        $visitor->http_cookie = isset($_SERVER['HTTP_COOKIE'])?$_SERVER['HTTP_COOKIE']:'';
         $visitor->agent_type = client_os();
         if(isset($_SERVER['REQUEST_SCHEME'])){
             $visitor->page_url = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
         }
-        
         $visitor->redirect_status = $_SERVER['REDIRECT_STATUS'];
-        if(isset($_SERVER['HTTP_REFERER'])){
-            $visitor->http_referer = $_SERVER['HTTP_REFERER'];
-        }
+        $visitor->http_referer = isset($_SERVER['HTTP_REFERER'])?$_SERVER['HTTP_REFERER']:'';
         $visitor->request_method = $_SERVER['REQUEST_METHOD'];
         $visitor->server_ip = $_SERVER['SERVER_ADDR'];
         $visitor->save();

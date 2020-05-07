@@ -44,6 +44,8 @@
 
     <script src="__HOME_JS__/bootstrap.js?v={:config('hisiphp.version')}"></script>
     <script src="__HOME_JS__/global.js?v={:config('hisiphp.version')}"></script>
+    <!-- 鼠标点击特效 S -->
+    <script src="__HOME_JS__/love.js"></script>
     <script type="text/javascript">
 	    $(window).scroll(function() {
 	        if ($(window).scrollTop() > 100) {
@@ -59,6 +61,47 @@
 	        return false;
 	    })
 	</script>
-
+	<!-- 鼠标点击特效 E -->
+	<!-- 鼠标点击特效_1 S -->
+	<script src="https://blog-static.cnblogs.com/files/zouwangblog/mouse-click.js"></script>
+	<canvas width="1777" height="841" style="position: fixed; left: 0px; top: 0px; z-index: 2147483647; pointer-events: none;"></canvas>
+	<!-- 鼠标点击特效_1 E -->
+	<!-- 雪花特效 S -->
+	<div class="Snow">
+	    <canvas id="Snow" width="891" height="937" style="width: 0px; height: 0px;"></canvas>
+	</div>
+	<script src="https://blog-static.cnblogs.com/files/zouwangblog/xue.js"></script>
+	<!-- 雪花特效 E -->
+	<!-- 猫特效 S -->
+	<script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script>
+	<div id="live2d-widget"><canvas id="live2dcanvas" width="200" height="400" style="position: fixed; opacity: 0.7; left: 70px; bottom: 0px; z-index: 1; pointer-events: none;"></canvas>
+	</div>
+	 <script>
+	     L2Dwidget.init({
+	          "model": {
+	              jsonPath: "https://unpkg.com/live2d-widget-model-hijiki/assets/hijiki.model.json",<!--这里改模型，前面后面都要改-->
+	              "scale": 1
+	          },
+	          "display": {
+	              "position": "left",<!--设置看板娘的上下左右位置-->
+	              "width": 100,
+	              "height": 200,
+	              "hOffset": 0,
+	              "vOffset": 0
+	          },
+	          "mobile": {
+	              "show": true,
+	              "scale": 0.5
+	          },
+	          "react": {
+	              "opacityDefault": 0.7,<!--设置透明度-->
+	              "opacityOnHover": 0.2
+	          }
+	      });
+	  window.onload = function(){
+	       $("#live2dcanvas").attr("style","position: fixed; opacity: 0.7; left: 70px; bottom: 0px; z-index: 1; pointer-events: none;")
+	  }
+	  </script>
+	  <!-- 猫特效 E -->
 </body>
 </html>
