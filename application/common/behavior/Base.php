@@ -40,7 +40,7 @@ class Base
 
         // 设置系统配置
         config(ConfigModel::getConfig());
-        $templateInfo = ConfigModel::where(['name' => 'site_template'])->find();
+        $templateInfo = ConfigModel::where(['name' => 'site_template','status' => 1])->find();
         //halt($templateInfo);
         // 判断模块是否存在且已安装
         $theme = $templateInfo['value']?$templateInfo['value']:'default';
@@ -86,6 +86,7 @@ class Base
             '__ADMIN_MOD_JS__'  => $rootDir.'static/'.$module.'/js',
             '__ADMIN_MOD_IMG__' => $rootDir.'static/'.$module.'/image',
             // 自定义前台静态目录
+            '__HOME__'    => $rootDir.'static/home',
             '__HOME_CSS__'    => $rootDir.'static/home/css',
             '__HOME_JS__'     => $rootDir.'static/home/js',
             '__HOME_IMG__'    => $rootDir.'static/home/image',

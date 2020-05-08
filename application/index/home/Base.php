@@ -46,7 +46,7 @@ class Base extends Common
         $visitor->save();
         // }
 
-        
+   
         // 页面是否开放，如果设置为 false 则直接弹出限制访问提示
         $is_open = true;
 
