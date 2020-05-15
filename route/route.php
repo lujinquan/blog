@@ -19,16 +19,20 @@ Route::pattern([
 ]);
 
 //顶部导航,$表示全匹配,:id表示变量，[]表示该变量是路由匹配的可选变量
+Route::rule('index$','index/Index/index');
 Route::rule('tour$','index/Tour/index');
 Route::rule('gallery$','index/Gallery/index');
 Route::rule('blog$','index/Blog/index');
 Route::rule('contact$','index/Contact/index');
+Route::rule('download$','index/Download/index');
 //全站搜索
 Route::rule('search/:name','index/Index/search?keywords=:name');
 //首页的album
 Route::rule('album/[:id]','index/Index/album?article_id=:id');
 //首页的book
 Route::rule('book/[:id]','index/Index/book?article_id=:id');
+//首页的详情（主文字类型的详情页）
+Route::rule('index/word/:id$','index/Index/word?article_id=:id');
 //旅行的详情
 Route::rule('tour/:id$','index/Tour/detail?article_id=:id');
 //书屋的详情

@@ -23,6 +23,42 @@ class Index extends Base
         return $this->fetch();
     }
 
+    /**
+     * 功能描述： 主文字的详情
+     * =====================================
+     * @author  Lucas 
+     * email:   598936602@qq.com 
+     * Website  address:  www.mylucas.com.cn
+     * =====================================
+     * 创建时间: 2020-05-10 08:23:34
+     * @example 
+     * @link    文档参考地址：
+     * @return  返回值  
+     * @version 版本  1.0
+     */
+    public function word()
+    {
+        $id = input('article_id');
+
+        $data_info = ArticleModel::where('article_id',$id)->find();
+        // 获取当前文章的评论
+        $comments = $data_info->comment()->with('member')->where(['is_show'=>1,'status'=>1])->order('ctime desc')->limit(4)->select();
+        // 获取推荐的文章
+        $tuiWhere = [
+            ['cate_id' ,'eq' , $data_info['cate_id']],
+            ['is_stick', 'eq', 1],
+            ['is_show' ,'eq', 1],
+            ['status' ,'eq', 1],
+            ['article_id' ,'neq',$id]
+        ];
+        $tuiArticles = ArticleModel::where($tuiWhere)->field('thumb,article_id,article_title')->order('click desc')->limit(4)->select();
+        
+        $this->assign('tuiArticles',$tuiArticles);
+        $this->assign('comments',$comments);
+        $this->assign('data_info',$data_info);
+        return $this->fetch('detail_main_word');
+    }
+
     public function detail()
     {
     	$id = input('article_id');
