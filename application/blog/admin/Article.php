@@ -57,6 +57,19 @@ class Article extends Admin
         return $this->fetch();
     }
 
+    public function md()
+    {
+        return $this->fetch();
+    }
+
+    public function md_render()
+    {
+        $row = ArticleModel::get(86);
+        //halt($row);
+        $this->assign('data_info', $row);
+        return $this->fetch();
+    }
+
     public function add()
     {
         if ($this->request->isPost()) {
@@ -84,10 +97,19 @@ class Article extends Admin
 
     public function edit()
     {
+        // $articles = ArticleModel::select();
+        // foreach ($articles as $key => $value) {
+        //     $mod = new ArticleModel();
+        //     //$data['article_content'] = htmlspecialchars($data['article_content']);
+        //     $mod->allowField(true)->save(['article_content'=>htmlspecialchars_decode($value['article_content'])],['article_id'=>$value['article_id']]);
+        // }
+        // halt($articles);
+
         $id = input('get.article_id');
         if ($this->request->isPost()) {
             $data = $this->request->post();
-            //halt($data);
+            $data['article_md_content'] = htmlspecialchars_decode($data['article_md_content']);
+            //halt(htmlspecialchars($data['article_content']));
             // 验证
             // $result = $this->validate($data, 'Article.sceneAdd');
             // if($result !== true) {
@@ -103,6 +125,7 @@ class Article extends Admin
             return $this->error('参数错误');
         }
         $row = ArticleModel::get($id);
+        $row['article_md_content'] = htmlspecialchars($row['article_md_content']);
         $cateWhere = [
             'is_show' => 1,
             'status' => 1

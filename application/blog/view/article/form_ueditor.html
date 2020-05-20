@@ -109,52 +109,10 @@
       <label class="layui-form-label">文章内容</label>
       <div class="layui-col-md10 layui-col-sm10">
         <!-- <textarea class="layui-textarea" name="article_content" id="LAY_demo_editor"></textarea> -->
-          <!-- <script id="editor" type="text/plain" name="article_content"></script> -->
+          <script id="editor" type="text/plain" name="article_content"></script>
       </div>
     </div>
   </div>
- 
-
-     
-      
-        <div id="test-editormd">
-                <textarea name="article_md_content" style="display:none;">[TOC]
-
-#### Disabled options
-
-- TeX (Based on KaTeX);
-- Emoji;
-- Task lists;
-- HTML tags decode;
-- Flowchart and Sequence Diagram;
-
-#### Editor.md directory
-
-    editor.md/
-            lib/
-            css/
-            scss/
-            tests/
-            fonts/
-            images/
-            plugins/
-            examples/
-            languages/     
-            editormd.js
-            ...
-
-```html
-&lt;!-- English --&gt;
-&lt;script src="../dist/js/languages/en.js"&gt;&lt;/script&gt;
-
-&lt;!-- 繁體中文 --&gt;
-&lt;script src="../dist/js/languages/zh-tw.js"&gt;&lt;/script&gt;
-```
-</textarea>
-            </div>
-  
-   
-
   <div class="layui-form-item">
     <div class="layui-inline">
       <label class="layui-form-label"></label>
@@ -180,10 +138,20 @@
   </div>
 </form>
 {include file="system@block/layui" /}
+<!-- <link rel="stylesheet" href="__LIB__/kindeditor/themes/default/default.css" />
+<link rel="stylesheet" href="__LIB__/kindeditor/plugins/code/prettify.css" />
+<script charset="utf-8" src="__LIB__/kindeditor/kindeditor-all.js"></script>
+<script charset="utf-8" src="__LIB__/kindeditor/lang/zh-CN.js"></script>
+<script charset="utf-8" src="__LIB__/kindeditor/plugins/code/prettify.js"></script> -->
+<script type="text/javascript" charset="utf-8" src="__LIB__/ueditor/ueditor.config.js"></script>    
+<script type="text/javascript" charset="utf-8" src="__LIB__/ueditor/ueditor.all.js"> </script>     
+<script type="text/javascript" charset="utf-8" src="__LIB__/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript" charset="utf-8" src="__LIB__/ueditor/third-party/SyntaxHighlighter/shCore.js"></script>
+<link rel="stylesheet" href="__LIB__/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css">
 
-<script type="text/javascript" charset="utf-8" src="__LIB__/editormd/examples/js/jquery.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="__LIB__/editormd/editormd.min.js"></script>
-<link rel="stylesheet" href="__LIB__/editormd/css/editormd.css" /> 
+<!-- <script type="text/javascript" charset="utf-8" src="__LIB__/editormd/examples/js/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="__LIB__/editormd/editormd.min.js"></script>   
+<link rel="stylesheet" href="__LIB__/editormd/css/editormd.css" />  -->
 
 <script>
   layui.use('form',function(){
@@ -236,23 +204,80 @@
       }
     });
   });
-  var testEditor;
-  $(function() {
-      testEditor = editormd("test-editormd", {
-          width   : "100%",
-          height  : 640,
-          syncScrolling : "single",
-          path    : "/lib/editormd/lib/"
+  // var ue = UE.getEditor('editor');
+
+  var ue = UE.getEditor('editor', {
+        // toolbars: [
+        //     ['fullscreen', 'emotion','InsertImage', 'preview', 'link']
+        // ],
+        initialFrameWidth: "100%",
+        initialFrameHeight: "400",
+        // minFrameWidth:800,
+        // minFrameHeight:400,
+        // scaleEnabled:true, //表格是否可拖拽
+        //position: "fixed",
+        //autoFloatEnabled: false, //取消浮动，默认true，但是开启浮动后会出现bug，工具栏置顶了。
+        // position: "relative", //relative , fixed , absolute
+        // topOffset:80,
+        autoFloatEnabled: false,
+        // toolbarTopOffset:200,
+    });
+
+  //SyntaxHighlighter.all();
+ /* kindEditor编辑器 KindEditor.ready(function(K) {
+    var editor1 = K.create('textarea[name="article_content"]', {
+      cssPath : '/kindeditor/plugins/code/prettify.css',
+      uploadJson : '/kindeditor/php/upload_json.php',
+      fileManagerJson : '/kindeditor/php/file_manager_json.php',
+      allowFileManager : true,
+      allowImageUpload : true,
+    // items : [ //只选择需要的条目，
+    //   'image'
+    // ],
+    afterCreate : function() {
+      var self = this;
+
+      K.ctrl(document, 13, function() {
+        self.sync();
+        K('form[name=example]')[0].submit();
       });
-      
-      /*
-      // or
-      testEditor = editormd({
-          id      : "test-editormd",
-          width   : "90%",
-          height  : 640,
-          path    : "../lib/"
+      K.ctrl(self.edit.doc, 13, function() {
+        self.sync();
+        K('form[name=example]')[0].submit();
       });
-      */
-  });   
+    },
+    // 失去焦点的时候，同步到表单中，这样如果异步提交，就可以将内容提交上去，否则提交上去的内容就会是空的
+    afterBlur: function () { 
+      this.sync(); 
+    }
+  });
+    prettyPrint();
+  });*/
+
+    // var testEditor;
+    // testEditor = editormd("editormd", {
+    //      placeholder:'本编辑器支持Markdown编辑，左边编写，右边预览',  //默认显示的文字，这里就不解释了
+    //      width: "100%",
+    //      height: 640,
+    //      syncScrolling: "single",  
+    //      path: "/lib/editormd/lib/",   //你的path路径（原资源文件中lib包在我们项目中所放的位置）
+    //      theme: "white",//工具栏主题
+    //      previewTheme: "white",//预览主题
+    //      editorTheme: "pastel-on-white",//编辑主题
+    //      imageUpload : true, 
+    //      imageFormats : ["jpg","jpeg","gif","png","bmp","webp"], 
+    //      imageUploadURL : "{:url('Knowledge/uploadImg')}",//上传图片使用方法
+    //      saveHTMLToTextarea: true,
+    //      emoji: true,
+    //      taskList: true, 
+    //      tocm: true,         // Using [TOCM]
+    //      tex: true,                   // 开启科学公式TeX语言支持，默认关闭
+    //      flowChart: true,             // 开启流程图支持，默认关闭
+    //      sequenceDiagram: true,       // 开启时序/序列图支持，默认关闭,
+    //      toolbarIcons : function() {  //自定义工具栏，后面有详细介绍
+    //          return editormd.toolbarModes['full']; // full, simple, mini
+    //       },
+    // });
+    // testEditor.getMarkdown();
+// 在js中调用getMarkdown这个方法可以获得Markdown格式的文本。
 </script>
