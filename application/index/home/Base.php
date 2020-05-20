@@ -52,11 +52,11 @@ class Base extends Common
 
         if($is_open){
             // 设置白名单ip
-            $white_list_ip = ['119.97.248.198','127.0.0.1','221.235.84.238'];
+            $white_list_ip = [];
             // 设置黑名单ip
-            $black_list_ip = [];
+            $black_list_ip = ['119.97.248.198','127.0.0.1','221.235.84.238'];
             if(!in_array($client_ip,$white_list_ip) || in_array($client_ip,$black_list_ip)){
-                //echo '<h1 style="text-align:center;font-size:12rem;margin-top:10%;font-weight:normal;vertical-align:middle;font-family:&quot;background-color:#FFFFFF;"><span style="font-size:12rem;">203</span></h1><p class="text" style="text-align:center;font-size:1.6rem;color:#D93641;font-family:&quot;background-color:#FFFFFF;">很抱歉，页面已被限制访问！</p>';exit;
+                //echo '<h1 style="text-align:center;font-size:12rem;margin-top:10%;font-weight:normal;vertical-align:middle;font-family:&quot;background-color:#FFFFFF;"><span style="font-size:12rem;">203</span></h1><p class="text" style="text-align:center;font-size:1.6rem;color:#D93641;font-family:&quot;background-color:#FFFFFF;">很抱歉，页面升级中！</p>';exit; //页面已被限制访问
             }
         }else{
             echo '<h1 style="text-align:center;font-size:12rem;margin-top:10%;font-weight:normal;vertical-align:middle;font-family:&quot;background-color:#FFFFFF;"><span style="font-size:12rem;">203</span></h1><p class="text" style="text-align:center;font-size:1.6rem;color:#D93641;font-family:&quot;background-color:#FFFFFF;">很抱歉，页面已被限制访问！</p>';exit;
