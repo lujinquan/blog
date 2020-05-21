@@ -64,7 +64,7 @@ class Article extends Admin
 
     public function md_render()
     {
-        $row = ArticleModel::get(86);
+        $row = ArticleModel::get(88);
         //halt($row);
         $this->assign('data_info', $row);
         return $this->fetch();
@@ -108,7 +108,8 @@ class Article extends Admin
         $id = input('get.article_id');
         if ($this->request->isPost()) {
             $data = $this->request->post();
-            $data['article_md_content'] = htmlspecialchars_decode($data['article_md_content']);
+            $data['article_md_content'] = $_POST['article_md_content']; //用原始的方法接收带标签的数据
+            //$data['article_md_content'] = htmlspecialchars_decode($data['article_md_content']);
             //halt(htmlspecialchars($data['article_content']));
             // 验证
             // $result = $this->validate($data, 'Article.sceneAdd');
@@ -125,7 +126,7 @@ class Article extends Admin
             return $this->error('参数错误');
         }
         $row = ArticleModel::get($id);
-        $row['article_md_content'] = htmlspecialchars($row['article_md_content']);
+        //$row['article_md_content'] = htmlspecialchars($row['article_md_content']);
         $cateWhere = [
             'is_show' => 1,
             'status' => 1
