@@ -9,6 +9,7 @@ use app\system\model\Visitor as VisitorModel;
 
 class Base extends Common
 {
+
     /**
      * 初始化方法
      */
@@ -46,6 +47,7 @@ class Base extends Common
         $visitor->save();
         // }
 
+
    
         // 页面是否开放，如果设置为 false 则直接弹出限制访问提示
         $is_open = true;
@@ -61,6 +63,11 @@ class Base extends Common
         }else{
             echo '<h1 style="text-align:center;font-size:12rem;margin-top:10%;font-weight:normal;vertical-align:middle;font-family:&quot;background-color:#FFFFFF;"><span style="font-size:12rem;">203</span></h1><p class="text" style="text-align:center;font-size:1.6rem;color:#D93641;font-family:&quot;background-color:#FFFFFF;">很抱歉，页面已被限制访问！</p>';exit;
         }   
+
+        // 定义模板常量
+        if (!defined('SITE_TEMPLATE')) {
+            define('SITE_TEMPLATE', config()['sys']['site_template']);
+        }
         
         $topMenus = CateModel::where('p_id',0)->field('cate_name,cate_id,link')->order('sort_order asc')->select();
         // 定位当前菜单

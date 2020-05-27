@@ -8,10 +8,9 @@
     <div class="banbox">
       <div class="banner">
         <div id="banner" class="fader">
-          <li class="slide" ><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/1.jpg"></a></li>
-          <li class="slide" ><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/2.jpg"></a></li>
-          <li class="slide" ><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/3.jpg"></a></li>
-          <li class="slide" ><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/4.jpg"></a></li>
+          {volist name="bannerImgs" id="v"}
+          <li class="slide" ><a href="/index/word/1.html" target="_blank"><img src="{$v['thumb']}"></a></li>
+          {/volist}
           <div class="fader_controls">
             <div class="page prev" data-target="prev"></div>
             <div class="page next" data-target="next"></div>
@@ -25,8 +24,9 @@
     <!--headline begin-->
     <div class="headline">
       <ul>
-        <li><a href="/index/word/1.html" target="_blank" title="为什么说10月24日是程序员的节日？"><img src="/static/home/lost_time/images/h1.jpg" alt="为什么说10月24日是程序员的节日？"><span>为什么说10月24日是程序员的节日？</span></a></li>
-        <li><a  href="/index/word/2.html" target="_blank" title="个人网站做好了，百度不收录怎么办？来，看看他们怎么做的"><img src="/static/home/lost_time/images/h2.jpg" alt="个人网站做好了，百度不收录怎么办？来，看看他们怎么做的。"><span>个人网站做好了，百度不收录怎么办？来，看看他们怎么做的。</span></a></li>
+        {volist name="bannerHImgs" id="v"}
+        <li><a href="/index/word/1.html" target="_blank" title="{$v['thumb']}"><img src="{$v['thumb']}" alt="{$v['article_title']}"><span>{$v['article_title']}</span></a></li>
+        {/volist}
       </ul>
     </div>
     <!--headline end-->
@@ -46,151 +46,97 @@
         <div class="newsitem">
           <div class="newspic">
             <ul>
-              <li><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/2.jpg"><span>个人博客，第一篇文章！</span></a></li>
-              <li><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/4.jpg"><span>个人博客，第二篇图片！</span></a></li>
+              {volist name="blogArticles" id="v"}
+              <li><a href="/index/word/1.html" target="_blank"><img src="{$v['thumb']}"><span>{$v['article_title']}</span></a></li>
+              {/volist}
             </ul>
           </div>
           <ul class="newslist">
-            <li><i></i><a href="/index/word/1.html" target="_blank">个人博客，第一篇文章！</a>
-              <p>个人博客，用来做什么？我刚开始就把它当做一个我吐槽心情的地方，也就相当于一个网络记事本，写上一些关于自己生活工作中的小情小事，也会放上一些照片，音乐。每天工作回家后就能访问自己的网站，一边听着音乐，一边写写文章。</p>
+            {volist name="blogArticles" id="v"}
+            <li><i></i><a href="/index/word/1.html" target="_blank">{$v['article_title']}</a>
+              <p>{$v['article_desc']}</p>
             </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">个人博客，第二篇文章！</a>
-              <p>自从入了这行，很多人跟我说可以做网络教程，我也有考虑，但最终没有实现，因为我觉得在这个教程泛滥的时代，直接做一套免费的原创个人博客模板更为实在。</p>
-            </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">个人博客，第三篇文章！</a>
-              <p>为了挨打轻一些，问我哪里来的，我瞎说了一个说那个谁家的，结果，打得更凶。最后事情还原了真相，我妈说，你要说说奶奶家的，都不会打你了。从此以后，我知道撒谎是会付出更惨痛的代价的，我不再撒谎，也不喜欢爱撒谎的人。</p>
-            </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">个人博客，第四篇文章！</a>
-              <p>不管你是学前端的还是后端的，作为一个程序员，做一个自己的博客，那是必然的。咱们的圈子就这么大，想让更多的人了解你，看看你的技术多牛逼，扔一个博客地址就行了</p>
-            </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">个人博客，第五篇文章！</a>
-              <p>帝国cms的留言板系统很简单，用户名，邮箱，电话，没有头像显示，如果要增加头像选择，而又不增加表或者字段的情况下，选择改用其中一个字段，比如电话这个，修改一下即可</p>
-            </li>
+            {/volist}
           </ul>
         </div>
         <div class="newsitem">
           <div class="newspic">
             <ul>
-              <li><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/3.jpg"><span>PHP，第一篇文章！</span></a></li>
-              <li><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/1.jpg"><span>PHP，第二篇文章！</span></a></li>
+              {volist name="phpArticles" id="v"}
+              <li><a href="/index/word/1.html" target="_blank"><img src="{$v['thumb']}"><span>{$v['article_title']}</span></a></li>
+              {/volist}
             </ul>
           </div>
           <ul class="newslist">
-            <li><i></i><a href="/index/word/1.html" target="_blank">PHP，第一篇文章！</a>
-              <p>自从入了这行，很多人跟我说可以做网络教程，我也有考虑，但最终没有实现，因为我觉得在这个教程泛滥的时代，直接做一套免费的原创个人博客模板更为实在。</p>
+            {volist name="phpArticles" id="v"}
+            <li><i></i><a href="/index/word/1.html" target="_blank">{$v['article_title']}</a>
+              <p>{$v['article_desc']}</p>
             </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">PHP，第二篇文章！</a>
-              <p>为了挨打轻一些，问我哪里来的，我瞎说了一个说那个谁家的，结果，打得更凶。最后事情还原了真相，我妈说，你要说说奶奶家的，都不会打你了。从此以后，我知道撒谎是会付出更惨痛的代价的，我不再撒谎，也不喜欢爱撒谎的人。</p>
-            </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">PHP，第三篇文章！</a>
-              <p>个人博客，用来做什么？我刚开始就把它当做一个我吐槽心情的地方，也就相当于一个网络记事本，写上一些关于自己生活工作中的小情小事，也会放上一些照片，音乐。每天工作回家后就能访问自己的网站，一边听着音乐，一边写写文章。</p>
-            </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">PHP，第四篇文章！</a>
-              <p>不管你是学前端的还是后端的，作为一个程序员，做一个自己的博客，那是必然的。咱们的圈子就这么大，想让更多的人了解你，看看你的技术多牛逼，扔一个博客地址就行了</p>
-            </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">PHP，第五篇文章！</a>
-              <p>帝国cms的留言板系统很简单，用户名，邮箱，电话，没有头像显示，如果要增加头像选择，而又不增加表或者字段的情况下，选择改用其中一个字段，比如电话这个，修改一下即可</p>
-            </li>
+            {/volist}
           </ul>
         </div>
         <div class="newsitem">
           <div class="newspic">
             <ul>
-              <li><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/2.jpg"><span>Python，第一篇文章！</span></a></li>
-              <li><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/3.jpg"><span>Python，第二篇文章！</span></a></li>
+              {volist name="pythonArticles" id="v"}
+              <li><a href="/index/word/1.html" target="_blank"><img src="{$v['thumb']}"><span>{$v['article_title']}</span></a></li>
+              {/volist}
             </ul>
           </div>
           <ul class="newslist">
-            <li><i></i><a href="/index/word/1.html" target="_blank">Python，第一篇文章！</a>
-              <p>为了挨打轻一些，问我哪里来的，我瞎说了一个说那个谁家的，结果，打得更凶。最后事情还原了真相，我妈说，你要说说奶奶家的，都不会打你了。从此以后，我知道撒谎是会付出更惨痛的代价的，我不再撒谎，也不喜欢爱撒谎的人。</p>
+            {volist name="pythonArticles" id="v"}
+            <li><i></i><a href="/index/word/1.html" target="_blank">{$v['article_title']}</a>
+              <p>{$v['article_desc']}</p>
             </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">Python，第二篇文章！</a>
-              <p>不管你是学前端的还是后端的，作为一个程序员，做一个自己的博客，那是必然的。咱们的圈子就这么大，想让更多的人了解你，看看你的技术多牛逼，扔一个博客地址就行了</p>
-            </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">Python，第三篇文章！</a>
-              <p>帝国cms的留言板系统很简单，用户名，邮箱，电话，没有头像显示，如果要增加头像选择，而又不增加表或者字段的情况下，选择改用其中一个字段，比如电话这个，修改一下即可</p>
-            </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">Python，第四篇文章！</a>
-              <p>个人博客，用来做什么？我刚开始就把它当做一个我吐槽心情的地方，也就相当于一个网络记事本，写上一些关于自己生活工作中的小情小事，也会放上一些照片，音乐。每天工作回家后就能访问自己的网站，一边听着音乐，一边写写文章。</p>
-            </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">Python，第五篇文章！</a>
-              <p>自从入了这行，很多人跟我说可以做网络教程，我也有考虑，但最终没有实现，因为我觉得在这个教程泛滥的时代，直接做一套免费的原创个人博客模板更为实在。</p>
-            </li>
+            {/volist}
           </ul>
         </div>
         <div class="newsitem" >
           <div class="newspic">
             <ul>
-              <li><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/3.jpg"><span>HTML，第一篇文章！</span></a></li>
-              <li><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/4.jpg"><span>HTML，第二篇文章！</span></a></li>
+              {volist name="htmlArticles" id="v"}
+              <li><a href="/index/word/1.html" target="_blank"><img src="{$v['thumb']}"><span>{$v['article_title']}</span></a></li>
+              {/volist}
             </ul>
           </div>
           <ul class="newslist">
-            <li><i></i><a href="/index/word/1.html" target="_blank">HTML，第一篇文章！</a>
-              <p>自从入了这行，很多人跟我说可以做网络教程，我也有考虑，但最终没有实现，因为我觉得在这个教程泛滥的时代，直接做一套免费的原创个人博客模板更为实在。</p>
+            {volist name="htmlArticles" id="v"}
+            <li><i></i><a href="/index/word/1.html" target="_blank">{$v['article_title']}</a>
+              <p>{$v['article_desc']}</p>
             </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">HTML，第二篇文章！</a>
-              <p>为了挨打轻一些，问我哪里来的，我瞎说了一个说那个谁家的，结果，打得更凶。最后事情还原了真相，我妈说，你要说说奶奶家的，都不会打你了。从此以后，我知道撒谎是会付出更惨痛的代价的，我不再撒谎，也不喜欢爱撒谎的人。</p>
-            </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">HTML，第三篇文章！</a>
-              <p>个人博客，用来做什么？我刚开始就把它当做一个我吐槽心情的地方，也就相当于一个网络记事本，写上一些关于自己生活工作中的小情小事，也会放上一些照片，音乐。每天工作回家后就能访问自己的网站，一边听着音乐，一边写写文章。</p>
-            </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">HTML，第四篇文章！</a>
-              <p>不管你是学前端的还是后端的，作为一个程序员，做一个自己的博客，那是必然的。咱们的圈子就这么大，想让更多的人了解你，看看你的技术多牛逼，扔一个博客地址就行了</p>
-            </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">HTML，第五篇文章！</a>
-              <p>帝国cms的留言板系统很简单，用户名，邮箱，电话，没有头像显示，如果要增加头像选择，而又不增加表或者字段的情况下，选择改用其中一个字段，比如电话这个，修改一下即可</p>
-            </li>
+            {/volist}
           </ul>
         </div>
         <div class="newsitem" >
           <div class="newspic">
             <ul>
-              <li><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/h2.jpg"><span>Mysql，第一篇文章！</span></a></li>
-              <li><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/h1.jpg"><span>Mysql，第二篇文章！</span></a></li>
+              {volist name="mysqlArticles" id="v"}
+              <li><a href="/index/word/1.html" target="_blank"><img src="{$v['thumb']}"><span>{$v['article_title']}</span></a></li>
+              {/volist}
             </ul>
           </div>
           <ul class="newslist">
-            <li><i></i><a href="/index/word/1.html" target="_blank">Mysql，第一篇文章！</a>
-              <p>为了挨打轻一些，问我哪里来的，我瞎说了一个说那个谁家的，结果，打得更凶。最后事情还原了真相，我妈说，你要说说奶奶家的，都不会打你了。从此以后，我知道撒谎是会付出更惨痛的代价的，我不再撒谎，也不喜欢爱撒谎的人。</p>
+            {volist name="mysqlArticles" id="v"}
+            <li><i></i><a href="/index/word/1.html" target="_blank">{$v['article_title']}</a>
+              <p>{$v['article_desc']}</p>
             </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">Mysql，第二篇文章！</a>
-              <p>个人博客，用来做什么？我刚开始就把它当做一个我吐槽心情的地方，也就相当于一个网络记事本，写上一些关于自己生活工作中的小情小事，也会放上一些照片，音乐。每天工作回家后就能访问自己的网站，一边听着音乐，一边写写文章。</p>
-            </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">Mysql，第三篇文章！</a>
-              <p>自从入了这行，很多人跟我说可以做网络教程，我也有考虑，但最终没有实现，因为我觉得在这个教程泛滥的时代，直接做一套免费的原创个人博客模板更为实在。</p>
-            </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">Mysql，第四篇文章！</a>
-              <p>不管你是学前端的还是后端的，作为一个程序员，做一个自己的博客，那是必然的。咱们的圈子就这么大，想让更多的人了解你，看看你的技术多牛逼，扔一个博客地址就行了</p>
-            </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">Mysql，第五篇文章！</a>
-              <p>帝国cms的留言板系统很简单，用户名，邮箱，电话，没有头像显示，如果要增加头像选择，而又不增加表或者字段的情况下，选择改用其中一个字段，比如电话这个，修改一下即可</p>
-            </li>
+            {/volist}
           </ul>
         </div>
         <div class="newsitem" >
           <div class="newspic">
             <ul>
-              <li><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/h2.jpg"><span>Linux，第一篇文章！</span></a></li>
-              <li><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/h1.jpg"><span>Linux，第二篇文章！</span></a></li>
+              {volist name="linuxArticles" id="v"}
+              <li><a href="/index/word/1.html" target="_blank"><img src="{$v['thumb']}"><span>{$v['article_title']}</span></a></li>
+              {/volist}
             </ul>
           </div>
           <ul class="newslist">
-            <li><i></i><a href="/index/word/1.html" target="_blank">Linux，第一篇文章！</a>
-              <p>为了挨打轻一些，问我哪里来的，我瞎说了一个说那个谁家的，结果，打得更凶。最后事情还原了真相，我妈说，你要说说奶奶家的，都不会打你了。从此以后，我知道撒谎是会付出更惨痛的代价的，我不再撒谎，也不喜欢爱撒谎的人。</p>
+            {volist name="linuxArticles" id="v"}
+            <li><i></i><a href="/index/word/1.html" target="_blank">{$v['article_title']}</a>
+              <p>{$v['article_desc']}</p>
             </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">Linux，第二篇文章！</a>
-              <p>个人博客，用来做什么？我刚开始就把它当做一个我吐槽心情的地方，也就相当于一个网络记事本，写上一些关于自己生活工作中的小情小事，也会放上一些照片，音乐。每天工作回家后就能访问自己的网站，一边听着音乐，一边写写文章。</p>
-            </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">Linux，第三篇文章！</a>
-              <p>自从入了这行，很多人跟我说可以做网络教程，我也有考虑，但最终没有实现，因为我觉得在这个教程泛滥的时代，直接做一套免费的原创个人博客模板更为实在。</p>
-            </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">Linux，第四篇文章！</a>
-              <p>不管你是学前端的还是后端的，作为一个程序员，做一个自己的博客，那是必然的。咱们的圈子就这么大，想让更多的人了解你，看看你的技术多牛逼，扔一个博客地址就行了</p>
-            </li>
-            <li><i></i><a href="/index/word/1.html" target="_blank">Linux，第五篇文章！</a>
-              <p>帝国cms的留言板系统很简单，用户名，邮箱，电话，没有头像显示，如果要增加头像选择，而又不增加表或者字段的情况下，选择改用其中一个字段，比如电话这个，修改一下即可</p>
-            </li>
+            {/volist}
           </ul>
         </div>
       </div>
@@ -199,12 +145,9 @@
     <div class="zhuanti whitebg">
       <h2 class="htitle"><span class="hnav"><a href="javascript:;">原创</a><a href="javascript:;">古典</a><a href="javascript:;">清新</a><a href="javascript:;">低调</a></span>精彩专题</h2>
       <ul>
-        <li> <i class="ztpic"><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/1.jpg"></a></i> <b>原创-第一篇-xxxxxxxxxxxxxxxxxxxxxx</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/2.jpg"></a></i> <b>原创-第二篇-xxxxxxxxxxxxxxxxxxxxxx</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/3.jpg"></a></i> <b>原创-第三篇-xxxxxxxxxxxxxxxxxxxxxx</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/4.jpg"></a></i> <b>原创-第四篇-xxxxxxxxxxxxxxxxxxxxxx</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/h2.jpg"></a></i> <b>原创-第五篇-xxxxxxxxxxxxxxxxxxxxxx</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/h1.jpg"></a></i> <b>原创-第六篇-xxxxxxxxxxxxxxxxxxxxxx</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" class="readmore">文章阅读</a> </li>
+        {volist name="originalArticles" id="v"}
+        <li> <i class="ztpic"><a href="/index/word/1.html" target="_blank"><img src="{$v['thumb']}"></a></i> <b>{$v['article_title']}</b><span>{$v['article_desc']}</span><a href="" class="readmore">文章阅读</a> </li>
+        {/volist}
       </ul>
     </div>
     <div class="ad whitebg"> <img src="/static/home/lost_time/images/longad.jpg"> </div>
@@ -212,62 +155,29 @@
       <h2 class="htitle">最新博文</h2>
       <ul>
         <!--多图模式 置顶设计-->
+        {volist name="stickArticles" id="v" offset="0" length="1"}
         <li>
-          <h3 class="blogtitle"><a href="/index/word/1.html" target="_blank"><b>【顶】</b>置顶的博客!</a></h3>
-          <span class="bplist"><a href="/index/word/1.html" target="_blank"> <img src="/static/home/lost_time/images/b02.jpg" alt=""></a> <a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/b03.jpg" alt=""></a> <a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/b04.jpg" alt=""> </a><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/b05.jpg" alt=""> </a></span>
-          <p class="blogtext">如图，要实现上图效果，我采用如下方法：1、首先在数据库模型，增加字段，分别是图片2，图片3。2、增加标签模板，用if，else if 来判断，输出。思路已打开，样式调用就可以多样化啦！... </p>
-          <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>杨青青</span><span>2018-10-28</span><span>【<a href="/index/word/1.html" target="_blank">原创模板</a>】</span></p>
+          <h3 class="blogtitle"><a href="/index/word/1.html" target="_blank"><b>【顶】</b>{$v['article_title']}</a></h3>
+          <span class="bplist">
+            <a href="/index/word/1.html" target="_blank"> <img src="/static/home/lost_time/images/b02.jpg" alt=""></a> 
+            <a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/b03.jpg" alt=""></a> 
+            <a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/b04.jpg" alt=""> </a>
+            <a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/b05.jpg" alt=""> </a>
+          </span>
+          <p class="blogtext">{$v['article_desc']}</p>
+          <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>{$v['author']}</span><span>{:substr($v['ctime'],0,10)}</span><span>【<a href="/index/word/1.html" target="_blank">原创文章</a>】</span></p>
         </li>
+        {/volist}
+        
         <!--单图-->
+        {volist name="newArticles" id="v"}
         <li>
-          <h3 class="blogtitle"><a href="/index/word/1.html" target="_blank">最新的第一篇博客</a></h3>
-          <span class="blogpic imgscale"><i><a href="/index/word/1.html" target="_blank">原创模板</a></i><a href="/index/word/1.html" target="_blank" title=""><img src="/static/home/lost_time/images/b01.jpg" alt=""></a></span>
-          <p class="blogtext">这些开源的博客程序源码，都是经过很多次版本测试的，都有固定的使用人群。我所知道的主流的博客程序有，Z-blog，Emlog，WordPress，Typecho等，免费的cms系统有，织梦cms（dedecms），phpcms，帝国cms（EmpireCMS）！... </p>
-          <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>杨青青</span><span>2018-10-28</span><span>【<a href="/index/word/1.html" target="_blank">原创模板</a>】</span></p>
+          <h3 class="blogtitle"><a href="/index/word/1.html" target="_blank">{$v['article_title']}</a></h3>
+          <span class="blogpic imgscale"><i><a href="/index/word/1.html" target="_blank">原创文章</a></i><a href="/index/word/1.html" target="_blank" title=""><img src="{$v['thumb']}" alt=""></a></span>
+          <p class="blogtext">{$v['article_desc']}</p>
+          <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>{$v['author']}</span><span>{$v['ctime']}</span><span>【<a href="/index/word/1.html" target="_blank">原创文章</a>】</span></p>
           <a href="/index/word/1.html" target="_blank" class="viewmore">阅读更多</a> </li>
-        <li>
-          <h3 class="blogtitle"><a href="/index/word/1.html" target="_blank">最新的第二篇博客</a></h3>
-          <span class="blogpic imgscale"><i><a href="/index/word/1.html" target="_blank">最新模板</a></i><a href="/index/word/1.html" target="_blank" title=""><img src="/static/home/lost_time/images/b02.jpg" alt=""></a></span>
-          <p class="blogtext">这是一个记录宝宝成长点滴的个人博客，用作于宝宝博客，亲子博客，都是适用的。颜色为蓝色调，头部有飘动的卡通云，采用css3动画效果，布局简单，代码精简，还有相册功能，发图片，视频，时间轴可记录重要时刻，也可记录宝宝的生长发育状况，也可以统计宝宝博客网站的所有文章... </p>
-          <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>杨青青</span><span>2018-10-28</span><span>【<a href="/index/word/1.html" target="_blank">最新模板</a>】</span></p>
-          <a href="/index/word/1.html" target="_blank" class="viewmore">阅读更多</a> </li>
-        <li>
-          <h3 class="blogtitle"><a href="/index/word/1.html" target="_blank">最新的第三篇博客</a></h3>
-          <span class="blogpic imgscale"><i><a href="/index/word/1.html" target="_blank">快速建站</a></i><a href="/index/word/1.html" target="_blank" title=""><img src="/static/home/lost_time/images/b03.jpg" alt=""></a></span>
-          <p class="blogtext">各大博客门户网站，相继关闭，做一个独立的个人博客网站，那是将来的趋势。越来越多的个人站长倾向于独立建站，有个属于自己的博客网站，那如何快速建立自己的个人博客网站呢，接下来，我就简单给大家介绍一下：以阿里云为例... </p>
-          <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>杨青青</span><span>2018-10-28</span><span>【<a href="/index/word/1.html" target="_blank">快速建站</a>】</span></p>
-          <a href="/index/word/1.html" target="_blank" class="viewmore">阅读更多</a> </li>
-        <li>
-          <h3 class="blogtitle"><a href="/index/word/1.html" target="_blank">最新的第四篇博客</a></h3>
-          <span class="blogpic imgscale"><i><a href="/index/word/1.html" target="_blank">设计制作</a></i><a href="/index/word/1.html" target="_blank" title=""><img src="/static/home/lost_time/images/b04.jpg" alt=""></a></span>
-          <p class="blogtext">就拿我自己来说吧，有时候会很矛盾，设计好的作品，不把它分享出来，会觉得待在自己电脑里面实在是没有意义。干脆就发布出去吧。我也害怕收到大家不好的评论，有些评论，可能说者无意，但是对于每一个用心的站长来说，都会受很深的影响，愤怒，恼羞。... </p>
-          <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>杨青青</span><span>2018-10-28</span><span>【<a href="/index/word/1.html" target="_blank">设计制作</a>】</span></p>
-          <a href="/index/word/1.html" target="_blank" class="viewmore">阅读更多</a> </li>
-        <!--纯文字-->
-        <li>
-          <h3 class="blogtitle"><a href="/index/word/1.html" target="_blank">最新的第五篇博客</a></h3>
-          <p class="blogtext">如图，要实现上图效果，我采用如下方法：1、首先在数据库模型，增加字段，分别是图片2，图片3。2、增加标签模板，用if，else if 来判断，输出。思路已打开，样式调用就可以多样化啦！... </p>
-          <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>杨青青</span><span>2018-10-28</span><span>【<a href="/index/word/1.html" target="_blank">原创模板</a>】</span></p>
-          <a href="/index/word/1.html" target="_blank" class="viewmore">阅读更多</a> </li>
-        <!--单图-->
-        <li>
-          <h3 class="blogtitle"><a href="/index/word/1.html" target="_blank">最新的第六篇博客</a></h3>
-          <span class="blogpic imgscale"><i><a href="/index/word/1.html" target="_blank">原创模板</a></i><a href="/index/word/1.html" target="_blank" title=""><img src="/static/home/lost_time/images/b01.jpg" alt=""></a></span>
-          <p class="blogtext">这些开源的博客程序源码，都是经过很多次版本测试的，都有固定的使用人群。我所知道的主流的博客程序有，Z-blog，Emlog，WordPress，Typecho等，免费的cms系统有，织梦cms（dedecms），phpcms，帝国cms（EmpireCMS）！... </p>
-          <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>杨青青</span><span>2018-10-28</span><span>【<a href="/index/word/1.html" target="_blank">原创模板</a>】</span></p>
-          <a href="/index/word/1.html" target="_blank" class="viewmore">阅读更多</a> </li>
-        <li>
-          <h3 class="blogtitle"><a href="/index/word/1.html" target="_blank">最新的第七篇博客</a></h3>
-          <span class="blogpic imgscale"><i><a href="/index/word/1.html" target="_blank">快速建站</a></i><a href="/index/word/1.html" target="_blank" title=""><img src="/static/home/lost_time/images/b03.jpg" alt=""></a></span>
-          <p class="blogtext">各大博客门户网站，相继关闭，做一个独立的个人博客网站，那是将来的趋势。越来越多的个人站长倾向于独立建站，有个属于自己的博客网站，那如何快速建立自己的个人博客网站呢，接下来，我就简单给大家介绍一下：以阿里云为例... </p>
-          <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>杨青青</span><span>2018-10-28</span><span>【<a href="/index/word/1.html" target="_blank">快速建站</a>】</span></p>
-          <a href="/index/word/1.html" target="_blank" class="viewmore">阅读更多</a> </li>
-        <li>
-          <h3 class="blogtitle"><a href="/index/word/1.html" target="_blank">最新的第八篇博客</a></h3>
-          <span class="blogpic imgscale"><i><a href="/index/word/1.html" target="_blank">原创模板</a></i><a href="/index/word/1.html" target="_blank" title=""><img src="/static/home/lost_time/images/b05.jpg" alt=""></a></span>
-          <p class="blogtext">这些开源的博客程序源码，都是经过很多次版本测试的，都有固定的使用人群。我所知道的主流的博客程序有，Z-blog，Emlog，WordPress，Typecho等，免费的cms系统有，织梦cms（dedecms），phpcms，帝国cms（EmpireCMS）！... </p>
-          <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>杨青青</span><span>2018-10-28</span><span>【<a href="/index/word/1.html" target="_blank">原创模板</a>】</span></p>
-          <a href="/index/word/1.html" target="_blank" class="viewmore">阅读更多</a> </li>
+        {/volist}
       </ul>
     </div>
     <!--bloglist end--> 
@@ -289,51 +199,29 @@
     <div class="whitebg notice">
       <h2 class="htitle">网站公告</h2>
       <ul>
-        <li><a href="/index/word/1.html" target="_blank">网站第一条公告！</a></li>
-        <li><a href="/index/word/1.html" target="_blank">网站第二条公告！</a></li>
-        <li><a href="/index/word/1.html" target="_blank">网站第三条公告！</a></li>
-        <li><a href="/index/word/1.html" target="_blank">网站第四条公告！</a></li>
+        {volist name="noticeArticles" id="v"}
+        <li><a href="/index/word/1.html" target="_blank">{$v['article_title']}</a></li>
+        {/volist}
       </ul>
     </div>
     <div class="whitebg paihang">
       <h2 class="htitle">点击排行</h2>
       <section class="topnews imgscale"><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/h1.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a></section>
       <ul>
-        <li><i></i><a href="/index/word/1.html" target="_blank">排行第一的文章！</a></li>
-        <li><i></i><a href="/index/word/1.html" target="_blank">排行第二的文章！</a></li>
-        <li><i></i><a href="/index/word/1.html" target="_blank">排行第三的文章！</a></li>
-        <li><i></i><a href="/index/word/1.html" target="_blank">排行第四的文章！</a></li>
-        <li><i></i><a href="/index/word/1.html" target="_blank">排行第五的文章！</a></li>
-        <li><i></i><a href="/index/word/1.html" target="_blank">排行第六的文章！</a></li>
-        <li><i></i><a href="/index/word/1.html" target="_blank">排行第七的文章！</a></li>
-        <li><i></i><a href="/index/word/1.html" target="_blank">排行第八的文章！</a></li>
+        {volist name="clickRankingArticles" id="v"}
+        <li><i></i><a href="/index/word/1.html" target="_blank">{$v['article_title']}</a></li>
+        {/volist}
       </ul>
     </div>
     <div class="whitebg tuijian">
       <h2 class="htitle">站长推荐</h2>
       <section class="topnews imgscale"><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/h2.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a></section>
       <ul>
-        <li><a href="/index/word/1.html" target="_blank"><i><img src="/static/home/lost_time/images/text01.jpg"></i>
-          <p>站长推荐第一篇文章!</p>
+        {volist name="stickArticles" id="v"}
+        <li><a href="/index/word/1.html" target="_blank"><i><img src="{$v['thumb']}"></i>
+          <p>{$v['article_title']}</p>
           </a></li>
-        <li><a href="/index/word/1.html" target="_blank"><i><img src="/static/home/lost_time/images/text02.jpg"></i>
-          <p>站长推荐第二篇文章</p>
-          </a></li>
-        <li><a href="/index/word/1.html" target="_blank"><i><img src="/static/home/lost_time/images/text03.jpg"></i>
-          <p>站长推荐第三篇文章</p>
-          </a></li>
-        <li><a href="/index/word/1.html" target="_blank"><i><img src="/static/home/lost_time/images/text04.jpg"></i>
-          <p>站长推荐第四篇文章</p>
-          </a></li>
-        <li><a href="/index/word/1.html" target="_blank"><i><img src="/static/home/lost_time/images/text05.jpg"></i>
-          <p>站长推荐第五篇文章</p>
-          </a></li>
-        <li><a href="/index/word/1.html" target="_blank"><i><img src="/static/home/lost_time/images/text06.jpg"></i>
-          <p>站长推荐第六篇文章</p>
-          </a></li>
-        <li><a href="/index/word/1.html" target="_blank"><i><img src="/static/home/lost_time/images/text07.jpg"></i>
-          <p>站长推荐第七篇文章</p>
-          </a></li>
+        {/volist}
       </ul>
     </div>
     <div class="ad whitebg imgscale">

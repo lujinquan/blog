@@ -9,17 +9,63 @@ use app\blog\model\Article as ArticleModel;
 class Index extends Base
 {
     public function index()
-    {//halt(VERSION);//cookie('avatar')
-    	$banner = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>97])->field('article_id,thumb')->find();
-    	$this->assign('banner',$banner);
+    {
+        if(SITE_TEMPLATE == 'lost_time'){
+            // 主页轮播数据
+            $bannerImgs = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>100])->field('article_id,thumb')->limit(4)->select();
+            $this->assign('bannerImgs',$bannerImgs);
+            // 主页轮播旁边的两个竖行排列的文章
+            $bannerHImgs = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>101])->field('article_title,article_id,thumb')->limit(2)->order('sort_order asc')->select();
+            $this->assign('bannerHImgs',$bannerHImgs);
+            // 主页生活栏目（页面中显示是个人博客）的文章
+            $blogArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>14])->field('article_title,article_desc,article_id,thumb')->limit(5)->order('sort_order asc')->select();
+            $this->assign('blogArticles',$blogArticles);
+            // 主页php栏目的文章
+            $phpArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>7])->field('article_title,article_desc,article_id,thumb')->limit(5)->order('sort_order asc')->select();
+            $this->assign('phpArticles',$phpArticles);
+            // 主页python栏目的文章
+            $pythonArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>11])->field('article_title,article_desc,article_id,thumb')->limit(5)->order('sort_order asc')->select();
+            $this->assign('pythonArticles',$pythonArticles);
+            // 主页HTML栏目的文章
+            $htmlArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>10])->field('article_title,article_desc,article_id,thumb')->limit(5)->order('sort_order asc')->select();
+            $this->assign('htmlArticles',$htmlArticles);
+            // 主页Mysql栏目的文章
+            $mysqlArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>9])->field('article_title,article_desc,article_id,thumb')->limit(5)->order('sort_order asc')->select();
+            $this->assign('mysqlArticles',$mysqlArticles);
+            // 主页linux栏目的文章
+            $linuxArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>8])->field('article_title,article_desc,article_id,thumb')->limit(5)->order('sort_order asc')->select();
+            $this->assign('linuxArticles',$linuxArticles);
+            // 主页公告栏目的文章
+            $noticeArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>102])->field('article_title,article_desc,article_id,thumb')->limit(4)->order('sort_order asc')->select();
+            $this->assign('noticeArticles',$noticeArticles);
+            // 主页原创精彩专题
+            $originalArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>103])->field('article_title,article_desc,article_id,thumb')->limit(6)->order('sort_order asc')->select();
+            $this->assign('originalArticles',$originalArticles);
+            // 主页点击排行栏目
+            $clickRankingArticles = ArticleModel::where(['status'=>1,'is_show'=>1])->field('article_title,article_desc,article_id,thumb')->limit(8)->order('click desc')->select();
+            $this->assign('clickRankingArticles',$clickRankingArticles);
+            // 主页推荐栏目
+            $stickArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'is_stick'=>1])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(8)->order('click desc')->select();
+            $this->assign('stickArticles',$stickArticles);
+            // 主页最新文章栏目
+            $newArticles = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(8)->order('ctime desc')->select();
+            $this->assign('newArticles',$newArticles);
+            // // 主页置顶文章
+            // $newArticles = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(8)->order('ctime desc')->select();
+            // $this->assign('newArticles',$newArticles);
+        }else{
+            $banner = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>97])->field('article_id,thumb')->find();
+            $this->assign('banner',$banner);
 
-        $imgs = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>98])->field('article_id,thumb')->limit(6)->select();
-        //halt(array_chunk($imgs->toArray(),3,true));
-        $this->assign('imgs',array_chunk($imgs->toArray(),3,true));
+            $imgs = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>98])->field('article_id,thumb')->limit(6)->select();
+            //halt(array_chunk($imgs->toArray(),3,true));
+            $this->assign('imgs',array_chunk($imgs->toArray(),3,true));
 
-        $imgsTui = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>99])->field('article_id,article_title,author,article_long_title,thumb')->limit(3)->select();
-        //halt($imgsTui);
-        $this->assign('imgsTui',$imgsTui);
+            $imgsTui = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>99])->field('article_id,article_title,author,article_long_title,thumb')->limit(3)->select();
+            //halt($imgsTui);
+            $this->assign('imgsTui',$imgsTui);
+        }
+    	
         return $this->fetch();
     }
 
