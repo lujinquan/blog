@@ -80,21 +80,24 @@ class Gallery extends Base
         ];
         $tuiArticles = ArticleModel::where($tuiWhere)->field('thumb,article_id,article_title')->order('click desc')->limit(4)->select();
         //halt($tuiArticles);
-        // 主页点击排行栏目
-        $clickRankingArticles = ArticleModel::where(['status'=>1,'is_show'=>1])->field('article_title,article_desc,article_id,thumb')->limit(8)->order('click desc')->select();
-        $this->assign('clickRankingArticles',$clickRankingArticles);
-        // 本栏推荐
-        $stickArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>6,'is_stick'=>1])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(7)->order('click desc')->select();
-        $this->assign('stickArticles',$stickArticles);
-        // 猜你喜欢
-        $loveArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>6])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
-        $this->assign('loveArticles',$loveArticles);
-        // 主页文章总数
-        $articlesCount = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->count();
-        $this->assign('articlesCount',$articlesCount);
-        // 主页评论总数
-        $commentsCount = CommentModel::where(['status'=>1,'is_show'=>1])->count();
-        $this->assign('commentsCount',$commentsCount);
+        if(SITE_TEMPLATE == 'lost_time'){
+            // 主页点击排行栏目
+            $clickRankingArticles = ArticleModel::where(['status'=>1,'is_show'=>1])->field('article_title,article_desc,article_id,thumb')->limit(8)->order('click desc')->select();
+            $this->assign('clickRankingArticles',$clickRankingArticles);
+            // 本栏推荐
+            $stickArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>6,'is_stick'=>1])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(7)->order('click desc')->select();
+            $this->assign('stickArticles',$stickArticles);
+            // 猜你喜欢
+            $loveArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>6])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
+            $this->assign('loveArticles',$loveArticles);
+            // 主页文章总数
+            $articlesCount = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->count();
+            $this->assign('articlesCount',$articlesCount);
+            // 主页评论总数
+            $commentsCount = CommentModel::where(['status'=>1,'is_show'=>1])->count();
+            $this->assign('commentsCount',$commentsCount); 
+        }
+        
         //halt($tuiArticles);
         $this->assign('cateID',$row['cate_id']);
         $this->assign('tuiArticles',$tuiArticles);

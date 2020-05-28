@@ -23,7 +23,7 @@
         <!--多图模式 置顶设计-->
         {volist name="blogArticles" id="v" offset="0" length="1"}
         <li>
-          <h3 class="blogtitle"><a href="/index/word/1.html" target="_blank"><b>【顶】</b>{$v['article_title']}</a></h3>
+          <h3 class="blogtitle"><a href="/blog/{$v['article_id']}.html" target="_blank"><b>【顶】</b>{$v['article_title']}</a></h3>
           <span class="bplist">
             <a href="/index/word/1.html" target="_blank"> <img src="/static/home/lost_time/images/b02.jpg" alt=""></a> 
             <a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/b03.jpg" alt=""></a> 
@@ -37,11 +37,11 @@
         <!--单图-->
         {volist name="blogArticles" id="v"}
         <li>
-          <h3 class="blogtitle"><a href="/" target="_blank">{$v['article_title']}</a></h3>
-          <span class="blogpic imgscale"><i><a href="/">原创模板</a></i><a href="/" title=""><img src="{$v['thumb']}" alt=""></a></span>
+          <h3 class="blogtitle"><a href="/blog/{$v['article_id']}.html" target="_blank">{$v['article_title']}</a></h3>
+          <span class="blogpic imgscale"><i><a href="/">原创</a></i><a href="/blog/{$v['article_id']}.html" title=""><img src="{$v['thumb']}" alt=""></a></span>
           <p class="blogtext">{$v['article_desc']}</p>
           <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>{$v['author']}</span><span>{:substr($v['ctime'],0,10)}</span><span>【<a href="/">原创</a>】</span></p>
-          <a href="/" class="viewmore">阅读更多</a> </li>
+          <a href="/blog/{$v['article_id']}.html" class="viewmore">阅读更多</a> </li>
         {/volist}
       </ul>
       <!--pagelist-->
@@ -57,7 +57,7 @@
       <section class="topnews imgscale"><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/h1.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a></section>
       <ul>
         {volist name="clickRankingArticles" id="v"}
-        <li><i></i><a href="/index/word/1.html" target="_blank">{$v['article_title']}</a></li>
+        <li><i></i><a href="/blog/{$v['article_id']}.html" target="_blank">{$v['article_title']}</a></li>
         {/volist}
       </ul>
     </div>
@@ -67,7 +67,7 @@
       <ul>
         {volist name="stickArticles" id="v"}
         <li>
-          <a href="/">
+          <a href="/blog/{$v['article_id']}.html">
             <i><img src="{$v['thumb']}"></i>
               <p>{$v['article_title']}</p>
             </a>

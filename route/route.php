@@ -41,6 +41,8 @@ Route::rule('gallery/:id$','index/Gallery/detail?article_id=:id');
 Route::rule('blog/:id$','index/Blog/detail?article_id=:id');
 //博客右侧的分类
 Route::rule('blog/cate/:id','index/Blog/index?cate_id=:id');
+//博客右侧的二级分类
+//Route::rule('blog/cate/:id/id/:ids','index/Blog/index?cate_id=:id');
 //博客点赞
 Route::rule('love/:id$','index/Blog/love?article_id=:id');
 //博客评论

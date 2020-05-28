@@ -23,29 +23,14 @@
     <nav>
       <ul id="starlist">
         {volist name="topMenus" id="v"}
-        <li {if condition="$v['childs']"}class="menu"{/if}><a href="{$v['link']}">{$v['cate_name']}</a>
+        <li {if condition="$v['childs']"}class="menu"{/if}><a href="{$v['link']}" {if condition="$thisMenu == $v['link']"}id="selected"{/if}>{$v['cate_name']}</a>
         <ul class="sub">
           {volist name="$v['childs']" id="vv"}
-          <li><a href="{$vv['link']}{$vv['cate_id']}.html">{$vv['cate_name']}</a></li>
+          <li><a href="{$vv['link']}{$vv['cate_id']}.html" {if condition="$cateID == $vv['cate_id']"}id="selected"{/if}>{$vv['cate_name']}</a></li>
           {/volist}
         </ul>
         <span></span></li>
         {/volist}
-        <!-- <li><a href="/index.html">首页</a></li>
-        <li><a href="/gallery.html">生活随想</a></li>
-        <li class="menu"><a href="/blog.html">技术博客</a>
-          <ul class="sub">
-            <li><a href="/blog/cate/1">PHP</a></li>
-            <li><a href="/blog/cate/1">Java</a></li>
-            <li><a href="/blog/cate/1">Python</a></li>
-            <li><a href="/blog/cate/1">服务器</a></li>
-            <li><a href="/blog/cate/1">前端</a></li>
-            <li><a href="/blog/cate/1">数据库</a></li>
-          </ul>
-          <span></span></li>
-        <li><a href="/tour.html">读书角</a></li>
-        <li><a href="/download.html">资源推荐</a></li>
-        <li><a href="/contact.html">关于我</a></li> -->
       </ul>
     </nav>
     <div class="searchico"></div>

@@ -89,14 +89,13 @@ class Base extends Common
         }else{
             $thisMenu = '/'.strtolower($controller).'.html';
         }
-
         // 获取最热门文章TOP3
         $hotWhere = [
             'is_show' => 1,
             'status' => 1,
         ];
         $hotArticles = ArticleModel::where($hotWhere)->field('thumb,medium_thumb,article_id,article_title,ctime')->order('click desc')->limit(3)->select();
-
+        $this->assign('cateID','');
         $this->assign('hotArticles',$hotArticles);
         $this->assign('thisMenu',$thisMenu);
         $this->assign('topMenus',$topMenus);
