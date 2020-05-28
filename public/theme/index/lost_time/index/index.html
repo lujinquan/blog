@@ -34,7 +34,7 @@
     <div class="tab_box whitebg">
       <div class="tab_buttons">
         <ul>
-          <li class="newscurrent">个人博客</li>
+          <li class="newscurrent">生活随想</li>
           <li>PHP</li>
           <li>Python</li>
           <li>HTML</li>
@@ -47,13 +47,13 @@
           <div class="newspic">
             <ul>
               {volist name="blogArticles" id="v"}
-              <li><a href="/index/word/1.html" target="_blank"><img src="{$v['thumb']}"><span>{$v['article_title']}</span></a></li>
+              <li><a href="/gallery/{$v['article_id']}.html" target="_blank"><img src="{$v['thumb']}"><span>{$v['article_title']}</span></a></li>
               {/volist}
             </ul>
           </div>
           <ul class="newslist">
             {volist name="blogArticles" id="v"}
-            <li><i></i><a href="/index/word/1.html" target="_blank">{$v['article_title']}</a>
+            <li><i></i><a href="/gallery/{$v['article_id']}.html" target="_blank">{$v['article_title']}</a>
               <p>{$v['article_desc']}</p>
             </li>
             {/volist}
@@ -190,7 +190,7 @@
       <p>现居：湖北省-武汉市</p>
       <p>Email：598936602@qq.com</p>
       <ul class="linkmore">
-        <li><a href="http://www.yangqq.com" class="iconfont icon-zhuye" title="网站地址"></a></li>
+        <li><a href="http://www.mylucas.com.cn" class="iconfont icon-zhuye" title="网站地址"></a></li>
         <li><a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=HHh9cn95b3F1cHVye1xtbTJ-c3E" class="iconfont icon-youxiang" title="我的邮箱"></a></li>
         <li><a href="http://wpa.qq.com/msgrd?v=3&uin=476847113&site=qq&menu=yes" class="iconfont icon---" title="QQ联系我"></a></li>
         <li id="weixin"><a href="#" class="iconfont icon-weixin" title="关注我的微信"></a><i><img src="/static/home/lost_time/images/wx.png"></i></li>
@@ -232,14 +232,9 @@
     <div class="whitebg wenzi">
       <h2 class="htitle">猜你喜欢</h2>
       <ul>
-        <li><a href="/index/word/1.html" target="_blank">猜你喜欢第一篇文章！</a></li>
-        <li><a href="/index/word/1.html" target="_blank">猜你喜欢第二篇文章！</a></li>
-        <li><a href="/index/word/1.html" target="_blank">猜你喜欢第三篇文章！</a></li>
-        <li><a href="/index/word/1.html" target="_blank">猜你喜欢第四篇文章！</a></li>
-        <li><a href="/index/word/1.html" target="_blank">猜你喜欢第五篇文章！</a></li>
-        <li><a href="/index/word/1.html" target="_blank">猜你喜欢第六篇文章！</a></li>
-        <li><a href="/index/word/1.html" target="_blank">猜你喜欢第七篇文章！</a></li>
-        <li><a href="/index/word/1.html" target="_blank">猜你喜欢第八篇文章！</a></li>
+        {volist name="stickArticles" id="v"} 
+        <li><a href="/index/word/1.html" target="_blank">{$v['article_title']}</a></li>
+        {/volist}
       </ul>
     </div>
     <div class="ad whitebg imgscale">
@@ -251,10 +246,8 @@
       <h2 class="htitle">站点信息</h2>
       <ul>
         <li><b>建站时间</b>：2018-10-24</li>
-        <li><b>网站程序</b>：帝国CMS7.5</li>
-        <li><b>主题模板</b>：<a href="http://www.yangqq.com">《今夕何夕》</a></li>
-        <li><b>文章统计</b>：299条</li>
-        <li><b>文章评论</b>：490条</li>
+        <li><b>文章统计</b>：{$articlesCount}篇</li>
+        <li><b>文章评论</b>：{$commentsCount}条</li>
         <li><b>统计数据</b>：<a href="/index/word/1.html" target="_blank">百度统计</a></li>
         <li><b>微信公众号</b>：扫描二维码，关注我们</li>
         <img src="/static/home/lost_time/images/wxgzh.jpg" class="tongji_gzh">
@@ -263,7 +256,7 @@
     <div class="links whitebg">
       <h2 class="htitle"><span class="sqlink"><a href="/index/word/1.html" target="_blank">申请链接</a></span>友情链接</h2>
       <ul>
-        <li><a href="http://www.yangqq.com">杨青青个人博客</a></li>
+        <li><a href="https://www.mylucas.com.cn">Lucas个人博客</a></li>
       </ul>
     </div>
   </div>

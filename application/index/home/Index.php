@@ -5,6 +5,7 @@ namespace app\index\home;
 use app\index\home\Base;
 use app\blog\model\Cate as CateModel;
 use app\blog\model\Article as ArticleModel;
+use app\blog\model\Comment as CommentModel;
 
 class Index extends Base
 {
@@ -50,9 +51,15 @@ class Index extends Base
             // 主页最新文章栏目
             $newArticles = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(8)->order('ctime desc')->select();
             $this->assign('newArticles',$newArticles);
-            // // 主页置顶文章
-            // $newArticles = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(8)->order('ctime desc')->select();
-            // $this->assign('newArticles',$newArticles);
+            // 主页猜你喜欢（热门）文章
+            $loveArticles = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
+            $this->assign('loveArticles',$loveArticles);
+            // 主页文章总数
+            $articlesCount = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->count();
+            $this->assign('articlesCount',$articlesCount);
+            // 主页评论总数
+            $commentsCount = CommentModel::where(['status'=>1,'is_show'=>1])->count();
+            $this->assign('commentsCount',$commentsCount);
         }else{
             $banner = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>97])->field('article_id,thumb')->find();
             $this->assign('banner',$banner);

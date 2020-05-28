@@ -70,6 +70,14 @@ class Base extends Common
         }
         
         $topMenus = CateModel::where('p_id',0)->field('cate_name,cate_id,link')->order('sort_order asc')->select();
+        foreach ($topMenus as $k => &$v) {
+            $v['childs'] = [];
+            if(in_array($v['cate_id'], [4])){ //只展示技术博客的二级菜单
+                $v['childs'] = CateModel::where('p_id',$v['cate_id'])->field('cate_name,cate_id,link')->order('sort_order asc')->select();
+            }
+            
+        }
+        //halt($topMenus);
         // 定位当前菜单
         $module     = request()->module();
         $controller = request()->controller();

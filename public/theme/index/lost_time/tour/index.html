@@ -4,54 +4,19 @@
   <!--lbox begin-->
   <div class="lbox">
     <div class="whitebg lanmu"> <img src="/static/home/lost_time/images/lm04.jpg">
-      <h1>网页设计心得</h1>
-      <p>个人博客用来做什么？我的个人博客网站它不仅仅是我个人兴趣和爱好，还是我创业的起点。我爱网页设计，我爱写前端代码。它充实了我的生活，实现了我的目标和梦想。</p>
+      <h1>读书角</h1>
+      <p>读书有三到，谓心到，眼到，口到。心不在此，则眼看不仔细，心眼既不专一，却只漫诵浪读，决不能记，久也不能久也。三到之中，心到最急，心既到矣，眼口岂不到乎？</p>
     </div>
+    {volist name="tourArticles" id="v"}
     <div class="zhuanti whitebg">
-      <h2 class="htitle"><span class="hnav"><a href="/" target="_blank">更多</a></span>青青日记</h2>
+      <h2 class="htitle"><span class="hnav"><a href="/" target="_blank">更多</a></span>{$v['cate_name']}</h2>
       <ul>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/1.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/2.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/3.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/4.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/h2.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/h1.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
+        {volist name="$v['list']" id="vv"}
+        <li> <i class="ztpic"><a href="/tour/{$vv['article_id']}.html" target="_blank"><img src="{$vv['thumb']}"></a></i> <b>{$vv['article_title']}</b><span>{$vv['article_desc']}</span><a href="/tour/{$vv['article_id']}.html" target="_blank" class="readmore">文章阅读</a> </li>
+        {/volist}
       </ul>
     </div>
-    <div class="zhuanti whitebg">
-      <h2 class="htitle"><span class="hnav"><a href="/" target="_blank">更多</a></span>美文欣赏</h2>
-      <ul>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/1.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/2.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/3.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/4.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/h2.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/h1.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
-      </ul>
-    </div>
-    <div class="zhuanti whitebg">
-      <h2 class="htitle"><span class="hnav"><a href="/" target="_blank">更多</a></span>程序人生</h2>
-      <ul>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/1.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/2.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/3.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/4.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/h2.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/h1.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
-      </ul>
-    </div>
-    <div class="zhuanti whitebg">
-      <h2 class="htitle"><span class="hnav"><a href="/" target="_blank">更多</a></span>经典语录</h2>
-      <ul>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/1.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/2.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/3.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/4.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/h2.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
-        <li> <i class="ztpic"><a href="/" target="_blank"><img src="/static/home/lost_time/images/h1.jpg"></a></i> <b>个人博客模板《今夕何夕》-响应式个人...</b><span>个人博客模板《今夕何夕》，宽屏响应式个人博客模板，采用冷色系为主，固定导航栏和侧边栏，无缝滚动图片...</span><a href="" target="_blank" class="readmore">文章阅读</a> </li>
-      </ul>
-    </div>
-    
+    {/volist} 
     <!--bloglist end--> 
   </div>
   <div class="rbox">
@@ -59,41 +24,23 @@
       <h2 class="htitle">点击排行</h2>
       <section class="topnews imgscale"><a href="/"><img src="/static/home/lost_time/images/h1.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a></section>
       <ul>
-        <li><i></i><a href="/">十条设计原则教你学会如何设计网页布局!</a></li>
-        <li><i></i><a href="/">用js+css3来写一个手机栏目导航</a></li>
-        <li><i></i><a href="/">6条网页设计配色原则,让你秒变配色高手</a></li>
-        <li><i></i><a href="/">三步实现滚动条触动css动画效果</a></li>
-        <li><i></i><a href="/">个人博客，属于我的小世界！</a></li>
-        <li><i></i><a href="/">安静地做一个爱设计的女子</a></li>
-        <li><i></i><a href="/">个人网站做好了，百度不收录怎么办？来，看看他们怎么做的。</a></li>
-        <li><i></i><a href="/">做个人博客如何用帝国cms美化留言增加头像选择</a></li>
+        {volist name="clickRankingArticles" id="v"}
+        <li><i></i><a href="/index/word/1.html" target="_blank">{$v['article_title']}</a></li>
+        {/volist}
       </ul>
     </div>
     <div class="whitebg tuijian">
       <h2 class="htitle">本栏推荐</h2>
       <section class="topnews imgscale"><a href="/"><img src="/static/home/lost_time/images/h2.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a></section>
       <ul>
-        <li><a href="/"><i><img src="/static/home/lost_time/images/text01.jpg"></i>
-          <p>十条设计原则教你学会如何设计网页布局!</p>
-          </a></li>
-        <li><a href="/"><i><img src="/static/home/lost_time/images/text02.jpg"></i>
-          <p>用js+css3来写一个手机栏目导航</p>
-          </a></li>
-        <li><a href="/"><i><img src="/static/home/lost_time/images/text03.jpg"></i>
-          <p>6条网页设计配色原则,让你秒变配色高手</p>
-          </a></li>
-        <li><a href="/"><i><img src="/static/home/lost_time/images/text04.jpg"></i>
-          <p>三步实现滚动条触动css动画效果</p>
-          </a></li>
-        <li><a href="/"><i><img src="/static/home/lost_time/images/text05.jpg"></i>
-          <p>个人博客，属于我的小世界！</p>
-          </a></li>
-        <li><a href="/"><i><img src="/static/home/lost_time/images/text06.jpg"></i>
-          <p>安静地做一个爱设计的女子</p>
-          </a></li>
-        <li><a href="/"><i><img src="/static/home/lost_time/images/text07.jpg"></i>
-          <p>个人网站做好了，百度不收录怎么办？来，看看他们怎么做的。</p>
-          </a></li>
+        {volist name="stickArticles" id="v"}
+        <li>
+          <a href="/">
+            <i><img src="{$v['thumb']}"></i>
+              <p>{$v['article_title']}</p>
+            </a>
+        </li>
+        {/volist}
       </ul>
     </div>
     <div class="ad whitebg imgscale">
@@ -110,14 +57,9 @@
     <div class="whitebg wenzi">
       <h2 class="htitle">猜你喜欢</h2>
       <ul>
-        <li><a href="/">十条设计原则教你学会如何设计网页布局!</a></li>
-        <li><a href="/">用js+css3来写一个手机栏目导航</a></li>
-        <li><a href="/">6条网页设计配色原则,让你秒变配色高手</a></li>
-        <li><a href="/">三步实现滚动条触动css动画效果</a></li>
-        <li><a href="/">个人博客，属于我的小世界！</a></li>
-        <li><a href="/">安静地做一个爱设计的女子</a></li>
-        <li><a href="/">个人网站做好了，百度不收录怎么办？来，看看他们怎么做的。</a></li>
-        <li><a href="/">做个人博客如何用帝国cms美化留言增加头像选择</a></li>
+        {volist name="loveArticles" id="v"}
+        <li><a href="/">{$v['article_title']}</a></li>
+        {/volist}
       </ul>
     </div>
     <div class="ad whitebg imgscale">
@@ -128,12 +70,12 @@
     <div class="whitebg tongji">
       <h2 class="htitle">站点信息</h2>
       <ul>
-        <li><b>建站时间</b>：2018-10-24</li>
-        <li><b>网站程序</b>：帝国cms</li>
-        <li><b>主题模板</b>：<a href="http://www.yangqq.com" target="_blank">《今夕何夕》</a></li>
-        <li><b>文章统计</b>：299条</li>
-        <li><b>文章评论</b>：490条</li>
-        <li><b>统计数据</b>：<a href="/">百度统计</a></li>
+        li><b>建站时间</b>：2018-10-24</li>
+        <li><b>文章统计</b>：{$articlesCount}篇</li>
+        <li><b>文章评论</b>：{$commentsCount}条</li>
+        <li><b>统计数据</b>：<a href="/index/word/1.html" target="_blank">百度统计</a></li>
+        <li><b>微信公众号</b>：扫描二维码，关注我们</li>
+        <img src="/static/home/lost_time/images/wxgzh.jpg" class="tongji_gzh">
       </ul>
     </div>
   </div>

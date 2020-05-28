@@ -46,22 +46,53 @@ class Blog extends Base
 
     public function index()
     {
-    	$page = input('param.page/d', 1);
-        $limit = input('param.limit/d', 5);
-        $cateID = input('param.cate_id/d',7);
-    	$articleWhere = [
-        	'cate_id' => $cateID, //默认显示php语言的栏目
-        	'is_show' => 1,
-        	'status' => 1
-        ];
-        $articleFields = 'article_id,cate_id,article_title,article_long_title,article_desc,link,author,ctime,click,thumb';
-    	//$initArticles = ArticleModel::with('cate')->where($articleWhere)->field($articleFields)->page($page)->limit(3)->order('sort_order asc')->select();
-    	$initArticles = ArticleModel::with('cate')->where($articleWhere)->field($articleFields)->page($page)->order('sort_order asc,ctime desc')->paginate($limit);
-		//halt(count($initArticles));//->paginate(config('paginate.list_rows'));
-		$page = $initArticles->render();
-		$this->assign('page',$page);
-    	$this->assign('cateID',$cateID);
-    	$this->assign('initArticles',$initArticles);
+        if(SITE_TEMPLATE == 'lost_time'){
+            $page = input('param.page/d', 1);
+            $limit = input('param.limit/d', 10);
+            $catesArr = CateModel::where([['p_id','eq',4],['is_show','eq',1],['status','eq',1]])->column('cate_id');
+            $articleWhere = [
+                ['cate_id','in',$catesArr],
+                ['is_show','eq',1],
+                ['status','eq',1]
+            ];
+            $blogArticles = ArticleModel::where($articleWhere)->field('thumb,article_id,article_title,article_desc,ctime,author,article_long_title')->page($page)->limit($limit)->order('sort_order asc')->select();
+            //halt($galleryArticles);
+            $this->assign('blogArticles',$blogArticles);
+
+            // 主页点击排行栏目
+            $clickRankingArticles = ArticleModel::where(['status'=>1,'is_show'=>1])->field('article_title,article_desc,article_id,thumb')->limit(8)->order('click desc')->select();
+            $this->assign('clickRankingArticles',$clickRankingArticles);
+            // 本栏推荐
+            $stickArticles = ArticleModel::where($articleWhere)->where([['is_stick','eq',1]])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(7)->order('click desc')->select();
+            $this->assign('stickArticles',$stickArticles);
+            // 猜你喜欢
+            $loveArticles = ArticleModel::where($articleWhere)->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
+            $this->assign('loveArticles',$loveArticles);
+            // 主页文章总数
+            $articlesCount = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->count();
+            $this->assign('articlesCount',$articlesCount);
+            // 主页评论总数
+            $commentsCount = CommentModel::where(['status'=>1,'is_show'=>1])->count();
+            $this->assign('commentsCount',$commentsCount);
+
+        }else{
+            $page = input('param.page/d', 1);
+            $limit = input('param.limit/d', 5);
+            $cateID = input('param.cate_id/d',7);
+            $articleWhere = [
+                'cate_id' => $cateID, //默认显示php语言的栏目
+                'is_show' => 1,
+                'status' => 1
+            ];
+            $articleFields = 'article_id,cate_id,article_title,article_long_title,article_desc,link,author,ctime,click,thumb';
+            //$initArticles = ArticleModel::with('cate')->where($articleWhere)->field($articleFields)->page($page)->limit(3)->order('sort_order asc')->select();
+            $initArticles = ArticleModel::with('cate')->where($articleWhere)->field($articleFields)->page($page)->order('sort_order asc,ctime desc')->paginate($limit);
+            //halt(count($initArticles));//->paginate(config('paginate.list_rows'));
+            $page = $initArticles->render();
+            $this->assign('page',$page);
+            $this->assign('cateID',$cateID);
+            $this->assign('initArticles',$initArticles);
+        }
         return $this->fetch();
     }
 
