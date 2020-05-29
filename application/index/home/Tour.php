@@ -35,9 +35,7 @@ class Tour extends Base
             //halt($tourArticles);
             $this->assign('tourArticles',$tourArticles);
 
-            // 主页点击排行栏目
-            $clickRankingArticles = ArticleModel::where(['status'=>1,'is_show'=>1])->field('article_title,article_desc,article_id,thumb')->limit(8)->order('click desc')->select();
-            $this->assign('clickRankingArticles',$clickRankingArticles);
+            
             // 本栏推荐
             $stickArticles = ArticleModel::where([['status','eq',1],['is_show','eq',1],['cate_id','in',$cates],['is_stick','eq',1]])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(7)->order('click desc')->select();
             $this->assign('stickArticles',$stickArticles);
@@ -67,7 +65,7 @@ class Tour extends Base
     {
         $id = input('param.article_id');
         // 获取当前文章详情
-        $row = ArticleModel::where(['article_id'=>$id,'is_show'=>1,'status'=>1])->find();
+        $row = ArticleModel::with('cate')->where(['article_id'=>$id,'is_show'=>1,'status'=>1])->find();
         if(!$row){
             return $this->error('页面不存在','/index.html');
         }
@@ -95,9 +93,7 @@ class Tour extends Base
         $this->assign('comments',$comments);
         $this->assign('data_info',$row);
         if(SITE_TEMPLATE == 'lost_time'){
-            // 主页点击排行栏目
-            $clickRankingArticles = ArticleModel::where(['status'=>1,'is_show'=>1])->field('article_title,article_desc,article_id,thumb')->limit(8)->order('click desc')->select();
-            $this->assign('clickRankingArticles',$clickRankingArticles);
+            
             // 本栏推荐
             $stickArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>6,'is_stick'=>1])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(7)->order('click desc')->select();
             $this->assign('stickArticles',$stickArticles);

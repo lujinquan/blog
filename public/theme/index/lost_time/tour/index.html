@@ -20,15 +20,7 @@
     <!--bloglist end--> 
   </div>
   <div class="rbox">
-    <div class="whitebg paihang">
-      <h2 class="htitle">点击排行</h2>
-      <section class="topnews imgscale"><a href="/"><img src="/static/home/lost_time/images/h1.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a></section>
-      <ul>
-        {volist name="clickRankingArticles" id="v"}
-        <li><i></i><a href="/index/word/1.html" target="_blank">{$v['article_title']}</a></li>
-        {/volist}
-      </ul>
-    </div>
+    {include file="block/click_ranking"}
     <div class="whitebg tuijian">
       <h2 class="htitle">本栏推荐</h2>
       <section class="topnews imgscale"><a href="/"><img src="/static/home/lost_time/images/h2.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a></section>

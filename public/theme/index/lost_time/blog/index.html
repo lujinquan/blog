@@ -10,12 +10,12 @@
     <div class="whitebg bloglist">
       <h2 class="htitle">
         <span class="hnav">
-          <a href="/">php</a>
-          <a href="/">java</a>
-          <a href="/">python</a>
-          <a href="/">服务器</a>
-          <a href="/">前端</a>
-          <a href="/">数据库</a>
+          <a href="javascript:;">php</a>
+          <a href="javascript:;">java</a>
+          <a href="javascript:;">python</a>
+          <a href="javascript:;">服务器</a>
+          <a href="javascript:;">前端</a>
+          <a href="javascript:;">数据库</a>
         </span>
         技术博客
       </h2>
@@ -25,10 +25,10 @@
         <li>
           <h3 class="blogtitle"><a href="/blog/{$v['article_id']}.html" target="_blank"><b>【顶】</b>{$v['article_title']}</a></h3>
           <span class="bplist">
-            <a href="/index/word/1.html" target="_blank"> <img src="/static/home/lost_time/images/b02.jpg" alt=""></a> 
-            <a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/b03.jpg" alt=""></a> 
-            <a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/b04.jpg" alt=""> </a>
-            <a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/b05.jpg" alt=""> </a>
+            <a href="javascript:;" target="_blank"> <img src="/static/home/lost_time/images/b02.jpg" alt=""></a> 
+            <a href="javascript:;" target="_blank"><img src="/static/home/lost_time/images/b03.jpg" alt=""></a> 
+            <a href="javascript:;" target="_blank"><img src="/static/home/lost_time/images/b04.jpg" alt=""> </a>
+            <a href="javascript:;" target="_blank"><img src="/static/home/lost_time/images/b05.jpg" alt=""> </a>
           </span>
           <p class="blogtext">{$v['article_desc']}</p>
           <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>{$v['author']}</span><span>{:substr($v['ctime'],0,10)}</span><span>【<a href="/index/word/1.html" target="_blank">原创文章</a>】</span></p>
@@ -37,11 +37,11 @@
         <!--单图-->
         {volist name="blogArticles" id="v"}
         <li>
-          <h3 class="blogtitle"><a href="/blog/{$v['article_id']}.html" target="_blank">{$v['article_title']}</a></h3>
-          <span class="blogpic imgscale"><i><a href="/">原创</a></i><a href="/blog/{$v['article_id']}.html" title=""><img src="{$v['thumb']}" alt=""></a></span>
+          <h3 class="blogtitle"><a href="/blog/cate/{$v['cate_id']}/{$v['article_id']}.html" target="_blank">{$v['article_title']}</a></h3>
+          <span class="blogpic imgscale"><i><a href="javascript:;">原创</a></i><a href="/blog/cate/{$v['cate_id']}/{$v['article_id']}.html" title=""><img src="{$v['thumb']}" alt=""></a></span>
           <p class="blogtext">{$v['article_desc']}</p>
-          <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>{$v['author']}</span><span>{:substr($v['ctime'],0,10)}</span><span>【<a href="/">原创</a>】</span></p>
-          <a href="/blog/{$v['article_id']}.html" class="viewmore">阅读更多</a> </li>
+          <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>{$v['author']}</span><span>{:substr($v['ctime'],0,10)}</span><span>【<a href="javascript:;">原创</a>】</span></p>
+          <a href="/blog/cate/{$v['cate_id']}/{$v['article_id']}.html" class="viewmore">阅读更多</a> </li>
         {/volist}
       </ul>
       <!--pagelist-->
@@ -52,18 +52,10 @@
     <!--bloglist end--> 
   </div>
   <div class="rbox">
-    <div class="whitebg paihang">
-      <h2 class="htitle">点击排行</h2>
-      <section class="topnews imgscale"><a href="/index/word/1.html" target="_blank"><img src="/static/home/lost_time/images/h1.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a></section>
-      <ul>
-        {volist name="clickRankingArticles" id="v"}
-        <li><i></i><a href="/blog/{$v['article_id']}.html" target="_blank">{$v['article_title']}</a></li>
-        {/volist}
-      </ul>
-    </div>
+    {include file="block/click_ranking"}
     <div class="whitebg tuijian">
       <h2 class="htitle">本栏推荐</h2>
-      <section class="topnews imgscale"><a href="/"><img src="/static/home/lost_time/images/h2.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a></section>
+      <section class="topnews imgscale"><a href="javascript:;"><img src="/static/home/lost_time/images/h2.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a></section>
       <ul>
         {volist name="stickArticles" id="v"}
         <li>
@@ -77,7 +69,7 @@
     </div>
     <div class="ad whitebg imgscale">
       <ul>
-        <a href="/"><img src="/static/home/lost_time/images/ad.jpg"></a>
+        <a href="javascript:;"><img src="/static/home/lost_time/images/ad.jpg"></a>
       </ul>
     </div>
     <div class="whitebg cloud">
@@ -90,13 +82,13 @@
       <h2 class="htitle">猜你喜欢</h2>
       <ul>
         {volist name="loveArticles" id="v"}
-        <li><a href="/">{$v['article_title']}</a></li>
+        <li><a href="javascript:;">{$v['article_title']}</a></li>
         {/volist}
       </ul>
     </div>
     <div class="ad whitebg imgscale">
       <ul>
-        <a href="/"><img src="/static/home/lost_time/images/ad02.jpg"></a>
+        <a href="javascript:;"><img src="/static/home/lost_time/images/ad02.jpg"></a>
       </ul>
     </div>
     <div class="whitebg tongji">

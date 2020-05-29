@@ -15,7 +15,7 @@
     <div class="content_box whitebg">
       <h2 class="htitle"><span class="con_nav">您现在的位置是：<a href="/">生活随想</a><a href="/"><!-- 个人博客模板 --></a></span>生活随想</h2>
       <h1 class="con_tilte">生活里的点滴！</h1>
-      <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>{$data_info['author']}</span><span>{:substr($data_info['ctime'],0,10)}</span><span>【<a href="/">程序人生</a>】</span><span>{$data_info['click']}人已围观</span></p>
+      <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>{$data_info['author']}</span><span>{:substr($data_info['ctime'],0,10)}</span><span>【<a href="/">{$data_info['cate_name']}</a>】</span><span>{$data_info['click']}人已围观</span></p>
       <p class="con_info"><b>简介</b>{$data_info['article_desc']}</p>
       <div class="con_text">
       	<div id="test-editormd-view2">
@@ -47,15 +47,7 @@
   </div>
   <!--lbox end-->
   <div class="rbox">
-    <div class="whitebg paihang">
-      <h2 class="htitle">点击排行</h2>
-      <section class="topnews imgscale"><a href="javascript:;"><img src="/static/home/lost_time/images/h1.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a></section>
-      <ul>
-        {volist name="clickRankingArticles" id="v"}
-        <li><i></i><a href="javascript:;" target="_blank">{$v['article_title']}</a></li>
-        {/volist}
-      </ul>
-    </div>
+    {include file="block/click_ranking"}
     <div class="whitebg tuijian">
       <h2 class="htitle">本栏推荐</h2>
       <section class="topnews imgscale"><a href="/"><img src="/static/home/lost_time/images/h2.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a></section>
@@ -107,29 +99,5 @@
     </div>
   </div>
 </article>
-
-
-<script src="__LIB__/editormd/lib/marked.min.js"></script>
-<script src="__LIB__/editormd/lib/prettify.min.js"></script>
-
-<script src="__LIB__/editormd/lib/raphael.min.js"></script>
-<script src="__LIB__/editormd/lib/underscore.min.js"></script>
-<script src="__LIB__/editormd/lib/sequence-diagram.min.js"></script>
-<script src="__LIB__/editormd/lib/flowchart.min.js"></script>
-<script src="__LIB__/editormd/lib/jquery.flowchart.min.js"></script>
-
-<script src="__LIB__/editormd/editormd.js"></script>
-<script type="text/javascript">
-    $(function() {
-        var testEditormdView2;  
-        testEditormdView2 = editormd.markdownToHTML("test-editormd-view2", {
-            htmlDecode      : "style,script,iframe",  // you can filter tags decode
-            emoji           : true,
-            taskList        : true,
-            tex             : true,  // 默认不解析
-            flowChart       : true,  // 默认不解析
-            sequenceDiagram : true,  // 默认不解析
-        });
-    });
-</script>
+{include file="block/mdeditor"}
 {/block}

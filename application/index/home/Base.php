@@ -89,6 +89,34 @@ class Base extends Common
         }else{
             $thisMenu = '/'.strtolower($controller).'.html';
         }
+
+        // 点击排行模块
+        $clickRankingArticles = ArticleModel::with('cate')->where(['status'=>1,'is_show'=>1])->field('article_title,cate_id,article_desc,article_id,thumb')->limit(7)->order('click desc')->select();
+        foreach ($clickRankingArticles as $key => &$value) {
+            $find = CateModel::where([['cate_id','eq',$value['cate_id']]])->field('p_id,link')->find();
+            //halt($find);
+            if($find['p_id']){ //二级栏目
+                $cateRow = CateModel::where([['cate_id','eq',$find['p_id']]])->field('link')->find();
+                $pos = strpos($cateRow['link'], '.');
+                if($pos){
+                    $value['top_cate_flag'] = substr($cateRow['link'],0,$pos);  
+                }else{
+                    $value['top_cate_flag'] = $cateRow['link'];
+                }
+                
+                //dump($value['top_cate_flag']);dump($pos);halt($cateRow['link']);
+            }else{ //顶级栏目
+                $pos = strpos($find['link'], '.');
+                $value['top_cate_flag'] = substr($find['link'],1,2);
+                //halt($value['top_cate_flag']);
+            }
+        }
+        $this->assign('clickRankingArticles',$clickRankingArticles);
+
+
+        /*dump('/' === '/gallery.html');
+        dump($topMenus);
+        halt($thisMenu);*/
         // 获取最热门文章TOP3
         $hotWhere = [
             'is_show' => 1,

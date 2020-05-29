@@ -21,18 +21,15 @@ class Gallery extends Base
                 ['is_show','eq',1],
                 ['status','eq',1]
             ];
-            $galleryArticles = ArticleModel::where($articleWhere)->field('thumb,article_id,article_title,article_desc,ctime,author,article_long_title')->page($page)->order('sort_order asc')->select();
+            $galleryArticles = ArticleModel::where($articleWhere)->field('thumb,article_id,cate_id,article_title,article_desc,ctime,author,article_long_title')->page($page)->order('sort_order asc')->select();
             //halt($galleryArticles);
             $this->assign('galleryArticles',$galleryArticles);
 
-            // 主页点击排行栏目
-            $clickRankingArticles = ArticleModel::where(['status'=>1,'is_show'=>1])->field('article_title,article_desc,article_id,thumb')->limit(8)->order('click desc')->select();
-            $this->assign('clickRankingArticles',$clickRankingArticles);
             // 本栏推荐
-            $stickArticles = ArticleModel::where($articleWhere)->where([['is_stick','eq',1]])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(7)->order('click desc')->select();
+            $stickArticles = ArticleModel::where($articleWhere)->where([['is_stick','eq',1]])->field('article_title,cate_id,article_desc,article_id,thumb,author,ctime')->limit(7)->order('click desc')->select();
             $this->assign('stickArticles',$stickArticles);
             // 猜你喜欢
-            $loveArticles = ArticleModel::where($articleWhere)->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
+            $loveArticles = ArticleModel::where($articleWhere)->field('article_title,cate_id,article_desc,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
             $this->assign('loveArticles',$loveArticles);
             // 主页文章总数
             $articlesCount = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->count();
@@ -48,7 +45,7 @@ class Gallery extends Base
                 ['is_show','eq',1],
                 ['status','eq',1]
             ];
-            $galleryArticles = ArticleModel::where($articleWhere)->field('thumb,article_id,article_title,article_long_title')->order('sort_order asc')->select();
+            $galleryArticles = ArticleModel::where($articleWhere)->field('thumb,article_id,cate_id,article_title,article_long_title')->order('sort_order asc')->select();
             $this->assign('galleryArticles',array_chunk($galleryArticles->toArray(),3,false));
         }
         return $this->fetch();
@@ -58,7 +55,7 @@ class Gallery extends Base
     {
         $id = input('param.article_id');
         // 获取当前文章详情
-        $row = ArticleModel::where(['article_id'=>$id,'is_show'=>1,'status'=>1])->find();
+        $row = ArticleModel::with('cate')->where(['article_id'=>$id,'is_show'=>1,'status'=>1])->find();
         if(!$row){
             return $this->error('页面不存在','/index.html');
         }
@@ -81,9 +78,7 @@ class Gallery extends Base
         $tuiArticles = ArticleModel::where($tuiWhere)->field('thumb,article_id,article_title')->order('click desc')->limit(4)->select();
         //halt($tuiArticles);
         if(SITE_TEMPLATE == 'lost_time'){
-            // 主页点击排行栏目
-            $clickRankingArticles = ArticleModel::where(['status'=>1,'is_show'=>1])->field('article_title,article_desc,article_id,thumb')->limit(8)->order('click desc')->select();
-            $this->assign('clickRankingArticles',$clickRankingArticles);
+           
             // 本栏推荐
             $stickArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>6,'is_stick'=>1])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(7)->order('click desc')->select();
             $this->assign('stickArticles',$stickArticles);

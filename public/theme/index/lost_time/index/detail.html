@@ -13,8 +13,8 @@
   <!--lbox begin-->
   <div class="lbox">
     <div class="content_box whitebg">
-      <h2 class="htitle"><span class="con_nav">您现在的位置是：<a href="/">读书角</a> > <a href="/">理财</a></span>读书角</h2>
-      <h1 class="con_tilte">读书角</h1>
+      <h2 class="htitle"><span class="con_nav">您现在的位置是：<a href="/">首页</a><a href="/"><!-- 个人博客模板 --></a></span>首页</h2>
+      <h1 class="con_tilte">{$data_info['article_title']}</h1>
       <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>{$data_info['author']}</span><span>{:substr($data_info['ctime'],0,10)}</span><span>【<a href="/">{$data_info['cate_name']}</a>】</span><span>{$data_info['click']}人已围观</span></p>
       <p class="con_info"><b>简介</b>{$data_info['article_desc']}</p>
       <div class="con_text">
@@ -41,20 +41,28 @@
       <ul>
       	<!-- 评论 开始 -->
 
-		    <!-- 评论 结束 -->
+		<!-- 评论 结束 -->
       </ul>
     </div>
   </div>
   <!--lbox end-->
   <div class="rbox">
-    {include file="block/click_ranking"}
+    <div class="whitebg paihang">
+      <h2 class="htitle">点击排行</h2>
+      <section class="topnews imgscale"><a href="javascript:;"><img src="/static/home/lost_time/images/h1.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a></section>
+      <ul>
+        {volist name="clickRankingArticles" id="v"}
+        <li><i></i><a href="javascript:;" target="_blank">{$v['article_title']}</a></li>
+        {/volist}
+      </ul>
+    </div>
     <div class="whitebg tuijian">
       <h2 class="htitle">本栏推荐</h2>
       <section class="topnews imgscale"><a href="/"><img src="/static/home/lost_time/images/h2.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a></section>
       <ul>
       	{volist name="stickArticles" id="v"}
         <li>
-        	<a href="/">
+        	<a href="/gallery/{$v['article_id']}">
         		<i><img src="{$v['thumb']}"></i>
           		<p>{$v['article_title']}</p>
           	</a>
@@ -64,26 +72,26 @@
     </div>
     <div class="ad whitebg imgscale">
       <ul>
-        <a href="/"><img src="/static/home/lost_time/images/ad.jpg"></a>
+        <a href="javascript:;"><img src="/static/home/lost_time/images/ad.jpg"></a>
       </ul>
     </div>
     <div class="whitebg cloud">
       <h2 class="htitle">标签云</h2>
       <ul>
-        <a href="" target="_blank">个人博客模板</a> <a href="" target="_blank">css动画</a> <a href="" target="_blank">布局</a> <a href="" target="_blank">今夕何夕</a> <a href="" target="_blank">SEO</a> <a href="" target="_blank">女程序员</a> <a href="" target="_blank">小世界</a> <a href="" target="_blank">个人博客</a> <a href="" target="_blank">网页设计</a>
+        <a href="javascript:;" target="_blank">个人博客模板</a> <a href="javascript:;" target="_blank">css动画</a> <a href="javascript:;" target="_blank">布局</a> <a href="javascript:;" target="_blank">今夕何夕</a> <a href="javascript:;" target="_blank">SEO</a> <a href="javascript:;" target="_blank">女程序员</a> <a href="javascript:;" target="_blank">小世界</a> <a href="javascript:;" target="_blank">个人博客</a> <a href="javascript:;" target="_blank">网页设计</a>
       </ul>
     </div>
     <div class="whitebg wenzi">
       <h2 class="htitle">猜你喜欢</h2>
       <ul>
       	{volist name="loveArticles" id="v"}
-        <li><a href="/">{$v['article_title']}</a></li>
+        <li><a href="/gallery/{$v['article_id']}">{$v['article_title']}</a></li>
         {/volist}
       </ul>
     </div>
     <div class="ad whitebg imgscale">
       <ul>
-        <a href="/"><img src="/static/home/lost_time/images/ad02.jpg"></a>
+        <a href="javascript:;"><img src="/static/home/lost_time/images/ad02.jpg"></a>
       </ul>
     </div>
     <div class="whitebg tongji">

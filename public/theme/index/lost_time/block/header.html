@@ -19,11 +19,11 @@
 <header id="header">
   <div class="navbox">
     <h2 id="mnavh"><span class="navicon"></span></h2>
-    <div class="logo"><a href="/index.html">Lucas</a></div>
+    <div class="logo"><a href="/">Lucas</a></div>
     <nav>
       <ul id="starlist">
         {volist name="topMenus" id="v"}
-        <li {if condition="$v['childs']"}class="menu"{/if}><a href="{$v['link']}" {if condition="$thisMenu == $v['link']"}id="selected"{/if}>{$v['cate_name']}</a>
+        <li {if condition="$v['childs']"}class="menu"{/if}><a href="{$v['link']}" {if condition="($thisMenu == $v['link'])"}id="selected"{/if}>{$v['cate_name']}</a>
         <ul class="sub">
           {volist name="$v['childs']" id="vv"}
           <li><a href="{$vv['link']}{$vv['cate_id']}.html" {if condition="$cateID == $vv['cate_id']"}id="selected"{/if}>{$vv['cate_name']}</a></li>

@@ -19,40 +19,38 @@ class Index extends Base
             $bannerHImgs = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>101])->field('article_title,article_id,thumb')->limit(2)->order('sort_order asc')->select();
             $this->assign('bannerHImgs',$bannerHImgs);
             // 主页生活栏目（页面中显示是个人博客）的文章
-            $blogArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>14])->field('article_title,article_desc,article_id,thumb')->limit(5)->order('sort_order asc')->select();
-            $this->assign('blogArticles',$blogArticles);
+            $lifeArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>6])->field('article_title,cate_id,article_desc,article_id,thumb')->limit(5)->order('sort_order asc')->select();
+            $this->assign('lifeArticles',$lifeArticles);
             // 主页php栏目的文章
-            $phpArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>7])->field('article_title,article_desc,article_id,thumb')->limit(5)->order('sort_order asc')->select();
+            $phpArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>7])->field('article_title,cate_id,article_desc,article_id,thumb')->limit(5)->order('sort_order asc')->select();
             $this->assign('phpArticles',$phpArticles);
             // 主页python栏目的文章
-            $pythonArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>11])->field('article_title,article_desc,article_id,thumb')->limit(5)->order('sort_order asc')->select();
+            $pythonArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>11])->field('article_title,cate_id,article_desc,article_id,thumb')->limit(5)->order('sort_order asc')->select();
             $this->assign('pythonArticles',$pythonArticles);
             // 主页HTML栏目的文章
-            $htmlArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>10])->field('article_title,article_desc,article_id,thumb')->limit(5)->order('sort_order asc')->select();
+            $htmlArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>10])->field('article_title,cate_id,article_desc,article_id,thumb')->limit(5)->order('sort_order asc')->select();
             $this->assign('htmlArticles',$htmlArticles);
             // 主页Mysql栏目的文章
-            $mysqlArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>9])->field('article_title,article_desc,article_id,thumb')->limit(5)->order('sort_order asc')->select();
+            $mysqlArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>9])->field('article_title,cate_id,article_desc,article_id,thumb')->limit(5)->order('sort_order asc')->select();
             $this->assign('mysqlArticles',$mysqlArticles);
             // 主页linux栏目的文章
-            $linuxArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>8])->field('article_title,article_desc,article_id,thumb')->limit(5)->order('sort_order asc')->select();
+            $linuxArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>8])->field('article_title,cate_id,article_desc,article_id,thumb')->limit(5)->order('sort_order asc')->select();
             $this->assign('linuxArticles',$linuxArticles);
             // 主页公告栏目的文章
-            $noticeArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>102])->field('article_title,article_desc,article_id,thumb')->limit(4)->order('sort_order asc')->select();
+            $noticeArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>102])->field('article_title,cate_id,article_desc,article_id,thumb')->limit(4)->order('sort_order asc')->select();
             $this->assign('noticeArticles',$noticeArticles);
             // 主页原创精彩专题
-            $originalArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>103])->field('article_title,article_desc,article_id,thumb')->limit(6)->order('sort_order asc')->select();
+            $originalArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>103])->field('article_title,cate_id,article_desc,article_id,thumb')->limit(6)->order('sort_order asc')->select();
             $this->assign('originalArticles',$originalArticles);
-            // 主页点击排行栏目
-            $clickRankingArticles = ArticleModel::where(['status'=>1,'is_show'=>1])->field('article_title,article_desc,article_id,thumb')->limit(8)->order('click desc')->select();
-            $this->assign('clickRankingArticles',$clickRankingArticles);
+            
             // 主页推荐栏目
-            $stickArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'is_stick'=>1])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(8)->order('click desc')->select();
+            $stickArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'is_stick'=>1])->field('article_title,cate_id,article_desc,article_id,thumb,author,ctime')->limit(8)->order('click desc')->select();
             $this->assign('stickArticles',$stickArticles);
             // 主页最新文章栏目
-            $newArticles = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(8)->order('ctime desc')->select();
+            $newArticles = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->field('article_title,cate_id,article_desc,article_id,thumb,author,ctime')->limit(8)->order('ctime desc')->select();
             $this->assign('newArticles',$newArticles);
             // 主页猜你喜欢（热门）文章
-            $loveArticles = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
+            $loveArticles = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->field('article_title,cate_id,article_desc,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
             $this->assign('loveArticles',$loveArticles);
             // 主页文章总数
             $articlesCount = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->count();
@@ -116,7 +114,7 @@ class Index extends Base
     {
     	$id = input('article_id');
 
-    	$data_info = ArticleModel::where('article_id',$id)->find();
+    	$data_info = ArticleModel::with('cate')->where('article_id',$id)->find();
     	// 获取当前文章的评论
         $comments = $data_info->comment()->with('member')->where(['is_show'=>1,'status'=>1])->order('ctime desc')->limit(4)->select();
         // 获取推荐的文章
@@ -128,7 +126,25 @@ class Index extends Base
             ['article_id' ,'neq',$id]
         ];
         $tuiArticles = ArticleModel::where($tuiWhere)->field('thumb,article_id,article_title')->order('click desc')->limit(4)->select();
-        
+
+        if(SITE_TEMPLATE == 'lost_time'){
+            // 主页点击排行栏目
+            $clickRankingArticles = ArticleModel::where(['status'=>1,'is_show'=>1])->field('article_title,article_desc,article_id,thumb')->limit(8)->order('click desc')->select();
+            $this->assign('clickRankingArticles',$clickRankingArticles);
+            // 本栏推荐
+            $stickArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>6,'is_stick'=>1])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(7)->order('click desc')->select();
+            $this->assign('stickArticles',$stickArticles);
+            // 猜你喜欢
+            $loveArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>6])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
+            $this->assign('loveArticles',$loveArticles);
+            // 主页文章总数
+            $articlesCount = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->count();
+            $this->assign('articlesCount',$articlesCount);
+            // 主页评论总数
+            $commentsCount = CommentModel::where(['status'=>1,'is_show'=>1])->count();
+            $this->assign('commentsCount',$commentsCount); 
+        }
+
         $this->assign('tuiArticles',$tuiArticles);
         $this->assign('comments',$comments);
     	$this->assign('data_info',$data_info);
