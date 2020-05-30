@@ -64,6 +64,17 @@ class Base extends Common
             echo '<h1 style="text-align:center;font-size:12rem;margin-top:10%;font-weight:normal;vertical-align:middle;font-family:&quot;background-color:#FFFFFF;"><span style="font-size:12rem;">203</span></h1><p class="text" style="text-align:center;font-size:1.6rem;color:#D93641;font-family:&quot;background-color:#FFFFFF;">很抱歉，页面已被限制访问！</p>';exit;
         }   
 
+        // 定位当前菜单
+        //$module     = request()->module();
+        $controller = request()->controller();
+
+        $thisMenu = '/'.strtolower($controller).'.html';
+        if($controller == 'Index'){
+            $thisMenu = '/';
+        }else{
+            $thisMenu = '/'.strtolower($controller).'.html';
+        }
+        $thisMenuName = '';
         // 定义模板常量
         if (!defined('SITE_TEMPLATE')) {
             define('SITE_TEMPLATE', config()['sys']['site_template']);
@@ -75,20 +86,12 @@ class Base extends Common
             if(in_array($v['cate_id'], [4])){ //只展示技术博客的二级菜单
                 $v['childs'] = CateModel::where('p_id',$v['cate_id'])->field('cate_name,cate_id,link')->order('sort_order asc')->select();
             }
-            
+            if($v['link'] == $thisMenu){
+                $thisMenuName = $v['cate_name'];
+            }
         }
-        //halt($topMenus);
-        // 定位当前菜单
-        $module     = request()->module();
-        $controller = request()->controller();
-        //$action     = request()->action();
-        //$thisMenu = '/'.$module.'/'.$controller;
-        $thisMenu = '/'.strtolower($controller).'.html';
-        if($controller == 'Index'){
-            $thisMenu = '/';
-        }else{
-            $thisMenu = '/'.strtolower($controller).'.html';
-        }
+        //halt($thisMenuName);
+        $this->assign('thisMenuName',$thisMenuName);
 
         // 点击排行模块
         $clickRankingArticles = ArticleModel::with('cate')->where(['status'=>1,'is_show'=>1])->field('article_title,cate_id,article_desc,article_id,thumb')->limit(7)->order('click desc')->select();
@@ -103,20 +106,17 @@ class Base extends Common
                 }else{
                     $value['top_cate_flag'] = $cateRow['link'];
                 }
-                
-                //dump($value['top_cate_flag']);dump($pos);halt($cateRow['link']);
             }else{ //顶级栏目
                 $pos = strpos($find['link'], '.');
                 $value['top_cate_flag'] = substr($find['link'],1,2);
-                //halt($value['top_cate_flag']);
             }
         }
         $this->assign('clickRankingArticles',$clickRankingArticles);
 
 
-        /*dump('/' === '/gallery.html');
-        dump($topMenus);
-        halt($thisMenu);*/
+        
+        // dump($topMenus);
+        // halt($thisMenu);
         // 获取最热门文章TOP3
         $hotWhere = [
             'is_show' => 1,

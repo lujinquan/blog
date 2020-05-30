@@ -4,8 +4,8 @@
   <!--lbox begin-->
   <div class="lbox">
     <div class="whitebg lanmu"> <img src="/static/home/lost_time/images/lm03.jpg">
-      <h1>技术博客</h1>
-      <p>记录一些开发过程中遇到的问题和解决问题的思路，涵盖新手到初成熟阶段，类型以原创为主，有少量转载部分。内容仅供参考，可能存在异议，欢迎互相探讨！</p>
+      <h1>读书角</h1>
+      <p>读书有三到，谓心到，眼到，口到。心不在此，则眼看不仔细，心眼既不专一，却只漫诵浪读，决不能记，久也不能久也。三到之中，心到最急，心既到矣，眼口岂不到乎？</p>
     </div>
     <div class="whitebg bloglist">
       <h2 class="htitle">
@@ -23,9 +23,9 @@
       </h2>
       <ul>
         <!--多图模式 置顶设计-->
-        {volist name="blogArticles" id="v" offset="0" length="1"}
+        {volist name="tourArticles" id="v" offset="0" length="1"}
         <li>
-          <h3 class="blogtitle"><a href="/blog/{$v['article_id']}.html" target="_blank"><b>【顶】</b>{$v['article_title']}</a></h3>
+          <h3 class="blogtitle"><a href="/tour/{$v['article_id']}.html" target="_blank"><b>【顶】</b>{$v['article_title']}</a></h3>
           <span class="bplist">
             <a href="javascript:;"> <img src="/static/home/lost_time/images/b02.jpg" alt=""></a> 
             <a href="javascript:;"><img src="/static/home/lost_time/images/b03.jpg" alt=""></a> 
@@ -37,13 +37,13 @@
         </li>
         {/volist}
         <!--单图-->
-        {volist name="blogArticles" id="v"}
+        {volist name="tourArticles" id="v"}
         <li>
-          <h3 class="blogtitle"><a href="/blog/cate/{$v['cate_id']}/{$v['article_id']}.html" target="_blank">{$v['article_title']}</a></h3>
-          <span class="blogpic imgscale"><i><a href="javascript:;">原创</a></i><a href="/blog/cate/{$v['cate_id']}/{$v['article_id']}.html" title=""><img src="{$v['thumb']}" alt=""></a></span>
+          <h3 class="blogtitle"><a href="/tour/cate/{$v['cate_id']}/{$v['article_id']}.html" target="_blank">{$v['article_title']}</a></h3>
+          <span class="blogpic imgscale"><i><a href="javascript:;">原创</a></i><a href="/tour/cate/{$v['cate_id']}/{$v['article_id']}.html" title=""><img src="{$v['thumb']}" alt=""></a></span>
           <p class="blogtext">{$v['article_desc']}</p>
           <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>{$v['author']}</span><span>{:substr($v['ctime'],0,10)}</span><span>【<a href="javascript:;">原创</a>】</span></p>
-          <a href="/blog/cate/{$v['cate_id']}/{$v['article_id']}.html" class="viewmore">阅读更多</a> </li>
+          <a href="/tour/cate/{$v['cate_id']}/{$v['article_id']}.html" class="viewmore">阅读更多</a> </li>
         {/volist}
       </ul>
       <!--pagelist-->
@@ -51,35 +51,35 @@
         <a title="Total record">&nbsp;<b>总数：{$total_data}条</b> </a>&nbsp;&nbsp;&nbsp;
         {if condition="$cateInfo"}
             {if condition="(($total_page > 1) && ($page > 1))"}
-            <a href="/blog/cate/page/{$cateInfo['cate_id']}/1.html">首页</a>&nbsp;
-            <a href="/blog/cate/page/{$cateInfo['cate_id']}/{$page -1}.html">上一页</a>&nbsp;
+            <a href="/tour/cate/page/{$cateInfo['cate_id']}/1.html">首页</a>&nbsp;
+            <a href="/tour/cate/page/{$cateInfo['cate_id']}/{$page -1}.html">上一页</a>&nbsp;
             {/if}
             {for start="1" end="$total_page+1"}
               {if condition="$i == $page"}
                 <b>{$i}</b>
               {else /}
-                <a href="/blog/cate/page/{$cateInfo['cate_id']}/{$i}.html">{$i}</a>&nbsp;
+                <a href="/tour/cate/page/{$cateInfo['cate_id']}/{$i}.html">{$i}</a>&nbsp;
               {/if}
             {/for}
             {if condition="(($total_page > 1) && ($page < $total_page))"}
-            <a href="/blog/cate/page/{$cateInfo['cate_id']}/{$page +1}.html">下一页</a>&nbsp;
-            <a href="/blog/cate/page/{$cateInfo['cate_id']}/{$total_page}.html">尾页</a>
+            <a href="/tour/cate/page/{$cateInfo['cate_id']}/{$page +1}.html">下一页</a>&nbsp;
+            <a href="/tour/cate/page/{$cateInfo['cate_id']}/{$total_page}.html">尾页</a>
             {/if}
         {else /}
             {if condition="(($total_page > 1) && ($page > 1))"}
-            <a href="/blog/page/1.html">首页</a>&nbsp;
-            <a href="/blog/page/{$page -1}.html">上一页</a>&nbsp;
+            <a href="/tour/page/1.html">首页</a>&nbsp;
+            <a href="/tour/page/{$page -1}.html">上一页</a>&nbsp;
             {/if}
             {for start="1" end="$total_page+1"}
               {if condition="$i == $page"}
                 <b>{$i}</b>
               {else /}
-                <a href="/blog/page/{$i}.html">{$i}</a>&nbsp;
+                <a href="/tour/page/{$i}.html">{$i}</a>&nbsp;
               {/if}
             {/for}
             {if condition="(($total_page > 1) && ($page < $total_page))"}
-            <a href="/blog/page/{$page +1}.html">下一页</a>&nbsp;
-            <a href="/blog/page/{$total_page}.html">尾页</a>
+            <a href="/tour/page/{$page +1}.html">下一页</a>&nbsp;
+            <a href="/tour/page/{$total_page}.html">尾页</a>
             {/if}
         {/if}
         
@@ -97,7 +97,7 @@
       <ul>
         {volist name="stickArticles" id="v"}
         <li>
-          <a href="/blog/{$v['article_id']}.html">
+          <a href="/tour/cate/{$v['cate_id']}/{$v['article_id']}.html">
             <i><img src="{$v['thumb']}"></i>
               <p>{$v['article_title']}</p>
             </a>
@@ -113,33 +113,14 @@
     <div class="whitebg cloud">
       <h2 class="htitle">标签云</h2>
       <ul>
-        <a href="javascript:;">git</a> 
-        <a href="javascript:;">laravel</a> 
-        <a href="javascript:;">swoole</a>
-        <a href="javascript:;">javascript</a> 
-        <a href="javascript:;">vue</a> 
-        <a href="javascript:;">ajax</a> 
-        <a href="javascript:;">html</a> 
-        <a href="javascript:;">css</a> 
-        <a href="javascript:;">sql</a> 
-        <a href="javascript:;">linux</a> 
-        <a href="javascript:;">docker</a> 
-        <a href="javascript:;">flask</a> 
-        <a href="javascript:;">django</a> 
-        <a href="javascript:;">nginx</a> 
-        <a href="javascript:;">apache</a> 
-        <a href="javascript:;">thinkphp</a> 
-        <a href="javascript:;">markdown</a>
-        <a href="javascript:;">sublime</a>
-        <a href="javascript:;">wechat</a>
-        <a href="javascript:;">layui</a>
+        <a href="" target="_blank">个人博客模板</a> <a href="" target="_blank">css动画</a> <a href="" target="_blank">布局</a> <a href="" target="_blank">今夕何夕</a> <a href="" target="_blank">SEO</a> <a href="" target="_blank">女程序员</a> <a href="" target="_blank">小世界</a> <a href="" target="_blank">个人博客</a> <a href="" target="_blank">网页设计</a>
       </ul>
     </div>
     <div class="whitebg wenzi">
       <h2 class="htitle">猜你喜欢</h2>
       <ul>
         {volist name="loveArticles" id="v"}
-        <li><a href="javascript:;">{$v['article_title']}</a></li>
+        <li><a href="/tour/cate/{$v['cate_id']}/{$v['article_id']}.html">{$v['article_title']}</a></li>
         {/volist}
       </ul>
     </div>

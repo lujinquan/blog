@@ -9,7 +9,7 @@
     </div>
     {volist name="tourArticles" id="v"}
     <div class="zhuanti whitebg">
-      <h2 class="htitle"><span class="hnav"><a href="/" target="_blank">更多</a></span>{$v['cate_name']}</h2>
+      <h2 class="htitle"><span class="hnav"><a href="/tour/cate/{$key}.html">更多</a></span>{$v['cate_name']}</h2>
       <ul>
         {volist name="$v['list']" id="vv"}
         <li> <i class="ztpic"><a href="/tour/{$vv['article_id']}.html" target="_blank"><img src="{$vv['thumb']}"></a></i> <b>{$vv['article_title']}</b><span>{$vv['article_desc']}</span><a href="/tour/{$vv['article_id']}.html" target="_blank" class="readmore">文章阅读</a> </li>
@@ -27,7 +27,7 @@
       <ul>
         {volist name="stickArticles" id="v"}
         <li>
-          <a href="/">
+          <a href="/tour/cate/{$v['cate_id']}/{$v['article_id']}.html">
             <i><img src="{$v['thumb']}"></i>
               <p>{$v['article_title']}</p>
             </a>
@@ -43,14 +43,29 @@
     <div class="whitebg cloud">
       <h2 class="htitle">标签云</h2>
       <ul>
-        <a href="" target="_blank">个人博客模板</a> <a href="" target="_blank">css动画</a> <a href="" target="_blank">布局</a> <a href="" target="_blank">今夕何夕</a> <a href="" target="_blank">SEO</a> <a href="" target="_blank">女程序员</a> <a href="" target="_blank">小世界</a> <a href="" target="_blank">个人博客</a> <a href="" target="_blank">网页设计</a>
+        <a href="javascript:;">人文</a> 
+        <a href="javascript:;">财经</a> 
+        <a href="javascript:;">理财</a>
+        <a href="javascript:;">技术</a> 
+        <a href="javascript:;">历史</a> 
+        <a href="javascript:;">小说</a> 
+        <a href="javascript:;">悬疑</a> 
+        <a href="javascript:;">杂志</a> 
+        <a href="javascript:;">生活</a> 
+        <a href="javascript:;">家居</a> 
+        <a href="javascript:;">科技</a> 
+        <a href="javascript:;">军事</a> 
+        <a href="javascript:;">艺术</a> 
+        <a href="javascript:;">宗教</a> 
+        <a href="javascript:;">自然</a> 
+        <a href="javascript:;">哲学</a> 
       </ul>
     </div>
     <div class="whitebg wenzi">
       <h2 class="htitle">猜你喜欢</h2>
       <ul>
         {volist name="loveArticles" id="v"}
-        <li><a href="/">{$v['article_title']}</a></li>
+        <li><a href="/tour/cate/{$v['cate_id']}/{$v['article_id']}.html">{$v['article_title']}</a></li>
         {/volist}
       </ul>
     </div>
@@ -59,17 +74,7 @@
         <a href="/"><img src="/static/home/lost_time/images/ad02.jpg"></a>
       </ul>
     </div>
-    <div class="whitebg tongji">
-      <h2 class="htitle">站点信息</h2>
-      <ul>
-        li><b>建站时间</b>：2018-10-24</li>
-        <li><b>文章统计</b>：{$articlesCount}篇</li>
-        <li><b>文章评论</b>：{$commentsCount}条</li>
-        <li><b>统计数据</b>：<a href="/index/word/1.html" target="_blank">百度统计</a></li>
-        <li><b>微信公众号</b>：扫描二维码，关注我们</li>
-        <img src="/static/home/lost_time/images/wxgzh.jpg" class="tongji_gzh">
-      </ul>
-    </div>
+    {include file="block/site_info"}
   </div>
 </article>
 {/block}

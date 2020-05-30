@@ -14,7 +14,7 @@
   <div class="lbox">
     <div class="content_box whitebg">
       <h2 class="htitle"><span class="con_nav">您现在的位置是：<a href="/">生活随想</a><a href="/"><!-- 个人博客模板 --></a></span>生活随想</h2>
-      <h1 class="con_tilte">生活里的点滴！</h1>
+      <h1 class="con_tilte">{$data_info['article_title']}</h1>
       <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>{$data_info['author']}</span><span>{:substr($data_info['ctime'],0,10)}</span><span>【<a href="/">{$data_info['cate_name']}</a>】</span><span>{$data_info['click']}人已围观</span></p>
       <p class="con_info"><b>简介</b>{$data_info['article_desc']}</p>
       <div class="con_text">
@@ -70,14 +70,23 @@
     <div class="whitebg cloud">
       <h2 class="htitle">标签云</h2>
       <ul>
-        <a href="javascript:;" target="_blank">个人博客模板</a> <a href="javascript:;" target="_blank">css动画</a> <a href="javascript:;" target="_blank">布局</a> <a href="javascript:;" target="_blank">今夕何夕</a> <a href="javascript:;" target="_blank">SEO</a> <a href="javascript:;" target="_blank">女程序员</a> <a href="javascript:;" target="_blank">小世界</a> <a href="javascript:;" target="_blank">个人博客</a> <a href="javascript:;" target="_blank">网页设计</a>
+        <a href="javascript:;">健身</a> 
+        <a href="javascript:;">跑步</a> 
+        <a href="javascript:;">吉他</a> 
+        <a href="javascript:;">家庭</a> 
+        <a href="javascript:;">朋友</a> 
+        <a href="javascript:;">日记</a> 
+        <a href="javascript:;">运动</a> 
+        <a href="javascript:;">歌曲</a> 
+        <a href="javascript:;">游戏</a>
+        <a href="javascript:;">电影</a>
       </ul>
     </div>
     <div class="whitebg wenzi">
       <h2 class="htitle">猜你喜欢</h2>
       <ul>
       	{volist name="loveArticles" id="v"}
-        <li><a href="/gallery/{$v['article_id']}">{$v['article_title']}</a></li>
+        <li><a href="/gallery/cate/{$v['cate_id']}/{$v['article_id']}.html">{$v['article_title']}</a></li>
         {/volist}
       </ul>
     </div>
@@ -86,17 +95,7 @@
         <a href="javascript:;"><img src="/static/home/lost_time/images/ad02.jpg"></a>
       </ul>
     </div>
-    <div class="whitebg tongji">
-      <h2 class="htitle">站点信息</h2>
-      <ul>
-        <li><b>建站时间</b>：2018-10-24</li>
-        <li><b>文章统计</b>：{$articlesCount}篇</li>
-        <li><b>文章评论</b>：{$commentsCount}条</li>
-        <li><b>统计数据</b>：<a href="/index/word/1.html" target="_blank">百度统计</a></li>
-        <li><b>微信公众号</b>：扫描二维码，关注我们</li>
-        <img src="/static/home/lost_time/images/wxgzh.jpg" class="tongji_gzh">
-      </ul>
-    </div>
+    {include file="block/site_info"}
   </div>
 </article>
 {include file="block/mdeditor"}

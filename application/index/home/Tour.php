@@ -30,17 +30,17 @@ class Tour extends Base
                     ['status','eq',1]
                 ];
                 $tourArticles[$c['cate_id']]['cate_name'] = $c['cate_name'];
-                $tourArticles[$c['cate_id']]['list'] = ArticleModel::where($tourCateWhere)->field('thumb,article_id,article_title,article_desc,ctime,author,article_long_title')->limit(6)->order('sort_order asc')->select()->toArray();
+                $tourArticles[$c['cate_id']]['list'] = ArticleModel::where($tourCateWhere)->field('thumb,article_id,cate_id,article_title,article_desc,ctime,author,article_long_title')->limit(6)->order('sort_order asc')->select()->toArray();
             }  
             //halt($tourArticles);
             $this->assign('tourArticles',$tourArticles);
 
             
             // 本栏推荐
-            $stickArticles = ArticleModel::where([['status','eq',1],['is_show','eq',1],['cate_id','in',$cates],['is_stick','eq',1]])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(7)->order('click desc')->select();
+            $stickArticles = ArticleModel::where([['status','eq',1],['is_show','eq',1],['cate_id','in',$cates],['is_stick','eq',1]])->field('article_title,article_desc,cate_id,article_id,thumb,author,ctime')->limit(7)->order('click desc')->select();
             $this->assign('stickArticles',$stickArticles);
             // 猜你喜欢
-            $loveArticles = ArticleModel::where([['status','eq',1],['is_show','eq',1],['cate_id','in',$cates],['is_stick','eq',1]])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
+            $loveArticles = ArticleModel::where([['status','eq',1],['is_show','eq',1],['cate_id','in',$cates],['is_stick','eq',1]])->field('article_title,article_desc,cate_id,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
             $this->assign('loveArticles',$loveArticles);
             // 主页文章总数
             $articlesCount = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->count();
@@ -57,6 +57,76 @@ class Tour extends Base
             $where[] = ['cate_id','in',$catesArr];
             $toursArr = ArticleModel::where($where)->field('article_id,article_title,article_long_title,thumb')->order('sort_order asc')->select();
             $this->assign('toursArr',$toursArr);
+        }
+        return $this->fetch();
+    }
+
+    public function list()
+    {
+        if(SITE_TEMPLATE == 'lost_time'){
+            $cate_id = input('param.cate_id/d', '');
+            $page = input('param.page/d', 1);
+            $limit = input('param.limit/d', 1);
+            $catesArr = CateModel::where([['p_id','eq',3],['is_show','eq',1],['status','eq',1]])->field('cate_id,cate_name,link')->select();
+            $this->assign('catesArr',$catesArr);
+            $this->assign('catesArr',$catesArr);
+            $cateidsArr = [];
+            $cateInfo = '';
+            foreach($catesArr as $c){
+                $cateidsArr[] = $c['cate_id'];
+            }
+            if($cate_id){ //如果有子分类，则直接取子分类的文章
+                $cateInfo = CateModel::where([['cate_id','eq',$cate_id]])->find();
+                $cateidsArr = [$cate_id];
+            }
+            $this->assign('cateInfo',$cateInfo);
+            $articleWhere = [
+                ['cate_id','in',$cateidsArr],
+                ['is_show','eq',1],
+                ['status','eq',1]
+            ];
+            $total_data = ArticleModel::where($articleWhere)->count();
+            $total_page = ceil($total_data/$limit);
+            if($page > $total_page){
+                $page = $total_page;
+            }
+            $this->assign('total_data',$total_data);
+            $this->assign('total_page',$total_page);
+            $this->assign('page',$page);
+
+            $tourArticles = ArticleModel::where($articleWhere)->field('thumb,article_id,cate_id,article_title,article_desc,ctime,author,article_long_title')->page($page)->limit($limit)->order('sort_order asc')->select();
+            //halt($galleryArticles);
+            $this->assign('tourArticles',$tourArticles);
+            // 本栏推荐
+            $stickArticles = ArticleModel::where($articleWhere)->where([['is_stick','eq',1]])->field('article_title,cate_id,article_desc,article_id,thumb,author,ctime')->limit(7)->order('click desc')->select();
+            $this->assign('stickArticles',$stickArticles);
+            // 猜你喜欢
+            $loveArticles = ArticleModel::where($articleWhere)->field('article_title,cate_id,article_desc,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
+            $this->assign('loveArticles',$loveArticles);
+            // 主页文章总数
+            $articlesCount = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->count();
+            $this->assign('articlesCount',$articlesCount);
+            // 主页评论总数
+            $commentsCount = CommentModel::where(['status'=>1,'is_show'=>1])->count();
+            $this->assign('commentsCount',$commentsCount);
+
+        }else{
+            $page = input('param.page/d', 1);
+            $limit = input('param.limit/d', 5);
+            $cateID = input('param.cate_id/d',7);
+            $articleWhere = [
+                'cate_id' => $cateID, //默认显示php语言的栏目
+                'is_show' => 1,
+                'status' => 1
+            ];
+            $articleFields = 'article_id,cate_id,article_title,article_long_title,article_desc,link,author,ctime,click,thumb';
+            //$initArticles = ArticleModel::with('cate')->where($articleWhere)->field($articleFields)->page($page)->limit(3)->order('sort_order asc')->select();
+            $initArticles = ArticleModel::with('cate')->where($articleWhere)->field($articleFields)->page($page)->order('sort_order asc,ctime desc')->paginate($limit);
+            //halt(count($initArticles));//->paginate(config('paginate.list_rows'));
+            $page = $initArticles->render();
+            $this->assign('page',$page);
+            $this->assign('cateID',$cateID);
+            $this->assign('initArticles',$initArticles);
         }
         return $this->fetch();
     }
@@ -95,10 +165,10 @@ class Tour extends Base
         if(SITE_TEMPLATE == 'lost_time'){
             
             // 本栏推荐
-            $stickArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>6,'is_stick'=>1])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(7)->order('click desc')->select();
+            $stickArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>6,'is_stick'=>1])->field('article_title,article_desc,cate_id,article_id,thumb,author,ctime')->limit(7)->order('click desc')->select();
             $this->assign('stickArticles',$stickArticles);
             // 猜你喜欢
-            $loveArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>6])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
+            $loveArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>6])->field('article_title,article_desc,cate_id,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
             $this->assign('loveArticles',$loveArticles);
             // 主页文章总数
             $articlesCount = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->count();

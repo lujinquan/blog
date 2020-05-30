@@ -21,9 +21,19 @@ class Gallery extends Base
                 ['is_show','eq',1],
                 ['status','eq',1]
             ];
-            $galleryArticles = ArticleModel::where($articleWhere)->field('thumb,article_id,cate_id,article_title,article_desc,ctime,author,article_long_title')->page($page)->order('sort_order asc')->select();
-            //halt($galleryArticles);
+            
+            $total_data = ArticleModel::where($articleWhere)->count();
+            $total_page = ceil($total_data/$limit);
+            if($page > $total_page){
+                $page = $total_page;
+            }
+            $this->assign('total_data',$total_data);
+            $this->assign('total_page',$total_page);
+            $this->assign('page',$page);
+
+            $galleryArticles = ArticleModel::where($articleWhere)->field('thumb,article_id,cate_id,article_title,article_desc,ctime,author,article_long_title')->page($page)->limit($limit)->order('sort_order asc')->select();
             $this->assign('galleryArticles',$galleryArticles);
+            
 
             // 本栏推荐
             $stickArticles = ArticleModel::where($articleWhere)->where([['is_stick','eq',1]])->field('article_title,cate_id,article_desc,article_id,thumb,author,ctime')->limit(7)->order('click desc')->select();
@@ -80,10 +90,10 @@ class Gallery extends Base
         if(SITE_TEMPLATE == 'lost_time'){
            
             // 本栏推荐
-            $stickArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>6,'is_stick'=>1])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(7)->order('click desc')->select();
+            $stickArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>6,'is_stick'=>1])->field('article_title,article_desc,cate_id,article_id,thumb,author,ctime')->limit(7)->order('click desc')->select();
             $this->assign('stickArticles',$stickArticles);
             // 猜你喜欢
-            $loveArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>6])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
+            $loveArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>6])->field('article_title,article_desc,cate_id,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
             $this->assign('loveArticles',$loveArticles);
             // 主页文章总数
             $articlesCount = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->count();

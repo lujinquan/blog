@@ -29,7 +29,7 @@
             <a href="javascript:;" target="_blank"><img src="/static/home/lost_time/images/b05.jpg" alt=""> </a>
           </span>
           <p class="blogtext">{$v['article_desc']}</p>
-          <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>{$v['author']}</span><span>{:substr($v['ctime'],0,10)}</span><span>【<a href="/gallery/cate/{$v['cate_id']}/{$v['article_id']}.html" target="_blank">原创文章</a>】</span></p>
+          <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>{$v['author']}</span><span>{:substr($v['ctime'],0,10)}</span><span>【<a href="/gallery/cate/{$v['cate_id']}/{$v['article_id']}.html" target="_blank">原创</a>】</span></p>
         </li>
         {/volist}
         <!--单图-->
@@ -43,7 +43,24 @@
         {/volist}
       </ul>
       <!--pagelist-->
-      <div class="pagelist"><a title="Total record">&nbsp;<b>67</b> </a>&nbsp;&nbsp;&nbsp;<b>1</b>&nbsp;<a href="/download/index_2.html">2</a>&nbsp;<a href="/download/index_3.html">3</a>&nbsp;<a href="/download/index_2.html">下一页</a>&nbsp;<a href="/download/index_3.html">尾页</a></div>
+      <div class="pagelist">
+        <a title="Total record">&nbsp;<b>总数：{$total_data}条</b> </a>&nbsp;&nbsp;&nbsp;
+        {if condition="(($total_page > 1) && ($page > 1))"}
+        <a href="/gallery/page/1.html">首页</a>&nbsp;
+        <a href="/gallery/page/{$page -1}.html">上一页</a>&nbsp;
+        {/if}
+        {for start="1" end="$total_page+1"}
+          {if condition="$i == $page"}
+            <b>{$i}</b>
+          {else /}
+            <a href="/gallery/page/{$i}.html">{$i}</a>&nbsp;
+          {/if}
+        {/for}
+        {if condition="(($total_page > 1) && ($page < $total_page))"}
+        <a href="/gallery/page/{$page +1}.html">下一页</a>&nbsp;
+        <a href="/gallery/page/{$total_page}.html">尾页</a>
+        {/if}
+      </div>
       <!--pagelist end--> 
     </div>
     
@@ -57,10 +74,10 @@
       <ul>
         {volist name="stickArticles" id="v"}
         <li>
-          <a href="javascript:;">
+          <a href="/gallery/cate/{$v['cate_id']}/{$v['article_id']}.html">
             <i><img src="{$v['thumb']}"></i>
-              <p>{$v['article_title']}</p>
-            </a>
+            <p>{$v['article_title']}</p>
+          </a>
         </li>
         {/volist}
       </ul>
@@ -73,14 +90,23 @@
     <div class="whitebg cloud">
       <h2 class="htitle">标签云</h2>
       <ul>
-        <a href="" target="_blank">个人博客模板</a> <a href="" target="_blank">css动画</a> <a href="" target="_blank">布局</a> <a href="" target="_blank">今夕何夕</a> <a href="" target="_blank">SEO</a> <a href="" target="_blank">女程序员</a> <a href="" target="_blank">小世界</a> <a href="" target="_blank">个人博客</a> <a href="" target="_blank">网页设计</a>
+        <a href="javascript:;">健身</a> 
+        <a href="javascript:;">跑步</a> 
+        <a href="javascript:;">吉他</a> 
+        <a href="javascript:;">家庭</a> 
+        <a href="javascript:;">朋友</a> 
+        <a href="javascript:;">日记</a> 
+        <a href="javascript:;">运动</a> 
+        <a href="javascript:;">歌曲</a> 
+        <a href="javascript:;">游戏</a>
+        <a href="javascript:;">电影</a>
       </ul>
     </div>
     <div class="whitebg wenzi">
       <h2 class="htitle">猜你喜欢</h2>
       <ul>
         {volist name="loveArticles" id="v"}
-        <li><a href="javascript:;">{$v['article_title']}</a></li>
+        <li><a href="/gallery/cate/{$v['cate_id']}/{$v['article_id']}.html">{$v['article_title']}</a></li>
         {/volist}
       </ul>
     </div>
@@ -89,17 +115,7 @@
         <a href="javascript:;"><img src="/static/home/lost_time/images/ad02.jpg"></a>
       </ul>
     </div>
-    <div class="whitebg tongji">
-      <h2 class="htitle">站点信息</h2>
-      <ul>
-        <li><b>建站时间</b>：2018-10-24</li>
-        <li><b>文章统计</b>：{$articlesCount}篇</li>
-        <li><b>文章评论</b>：{$commentsCount}条</li>
-        <li><b>统计数据</b>：<a href="/index/word/1.html" target="_blank">百度统计</a></li>
-        <li><b>微信公众号</b>：扫描二维码，关注我们</li>
-        <img src="/static/home/lost_time/images/wxgzh.jpg" class="tongji_gzh">
-      </ul>
-    </div>
+    {include file="block/site_info"}
   </div>
 </article>
 {/block}

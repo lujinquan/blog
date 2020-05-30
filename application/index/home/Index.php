@@ -45,6 +45,22 @@ class Index extends Base
             
             // 主页推荐栏目
             $stickArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'is_stick'=>1])->field('article_title,cate_id,article_desc,article_id,thumb,author,ctime')->limit(8)->order('click desc')->select();
+            foreach ($stickArticles as $key => &$value) {
+                $find = CateModel::where([['cate_id','eq',$value['cate_id']]])->field('p_id,link')->find();
+                //halt($find);
+                if($find['p_id']){ //二级栏目
+                    $cateRow = CateModel::where([['cate_id','eq',$find['p_id']]])->field('link')->find();
+                    $pos = strpos($cateRow['link'], '.');
+                    if($pos){
+                        $value['top_cate_flag'] = substr($cateRow['link'],0,$pos);  
+                    }else{
+                        $value['top_cate_flag'] = $cateRow['link'];
+                    }
+                }else{ //顶级栏目
+                    $pos = strpos($find['link'], '.');
+                    $value['top_cate_flag'] = substr($find['link'],1,2);
+                }
+            }
             $this->assign('stickArticles',$stickArticles);
             // 主页最新文章栏目
             $newArticles = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->field('article_title,cate_id,article_desc,article_id,thumb,author,ctime')->limit(8)->order('ctime desc')->select();

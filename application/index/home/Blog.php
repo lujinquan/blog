@@ -47,14 +47,37 @@ class Blog extends Base
     public function index()
     {
         if(SITE_TEMPLATE == 'lost_time'){
+            $cate_id = input('param.cate_id/d', '');
             $page = input('param.page/d', 1);
             $limit = input('param.limit/d', 10);
-            $catesArr = CateModel::where([['p_id','eq',4],['is_show','eq',1],['status','eq',1]])->column('cate_id');
+            $catesArr = CateModel::where([['p_id','eq',4],['is_show','eq',1],['status','eq',1]])->field('cate_id,cate_name,link')->select();
+            $this->assign('catesArr',$catesArr);
+            $this->assign('catesArr',$catesArr);
+            $cateidsArr = [];
+            $cateInfo = '';
+            foreach($catesArr as $c){
+                $cateidsArr[] = $c['cate_id'];
+            }
+            if($cate_id){ //如果有子分类，则直接取子分类的文章
+                $cateInfo = CateModel::where([['cate_id','eq',$cate_id]])->find();
+                $cateidsArr = [$cate_id];
+            }
+            $this->assign('cateID',$cate_id);
+            $this->assign('cateInfo',$cateInfo);
             $articleWhere = [
-                ['cate_id','in',$catesArr],
+                ['cate_id','in',$cateidsArr],
                 ['is_show','eq',1],
                 ['status','eq',1]
             ];
+            $total_data = ArticleModel::where($articleWhere)->count();
+            $total_page = ceil($total_data/$limit);
+            if($page > $total_page){
+                $page = $total_page;
+            }
+            $this->assign('total_data',$total_data);
+            $this->assign('total_page',$total_page);
+            $this->assign('page',$page);
+
             $blogArticles = ArticleModel::where($articleWhere)->field('thumb,article_id,cate_id,article_title,article_desc,ctime,author,article_long_title')->page($page)->limit($limit)->order('sort_order asc')->select();
             //halt($galleryArticles);
             $this->assign('blogArticles',$blogArticles);

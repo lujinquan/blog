@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Lucas-首页</title>
+<title>Lucas-{$thisMenuName}</title>
 <meta name="keywords" content="blog" />
 <meta name="description" content="blog" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,12 +23,14 @@
     <nav>
       <ul id="starlist">
         {volist name="topMenus" id="v"}
-        <li {if condition="$v['childs']"}class="menu"{/if}><a href="{$v['link']}" {if condition="($thisMenu == $v['link'])"}id="selected"{/if}>{$v['cate_name']}</a>
+        <li {if condition="$v['childs']"}class="menu"{/if}><a href="{$v['link']}" {if condition="$thisMenu == $v['link']"}id="selected"{/if}>{$v['cate_name']}</a>
+        {if condition="$v['childs']"}
         <ul class="sub">
           {volist name="$v['childs']" id="vv"}
           <li><a href="{$vv['link']}{$vv['cate_id']}.html" {if condition="$cateID == $vv['cate_id']"}id="selected"{/if}>{$vv['cate_name']}</a></li>
           {/volist}
         </ul>
+        {/if}
         <span></span></li>
         {/volist}
       </ul>

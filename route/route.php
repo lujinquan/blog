@@ -17,15 +17,16 @@ Route::pattern([
     'name' => '\w+',
     'id'   => '\d+',
 ]);
-//Route::rule('路由表达式','路由地址','请求类型','路由参数（数组）','变量规则（数组）');
 
+
+//Route::rule('路由表达式','路由地址','请求类型','路由参数（数组）','变量规则（数组）');
 //顶部导航,$表示全匹配,:id表示变量，[]表示该变量是路由匹配的可选变量
 Route::rule('index$','index/Index/index');
 //首页文章的详情
 Route::rule('index/:id$','index/Index/detail?article_id=:id');
-Route::rule('tour$','index/Tour/index');
-Route::rule('gallery$','index/Gallery/index');
-Route::rule('blog$','index/Blog/index');
+
+
+
 Route::rule('contact$','index/Contact/index');
 Route::rule('download$','index/Download/index');
 //全站搜索
@@ -34,24 +35,47 @@ Route::rule('search/:name','index/Index/search?keywords=:name');
 Route::rule('album/[:id]','index/Index/album?article_id=:id');
 //首页的book
 Route::rule('book/[:id]','index/Index/book?article_id=:id');
-//首页的详情（主文字类型的详情页）
-Route::rule('index/word/:id$','index/Index/word?article_id=:id');
-//旅行的详情
-Route::rule('tour/:id$','index/Tour/detail?article_id=:id');
-Route::rule('tour/cate/<cate_id>/<article_id>','index/Tour/detail')->pattern(['cate_id' => '\d+', 'article_id' => '\d+']);
-//书屋的详情
-Route::rule('gallery/:id$','index/Gallery/detail?article_id=:id');
-//书屋某子分类下的某文章详情
-Route::rule('gallery/cate/<cate_id>/<article_id>','index/gallery/detail')->pattern(['cate_id' => '\d+', 'article_id' => '\d+']);
-//博客的详情
-Route::rule('blog/:id$','index/Blog/detail?article_id=:id');
-//博客的二级分类列表
-Route::rule('blog/cate/:id$','index/Blog/index?cate_id=:id');
 
-//博客某子分类下的某文章详情，如Domain/blog/cate/2/1.html，会路由到index/Blog/detail，同时会有两个参数，cate_id = 2，id = 1;注意blog/cate这中间的连接符/是可以改成别的符号的，例如定义blog-cate-<cate_id>-<id>，浏览器访问就应该是Domain/blog-cate-2-1
+
+// 【读书角】默认列表
+Route::rule('tour$','index/Tour/index');
+// 【读书角】分页列表
+Route::rule('tour/page/<page>','index/Tour/index')->pattern(['page' => '\d+']);
+// 【读书角】的文章详情
+Route::rule('tour/:id$','index/Tour/detail?article_id=:id');
+// 【读书角】的子分类下的默认文章列表
+Route::rule('tour/cate/:id$','index/Tour/list?cate_id=:id');
+// 【读书角】的子分类下的分页文章列表
+Route::rule('tour/cate/page/<cate_id>/<page>','index/Tour/list')->pattern(['cate_id' => '\d+', 'page' => '\d+']);
+// 【读书角】的子分类下的文章详情
+Route::rule('tour/cate/<cate_id>/<article_id>','index/Tour/detail')->pattern(['cate_id' => '\d+', 'article_id' => '\d+']);
+
+
+// 【生活随想】默认列表
+Route::rule('gallery$','index/Gallery/index');
+// 【生活随想】分页列表
+Route::rule('gallery/page/<page>','index/Gallery/index')->pattern(['page' => '\d+']);
+// 【生活随想】的文章详情
+Route::rule('gallery/:id$','index/Gallery/detail?article_id=:id');
+// 【生活随想】的子分类下的文章详情
+Route::rule('gallery/cate/<cate_id>/<article_id>','index/gallery/detail')->pattern(['cate_id' => '\d+', 'article_id' => '\d+']);
+
+
+// 【博客】默认列表
+Route::rule('blog$','index/Blog/index');
+// 【博客】分页列表
+Route::rule('blog/page/<page>','index/Blog/index')->pattern(['page' => '\d+']);
+// 【博客】的详情
+Route::rule('blog/:id$','index/Blog/detail?article_id=:id');
+// 【博客】的子分类下的默认文章列表
+Route::rule('blog/cate/:id$','index/Blog/index?cate_id=:id');
+// 【博客】的子分类下的分页文章列表
+Route::rule('blog/cate/page/<cate_id>/<page>','index/Blog/index')->pattern(['cate_id' => '\d+', 'page' => '\d+']);
+// 【博客】的子分类下的文章列表中的文章详情，如Domain/blog/cate/2/1.html，会路由到index/Blog/detail，同时会有两个参数，cate_id = 2，id = 1;注意blog/cate这中间的连接符/是可以改成别的符号的，例如定义blog-cate-<cate_id>-<id>，浏览器访问就应该是Domain/blog-cate-2-1
 Route::rule('blog/cate/<cate_id>/<article_id>','index/Blog/detail')->pattern(['cate_id' => '\d+', 'article_id' => '\d+']);
 //上面的路由可以改变下，变成下面的路由，这样如Domain/blog/cate/2/id/1.html，路由效果同上
 //Route::rule('blog/cate/<cate_id>/article_id/<article_id>','index/Blog/detail')->pattern(['cate_id' => '\d+', 'article_id' => '\d+']);
+
 
 //博客点赞
 Route::rule('love/:id$','index/Blog/love?article_id=:id');
