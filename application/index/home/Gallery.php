@@ -41,12 +41,6 @@ class Gallery extends Base
             // 猜你喜欢
             $loveArticles = ArticleModel::where($articleWhere)->field('article_title,cate_id,article_desc,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
             $this->assign('loveArticles',$loveArticles);
-            // 主页文章总数
-            $articlesCount = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->count();
-            $this->assign('articlesCount',$articlesCount);
-            // 主页评论总数
-            $commentsCount = CommentModel::where(['status'=>1,'is_show'=>1])->count();
-            $this->assign('commentsCount',$commentsCount);
 
         }else{
             $catesArr = CateModel::where([['p_id','eq',3],['is_show','eq',1],['status','eq',1]])->column('cate_id');
@@ -95,12 +89,7 @@ class Gallery extends Base
             // 猜你喜欢
             $loveArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>6])->field('article_title,article_desc,cate_id,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
             $this->assign('loveArticles',$loveArticles);
-            // 主页文章总数
-            $articlesCount = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->count();
-            $this->assign('articlesCount',$articlesCount);
-            // 主页评论总数
-            $commentsCount = CommentModel::where(['status'=>1,'is_show'=>1])->count();
-            $this->assign('commentsCount',$commentsCount); 
+
         }
         
         //halt($tuiArticles);

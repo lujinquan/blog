@@ -5,6 +5,7 @@ use think\Db;
 use app\common\controller\Common;
 use app\blog\model\Cate as CateModel;
 use app\blog\model\Article as ArticleModel;
+use app\blog\model\Comment as CommentModel;
 use app\system\model\Visitor as VisitorModel;
 
 class Base extends Common
@@ -113,7 +114,12 @@ class Base extends Common
         }
         $this->assign('clickRankingArticles',$clickRankingArticles);
 
-
+        // 主页文章总数
+        $articlesCount = ArticleModel::where(['status'=>1,'is_show'=>1])->where([['cate_id','neq',102]])->count();
+        $this->assign('articlesCount',$articlesCount);
+        // 主页评论总数
+        $commentsCount = CommentModel::where(['status'=>1,'is_show'=>1])->count();
+        $this->assign('commentsCount',$commentsCount); 
         
         // dump($topMenus);
         // halt($thisMenu);

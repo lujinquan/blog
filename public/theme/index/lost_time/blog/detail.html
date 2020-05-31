@@ -15,7 +15,7 @@
     <div class="content_box whitebg">
       <h2 class="htitle"><span class="con_nav">您现在的位置是：<a href="{$thisMenu}">技术博客</a> > <a href="javascript:;">{$data_info['cate_name']}</a></span>{$data_info['cate_name']}</h2>
       <h1 class="con_tilte">{$data_info['article_title']}</h1>
-      <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>{$data_info['author']}</span><span>{:substr($data_info['ctime'],0,10)}</span><span>【<a href="javascript:;">程序人生</a>】</span><span>{$data_info['click']}人已围观</span></p>
+      <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>{$data_info['author']}</span><span>{:substr($data_info['ctime'],0,10)}</span><span>【<a href="javascript:;">{$data_info['cate_name']}</a>】</span><span>{$data_info['click']}人已围观</span></p>
       <p class="con_info"><b>简介</b>{$data_info['article_desc']}</p>
 
       <div class="con_text">
@@ -50,7 +50,7 @@
     {include file="block/click_ranking"}
     <div class="whitebg tuijian">
       <h2 class="htitle">本栏推荐</h2>
-      <section class="topnews imgscale"><a href="/"><img src="/static/home/lost_time/images/h2.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a></section>
+      <section class="topnews imgscale"><a href="/"><img src="/static/home/lost_time/images/h2.jpg"><span>要技术，更要有创意</span></a></section>
       <ul>
         {volist name="stickArticles" id="v"}
         <li>
@@ -64,7 +64,7 @@
     </div>
     <div class="ad whitebg imgscale">
       <ul>
-        <a href="javascript:;"><img src="/static/home/lost_time/images/ad.jpg"></a>
+        <a href="javascript:;"><img src="/static/home/lost_time/images/ad01.jpg"></a>
       </ul>
     </div>
     <div class="whitebg cloud">

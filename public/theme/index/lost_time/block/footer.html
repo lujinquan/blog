@@ -17,4 +17,26 @@
   <div class="top"></div>
   </a> </footer>
 </body>
+<!-- 鼠标点击特效 S -->
+<script src="__HOME_JS__/love.js"></script>
+<script type="text/javascript">
+  $(window).scroll(function() {
+      if ($(window).scrollTop() > 100) {
+          $('#back-top').fadeIn(1000);
+      } else {
+          $("#back-top").fadeOut(1000);
+      }
+  });
+  $("#back-top").click(function() {
+      $('body,html').animate({
+          scrollTop: '0'
+      }, 1000);
+      return false;
+  })
+</script>
+<!-- 鼠标点击特效 E -->
+<!-- 鼠标点击特效_1 S -->
+<script src="__HOME_JS__/mouse-click.js"></script>
+<canvas width="1777" height="841" style="position: fixed; left: 0px; top: 0px; z-index: 2147483647; pointer-events: none;"></canvas>
+<!-- 鼠标点击特效_1 E -->
 </html>
