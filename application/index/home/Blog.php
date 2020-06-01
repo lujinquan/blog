@@ -123,6 +123,10 @@ class Blog extends Base
         if(!$row){
             return $this->error('页面不存在','/index.html');
         }
+        // 上一篇
+        $preRow = ArticleModel::with('cate')->where(['is_show'=>1,'status'=>1,'cate_id'=>$row['cate_id']])->where([['article_id','<',$id]])->order('article_id desc')->find();
+        // 下一篇
+        $nextRow = ArticleModel::with('cate')->where(['is_show'=>1,'status'=>1,'cate_id'=>$row['cate_id']])->where([['article_id','>',$id]])->order('article_id asc')->find();
         // 浏览量 +1
         ArticleModel::where(['article_id'=>$id,'is_show'=>1,'status'=>1])->setInc('click');
 
@@ -157,6 +161,9 @@ class Blog extends Base
             // 猜你喜欢
             $loveArticles = ArticleModel::where($articleWhere)->field('article_title,cate_id,article_desc,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
             $this->assign('loveArticles',$loveArticles);
+
+            $this->assign('preRow',$preRow);
+            $this->assign('nextRow',$nextRow);
 
         }else{
 

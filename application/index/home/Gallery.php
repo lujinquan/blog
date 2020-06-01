@@ -63,6 +63,10 @@ class Gallery extends Base
         if(!$row){
             return $this->error('页面不存在','/index.html');
         }
+        // 上一篇
+        $preRow = ArticleModel::with('cate')->where(['is_show'=>1,'status'=>1,'cate_id'=>$row['cate_id']])->where([['article_id','<',$id]])->order('article_id desc')->find();
+        // 下一篇
+        $nextRow = ArticleModel::with('cate')->where(['is_show'=>1,'status'=>1,'cate_id'=>$row['cate_id']])->where([['article_id','>',$id]])->order('article_id asc')->find();
         // 浏览量 +1
         ArticleModel::where('article_id',$id)->setInc('click');
         // 获取当前文章的评论
@@ -89,7 +93,8 @@ class Gallery extends Base
             // 猜你喜欢
             $loveArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>6])->field('article_title,article_desc,cate_id,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
             $this->assign('loveArticles',$loveArticles);
-
+            $this->assign('preRow',$preRow);
+            $this->assign('nextRow',$nextRow);
         }
         
         //halt($tuiArticles);

@@ -22,8 +22,8 @@
            <textarea id="append-test" style="display:none;">{$data_info['article_md_content']}</textarea>          
         </div>
         <div class="nextinfo">
-          <p>上一篇：<a href="/download/f/886.html">html5 个人博客模板《蓝色畅想》</a></p>
-          <p>下一篇：<a href="/download/f/907.html">个人博客模板《tree》-响应式个人网站模板</a></p>
+          <p>上一篇：{if condition="$preRow"}<a href="/blog/cate/{$preRow['cate_id']}/{$preRow['article_id']}.html">{$preRow['article_title']}</a>{else /}没有了！{/if}</p>
+          <p>下一篇：{if condition="$nextRow"}<a href="/blog/cate/{$nextRow['cate_id']}/{$nextRow['article_id']}.html">{$nextRow['article_title']}</a>{else /}没有了！{/if}</p>
         </div>
       </div>
     </div>

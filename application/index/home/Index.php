@@ -126,6 +126,13 @@ class Index extends Base
     	$id = input('article_id');
 
     	$data_info = ArticleModel::with('cate')->where('article_id',$id)->find();
+        if(!$data_info){
+            return $this->error('页面不存在','/index.html');
+        }
+        // 上一篇
+        $preRow = ArticleModel::with('cate')->where(['is_show'=>1,'status'=>1,'cate_id'=>$data_info['cate_id']])->where([['article_id','<',$id]])->order('article_id desc')->find();
+        // 下一篇
+        $nextRow = ArticleModel::with('cate')->where(['is_show'=>1,'status'=>1,'cate_id'=>$data_info['cate_id']])->where([['article_id','>',$id]])->order('article_id asc')->find();
     	// 获取当前文章的评论
         $comments = $data_info->comment()->with('member')->where(['is_show'=>1,'status'=>1])->order('ctime desc')->limit(4)->select();
         // 获取推荐的文章
@@ -148,7 +155,8 @@ class Index extends Base
             // 猜你喜欢
             $loveArticles = ArticleModel::where(['status'=>1,'is_show'=>1,'cate_id'=>6])->field('article_title,article_desc,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
             $this->assign('loveArticles',$loveArticles);
-
+            $this->assign('preRow',$preRow);
+            $this->assign('nextRow',$nextRow);
         }
 
         $this->assign('tuiArticles',$tuiArticles);
