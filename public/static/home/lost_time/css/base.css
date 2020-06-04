@@ -326,6 +326,8 @@ by lucas start
 .xinlu li p button:nth-child(3n-2) { background: #8A9B0F }
 .xinlu li p button:nth-child(3n-1) { background: #ff8547 }
 .xinlu li p button:nth-child(3n) { background: #FFB800 }
+
+.about .map{ background: #fff;border-radius: 3px;padding: 20px;padding-top:0;overflow: hidden;}
 /*
 by lucas end
 */
