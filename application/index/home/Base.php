@@ -56,14 +56,18 @@ class Base extends Common
         if($is_open){
             // 设置白名单ip
             $white_list_ip = [];
-            // 设置黑名单ip
-            $black_list_ip = ['119.97.248.198','127.0.0.1','221.235.84.238'];
+            // 设置黑名单ip '127.0.0.1',
+            $black_list_ip = ['119.97.248.198','221.235.84.238'];
+            //halt($client_ip);
             if(!in_array($client_ip,$white_list_ip) || in_array($client_ip,$black_list_ip)){
+                //include('./template/notice/notice.html');die();
+                
                 //echo '<h1 style="text-align:center;font-size:12rem;margin-top:10%;font-weight:normal;vertical-align:middle;font-family:&quot;background-color:#FFFFFF;"><span style="font-size:12rem;">203</span></h1><p class="text" style="text-align:center;font-size:1.6rem;color:#D93641;font-family:&quot;background-color:#FFFFFF;">很抱歉，页面升级中！</p>';exit; //页面已被限制访问
             }
         }else{
-            echo '<h1 style="text-align:center;font-size:12rem;margin-top:10%;font-weight:normal;vertical-align:middle;font-family:&quot;background-color:#FFFFFF;"><span style="font-size:12rem;">203</span></h1><p class="text" style="text-align:center;font-size:1.6rem;color:#D93641;font-family:&quot;background-color:#FFFFFF;">很抱歉，页面已被限制访问！</p>';exit;
-        }   
+            include('./template/notice/notice.html');die();
+            //echo '<h1 style="text-align:center;font-size:12rem;margin-top:10%;font-weight:normal;vertical-align:middle;font-family:&quot;background-color:#FFFFFF;"><span style="font-size:12rem;">203</span></h1><p class="text" style="text-align:center;font-size:1.6rem;color:#D93641;font-family:&quot;background-color:#FFFFFF;">很抱歉，页面已被限制访问！</p>';exit;
+        } 
 
         // 定位当前菜单
         //$module     = request()->module();
@@ -133,6 +137,8 @@ class Base extends Common
         $this->assign('hotArticles',$hotArticles);
         $this->assign('thisMenu',$thisMenu);
         $this->assign('topMenus',$topMenus);
+
+          
     }
 
 }
