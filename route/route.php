@@ -31,6 +31,7 @@ Route::rule('contact$','index/Contact/index');
 Route::rule('download$','index/Download/index');
 //全站搜索
 Route::rule('search/:name','index/Index/search?keywords=:name');
+Route::rule('search/page/<name>/<page>','index/Index/search')->pattern(['name' => '\w+','page' => '\d+']);
 //首页的album
 Route::rule('album/[:id]','index/Index/album?article_id=:id');
 //首页的book

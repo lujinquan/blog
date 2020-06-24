@@ -167,28 +167,71 @@ class Index extends Base
 
     public function search()
     {
-        //$page = input('param.page/d', 1);
-        $limit = input('param.limit/d', 10);
-        $keywords = input('param.keywords');
-        $where = [];
-        $where[] = ['is_show','eq',1];
-        $where[] = ['status','eq',1];
-        // 关键词搜索，匹配关键词或标题
-        if($keywords){
-            $whereKeywords = "keywords like '%".$keywords."%' or article_title like '%".$keywords."%'";  
+        if(SITE_TEMPLATE == 'lost_time'){
+            $page = input('param.page/d', 1);
+            $limit = input('param.limit/d', 10);
+            
+            $catesArr = CateModel::where([['p_id','eq',2],['is_show','eq',1],['status','eq',1]])->column('cate_id');
+            $articleWhere = [
+                ['cate_id','in',$catesArr],
+                ['is_show','eq',1],
+                ['status','eq',1]
+            ];
+            
+            $total_data = ArticleModel::where($articleWhere)->count();
+            $total_page = ceil($total_data/$limit);
+            if($page > $total_page){
+                $page = $total_page;
+            }
+
+            $keyboard = input('param.keyboard');
+            $this->assign('keyboard',$keyboard);
+            $where = [];
+            $where[] = ['is_show','eq',1];
+            $where[] = ['status','eq',1];
+            // 关键词搜索，匹配关键词或标题
+            if($keyboard){
+                $whereKeywords = "keywords like '%".$keyboard."%' or article_title like '%".$keyboard."%'";  
+            }else{
+                $whereKeywords = '';
+            }
+
+            $this->assign('total_data',$total_data);
+            $this->assign('total_page',$total_page);
+            $this->assign('page',$page);
+
+            $searchArticles = ArticleModel::where($where)->where($whereKeywords)->field('thumb,article_id,cate_id,article_title,article_desc,ctime,author,article_long_title')->page($page)->limit($limit)->order('sort_order asc')->select();
+            $this->assign('searchArticles',$searchArticles);
+
+            
+            // 猜你喜欢
+            $loveArticles = ArticleModel::where($articleWhere)->field('article_title,cate_id,article_desc,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
+            $this->assign('loveArticles',$loveArticles);
         }else{
-            $whereKeywords = '';
+            //$page = input('param.page/d', 1);
+            $limit = input('param.limit/d', 10);
+            $keywords = input('param.keywords');
+            $where = [];
+            $where[] = ['is_show','eq',1];
+            $where[] = ['status','eq',1];
+            // 关键词搜索，匹配关键词或标题
+            if($keywords){
+                $whereKeywords = "keywords like '%".$keywords."%' or article_title like '%".$keywords."%'";  
+            }else{
+                $whereKeywords = '';
+            }
+            //$whereQuery['query']['page'] = $page;
+            $whereQuery['query']['keywords'] = $keywords;
+            $articles = ArticleModel::where($where)->where($whereKeywords)->order('ctime desc')->paginate($limit,'',$whereQuery);
+            // $articles = ArticleModel::where($where)->where($whereKeywords)->paginate($limit,'',$whereQuery)->each(function($item, $key){
+            //     //$item->nickname = 'think';
+            // });
+            $page = $articles->render();
+            $this->assign('page',$page);
+            $this->assign('keywords',$keywords);
+            $this->assign('articles',$articles); 
         }
-        //$whereQuery['query']['page'] = $page;
-        $whereQuery['query']['keywords'] = $keywords;
-        $articles = ArticleModel::where($where)->where($whereKeywords)->order('ctime desc')->paginate($limit,'',$whereQuery);
-        // $articles = ArticleModel::where($where)->where($whereKeywords)->paginate($limit,'',$whereQuery)->each(function($item, $key){
-        //     //$item->nickname = 'think';
-        // });
-        $page = $articles->render();
-        $this->assign('page',$page);
-        $this->assign('keywords',$keywords);
-        $this->assign('articles',$articles);
+        
         return $this->fetch('search_index');
     }
 
