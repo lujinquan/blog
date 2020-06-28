@@ -30,8 +30,8 @@ Route::rule('index/:id$','index/Index/detail?article_id=:id');
 Route::rule('contact$','index/Contact/index');
 Route::rule('download$','index/Download/index');
 //全站搜索
-Route::rule('search/:name','index/Index/search?keywords=:name');
-Route::rule('search/page/<name>/<page>','index/Index/search')->pattern(['name' => '\w+','page' => '\d+']);
+//Route::rule('search/:name','index/Index/search?keywords=:name');
+//Route::rule('search/page/<name>/<page>','index/Index/search')->pattern(['name' => '\w+','page' => '\d+']);
 //首页的album
 Route::rule('album/[:id]','index/Index/album?article_id=:id');
 //首页的book
@@ -107,7 +107,7 @@ Route::rule('pay','index/Contact/pay');
 //评论的回复留言
 Route::rule('replay$','index/Blog/replay');
 //全局搜索
-Route::rule('search$','index/Index/search');
+Route::post('search$','index/Index/search');
 /**
  * 系统路由
  */
