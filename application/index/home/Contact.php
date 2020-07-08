@@ -1,7 +1,9 @@
 <?php
 
 namespace app\index\home;
+
 use app\index\home\Base;
+use app\blog\model\Article as ArticleModel;
 
 // use phpqrcode\QRcode;
 // include EXTEND_PATH.'phpqrcode/phpqrcode.php';
@@ -27,6 +29,15 @@ class Contact extends Base
      //    $qrcode = new QRcode;
      //    $qrcode::png($text,$outfile,$level,$size,0);
    		// $this->assign('qrcode_url',$url);
+        if(SITE_TEMPLATE == 'lost_time'){
+            $articleWhere = [
+                ['cate_id','eq',105],
+                ['is_show','eq',1],
+                ['status','eq',1]
+            ];
+            $articles = ArticleModel::where($articleWhere)->field('thumb,article_id,cate_id,article_title,article_type,article_desc,ctime,author,article_long_title')->order('sort_order asc')->select();
+            $this->assign('articles',$articles);
+        } 
         $this->assign('http_type',$http_type);
         return $this->fetch();
     }

@@ -1,0 +1,64 @@
+<div class="page-toolbar">
+    <form class="layui-form layui-form-pane" action="{url('index')}"  method="get" id="hisi-table-search">
+        
+        <div class="layui-input-inline" style="width:120px;padding-left:5px">
+            <input type="text" name="keywords" placeholder="关键词或标题" class="layui-input">
+        </div>
+        <div class="layui-input-inline" style="margin-left:10px;">
+            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">
+                <i class="layui-icon">&#xe615;</i>
+                搜索
+            </button>
+            <button type="reset" class="layui-btn">重置</button>
+        </div>
+    </form>
+</div>
+{include file="system@block/layui" /}
+<table id="dataTable" lay-filter='dataTable'></table>
+<script type="text/html" id="toolbar">
+  <div class="layui-btn-container">
+    <a href="{:url('add')}"><button class="layui-btn layui-btn-sm layui-btn-normal">上传附件</button></a>
+    <button data-href="{:url('del')}" data-id="house_id" class="layui-btn layui-btn-sm layui-btn-danger j-page-btns">批量删除</button>
+  </div>
+</script>
+<script type="text/html" title="操作按钮模板" id="buttonTpl">
+	<a href="{{ d.file_base_dir }}{{ d.file_name }}" class="layui-btn layui-btn-xs layui-btn-primary">下载</a>
+    <button data-href="{:url('del')}?file_name={{ d.file_name }}" class="layui-btn layui-btn-xs layui-btn-danger j-tr-del">删除</button>
+</script>
+<script type="text/javascript">
+    layui.use(['table'], function() {
+        var table = layui.table;
+        table.render({
+            elem: '#dataTable'
+            ,height: 550
+            ,toolbar: '#toolbar'
+            ,url: '{:url()}' //数据接口
+            ,page: true //开启分页
+            ,limit: 10
+            ,text: {
+                none : '暂无相关数据'
+            }
+            ,cols: [[ //表头
+                {type: 'checkbox'}
+                //,{field: 'sort_order', width: 70, title: '排序', templet: '#sortTpl'}
+                ,{field: 'file_name', minWidth: 200, title: '文件名'}
+                ,{field: 'file_base_dir', minWidth: 140, title: '目录'}
+                ,{field: 'file_size', width: 100, title: '文件大小', templet: function(d) {
+                    return bytesToSize(d.file_size);
+                }}
+                ,{field: 'file_type', width: 80, title: '类型'}
+                ,{field: 'file_ctime', width: 180, title: '创建时间'}
+                // ,{field: 'is_show', title: '状态', width: 100, templet: '#statusTpl'}
+                ,{field: 'file_mtime', width: 180, title: '修改时间'}
+                // ,{field: 'love', width: 70, title: '点赞'}
+                // ,{field: 'com', width: 70, title: '评论'}
+                // ,{field: 'ctime', width: 160, title: '创建日期'}
+                ,{title: '操作', width: 120, templet: '#buttonTpl',fixed:'right'}
+            ]]
+            ,done:function(res,curr,count){
+               
+            }
+        })
+    });
+
+</script>

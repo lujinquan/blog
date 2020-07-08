@@ -1,6 +1,8 @@
 <?php
 
 namespace app\blog\admin;
+
+use hisi\PclZip;
 use app\system\admin\Admin;
 use app\blog\model\Cate as CateModel;
 use app\blog\model\Article as ArticleModel;
@@ -55,6 +57,27 @@ class Article extends Admin
         $cates = CateModel::where($catWhere)->field('cate_id,cate_name,p_id,level')->select();
         $this->assign('cates', $cates);
         return $this->fetch();
+    }
+
+    public function out_to_md()
+    {
+        $ArticleModel = new ArticleModel;
+        $data = $ArticleModel->field('article_title,article_md_content')->select();
+        $i = 0;
+        foreach ($data as $row) {
+            if($row['article_title'] && $row['article_md_content']){
+                if(strtoupper(substr(PHP_OS,0,3))==='WIN'){ //如果是windows服务器，则保存成GBK编码格式
+                    $filename = convertGBK($row['article_title']);
+                }else{ //如果不是，则保存成UTF-8格式
+                    $filename = convertUTF8($row['article_title']);
+                }
+                $res = file_put_contents(ROOT_PATH.'public/download/md/'.$filename.'.md', $row['article_md_content']);
+                if($res > 0){
+                    $i++;
+                }
+            }  
+        }
+        $this->success('导出成功，共完成'.$i.'篇文章的导出！');
     }
 
     public function md()

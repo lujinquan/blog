@@ -165,7 +165,7 @@
             <a href="javascript:;"><img src="/static/home/lost_time/images/shouye_04.jpg" alt=""> </a>
           </span>
           <p class="blogtext">{$v['article_desc']}</p>
-          <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>{$v['author']}</span><span>{:substr($v['ctime'],0,10)}</span><span>【<a href="/index/{$v['article_id']}.html" target="_blank">原创</a>】</span></p>
+          <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>{$v['author']}</span><span>{:substr($v['ctime'],0,10)}</span><span>【<a href="/index/{$v['article_id']}.html" target="_blank">{$v['article_type']}</a>】</span></p>
         </li>
         {/volist}
         
@@ -173,9 +173,9 @@
         {volist name="newArticles" id="v"}
         <li>
           <h3 class="blogtitle"><a href="/index/{$v['article_id']}.html" target="_blank">{$v['article_title']}</a></h3>
-          <span class="blogpic imgscale"><i><a href="/index/{$v['article_id']}.html" target="_blank">原创</a></i><a href="/index/{$v['article_id']}.html" target="_blank" title=""><img src="{$v['thumb']}" alt=""></a></span>
+          <span class="blogpic imgscale"><i><a href="/index/{$v['article_id']}.html" target="_blank">{$v['article_type']}</a></i><a href="/index/{$v['article_id']}.html" target="_blank" title=""><img src="{$v['thumb']}" alt=""></a></span>
           <p class="blogtext">{$v['article_desc']}</p>
-          <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>{$v['author']}</span><span>{$v['ctime']}</span><span>【<a href="/index/{$v['article_id']}.html" target="_blank">原创</a>】</span></p>
+          <p class="bloginfo"><i class="avatar"><img src="/static/home/lost_time/images/avatar.jpg"></i><span>{$v['author']}</span><span>{$v['ctime']}</span><span>【<a href="/index/{$v['article_id']}.html" target="_blank">{$v['article_type']}</a>】</span></p>
           <a href="/index/{$v['article_id']}.html" target="_blank" class="viewmore">阅读更多</a> </li>
         {/volist}
       </ul>

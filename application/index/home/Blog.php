@@ -29,7 +29,7 @@ class Blog extends Base
             'status' => 1,
             'is_stick' => 1
         ];
-        $newArticles = ArticleModel::where($newWhere)->field('thumb,medium_thumb,article_id,article_title,article_long_title')->order('click desc,ctime desc')->limit(4)->select();
+        $newArticles = ArticleModel::where($newWhere)->field('thumb,medium_thumb,article_id,article_title,article_type,article_long_title')->order('click desc,ctime desc')->limit(4)->select();
         // 获取右侧最新评论
         $newComWhere = [
             'is_show' => 1,
@@ -78,14 +78,14 @@ class Blog extends Base
             $this->assign('total_page',$total_page);
             $this->assign('page',$page);
 
-            $blogArticles = ArticleModel::where($articleWhere)->field('thumb,article_id,cate_id,article_title,article_desc,ctime,author,article_long_title')->page($page)->limit($limit)->order('sort_order asc')->select();
-            //halt($galleryArticles);
+            $blogArticles = ArticleModel::where($articleWhere)->field('thumb,article_id,cate_id,article_title,article_type,article_desc,ctime,author,article_long_title')->page($page)->limit($limit)->order('sort_order asc')->select();
+            //halt($blogArticles);
             $this->assign('blogArticles',$blogArticles);
             // 本栏推荐
-            $stickArticles = ArticleModel::where($articleWhere)->where([['is_stick','eq',1]])->field('article_title,cate_id,article_desc,article_id,thumb,author,ctime')->limit(7)->order('click desc')->select();
+            $stickArticles = ArticleModel::where($articleWhere)->where([['is_stick','eq',1]])->field('article_title,article_type,cate_id,article_desc,article_id,thumb,author,ctime')->limit(7)->order('click desc')->select();
             $this->assign('stickArticles',$stickArticles);
             // 猜你喜欢
-            $loveArticles = ArticleModel::where($articleWhere)->field('article_title,cate_id,article_desc,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
+            $loveArticles = ArticleModel::where($articleWhere)->field('article_title,article_type,cate_id,article_desc,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
             $this->assign('loveArticles',$loveArticles);
 
         }else{
@@ -97,7 +97,7 @@ class Blog extends Base
                 'is_show' => 1,
                 'status' => 1
             ];
-            $articleFields = 'article_id,cate_id,article_title,article_long_title,article_desc,link,author,ctime,click,thumb';
+            $articleFields = 'article_id,cate_id,article_title,article_type,article_long_title,article_desc,link,author,ctime,click,thumb';
             //$initArticles = ArticleModel::with('cate')->where($articleWhere)->field($articleFields)->page($page)->limit(3)->order('sort_order asc')->select();
             $initArticles = ArticleModel::with('cate')->where($articleWhere)->field($articleFields)->page($page)->order('sort_order asc,ctime desc')->paginate($limit);
             //halt(count($initArticles));//->paginate(config('paginate.list_rows'));
@@ -144,7 +144,7 @@ class Blog extends Base
             ['status' ,'eq', 1],
             ['article_id' ,'neq',$id]
         ];
-        $tuiArticles = ArticleModel::where($tuiWhere)->field('thumb,article_id,article_title')->order('click desc')->limit(4)->select();
+        $tuiArticles = ArticleModel::where($tuiWhere)->field('thumb,article_id,article_title,article_type')->order('click desc')->limit(4)->select();
 
         //halt(ArticleModel::getLastSql());
         if(SITE_TEMPLATE == 'lost_time'){
@@ -156,10 +156,10 @@ class Blog extends Base
                 ['status','eq',1]
             ];
             // 本栏推荐
-            $stickArticles = ArticleModel::where($articleWhere)->where([['is_stick','eq',1]])->field('article_title,cate_id,article_desc,article_id,thumb,author,ctime')->limit(7)->order('click desc')->select();
+            $stickArticles = ArticleModel::where($articleWhere)->where([['is_stick','eq',1]])->field('article_title,article_type,cate_id,article_desc,article_id,thumb,author,ctime')->limit(7)->order('click desc')->select();
             $this->assign('stickArticles',$stickArticles);
             // 猜你喜欢
-            $loveArticles = ArticleModel::where($articleWhere)->field('article_title,cate_id,article_desc,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
+            $loveArticles = ArticleModel::where($articleWhere)->field('article_title,article_type,cate_id,article_desc,article_id,thumb,author,ctime')->limit(8)->order('love desc')->select();
             $this->assign('loveArticles',$loveArticles);
 
             $this->assign('preRow',$preRow);
@@ -242,7 +242,7 @@ class Blog extends Base
             ['status' , 'eq' , 1],
         ];
         //halt($articleWhere);
-        $articleFields = 'article_id,cate_id,article_title,article_long_title,article_desc,link,author,ctime,click,thumb';
+        $articleFields = 'article_id,cate_id,article_title,article_type,article_long_title,article_desc,link,author,ctime,click,thumb';
         $initArticles = ArticleModel::with('cate')->where($articleWhere)->field($articleFields)->page($page)->order('ctime desc')->paginate($limit);
         //halt($initArticles);
         $page = $initArticles->render();

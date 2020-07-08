@@ -20,6 +20,17 @@ class Article extends Model
         'ctime' => 'timestamp:Y-m-d H:i:s',
     ];
 
+    public function getArticleTypeAttr($value){
+        switch ($value) {
+            case 1:
+                return '原创';
+                break;
+            default:
+                return '转载';
+                break;
+        }
+    }
+
     /**
      * 入库
      * @param array $data 入库数据

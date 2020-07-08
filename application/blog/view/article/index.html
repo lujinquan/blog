@@ -34,6 +34,7 @@
   <div class="layui-btn-container">
     <a href="{:url('add')}"><button class="layui-btn layui-btn-sm layui-btn-normal">新增文章</button></a>
     <button data-href="{:url('del')}" data-id="house_id" class="layui-btn layui-btn-sm layui-btn-danger j-page-btns">批量删除</button>
+    <a data-href="{:url('out_to_md')}" class="j-ajax"><button class="layui-btn layui-btn-sm layui-btn-normal">一键将所有文章导出成MD文件</button></a>
   </div>
 </script>
 <script type="text/html" title="状态模板" id="statusTpl">
@@ -65,6 +66,14 @@
                 ,{field: 'sort_order', width: 70, title: '排序', templet: '#sortTpl'}
                 ,{field: 'article_title', minWidth: 200, title: '标题'}
                 ,{field: 'cate_name', width: 100, title: '所属栏目'}
+                ,{field: 'article_type', width: 80, title: '类型', templet: function(d) {
+                  if(d.article_type == 1){
+                    return '原创';
+                  }else{
+                    return '转载';
+                  }
+                  return params.insts[d.ban_inst_id];
+                }}
                 ,{field: 'keywords', width: 200, title: '关键词'}
                 ,{field: 'is_show', title: '状态', width: 100, templet: '#statusTpl'}
                 ,{field: 'click', width: 70, title: '浏览'}
